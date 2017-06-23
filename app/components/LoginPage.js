@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import {Route} from 'react-router-dom';
-import LoginFrom from './LoginForm';
 import SubmitForm from './SubmitForm';
 
 
@@ -13,11 +12,13 @@ export default class LoginPage extends React.Component{
 
         let that = this;
         let hashMap={};
-        let inputIdType=["L-id","L-pw","S-id","S-pw","S-cf","S-email"];
+        let inputIdType=["L-id","L-pw","S-id","S-pw","S-cf","S-em"];
 
         inputIdType.map(function(currType){
             hashMap[currType] = function(val){
-                this.setState({currType:val})
+                let obj = {};
+                obj[currType] = val;
+                this.setState(obj);
             }.bind(that);
         });
 
@@ -26,6 +27,7 @@ export default class LoginPage extends React.Component{
         };
 
         this.onInputChange = this.onInputChange.bind(this);
+        this.onButton = this.onButton.bind(this);
     }
 
     onInputChange(evt){
@@ -34,16 +36,33 @@ export default class LoginPage extends React.Component{
         this.state.hashMap[inputId](value);
     }
 
+
+    onButton(evt){
+        evt.preventDefault();
+
+        console.log(this.state);
+    }
+
+
+    /*
+     props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
+     props.button = {context : x ,evt : func}
+     props.inputTags
+     props.button을 넘겨줘야함
+     */
+
     render(){
         return(
             <div className="login-page">
                 <video className="video" autoPlay="true" loop>
                     <source src="./skateboard.mp4" type="video/mp4" />
                 </video>
-                <section className="login-signup-section">
-                    <LoginFrom/>
-                </section>
 
+                <SubmitForm
+                    inputTags={[{id:"L-id",placeholder:"Type your ID",evt:this.onInputChange},
+                        {id:"L-pw",placeholder:"Type your Password",evt:this.onInputChange}]}
+                    button={{context:"LOGIN",evt:this.onButton}}
+                />
             </div>
         )
     }
