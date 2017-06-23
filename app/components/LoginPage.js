@@ -3,12 +3,35 @@
  */
 import React from 'react';
 import {Route} from 'react-router-dom';
-import LoginSignUpFrom from './LoginSignUpForm';
+import LoginFrom from './LoginForm';
+import SubmitForm from './SubmitForm';
 
 
 export default class LoginPage extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
+
+        let that = this;
+        let hashMap={};
+        let inputIdType=["L-id","L-pw","S-id","S-pw","S-cf","S-email"];
+
+        inputIdType.map(function(currType){
+            hashMap[currType] = function(val){
+                this.setState({currType:val})
+            }.bind(that);
+        });
+
+        this.state={
+            hashMap:hashMap
+        };
+
+        this.onInputChange = this.onInputChange.bind(this);
+    }
+
+    onInputChange(evt){
+        let inputId = evt.target.id;
+        let value = evt.target.value;
+        this.state.hashMap[inputId](value);
     }
 
     render(){
@@ -18,10 +41,7 @@ export default class LoginPage extends React.Component{
                     <source src="./skateboard.mp4" type="video/mp4" />
                 </video>
                 <section className="login-signup-section">
-                    <h1 className="consistency">CONSISTENCY</h1>
-
-                    <LoginSignUpFrom/>
-
+                    <LoginFrom/>
                 </section>
 
             </div>

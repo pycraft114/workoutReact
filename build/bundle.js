@@ -33920,11 +33920,6 @@
 	                _react2.default.createElement(
 	                    'section',
 	                    { className: 'login-signup-section' },
-	                    _react2.default.createElement(
-	                        'h1',
-	                        { className: 'consistency' },
-	                        'CONSISTENCY'
-	                    ),
 	                    _react2.default.createElement(_LoginSignUpForm2.default, null)
 	                )
 	            );
@@ -37327,6 +37322,11 @@
 	                _react2.default.createElement(
 	                    'form',
 	                    { className: 'login-form' },
+	                    _react2.default.createElement(
+	                        'h1',
+	                        { className: 'consistency' },
+	                        'CONSISTENCY'
+	                    ),
 	                    _react2.default.createElement('input', {
 	                        id: 'loginId',
 	                        className: 'input',
@@ -37351,42 +37351,6 @@
 	                        'LOGIN'
 	                    ),
 	                    _react2.default.createElement('hr', null),
-	                    _react2.default.createElement('input', {
-	                        id: 'signUpId',
-	                        className: 'input',
-	                        type: 'text',
-	                        placeholder: 'type your password',
-	                        onChange: this.onInputChange
-	                    }),
-	                    _react2.default.createElement('input', {
-	                        id: 'signUpPassword',
-	                        className: 'input',
-	                        type: 'text',
-	                        placeholder: 'type your password',
-	                        onChange: this.onInputChange
-	                    }),
-	                    _react2.default.createElement('input', {
-	                        id: 'signUpConfirm',
-	                        className: 'input',
-	                        type: 'text',
-	                        placeholder: 'type your password',
-	                        onChange: this.onInputChange
-	                    }),
-	                    _react2.default.createElement('input', {
-	                        id: 'signUpEmail',
-	                        className: 'input',
-	                        type: 'text',
-	                        placeholder: 'type your password',
-	                        onChange: this.onInputChange
-	                    }),
-	                    _react2.default.createElement(
-	                        'button',
-	                        {
-	                            type: 'submit',
-	                            className: 'button'
-	                        },
-	                        'Sign-up'
-	                    ),
 	                    _react2.default.createElement('div', { className: 'error' })
 	                )
 	            );
@@ -39014,7 +38978,7 @@
 
 
 	// module
-	exports.push([module.id, "input:-webkit-autofill {\n    -webkit-box-shadow: 0 0 0px 1000px white inset;\n}\nhtml, body {\n    margin:0;\n    padding:0;\n    overflow:hidden;\n    height:100%\n}\n\n\n.video {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    z-index:-1;\n}\n\n@media (min-aspect-ratio: 16/9) {\n    .video {\n        height: 300%;\n        top: -100%;\n    }\n}\n\n@media (max-aspect-ratio: 16/9) {\n    .video {\n        width: 300%;\n        left: -100%;\n    }\n}\n\n.login-form{\n    position:relative;\n    float: right;\n    width: 247px;\n    height: 400px;\n    text-align: center;\n}\n\n.button {\n    width:100px;\n    height:30px;\n    outline: 0;\n    padding: 5px 12px;\n    color: #9fa8b0;\n    font-weight: bold;\n    font-size:17px;\n    text-shadow: 1px 1px #1f272b;\n    border: 1px solid #1c252b;\n    border-radius: 3px;\n    -moz-border-radius: 3px;\n    -webkit-border-radius: 3px;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#3D4850), color-stop(4%,#313d45), color-stop(100%,#232B30)); /* webkit */\n    box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* CSS3 */\n    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* Safari, Chrome */\n}\n.button:hover {\n    color: #fff;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#4C5A64), color-stop(4%,#404F5A), color-stop(100%,#2E3940)); /* webkit */\n}\n.button:active {\n    background-position: 0 top;\n    position: relative;\n    top: 1px;\n    color: #fff;\n    padding: 6px 12px 4px;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#20282D), color-stop(51%,#252E34), color-stop(100%,#222A30)); /* webkit */\n    -webkit-box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* Safari, Chrome */\n    box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* CSS3 */\n}\n\n.input{\n    width:247px;\n    height:30px;\n    border-radius:4px;\n    border:1px solid #9fa8b0;\n    padding-left:3px;\n    display:block;\n    margin:auto;\n    background-color: rgba(999,999,999,0.7);\n\n}\n.input:first-child{\n    margin-bottom:13px;\n}\n\n.consistency {\n    text-align: right;\n    color: white;\n    font-weight: bold;\n    font-size: 32px;\n    margin-top:64px;\n    margin-right:141px;\n}\n\n\n\n\n", ""]);
+	exports.push([module.id, "input:-webkit-autofill {\n    -webkit-box-shadow: 0 0 0px 1000px white inset;\n}\nhtml, body {\n    margin:0;\n    padding:0;\n    overflow:hidden;\n    height:100%\n}\n\n\n.video {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    z-index:-1;\n}\n\n@media (min-aspect-ratio: 16/9) {\n    .video {\n        height: 300%;\n        top: -100%;\n    }\n}\n\n@media (max-aspect-ratio: 16/9) {\n    .video {\n        width: 300%;\n        left: -100%;\n    }\n}\n\n.login-form{\n    position:relative;\n    float: right;\n    width: 247px;\n    height: 400px;\n    text-align: center;\n}\n\n.button {\n    width:100px;\n    height:30px;\n    outline: 0;\n    padding: 5px 12px;\n    color: #9fa8b0;\n    font-weight: bold;\n    font-size:17px;\n    text-shadow: 1px 1px #1f272b;\n    border: 1px solid #1c252b;\n    border-radius: 3px;\n    -moz-border-radius: 3px;\n    -webkit-border-radius: 3px;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#3D4850), color-stop(4%,#313d45), color-stop(100%,#232B30)); /* webkit */\n    box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* CSS3 */\n    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* Safari, Chrome */\n}\n.button:hover {\n    color: #fff;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#4C5A64), color-stop(4%,#404F5A), color-stop(100%,#2E3940)); /* webkit */\n}\n.button:active {\n    background-position: 0 top;\n    position: relative;\n    top: 1px;\n    color: #fff;\n    padding: 6px 12px 4px;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#20282D), color-stop(51%,#252E34), color-stop(100%,#222A30)); /* webkit */\n    -webkit-box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* Safari, Chrome */\n    box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* CSS3 */\n}\n\n.input{\n    width:247px;\n    height:30px;\n    border-radius:4px;\n    border:1px solid #9fa8b0;\n    padding-left:3px;\n    display:block;\n    margin:auto;\n    background-color: rgba(999,999,999,0.7);\n\n}\n.input:first-child{\n    margin-bottom:13px;\n}\n\n.consistency {\n    color: white;\n    font-weight: bold;\n    font-size: 32px;\n}\n\n\n\n\n", ""]);
 
 	// exports
 

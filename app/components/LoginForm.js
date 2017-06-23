@@ -72,6 +72,8 @@ class LoginSignUpForm extends Component{
         return(
             <div className="login-form-container">
                 <form className="login-form">
+                    <h1 className="consistency">CONSISTENCY</h1>
+                    /*input form 생성기*/
                     <input
                         id="loginId"
                         className="input"
@@ -86,7 +88,7 @@ class LoginSignUpForm extends Component{
                         placeholder="type your password"
                         onChange={this.onInputChange}
                     />
-
+                    /*button 생성기*/
                     <button
                         type="submit"
                         className="button"
@@ -97,7 +99,9 @@ class LoginSignUpForm extends Component{
 
                     <hr/>
 
-                    <input
+                    /*map 과 reduce를 통해 동일한 태그들 생성할 것
+                    * id,*/
+                    {/*<input
                         id="signUpId"
                         className="input"
                         type="text"
@@ -134,7 +138,7 @@ class LoginSignUpForm extends Component{
                         className="button"
                     >
                         Sign-up
-                    </button>
+                    </button>*/}
                     <div className="error">
                     </div>
                 </form>
