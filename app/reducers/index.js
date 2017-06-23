@@ -2,16 +2,12 @@
  * Created by chanwoopark on 2017. 6. 21..
  */
 import { combineReducers } from "redux";
-import dummy from "./dummy";
-import typeInput from "./reducer_typeInput"
-
+import { reducer as formReducer } from "redux-form";
 
 
 //combineReducer tells the redux how to create application state
 const rootReducer = combineReducers({
-    dummy: dummy,
-    value:typeInput
-
+    form:formReducer
 });
 //==> state{books:blah,
 //          activeBook:blah}

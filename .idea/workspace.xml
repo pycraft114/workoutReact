@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f3bfc42-574c-4a49-82df-e4772ba5314a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/style/LoginForm.css" afterPath="$PROJECT_DIR$/app/style/submitForm.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/components/LoginForm.js" afterPath="$PROJECT_DIR$/app/components/LoginSignUpForm.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/style/submitForm.css" afterPath="$PROJECT_DIR$/app/style/LoginSignUpForm.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/LoginForm.js" afterPath="$PROJECT_DIR$/app/components/LoginForm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.js" afterPath="$PROJECT_DIR$/app/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/reducers/index.js" afterPath="$PROJECT_DIR$/app/reducers/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/bundle.js" afterPath="$PROJECT_DIR$/build/bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
@@ -26,27 +25,14 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.55698234">
+    <splitter split-orientation="horizontal" split-proportion="0.35666665">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                    <element signature="e#144#183#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="submitForm.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/style/submitForm.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="51" column="19" lean-forward="false" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+                <state relative-caret-position="90">
+                  <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
                   <folding />
                 </state>
               </provider>
@@ -72,50 +58,26 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/reducers/index.js">
+          <file leaf-file-name="LoginSignUpForm.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/components/LoginSignUpForm.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#51#91#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="reducer_typeInput.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/reducers/reducer_typeInput.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-                  <folding>
-                    <element signature="e#51#101#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="dummy.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/reducers/dummy.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="135">
-                  <caret line="11" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#50#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="LoginForm.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/components/LoginForm.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="55" column="49" lean-forward="false" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
+                <state relative-caret-position="405">
+                  <caret line="31" column="37" lean-forward="true" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
                   <folding>
                     <element signature="e#51#101#0" expanded="false" />
                     <element signature="e#102#141#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="LoginPage.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/components/LoginPage.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="330">
+                  <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+                  <folding>
+                    <element signature="e#51#77#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -125,11 +87,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="submitForm.css" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/style/submitForm.css">
+          <file leaf-file-name="LoginSignUpForm.css" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/style/LoginSignUpForm.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="433">
-                  <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+                <state relative-caret-position="225">
+                  <caret line="75" column="13" lean-forward="false" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
@@ -163,8 +125,8 @@
           <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/package.json">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="40">
-                  <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+                <state relative-caret-position="-80">
+                  <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
@@ -207,25 +169,24 @@
           <file leaf-file-name="bundle.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/build/bundle.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="227">
-                  <caret line="19820" column="9" lean-forward="false" selection-start-line="19820" selection-start-column="9" selection-end-line="19820" selection-end-column="9" />
+                <state relative-caret-position="-343">
+                  <caret line="19782" column="9" lean-forward="false" selection-start-line="19782" selection-start-column="9" selection-end-line="19782" selection-end-column="9" />
                   <folding>
-                    <marker date="1498108442000" expanded="true" signature="1320:812258" ph="[...]" />
-                    <marker date="1498108442000" expanded="true" signature="809112:809115" ph="/*...*/" />
-                    <marker date="1498108442000" expanded="true" signature="809116:809121" ph="/*...*/" />
-                    <marker date="1498108442000" expanded="true" signature="809149:812246" ph="{...}" />
-                    <marker date="1498108442000" expanded="true" signature="809155:809686" ph="/** When source maps are enabled, `style-loader` uses a link element with a data-uri to ...*/" />
-                    <marker date="1498108442000" expanded="true" signature="809721:812235" ph="{...}" />
-                    <marker date="1498108442000" expanded="true" signature="809837:809901" ph="{...}" />
-                    <marker date="1498108442000" expanded="true" signature="809962:809984" ph="{...}" />
-                    <marker date="1498108442000" expanded="true" signature="810150:811152" ph="/*...*/" />
-                    <marker date="1498108442000" expanded="true" signature="811266:812181" ph="{...}" />
-                    <marker date="1498108442000" expanded="true" signature="811575:811604" ph="{...}" />
-                    <marker date="1498108442000" expanded="true" signature="811702:811776" ph="{...}" />
-                    <marker date="1498108442000" expanded="true" signature="811822:811942" ph="{...}" />
-                    <marker date="1498108442000" expanded="true" signature="811948:812092" ph="{...}" />
-                    <marker date="1498108442000" expanded="true" signature="812239:812244" ph="/*...*/" />
-                    <marker date="1498108442000" expanded="true" signature="812248:812256" ph="/*...*/" />
+                    <marker date="1498188733000" expanded="true" signature="1320:1304934" ph="[...]" />
+                    <marker date="1498188733000" expanded="true" signature="1301788:1301791" ph="/*...*/" />
+                    <marker date="1498188733000" expanded="true" signature="1301792:1301797" ph="/*...*/" />
+                    <marker date="1498188733000" expanded="true" signature="1301825:1304922" ph="{...}" />
+                    <marker date="1498188733000" expanded="true" signature="1301831:1302362" ph="/** When source maps are enabled, `style-loader` uses a link element with a data-uri to ...*/" />
+                    <marker date="1498188733000" expanded="true" signature="1302397:1304911" ph="{...}" />
+                    <marker date="1498188733000" expanded="true" signature="1302513:1302577" ph="{...}" />
+                    <marker date="1498188733000" expanded="true" signature="1302826:1303828" ph="/*...*/" />
+                    <marker date="1498188733000" expanded="true" signature="1303942:1304857" ph="{...}" />
+                    <marker date="1498188733000" expanded="true" signature="1304251:1304280" ph="{...}" />
+                    <marker date="1498188733000" expanded="true" signature="1304378:1304452" ph="{...}" />
+                    <marker date="1498188733000" expanded="true" signature="1304498:1304618" ph="{...}" />
+                    <marker date="1498188733000" expanded="true" signature="1304624:1304768" ph="{...}" />
+                    <marker date="1498188733000" expanded="true" signature="1304915:1304920" ph="/*...*/" />
+                    <marker date="1498188733000" expanded="true" signature="1304924:1304932" ph="/*...*/" />
                   </folding>
                 </state>
               </provider>
@@ -258,7 +219,9 @@
     <findStrings>
       <find>hello</find>
       <find>reactdom.render()</find>
+      <find>submitLogin</find>
       <find>axios</find>
+      <find>left</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -276,17 +239,20 @@
         <option value="$PROJECT_DIR$/app/reducers/dummy.js" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/app/reducers/dummy2.js" />
-        <option value="$PROJECT_DIR$/app/reducers/index.js" />
         <option value="$PROJECT_DIR$/app/reducers/reducer_typeInput.js" />
         <option value="$PROJECT_DIR$/app/actions/typeInput.js" />
         <option value="$PROJECT_DIR$/server/app.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/app/server/app.js" />
         <option value="$PROJECT_DIR$/build/index.html" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/style/LoginForm.css" />
-        <option value="$PROJECT_DIR$/app/index.js" />
+        <option value="$PROJECT_DIR$/app/reducers/index.js" />
         <option value="$PROJECT_DIR$/app/components/LoginForm.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/app/index.js" />
+        <option value="$PROJECT_DIR$/app/components/LoginSignUpForm.js" />
+        <option value="$PROJECT_DIR$/app/components/LoginPage.js" />
+        <option value="$PROJECT_DIR$/app/style/LoginSignUpForm.css" />
       </list>
     </option>
   </component>
@@ -302,8 +268,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="682" />
+    <option name="y" value="27" />
+    <option name="width" value="758" />
+    <option name="height" value="810" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -396,7 +364,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="reducers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="workoutReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="workoutReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="imgVid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="workoutReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="workoutReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -417,7 +421,6 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -498,18 +501,18 @@
       <option name="presentableId" value="Default" />
       <updated>1497969967590</updated>
       <workItem from="1497969968760" duration="5646000" />
-      <workItem from="1498015594632" duration="22474000" />
+      <workItem from="1498015594632" duration="31196000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28120000" />
+    <option name="totallyTimeSpent" value="36842000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="682" y="27" width="758" height="810" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23888889" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20844327" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -543,10 +546,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="34" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#144#183#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -558,7 +558,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/LoginForm.js">
+    <entry file="file://$PROJECT_DIR$/app/components/LoginSignUpForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="14" column="39" lean-forward="false" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
@@ -569,7 +569,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/style/submitForm.css">
+    <entry file="file://$PROJECT_DIR$/app/style/LoginSignUpForm.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
@@ -640,55 +640,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/bundle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="19820" column="9" lean-forward="false" selection-start-line="19820" selection-start-column="9" selection-end-line="19820" selection-end-column="9" />
+        <state relative-caret-position="-343">
+          <caret line="19782" column="9" lean-forward="false" selection-start-line="19782" selection-start-column="9" selection-end-line="19782" selection-end-column="9" />
           <folding>
-            <marker date="1498108442000" expanded="true" signature="1320:812258" ph="[...]" />
-            <marker date="1498108442000" expanded="true" signature="809112:809115" ph="/*...*/" />
-            <marker date="1498108442000" expanded="true" signature="809116:809121" ph="/*...*/" />
-            <marker date="1498108442000" expanded="true" signature="809149:812246" ph="{...}" />
-            <marker date="1498108442000" expanded="true" signature="809155:809686" ph="/** When source maps are enabled, `style-loader` uses a link element with a data-uri to ...*/" />
-            <marker date="1498108442000" expanded="true" signature="809721:812235" ph="{...}" />
-            <marker date="1498108442000" expanded="true" signature="809837:809901" ph="{...}" />
-            <marker date="1498108442000" expanded="true" signature="809962:809984" ph="{...}" />
-            <marker date="1498108442000" expanded="true" signature="810150:811152" ph="/*...*/" />
-            <marker date="1498108442000" expanded="true" signature="811266:812181" ph="{...}" />
-            <marker date="1498108442000" expanded="true" signature="811575:811604" ph="{...}" />
-            <marker date="1498108442000" expanded="true" signature="811702:811776" ph="{...}" />
-            <marker date="1498108442000" expanded="true" signature="811822:811942" ph="{...}" />
-            <marker date="1498108442000" expanded="true" signature="811948:812092" ph="{...}" />
-            <marker date="1498108442000" expanded="true" signature="812239:812244" ph="/*...*/" />
-            <marker date="1498108442000" expanded="true" signature="812248:812256" ph="/*...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/reducers/reducer_typeInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding>
-            <element signature="e#51#101#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/reducers/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#51#91#0" expanded="true" />
+            <marker date="1498188733000" expanded="true" signature="1320:1304934" ph="[...]" />
+            <marker date="1498188733000" expanded="true" signature="1301788:1301791" ph="/*...*/" />
+            <marker date="1498188733000" expanded="true" signature="1301792:1301797" ph="/*...*/" />
+            <marker date="1498188733000" expanded="true" signature="1301825:1304922" ph="{...}" />
+            <marker date="1498188733000" expanded="true" signature="1301831:1302362" ph="/** When source maps are enabled, `style-loader` uses a link element with a data-uri to ...*/" />
+            <marker date="1498188733000" expanded="true" signature="1302397:1304911" ph="{...}" />
+            <marker date="1498188733000" expanded="true" signature="1302513:1302577" ph="{...}" />
+            <marker date="1498188733000" expanded="true" signature="1302826:1303828" ph="/*...*/" />
+            <marker date="1498188733000" expanded="true" signature="1303942:1304857" ph="{...}" />
+            <marker date="1498188733000" expanded="true" signature="1304251:1304280" ph="{...}" />
+            <marker date="1498188733000" expanded="true" signature="1304378:1304452" ph="{...}" />
+            <marker date="1498188733000" expanded="true" signature="1304498:1304618" ph="{...}" />
+            <marker date="1498188733000" expanded="true" signature="1304624:1304768" ph="{...}" />
+            <marker date="1498188733000" expanded="true" signature="1304915:1304920" ph="/*...*/" />
+            <marker date="1498188733000" expanded="true" signature="1304924:1304932" ph="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -721,6 +692,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/reducers/reducer_typeInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding>
+            <element signature="e#51#101#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-80">
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/reducers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding>
+            <element signature="e#51#91#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -729,33 +728,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/style/submitForm.css">
+    <entry file="file://$PROJECT_DIR$/app/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="51" column="19" lean-forward="false" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+        <state relative-caret-position="90">
+          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.js">
+    <entry file="file://$PROJECT_DIR$/app/components/LoginSignUpForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#144#183#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/LoginForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="55" column="49" lean-forward="false" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
+        <state relative-caret-position="405">
+          <caret line="31" column="37" lean-forward="true" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
           <folding>
             <element signature="e#51#101#0" expanded="false" />
             <element signature="e#102#141#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/LoginPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+          <folding>
+            <element signature="e#51#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/style/LoginSignUpForm.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="75" column="13" lean-forward="false" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

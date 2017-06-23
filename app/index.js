@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LoginForm from './components/LoginForm';
-require('./style/submitForm.css');
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import reducers from "./reducers/index";
 
+import LoginPage from './components/LoginPage';
+require('./style/LoginSignUpForm.css');
+
 ReactDOM.render(
     <Provider store={createStore(reducers)}>
-        <LoginForm/>
+        <LoginPage/>
     </Provider>
     , document.querySelector('.container')
 );
