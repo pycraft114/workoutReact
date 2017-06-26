@@ -32,17 +32,9 @@ html, body {
     }
 }
 
-.login-form{
-    position:relative;
-    float: right;
-    width: 247px;
-    height: 400px;
-    text-align: center;
-}
-
 .button {
-    width:100px;
-    height:30px;
+    width:263px;
+    height:35px;
     outline: 0;
     padding: 5px 12px;
     color: #9fa8b0;
@@ -73,13 +65,14 @@ html, body {
 }
 
 .input{
-    width:247px;
-    height:30px;
+    width:255px;
+    height:35px;
     border-radius:4px;
     border:1px solid #9fa8b0;
     padding-left:3px;
     display:block;
     margin:auto;
+    margin-bottom:13px;
     background-color: rgba(999,999,999,0.7);
 
 }
@@ -87,12 +80,18 @@ html, body {
     margin-bottom:13px;
 }
 
-.consistency {
+.header{
     color: white;
     font-weight: bold;
     font-size: 32px;
 }
 
+.login-signup-page{
+    position:relative;
+    top:25vh;
+    text-align: center;
+    height:368px;
+}
 
 
 

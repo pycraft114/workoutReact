@@ -44,6 +44,8 @@
     "react-redux": "4.3.0",
     "react-router": "^2.0.1",
     "react-router-dom": "^4.1.1",
+    "react-siema": "^1.0.1",
+    "react-slick": "^0.14.11",
     "redux": "^3.0.4",
     "redux-form": "^6.8.0",
     "style-loader": "^0.18.2",

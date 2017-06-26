@@ -14,6 +14,7 @@ export default class SubmitForm extends Component{
     render(){
         return(
             <div className="submit-form-container">
+                <h1 className="header">{this.props.header}</h1>
                 <form className="submit-form">
                     {
                         this.props.inputTags.map(function(currObj,index){
