@@ -6,6 +6,7 @@ import WorkoutSelector from './WorkoutSelector';
 import SelectedWorkout from './SelectedWorkout';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
+import axios from 'axios';
 
 
 import DatePicker from 'react-datepicker';
@@ -25,22 +26,43 @@ export default class WorkoutList extends Component{
         super(props);
 
         this.state = {
-            startDate:moment()
+            selectedDate:moment(),
+            selectedWorkout:[],
+            resultDate:null
         };
 
-    this.onHandleChange = this.onHandleChange.bind(this);
+    this.onDateChange = this.onDateChange.bind(this);
     this.onSelectChange = this.onSelectChange.bind(this);
     }
+    /*
+    * datePicker가 modified 되었을때 일어나야 하는 일
+    * 1.state의 selectedDate 이 선택된 날짜이어야 한다(rerendering)
+    * 2.db에 선택한 날짜를 키로 하는 데이터를 가져온다.
+    * 3.가져온 데이터를 클라이언트에서 조작해서 workout List가 render 되어야한다.
+    *
+    * */
+    onDateChange(date) {
+        var year = date._d.getFullYear().toString();
+        var month = date._d.getMonth().toString();
+        var day = date._d.getDate().toString();
+        var resultDate = year.concat("-",month,"-",day);
 
-    onHandleChange(date) {
-        var a = date._d.getFullYear().toString();
-        var b = date._d.getMonth().toString();
-        var c = date._d.getDate().toString();
-        console.log(a.concat(b,c));
+        console.log(this.state.selectedWorkout);
+        this.setState({selectedDate:date,resultDate:resultDate});
+
+        axios.post('/savedate',{"date":resultDate}).then(function(res){console.log(res)});
+
+
+
     }
 
     onSelectChange(evt){
-        console.log(evt.target.value);
+        var date = this.state.resultDate;
+        var workout = evt.target.value;
+        var newArr = [...this.state.selectedWorkout,workout];
+        this.setState({selectedWorkout:newArr});
+
+        axios.post('/savedateworkout',{"date":date,"selected_workout":newArr}).then(function(res){console.log(res)});
     }
 
     render(){
@@ -49,8 +71,8 @@ export default class WorkoutList extends Component{
                 <p>Date Picker</p>
 
                 <DatePicker
-                    selected={this.state.startDate}
-                    onChange={this.onHandleChange}
+                    selected={this.state.selectedDate}
+                    onChange={this.onDateChange}
                 />
 
                 <div className="workout-list">

@@ -1,3 +1,3 @@
-var test = {a:"haha"};
+var test = {a:"haha","a":"hello"};
 
-console.log(typeof test.a);
+console.log(test)
