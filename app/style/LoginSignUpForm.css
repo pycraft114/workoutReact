@@ -84,6 +84,7 @@ html, body {
     color: white;
     font-weight: bold;
     font-size: 32px;
+    font-family: -webkit-pictograph;
 }
 
 .login-signup-page{

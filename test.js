@@ -1,5 +1,3 @@
-const test = (args) =>{
-    console.log(...args)
-};
-var a = [];
-test(a);
+var test = {a:"haha"};
+
+console.log(typeof test.a);
