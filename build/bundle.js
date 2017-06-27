@@ -34185,13 +34185,11 @@
 	            var month = date._d.getMonth().toString();
 	            var day = date._d.getDate().toString();
 	            var resultDate = year.concat("-", month, "-", day);
-
-	            console.log(this.state.selectedWorkout);
-	            this.setState({ selectedDate: date, resultDate: resultDate });
-
+	            console.log(resultDate);
 	            _axios2.default.post('/savedate', { "date": resultDate }).then(function (res) {
 	                console.log(res);
 	            });
+	            this.setState({ selectedDate: date, resultDate: resultDate });
 	        }
 	    }, {
 	        key: 'onSelectChange',
