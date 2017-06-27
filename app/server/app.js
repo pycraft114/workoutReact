@@ -74,18 +74,29 @@ app.post("/savedateworkout",function(req,res){
     var date = data.date;
     var selected_workout = JSON.stringify(data.selected_workout);
 
-    var sql = {
-        'selected_workout':selected_workout
+    var insert = {
+        'selected_workout': selected_workout,
+        'date':date
     };
 
-    console.log(sql);
+    var update = {
+        'selected_workout': selected_workout
+    };
+
+    var qry = "INSERT INTO workoutList (date,selected_workout) VALUES (?,?) ON DUPLICATE KEY UPDATE selected_workout = ?";
+    var value = [date,selected_workout,selected_workout];
+    qry = mysql.format(qry,value);
+
     /*
-     UPDATE workoutList
-     SET selected_workout = value
-     WHERE date = specific date;
+     INSERT INTO workoutList
+     (date, selected_workout)
+     VALUES( [date], [selected_workout])
+     ON DUPLICATE KEY UPDATE
+     selected_workout = [selected_workout]
      */
 
-    var saveQuery = connection.query('UPDATE workoutList SET selected_workout = ? WHERE date = ?', [selected_workout, date], function (err, rows) {
+    var saveQuery = connection.query(qry,
+        function (err, rows) {
         if (err) {
             throw err;
         }

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f3bfc42-574c-4a49-82df-e4772ba5314a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/WorkoutList.js" afterPath="$PROJECT_DIR$/app/components/WorkoutList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/app.js" afterPath="$PROJECT_DIR$/app/server/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/bundle.js" afterPath="$PROJECT_DIR$/build/bundle.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -65,7 +68,7 @@
       <file leaf-file-name="WorkoutList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/WorkoutList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
+            <state relative-caret-position="143">
               <caret line="48" column="32" lean-forward="false" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
               <folding>
                 <element signature="e#51#89#0" expanded="true" />
@@ -97,8 +100,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/server/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="73" column="24" lean-forward="false" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
+            <state relative-caret-position="411">
+              <caret line="100" column="22" lean-forward="true" selection-start-line="100" selection-start-column="22" selection-end-line="100" selection-end-column="22" />
               <folding>
                 <element signature="e#0#50#0" expanded="false" />
               </folding>
@@ -166,8 +169,8 @@
         <option value="$PROJECT_DIR$/app/components/WorkoutSelector.js" />
         <option value="$PROJECT_DIR$/app/server/mysqlData.json" />
         <option value="$PROJECT_DIR$/test.js" />
-        <option value="$PROJECT_DIR$/app/components/WorkoutList.js" />
         <option value="$PROJECT_DIR$/app/server/app.js" />
+        <option value="$PROJECT_DIR$/app/components/WorkoutList.js" />
       </list>
     </option>
   </component>
@@ -469,16 +472,16 @@
       <workItem from="1497969968760" duration="5646000" />
       <workItem from="1498015594632" duration="33049000" />
       <workItem from="1498197709889" duration="4805000" />
-      <workItem from="1498202943812" duration="34174000" />
+      <workItem from="1498202943812" duration="35804000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77674000" />
+    <option name="totallyTimeSpent" value="79304000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="274" y="57" width="1163" height="826" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21582115" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -580,7 +583,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1498540716000" expanded="true" signature="1741206:1741209" ph="/*...*/" />
+            <marker date="1498545095000" expanded="true" signature="1741206:1741209" ph="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -701,7 +704,7 @@
         <state relative-caret-position="296730">
           <caret line="19782" column="9" lean-forward="false" selection-start-line="19782" selection-start-column="9" selection-end-line="19782" selection-end-column="9" />
           <folding>
-            <marker date="1498540716000" expanded="true" signature="1741206:1741209" ph="/*...*/" />
+            <marker date="1498545095000" expanded="true" signature="1741206:1741209" ph="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -856,7 +859,7 @@
         <state relative-caret-position="442">
           <caret line="35584" column="30" lean-forward="false" selection-start-line="35584" selection-start-column="30" selection-end-line="35584" selection-end-column="30" />
           <folding>
-            <marker date="1498540716000" expanded="true" signature="1741206:1741209" ph="/*...*/" />
+            <marker date="1498545095000" expanded="true" signature="1741206:1741209" ph="/*...*/" />
           </folding>
         </state>
       </provider>
@@ -949,7 +952,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/WorkoutList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
+        <state relative-caret-position="143">
           <caret line="48" column="32" lean-forward="false" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
           <folding>
             <element signature="e#51#89#0" expanded="true" />
@@ -959,8 +962,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/server/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="73" column="24" lean-forward="false" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
+        <state relative-caret-position="411">
+          <caret line="100" column="22" lean-forward="true" selection-start-line="100" selection-start-column="22" selection-end-line="100" selection-end-column="22" />
           <folding>
             <element signature="e#0#50#0" expanded="false" />
           </folding>

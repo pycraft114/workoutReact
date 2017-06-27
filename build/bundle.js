@@ -34186,9 +34186,6 @@
 	            var day = date._d.getDate().toString();
 	            var resultDate = year.concat("-", month, "-", day);
 	            console.log(resultDate);
-	            _axios2.default.post('/savedate', { "date": resultDate }).then(function (res) {
-	                console.log(res);
-	            });
 	            this.setState({ selectedDate: date, resultDate: resultDate });
 	        }
 	    }, {
