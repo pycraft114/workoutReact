@@ -46,18 +46,40 @@ export default class WorkoutList extends Component{
         var month = date._d.getMonth().toString();
         var day = date._d.getDate().toString();
         var resultDate = year.concat("-",month,"-",day);
-        console.log(resultDate);
+
         this.setState({selectedDate:date,resultDate:resultDate});
+
+
+
+        const that = this;
+
+        axios.post('/getworkout',{"date":resultDate}).then(function(res){
+            var data = res.data;
+            that.setState({selectedWorkout:data});
+            console.log(that.state.selectedWorkout);
+        });
+
 
     }
 
     onSelectChange(evt){
+
+        function onlyUnique(value, index, self) {
+            return self.indexOf(value) === index;
+        }
+
         var date = this.state.resultDate;
         var workout = evt.target.value;
         var newArr = [...this.state.selectedWorkout,workout];
-        this.setState({selectedWorkout:newArr});
+        console.log("newArr "+newArr);
 
-        axios.post('/savedateworkout',{"date":date,"selected_workout":newArr}).then(function(res){console.log(res)});
+        var uniqueArr = newArr.filter( onlyUnique );
+
+        this.setState({selectedWorkout:uniqueArr});
+
+        console.log(this.state.selectedWorkout);
+
+        axios.post('/savedateworkout',{"date":date,"selected_workout":uniqueArr}).then(function(res){console.log(res)});
     }
 
     render(){

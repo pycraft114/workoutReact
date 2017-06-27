@@ -43,22 +43,17 @@ app.get('/',function(req,res){
     res.sendfile(path.resolve("../../build/index.html"));
 });
 
-app.post("/savedate",function(req,res){
+app.post("/getworkout",function(req,res){
     var data = req.body;
     var date = data.date;
 
-    var sql = {
-        'date':date,
-    };
 
-    console.log(sql);
-
-    var saveQuery = connection.query('INSERT INTO workoutList SET ?', sql, function (err, rows) {
+    var saveQuery = connection.query('SELECT selected_workout FROM workoutList WHERE date = ?', date, function (err, result) {
         if (err) {
             throw err;
         }
-        else {
-            res.send("save success")
+        if(result) {
+            res.send(result[0].selected_workout);
         }
     });
 

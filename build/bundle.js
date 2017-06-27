@@ -34185,18 +34185,37 @@
 	            var month = date._d.getMonth().toString();
 	            var day = date._d.getDate().toString();
 	            var resultDate = year.concat("-", month, "-", day);
-	            console.log(resultDate);
+
 	            this.setState({ selectedDate: date, resultDate: resultDate });
+
+	            var that = this;
+
+	            _axios2.default.post('/getworkout', { "date": resultDate }).then(function (res) {
+	                var data = res.data;
+	                that.setState({ selectedWorkout: data });
+	                console.log(that.state.selectedWorkout);
+	            });
 	        }
 	    }, {
 	        key: 'onSelectChange',
 	        value: function onSelectChange(evt) {
+
+	            function onlyUnique(value, index, self) {
+	                return self.indexOf(value) === index;
+	            }
+
 	            var date = this.state.resultDate;
 	            var workout = evt.target.value;
 	            var newArr = [].concat(_toConsumableArray(this.state.selectedWorkout), [workout]);
-	            this.setState({ selectedWorkout: newArr });
+	            console.log("newArr " + newArr);
 
-	            _axios2.default.post('/savedateworkout', { "date": date, "selected_workout": newArr }).then(function (res) {
+	            var uniqueArr = newArr.filter(onlyUnique);
+
+	            this.setState({ selectedWorkout: uniqueArr });
+
+	            console.log(this.state.selectedWorkout);
+
+	            _axios2.default.post('/savedateworkout', { "date": date, "selected_workout": uniqueArr }).then(function (res) {
 	                console.log(res);
 	            });
 	        }
