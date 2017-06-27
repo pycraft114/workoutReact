@@ -64,7 +64,7 @@ app.post("/savedate",function(req,res){
 
     //response문이 쿼리문 이전에 오면 통신 종결한 후에 다시 통신하려함 하지만 이미 response를 보냄으로써 통신이 끝난후임
     //cannot set header오류의 원인
-    //밑에 처럼 이이후에 선언 해놓은다 해도 savequery함수는 비동기라 밑에라인이 실행 돼버리고난 후에 db에 저장하려함으로 위의 오류또한 등장
+    //밑에 처럼 이이후에 선언 해놓은다 해도 savequery함수는 비동기라 밑에라인이 실행 돼버리고난 후에 db에 저장하려함으로 위의 오류또한 등
     //res.send("called");
 
 });
@@ -75,13 +75,17 @@ app.post("/savedateworkout",function(req,res){
     var selected_workout = JSON.stringify(data.selected_workout);
 
     var sql = {
-        'date':date,
         'selected_workout':selected_workout
     };
 
     console.log(sql);
+    /*
+     UPDATE workoutList
+     SET selected_workout = value
+     WHERE date = specific date;
+     */
 
-    var saveQuery = connection.query('INSERT INTO workoutList SET ?', sql, function (err, rows) {
+    var saveQuery = connection.query('UPDATE workoutList SET selected_workout = ? WHERE date = ?', [selected_workout, date], function (err, rows) {
         if (err) {
             throw err;
         }
