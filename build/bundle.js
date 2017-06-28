@@ -34162,7 +34162,10 @@
 	        _this.state = {
 	            selectedDate: (0, _moment2.default)(),
 	            selectedWorkout: [],
-	            resultDate: null
+	            resultDate: null,
+	            error: {
+	                NOT_FOUND: "NOT_FOUND"
+	            }
 	        };
 
 	        _this.onDateChange = _this.onDateChange.bind(_this);
@@ -34191,7 +34194,14 @@
 	            var that = this;
 	            _axios2.default.post('/getworkout', { "date": resultDate }).then(function (res) {
 	                var data = res.data;
-	                console.log(res);
+
+	                if (data !== that.state.error.NOT_FOUND) {
+	                    //밑에 둘라인 얘네는 왜 동기적으로 실행???
+	                    that.setState({ selectedWorkout: data });
+	                    console.log(that.state.selectedWorkout);
+	                } else {
+	                    that.setState({ selectedWorkout: [] });
+	                }
 	            });
 	        }
 	    }, {
@@ -34206,13 +34216,12 @@
 	            var date = this.state.resultDate;
 	            var workout = evt.target.value;
 	            var newArr = [].concat(_toConsumableArray(this.state.selectedWorkout), [workout]);
-	            console.log("newArr " + newArr);
 
 	            var uniqueArr = [].concat(_toConsumableArray(new Set(newArr)));
 
+	            //밑에 둘라인 얘네는 왜 비동기적으로 실행???
 	            this.setState({ selectedWorkout: uniqueArr });
-
-	            console.log(this.state.selectedWorkout);
+	            //console.log("line 85",this.state.selectedWorkout);
 
 	            _axios2.default.post('/savedateworkout', { "date": date, "selected_workout": uniqueArr }).then(function (res) {
 	                console.log(res);
@@ -34236,9 +34245,17 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'workout-list' },
-	                    _react2.default.createElement(_SelectedWorkout2.default, {
-	                        selected: 'Bench Press'
-	                    }),
+	                    this.state.selectedWorkout.map(function (ele, idx) {
+	                        return _react2.default.createElement(_SelectedWorkout2.default, {
+	                            key: idx,
+	                            selected: ele
+	                        });
+	                    })
+
+	                    /*<SelectedWorkout
+	                    selected="Bench Press"
+	                    />*/
+	                    ,
 	                    _react2.default.createElement(_WorkoutSelector2.default, {
 	                        onSelectChange: this.onSelectChange
 	                    })

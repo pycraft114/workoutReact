@@ -28,7 +28,10 @@ export default class WorkoutList extends Component{
         this.state = {
             selectedDate:moment(),
             selectedWorkout:[],
-            resultDate:null
+            resultDate:null,
+            error:{
+                NOT_FOUND:"NOT_FOUND"
+            }
         };
 
     this.onDateChange = this.onDateChange.bind(this);
@@ -42,10 +45,10 @@ export default class WorkoutList extends Component{
     *
     * */
     onDateChange(date) {
-        var year = date._d.getFullYear().toString();
-        var month = date._d.getMonth().toString();
-        var day = date._d.getDate().toString();
-        var resultDate = year.concat("-",month,"-",day);
+        let year = date._d.getFullYear().toString();
+        let month = date._d.getMonth().toString();
+        let day = date._d.getDate().toString();
+        let resultDate = year.concat("-",month,"-",day);
 
         this.setState({selectedDate:date,resultDate:resultDate});
 
@@ -53,8 +56,15 @@ export default class WorkoutList extends Component{
 
         const that = this;
         axios.post('/getworkout',{"date":resultDate}).then(function(res){
-            var data = res.data;
-            console.log(res);
+            const data = res.data;
+
+            if(data !== that.state.error.NOT_FOUND){
+                //밑에 둘라인 얘네는 왜 동기적으로 실행???
+                that.setState({selectedWorkout:data});
+                console.log(that.state.selectedWorkout);
+            }else{
+                that.setState({selectedWorkout:[]});
+            }
         });
 
 
@@ -70,13 +80,12 @@ export default class WorkoutList extends Component{
         var date = this.state.resultDate;
         var workout = evt.target.value;
         var newArr = [...this.state.selectedWorkout,workout];
-        console.log("newArr "+newArr);
 
         var uniqueArr = [...new Set(newArr)];
 
+        //밑에 둘라인 얘네는 왜 비동기적으로 실행???
         this.setState({selectedWorkout:uniqueArr});
-
-        console.log(this.state.selectedWorkout);
+        //console.log("line 85",this.state.selectedWorkout);
 
         axios.post('/savedateworkout',{"date":date,"selected_workout":uniqueArr}).then(function(res){console.log(res)});
     }
@@ -92,9 +101,20 @@ export default class WorkoutList extends Component{
                 />
 
                 <div className="workout-list">
-                    <SelectedWorkout
+                    {
+                        this.state.selectedWorkout.map(function(ele,idx){
+                            return(
+                                <SelectedWorkout
+                                    key={idx}
+                                    selected={ele}
+                                />
+                            )
+                        })
+
+                        /*<SelectedWorkout
                         selected="Bench Press"
-                    />
+                    />*/
+                    }
                     <WorkoutSelector
                         onSelectChange={this.onSelectChange}
                     />
