@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f3bfc42-574c-4a49-82df-e4772ba5314a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/WorkoutList.js" afterPath="$PROJECT_DIR$/app/components/WorkoutList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server/app.js" afterPath="$PROJECT_DIR$/app/server/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/bundle.js" afterPath="$PROJECT_DIR$/build/bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.js" afterPath="$PROJECT_DIR$/test.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -461,12 +458,12 @@
       <workItem from="1497969968760" duration="5646000" />
       <workItem from="1498015594632" duration="33049000" />
       <workItem from="1498197709889" duration="4805000" />
-      <workItem from="1498202943812" duration="43317000" />
+      <workItem from="1498202943812" duration="43654000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86817000" />
+    <option name="totallyTimeSpent" value="87154000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="160" y="57" width="1277" height="826" extended-state="0" />
