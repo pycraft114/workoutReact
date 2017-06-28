@@ -34189,27 +34189,26 @@
 	            this.setState({ selectedDate: date, resultDate: resultDate });
 
 	            var that = this;
-
 	            _axios2.default.post('/getworkout', { "date": resultDate }).then(function (res) {
 	                var data = res.data;
-	                that.setState({ selectedWorkout: data });
-	                console.log(that.state.selectedWorkout);
+	                console.log(res);
 	            });
 	        }
 	    }, {
 	        key: 'onSelectChange',
 	        value: function onSelectChange(evt) {
 
-	            function onlyUnique(value, index, self) {
-	                return self.indexOf(value) === index;
-	            }
+	            //시간 복잡도 n**2 너무느림
+	            /*function onlyUnique(value, index, self) {
+	                 return self.indexOf(value) === index;
+	             }*/
 
 	            var date = this.state.resultDate;
 	            var workout = evt.target.value;
 	            var newArr = [].concat(_toConsumableArray(this.state.selectedWorkout), [workout]);
 	            console.log("newArr " + newArr);
 
-	            var uniqueArr = newArr.filter(onlyUnique);
+	            var uniqueArr = [].concat(_toConsumableArray(new Set(newArr)));
 
 	            this.setState({ selectedWorkout: uniqueArr });
 

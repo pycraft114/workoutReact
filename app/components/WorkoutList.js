@@ -52,11 +52,9 @@ export default class WorkoutList extends Component{
 
 
         const that = this;
-
         axios.post('/getworkout',{"date":resultDate}).then(function(res){
             var data = res.data;
-            that.setState({selectedWorkout:data});
-            console.log(that.state.selectedWorkout);
+            console.log(res);
         });
 
 
@@ -64,16 +62,17 @@ export default class WorkoutList extends Component{
 
     onSelectChange(evt){
 
-        function onlyUnique(value, index, self) {
+        //시간 복잡도 n**2 너무느림
+       /*function onlyUnique(value, index, self) {
             return self.indexOf(value) === index;
-        }
+        }*/
 
         var date = this.state.resultDate;
         var workout = evt.target.value;
         var newArr = [...this.state.selectedWorkout,workout];
         console.log("newArr "+newArr);
 
-        var uniqueArr = newArr.filter( onlyUnique );
+        var uniqueArr = [...new Set(newArr)];
 
         this.setState({selectedWorkout:uniqueArr});
 

@@ -1,3 +1,5 @@
-var test = {a:"haha","a":"hello"};
+var test = ["squat" , "benchpress","squat"];
 
-console.log(test)
+var a = new Set(test);
+var b = [...a]
+console.log(b);

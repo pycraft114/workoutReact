@@ -48,12 +48,14 @@ app.post("/getworkout",function(req,res){
     var date = data.date;
 
 
-    var saveQuery = connection.query('SELECT selected_workout FROM workoutList WHERE date = ?', date, function (err, result) {
+    var saveQuery = connection.query('SELECT selected_workout FROM workoutList WHERE date=?', date, function (err, result) {
         if (err) {
             throw err;
         }
-        if(result) {
+        if(result.length) {
             res.send(result[0].selected_workout);
+        }else{
+            res.send("NOT_FOUND");
         }
     });
 
