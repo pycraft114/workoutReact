@@ -26,7 +26,7 @@ export default class WorkoutList extends Component{
         super(props);
 
         this.state = {
-            selectedDate:moment(),
+            selectedDate:null,
             selectedWorkout:[],
             resultDate:null,
             error:{
@@ -37,6 +37,8 @@ export default class WorkoutList extends Component{
     this.onDateChange = this.onDateChange.bind(this);
     this.onSelectChange = this.onSelectChange.bind(this);
     }
+
+
     /*
     * datePicker가 modified 되었을때 일어나야 하는 일
     * 1.state의 selectedDate 이 선택된 날짜이어야 한다(rerendering)
@@ -92,13 +94,16 @@ export default class WorkoutList extends Component{
 
     render(){
         return(
+            //workout-list-conatiner and date-picker-container class name should be changed
             <div className="workout-list-container">
-                <p>Date Picker</p>
+                <div className="date-picker-container">
+                    <p className="date-picker-header">Date Picker</p>
 
-                <DatePicker
-                    selected={this.state.selectedDate}
-                    onChange={this.onDateChange}
-                />
+                    <DatePicker
+                        selected={this.state.selectedDate}
+                        onChange={this.onDateChange}
+                    />
+                </div>
 
                 <div className="workout-list">
                     {

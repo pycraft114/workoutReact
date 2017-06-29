@@ -70,14 +70,19 @@
 
 	var _WorkoutList2 = _interopRequireDefault(_WorkoutList);
 
+	var _Volume = __webpack_require__(598);
+
+	var _Volume2 = _interopRequireDefault(_Volume);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(598);
+	__webpack_require__(600);
+	__webpack_require__(602);
 
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRedux.Provider,
 	    { store: (0, _redux.createStore)(_index2.default) },
-	    _react2.default.createElement(_WorkoutList2.default, null)
+	    _react2.default.createElement(_Volume2.default, null)
 	), document.querySelector('.container'));
 
 /***/ }),
@@ -34160,7 +34165,7 @@
 	        var _this = _possibleConstructorReturn(this, (WorkoutList.__proto__ || Object.getPrototypeOf(WorkoutList)).call(this, props));
 
 	        _this.state = {
-	            selectedDate: (0, _moment2.default)(),
+	            selectedDate: null,
 	            selectedWorkout: [],
 	            resultDate: null,
 	            error: {
@@ -34172,6 +34177,7 @@
 	        _this.onSelectChange = _this.onSelectChange.bind(_this);
 	        return _this;
 	    }
+
 	    /*
 	    * datePicker가 modified 되었을때 일어나야 하는 일
 	    * 1.state의 selectedDate 이 선택된 날짜이어야 한다(rerendering)
@@ -34230,35 +34236,42 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'workout-list-container' },
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Date Picker'
-	                ),
-	                _react2.default.createElement(_reactDatepicker2.default, {
-	                    selected: this.state.selectedDate,
-	                    onChange: this.onDateChange
-	                }),
+	            return (
+	                //workout-list-conatiner and date-picker-container class name should be changed
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'workout-list' },
-	                    this.state.selectedWorkout.map(function (ele, idx) {
-	                        return _react2.default.createElement(_SelectedWorkout2.default, {
-	                            key: idx,
-	                            selected: ele
-	                        });
-	                    })
+	                    { className: 'workout-list-container' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'date-picker-container' },
+	                        _react2.default.createElement(
+	                            'p',
+	                            { className: 'date-picker-header' },
+	                            'Date Picker'
+	                        ),
+	                        _react2.default.createElement(_reactDatepicker2.default, {
+	                            selected: this.state.selectedDate,
+	                            onChange: this.onDateChange
+	                        })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'workout-list' },
+	                        this.state.selectedWorkout.map(function (ele, idx) {
+	                            return _react2.default.createElement(_SelectedWorkout2.default, {
+	                                key: idx,
+	                                selected: ele
+	                            });
+	                        })
 
-	                    /*<SelectedWorkout
-	                    selected="Bench Press"
-	                    />*/
-	                    ,
-	                    _react2.default.createElement(_WorkoutSelector2.default, {
-	                        onSelectChange: this.onSelectChange
-	                    })
+	                        /*<SelectedWorkout
+	                        selected="Bench Press"
+	                        />*/
+	                        ,
+	                        _react2.default.createElement(_WorkoutSelector2.default, {
+	                            onSelectChange: this.onSelectChange
+	                        })
+	                    )
 	                )
 	            );
 	        }
@@ -34381,13 +34394,13 @@
 	                { className: "selected-workout-container" },
 	                _react2.default.createElement(
 	                    "button",
-	                    { className: "selected-workout" },
+	                    { className: "selected-workout-button" },
 	                    this.props.selected
 	                ),
 	                _react2.default.createElement(
 	                    "button",
 	                    { className: "delete-button" },
-	                    "Delete"
+	                    "x"
 	                )
 	            );
 	        }
@@ -52674,10 +52687,197 @@
 /* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _axios = __webpack_require__(569);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _KgRep = __webpack_require__(599);
+
+	var _KgRep2 = _interopRequireDefault(_KgRep);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 6. 29..
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var Volume = function (_Component) {
+	    _inherits(Volume, _Component);
+
+	    function Volume(props) {
+	        _classCallCheck(this, Volume);
+
+	        var _this = _possibleConstructorReturn(this, (Volume.__proto__ || Object.getPrototypeOf(Volume)).call(this, props));
+
+	        _this.state = {
+	            kg: null,
+	            rep: null
+	        };
+
+	        _this.onInputChange = _this.onInputChange.bind(_this);
+	        _this.sendData = _this.sendData.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(Volume, [{
+	        key: 'onInputChange',
+	        value: function onInputChange(evt) {
+	            evt.target.id === 'kg' ? this.setState({ kg: evt.target.value }) : this.setState({ rep: evt.target.value });
+	        }
+	    }, {
+	        key: 'sendData',
+	        value: function sendData(evt) {
+	            if (evt.key === "Enter" || evt.target.id === "check") {
+	                if (this.state.kg && this.state.rep) {
+	                    console.log('called');
+	                } else {
+	                    console.log("smth empty");
+	                }
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'volume-container' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'volume-header' },
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'Bench Press'
+	                    ),
+	                    _react2.default.createElement(
+	                        'button',
+	                        { className: 'back-button' },
+	                        'Back'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'volume-list' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'input-volume' },
+	                        _react2.default.createElement('input', {
+	                            type: 'number',
+	                            id: 'kg',
+	                            onChange: this.onInputChange,
+	                            onKeyPress: this.sendData
+	                        }),
+	                        ' Kg x',
+	                        _react2.default.createElement('input', {
+	                            type: 'number',
+	                            id: 'rep',
+	                            onChange: this.onInputChange,
+	                            onKeyPress: this.sendData
+	                        }),
+	                        ' Rep',
+	                        _react2.default.createElement(
+	                            'p',
+	                            { onClick: this.sendData, id: 'check' },
+	                            '\u2714'
+	                        ),
+	                        _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            this.state.kg,
+	                            '//',
+	                            this.state.rep
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Volume;
+	}(_react.Component);
+
+	exports.default = Volume;
+
+/***/ }),
+/* 599 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 6. 29..
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var KgRep = function (_Component) {
+	    _inherits(KgRep, _Component);
+
+	    function KgRep(props) {
+	        _classCallCheck(this, KgRep);
+
+	        return _possibleConstructorReturn(this, (KgRep.__proto__ || Object.getPrototypeOf(KgRep)).call(this, props));
+	    }
+
+	    _createClass(KgRep, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "div",
+	                { className: "kg-rep" },
+	                this.props.kg,
+	                " Kg x ",
+	                this.props.rep,
+	                " Rep"
+	            );
+	        }
+	    }]);
+
+	    return KgRep;
+	}(_react.Component);
+
+	exports.default = KgRep;
+
+/***/ }),
+/* 600 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(599);
+	var content = __webpack_require__(601);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -52702,7 +52902,7 @@
 	}
 
 /***/ }),
-/* 599 */
+/* 601 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(449)(undefined);
@@ -52711,6 +52911,51 @@
 
 	// module
 	exports.push([module.id, "input:-webkit-autofill {\n    -webkit-box-shadow: 0 0 0px 1000px white inset;\n}\nhtml, body {\n    margin:0;\n    padding:0;\n    overflow:hidden;\n    height:100%\n}\n\n\n.video {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    z-index:-1;\n}\n\n@media (min-aspect-ratio: 16/9) {\n    .video {\n        height: 300%;\n        top: -100%;\n    }\n}\n\n@media (max-aspect-ratio: 16/9) {\n    .video {\n        width: 300%;\n        left: -100%;\n    }\n}\n\n.button {\n    width:263px;\n    height:35px;\n    outline: 0;\n    padding: 5px 12px;\n    color: #9fa8b0;\n    font-weight: bold;\n    font-size:17px;\n    text-shadow: 1px 1px #1f272b;\n    border: 1px solid #1c252b;\n    border-radius: 3px;\n    -moz-border-radius: 3px;\n    -webkit-border-radius: 3px;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#3D4850), color-stop(4%,#313d45), color-stop(100%,#232B30)); /* webkit */\n    box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* CSS3 */\n    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* Safari, Chrome */\n}\n.button:hover {\n    color: #fff;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#4C5A64), color-stop(4%,#404F5A), color-stop(100%,#2E3940)); /* webkit */\n}\n.button:active {\n    background-position: 0 top;\n    position: relative;\n    top: 1px;\n    color: #fff;\n    padding: 6px 12px 4px;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#20282D), color-stop(51%,#252E34), color-stop(100%,#222A30)); /* webkit */\n    -webkit-box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* Safari, Chrome */\n    box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* CSS3 */\n}\n\n.input{\n    width:255px;\n    height:35px;\n    border-radius:4px;\n    border:1px solid #9fa8b0;\n    padding-left:3px;\n    display:block;\n    margin:auto;\n    margin-bottom:13px;\n    background-color: rgba(999,999,999,0.7);\n\n}\n.input:first-child{\n    margin-bottom:13px;\n}\n\n.header{\n    color: white;\n    font-weight: bold;\n    font-size: 32px;\n    font-family: -webkit-pictograph;\n}\n\n.login-signup-page{\n    position:relative;\n    top:25vh;\n    text-align: center;\n    height:368px;\n}\n\n\n\n", ""]);
+
+	// exports
+
+
+/***/ }),
+/* 602 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(603);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// Prepare cssTransformation
+	var transform;
+
+	var options = {}
+	options.transform = transform
+	// add the styles to the DOM
+	var update = __webpack_require__(450)(content, options);
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../node_modules/css-loader/index.js!./WorkoutList.css", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!./WorkoutList.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 603 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(449)(undefined);
+	// imports
+
+
+	// module
+	exports.push([module.id, ".workout-list-container{\n    border:5px solid red;\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n    border:5px solid blue;\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n\n.date-picker-container{\n    border:5px solid green;\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}", ""]);
 
 	// exports
 

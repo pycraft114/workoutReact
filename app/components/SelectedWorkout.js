@@ -11,8 +11,8 @@ export default class SelectedWorkout extends Component{
     render(){
         return(
             <div className="selected-workout-container">
-                <button className="selected-workout">{this.props.selected}</button>
-                <button className="delete-button">Delete</button>
+                <button className="selected-workout-button">{this.props.selected}</button>
+                <button className="delete-button">x</button>
             </div>
         )
     }
