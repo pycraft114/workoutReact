@@ -10,28 +10,6 @@ export default class VolumeContainer extends Component{
     constructor(props){
         super(props);
 
-        this.state = {
-            kg:null,
-            rep:null
-        };
-
-
-        this.onInputChange = this.onInputChange.bind(this);
-        this.sendData = this.sendData.bind(this);
-    }
-
-    onInputChange(evt){
-        evt.target.id ==='kg' ? this.setState({kg:evt.target.value}) : this.setState({rep:evt.target.value});
-    }
-
-    sendData(evt){
-        if(evt.key === "Enter" || evt.target.id === "check"){
-            if(this.state.kg && this.state.rep){
-                console.log('called');
-            }else{
-                console.log("smth empty");
-            }
-        }
     }
 
     render(){
@@ -46,17 +24,17 @@ export default class VolumeContainer extends Component{
                         <input
                             type="number"
                             id="kg"
-                            onChange={this.onInputChange}
-                            onKeyPress={this.sendData}
+                            onChange={this.props.onKgRepChange}
+                            onKeyPress={this.props.sendKgRep}
                         /> Kg x
                         <input
                             type="number"
                             id="rep"
-                            onChange={this.onInputChange}
-                            onKeyPress={this.sendData}
+                            onChange={this.props.onKgRepChange}
+                            onKeyPress={this.props.sendKgRep}
                         /> Rep
-                        <p onClick={this.sendData} id="check">&#x2714;</p>
-                        <p>{this.state.kg}//{this.state.rep}</p>
+                        <p onClick={this.props.sendKgRep} id="check">&#x2714;</p>
+                        <p>{this.props.kg}//{this.props.rep}</p>
                     </div>
                 </div>
 

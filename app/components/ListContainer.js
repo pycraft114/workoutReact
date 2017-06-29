@@ -22,11 +22,16 @@ export default class ListContainer extends Component{
             resultDate:null,
             error:{
                 NOT_FOUND:"NOT_FOUND"
-            }
+            },
+            kg:null,
+            rep:null
         };
 
         this.onDateChange = this.onDateChange.bind(this);
         this.onSelectChange = this.onSelectChange.bind(this);
+        this.onKgRepChange = this.onKgRepChange.bind(this);
+        this.sendKgRep = this.sendKgRep.bind(this);
+        this.renderVolumeContainer = this.renderVolumeContainer.bind(this);
         this.renderWorkoutContainer = this.renderWorkoutContainer.bind(this);
     }
 
@@ -76,6 +81,20 @@ export default class ListContainer extends Component{
         axios.post('/savedateworkout',{"date":date,"selected_workout":uniqueArr}).then(function(res){console.log(res)});
     }
 
+    onKgRepChange(evt){
+        evt.target.id ==='kg' ? this.setState({kg:evt.target.value}) : this.setState({rep:evt.target.value});
+    }
+
+    sendKgRep(evt){
+        if(evt.key === "Enter" || evt.target.id === "check"){
+            if(this.state.kg && this.state.rep){
+                console.log('called');
+            }else{
+                console.log("smth empty");
+            }
+        }
+    }
+
     renderWorkoutContainer(){
         return(
             <WorkoutContainer
@@ -83,6 +102,17 @@ export default class ListContainer extends Component{
                 onDateChange={this.onDateChange}
                 selectedWorkout={this.state.selectedWorkout}
                 onSelectChange={this.onSelectChange}
+            />
+        )
+    }
+
+    renderVolumeContainer(){
+        return(
+            <VolumeContainer
+                onKgRepChange={this.onKgRepChange}
+                sendKgRep={this.sendKgRep}
+                kg={this.state.kg}
+                rep={this.state.rep}
             />
         )
     }
@@ -97,7 +127,7 @@ export default class ListContainer extends Component{
                 <div className="list-container">
                     <Switch>
                         <Route path="/a" render={this.renderWorkoutContainer}/>
-                        <Route path="/" component={VolumeContainer}/>
+                        <Route path="/" render={this.renderVolumeContainer}/>
                         <Route path="#/haha" render={function(){return(<div>haha</div>)}}/>
                     </Switch>
                 </div>

@@ -34136,35 +34136,10 @@
 	    function VolumeContainer(props) {
 	        _classCallCheck(this, VolumeContainer);
 
-	        var _this = _possibleConstructorReturn(this, (VolumeContainer.__proto__ || Object.getPrototypeOf(VolumeContainer)).call(this, props));
-
-	        _this.state = {
-	            kg: null,
-	            rep: null
-	        };
-
-	        _this.onInputChange = _this.onInputChange.bind(_this);
-	        _this.sendData = _this.sendData.bind(_this);
-	        return _this;
+	        return _possibleConstructorReturn(this, (VolumeContainer.__proto__ || Object.getPrototypeOf(VolumeContainer)).call(this, props));
 	    }
 
 	    _createClass(VolumeContainer, [{
-	        key: 'onInputChange',
-	        value: function onInputChange(evt) {
-	            evt.target.id === 'kg' ? this.setState({ kg: evt.target.value }) : this.setState({ rep: evt.target.value });
-	        }
-	    }, {
-	        key: 'sendData',
-	        value: function sendData(evt) {
-	            if (evt.key === "Enter" || evt.target.id === "check") {
-	                if (this.state.kg && this.state.rep) {
-	                    console.log('called');
-	                } else {
-	                    console.log("smth empty");
-	                }
-	            }
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -34193,28 +34168,28 @@
 	                        _react2.default.createElement('input', {
 	                            type: 'number',
 	                            id: 'kg',
-	                            onChange: this.onInputChange,
-	                            onKeyPress: this.sendData
+	                            onChange: this.props.onKgRepChange,
+	                            onKeyPress: this.props.sendKgRep
 	                        }),
 	                        ' Kg x',
 	                        _react2.default.createElement('input', {
 	                            type: 'number',
 	                            id: 'rep',
-	                            onChange: this.onInputChange,
-	                            onKeyPress: this.sendData
+	                            onChange: this.props.onKgRepChange,
+	                            onKeyPress: this.props.sendKgRep
 	                        }),
 	                        ' Rep',
 	                        _react2.default.createElement(
 	                            'p',
-	                            { onClick: this.sendData, id: 'check' },
+	                            { onClick: this.props.sendKgRep, id: 'check' },
 	                            '\u2714'
 	                        ),
 	                        _react2.default.createElement(
 	                            'p',
 	                            null,
-	                            this.state.kg,
+	                            this.props.kg,
 	                            '//',
-	                            this.state.rep
+	                            this.props.rep
 	                        )
 	                    )
 	                )
@@ -35870,11 +35845,16 @@
 	            resultDate: null,
 	            error: {
 	                NOT_FOUND: "NOT_FOUND"
-	            }
+	            },
+	            kg: null,
+	            rep: null
 	        };
 
 	        _this.onDateChange = _this.onDateChange.bind(_this);
 	        _this.onSelectChange = _this.onSelectChange.bind(_this);
+	        _this.onKgRepChange = _this.onKgRepChange.bind(_this);
+	        _this.sendKgRep = _this.sendKgRep.bind(_this);
+	        _this.renderVolumeContainer = _this.renderVolumeContainer.bind(_this);
 	        _this.renderWorkoutContainer = _this.renderWorkoutContainer.bind(_this);
 	        return _this;
 	    }
@@ -35926,6 +35906,22 @@
 	            });
 	        }
 	    }, {
+	        key: 'onKgRepChange',
+	        value: function onKgRepChange(evt) {
+	            evt.target.id === 'kg' ? this.setState({ kg: evt.target.value }) : this.setState({ rep: evt.target.value });
+	        }
+	    }, {
+	        key: 'sendKgRep',
+	        value: function sendKgRep(evt) {
+	            if (evt.key === "Enter" || evt.target.id === "check") {
+	                if (this.state.kg && this.state.rep) {
+	                    console.log('called');
+	                } else {
+	                    console.log("smth empty");
+	                }
+	            }
+	        }
+	    }, {
 	        key: 'renderWorkoutContainer',
 	        value: function renderWorkoutContainer() {
 	            return _react2.default.createElement(_WorkoutContainer2.default, {
@@ -35933,6 +35929,16 @@
 	                onDateChange: this.onDateChange,
 	                selectedWorkout: this.state.selectedWorkout,
 	                onSelectChange: this.onSelectChange
+	            });
+	        }
+	    }, {
+	        key: 'renderVolumeContainer',
+	        value: function renderVolumeContainer() {
+	            return _react2.default.createElement(_VolumeContainer2.default, {
+	                onKgRepChange: this.onKgRepChange,
+	                sendKgRep: this.sendKgRep,
+	                kg: this.state.kg,
+	                rep: this.state.rep
 	            });
 	        }
 	    }, {
@@ -35948,7 +35954,7 @@
 	                        _reactRouterDom.Switch,
 	                        null,
 	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/a', render: this.renderWorkoutContainer }),
-	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _VolumeContainer2.default }),
+	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/', render: this.renderVolumeContainer }),
 	                        _react2.default.createElement(_reactRouterDom.Route, { path: '#/haha', render: function render() {
 	                                return _react2.default.createElement(
 	                                    'div',
