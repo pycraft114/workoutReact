@@ -6,7 +6,7 @@ import axios from 'axios';
 import KgRep from './KgRep';
 
 
-export default class Volume extends Component{
+export default class VolumeContainer extends Component{
     constructor(props){
         super(props);
 
