@@ -1,7 +1,9 @@
 /**
  * Created by chanwoopark on 2017. 6. 21..
  */
-import { combineReducers } from "redux";
+import {combineReducers,} from "redux";
+import thunk from 'redux-thunk';
+
 import reducer_response from "./reducer_response";
 import reducer_kg from "./reducer_kg";
 import reducer_rep from "./reducer_rep";
