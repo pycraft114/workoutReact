@@ -7,8 +7,7 @@
 export default function(state=null,action){
     switch(action.type){
         case "DATE_SELECTED":
-            console.log(action.payload);
-            return action.payload;
+            return action.date;
     }
 
     return state;

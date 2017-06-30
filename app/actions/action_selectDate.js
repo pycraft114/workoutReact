@@ -5,28 +5,17 @@ import axios from 'axios';
 
 export default function(date){
     let year = date._d.getFullYear().toString();
-    let month = date._d.getMonth().toString();
+    let month = (date._d.getMonth()+1).toString();
     let day = date._d.getDate().toString();
     let resultDate = year.concat("-",month,"-",day);
+    console.log("date",resultDate);
 
 
-    var postReq = axios.post('/getworkout',{"date":resultDate})/*.then(function(res){
-        const data = res.data;
-
-        if(data !== "haha"){
-            //밑에 둘라인 얘네는 왜 동기적으로 실행???
-            console.log("haha");
-        }else{
-            return{
-                type:"DATE_SELECTED",
-                payload:{date:date,selectedWorkout:[]}
-            }
-        }
-    });*/
+    var postReq = axios.post('/getworkout',{"date":resultDate});
 
     return(dispatch) => {
-        postReq.then((data) => {
-            dispatch({type:"DATE_SELECTED", payload: data})
+        postReq.then((res) => {
+            dispatch({type:"DATE_SELECTED", date: resultDate, response:res.data})
         })
     };
 

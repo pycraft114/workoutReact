@@ -21875,8 +21875,7 @@
 
 	  switch (action.type) {
 	    case "DATE_SELECTED":
-	      console.log(action.payload);
-	      return action.payload;
+	      return action.date;
 	  }
 
 	  return state;
@@ -21899,6 +21898,9 @@
 	    switch (action.type) {
 	        case "WORKOUT_SELECTED":
 	            return action.payload;
+	        case "DATE_SELECTED":
+	            console.log("called", action.response);
+	            return action.response;
 	    }
 
 	    return state;
@@ -28836,8 +28838,7 @@
 	function mapStateToProps(state) {
 	    return {
 	        selectedDate: state.selectedDate,
-	        selectedWorkout: state.selectedWorkout,
-	        responseText: state.responseText
+	        selectedWorkout: state.selectedWorkout
 	    };
 	}
 
@@ -45150,26 +45151,16 @@
 
 	exports.default = function (date) {
 	    var year = date._d.getFullYear().toString();
-	    var month = date._d.getMonth().toString();
+	    var month = (date._d.getMonth() + 1).toString();
 	    var day = date._d.getDate().toString();
 	    var resultDate = year.concat("-", month, "-", day);
+	    console.log("date", resultDate);
 
-	    var postReq = _axios2.default.post('/getworkout', { "date": resultDate }); /*.then(function(res){
-	                                                                               const data = res.data;
-	                                                                               if(data !== "haha"){
-	                                                                               //밑에 둘라인 얘네는 왜 동기적으로 실행???
-	                                                                               console.log("haha");
-	                                                                               }else{
-	                                                                               return{
-	                                                                               type:"DATE_SELECTED",
-	                                                                               payload:{date:date,selectedWorkout:[]}
-	                                                                               }
-	                                                                               }
-	                                                                               });*/
+	    var postReq = _axios2.default.post('/getworkout', { "date": resultDate });
 
 	    return function (dispatch) {
-	        postReq.then(function (data) {
-	            dispatch({ type: "DATE_SELECTED", payload: data });
+	        postReq.then(function (res) {
+	            dispatch({ type: "DATE_SELECTED", date: resultDate, response: res.data });
 	        });
 	    };
 	};

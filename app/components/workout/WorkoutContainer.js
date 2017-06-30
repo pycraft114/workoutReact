@@ -58,7 +58,6 @@ function mapStateToProps(state){
     return{
         selectedDate:state.selectedDate,
         selectedWorkout:state.selectedWorkout,
-        responseText:state.responseText
     };
 }
 
