@@ -5,9 +5,15 @@ import React,{Component} from 'react';
 import WorkoutSelector from './WorkoutSelector';
 import SelectedWorkout from './SelectedWorkout';
 import DatePicker from 'react-datepicker';
+import {bindActionCreators} from 'redux';
+
+import {connect} from 'react-redux';
+import action_selectDate from '../../actions/action_selectDate';
+import action_selectWorkout from '../../actions/action_selectWorkout';
 
 
-export default class WorkoutContainer extends Component{
+
+class WorkoutContainer extends Component{
     constructor(props){
         super(props);
 
@@ -20,7 +26,7 @@ export default class WorkoutContainer extends Component{
 
                     <DatePicker
                         selected={this.props.selectedDate}
-                        onChange={this.props.onDateChange}
+                        onChange={this.props.action_selectDate}
                     />
                 </div>
                 <div className="workout-list">
@@ -39,12 +45,25 @@ export default class WorkoutContainer extends Component{
                          />*/
                     }
                     <WorkoutSelector
-                        onSelectChange={this.props.onSelectChange}
+                        onSelectChange={this.props.action_selectWorkout}
                     />
                 </div>
             </div>
 
         )
     }
-
 }
+
+function mapStateToProps(state){
+    return{
+        selectedDate:state.selectedDate,
+        selectedWorkout:state.selectedWorkout,
+        responseText:state.responseText
+    };
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({action_selectDate:action_selectDate,action_selectWorkout:action_selectWorkout},dispatch);
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(WorkoutContainer);

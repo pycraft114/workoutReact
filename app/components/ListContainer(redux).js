@@ -1,4 +1,7 @@
 /**
+ * Created by chanwoopark on 2017. 6. 30..
+ */
+/**
  * Created by chanwoopark on 2017. 6. 29..
  */
 import React,{Component} from 'react';
@@ -132,7 +135,7 @@ export default class ListContainer extends Component{
                 <div className="list-container">
                     <Switch>
                         <Route path="/a" render={this.renderWorkoutContainer}/>
-                        <Route path="/" component={WorkoutContainer}/>
+                        <Route path="/" render={this.renderVolumeContainer}/>
                         <Route path="#/haha" render={function(){return(<div>haha</div>)}}/>
                     </Switch>
                 </div>
