@@ -25,7 +25,7 @@ class WorkoutContainer extends Component{
                     <p className="date-picker-header">Date Picker</p>
 
                     <DatePicker
-                        selected={null}
+                        //selected={this.props.selectedDate}
                         onChange={this.props.action_selectDate}
                     />
                 </div>

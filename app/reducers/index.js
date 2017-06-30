@@ -9,6 +9,7 @@ import reducer_kg from "./reducer_kg";
 import reducer_rep from "./reducer_rep";
 import reducer_selectedDate from "./reducer_selectedDate";
 import reducer_selectedWorkout from "./reducer_selectedWorkout";
+import reducer_workoutOptions from "./reducer_workoutOptions";
 
 
 
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     responseText:reducer_response,
     kg:reducer_kg,
     rep:reducer_rep,
+    workoutOptions:reducer_workoutOptions
 });
 //==> state{books:blah,
 //          activeBook:blah}

@@ -4,7 +4,7 @@
 export default function(state=[],action){
     switch(action.type){
         case "WORKOUT_SELECTED":
-            return action.payload;
+            return action.selectedWorkout;
         case "DATE_SELECTED":
             console.log("called",action.response);
             return action.response;

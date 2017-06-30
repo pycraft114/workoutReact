@@ -3,28 +3,21 @@
  */
 import React,{Component} from 'react';
 
+import {bindActionCreators} from 'redux';
 
-export default class WorkoutSelector extends Component{
-    constructor(props){
-        super(props);
+import {connect} from 'react-redux';
+import action_selectWorkout from '../../actions/action_selectWorkout';
 
-        let options = ["Bench Press", "Squat", "Dead lift"];
 
-        this.state = {
-            options:options,
-            selectedValue : "Bench Press"
-        };
-
-    }
-
+class WorkoutSelector extends Component{
 
     render(){
 
 
         return(
-            <select onChange={this.props.onSelectChange}>
+            <select onChange={(evt) => {this.props.action_selectWorkout(evt,this.props.selectedDate,this.props.selectedWorkout)}}>
                 {
-                    this.state.options.map(function(currType){
+                    this.props.workoutOptions.map(function(currType){
                         return <option key={currType} value={currType}>{currType}</option>
                     })
                 }
@@ -33,3 +26,19 @@ export default class WorkoutSelector extends Component{
     }
 
 }
+
+function mapStateToProps(state){
+    return{
+        selectedWorkout:state.selectedWorkout,
+        selectedDate:state.selectedDate,
+        workoutOptions:state.workoutOptions,
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({action_selectWorkout:action_selectWorkout},dispatch)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(WorkoutSelector);
+
+

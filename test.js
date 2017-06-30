@@ -1,5 +1,6 @@
-var test = ["squat" , "benchpress","squat"];
+function test(date){
+    let date = date;
+    console.log(date);
+}
 
-var a = new Set(test);
-var b = [...a]
-console.log(b);
+test("haha");
