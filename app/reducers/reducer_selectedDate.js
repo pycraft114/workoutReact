@@ -7,8 +7,8 @@
 export default function(state=null,action){
     switch(action.type){
         case "DATE_SELECTED":
-            console.log("reducer called");
-            return action.payload.date;
+            console.log(action.payload);
+            return action.payload;
     }
 
     return state;

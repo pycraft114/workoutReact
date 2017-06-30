@@ -10,7 +10,7 @@ export default function(date){
     let resultDate = year.concat("-",month,"-",day);
 
 
-    axios.post('/getworkout',{"date":resultDate}).then(function(res){
+    var postReq = axios.post('/getworkout',{"date":resultDate})/*.then(function(res){
         const data = res.data;
 
         if(data !== "haha"){
@@ -22,11 +22,13 @@ export default function(date){
                 payload:{date:date,selectedWorkout:[]}
             }
         }
-    });
+    });*/
 
-    return{
-        type:"DATE_SELECTED",
-        payload:{date:date,selectedWorkout:[]}
-    }
+    return(dispatch) => {
+        postReq.then((data) => {
+            dispatch({type:"DATE_SELECTED", payload: data})
+        })
+    };
+
 
 }

@@ -32,15 +32,15 @@ export default class ListContainer extends Component{
             rep:null
         };
 
-        this.onDateChange = this.onDateChange.bind(this);
+        /*this.onDateChange = this.onDateChange.bind(this);
         this.onSelectChange = this.onSelectChange.bind(this);
         this.onKgRepChange = this.onKgRepChange.bind(this);
         this.sendKgRep = this.sendKgRep.bind(this);
         this.renderVolumeContainer = this.renderVolumeContainer.bind(this);
-        this.renderWorkoutContainer = this.renderWorkoutContainer.bind(this);
+        this.renderWorkoutContainer = this.renderWorkoutContainer.bind(this);*/
     }
 
-    onDateChange(date) {
+    /*onDateChange(date) {
         let year = date._d.getFullYear().toString();
         let month = date._d.getMonth().toString();
         let day = date._d.getDate().toString();
@@ -69,9 +69,9 @@ export default class ListContainer extends Component{
     onSelectChange(evt){
 
         //시간 복잡도 n**2 너무느림
-        /*function onlyUnique(value, index, self) {
+        /!*function onlyUnique(value, index, self) {
          return self.indexOf(value) === index;
-         }*/
+         }*!/
 
         var date = this.state.resultDate;
         var workout = evt.target.value;
@@ -121,7 +121,7 @@ export default class ListContainer extends Component{
             />
         )
     }
-
+*/
 
 
 
@@ -131,9 +131,7 @@ export default class ListContainer extends Component{
             <BrowserRouter>
                 <div className="list-container">
                     <Switch>
-                        <Route path="/a" render={this.renderWorkoutContainer}/>
                         <Route path="/" component={WorkoutContainer}/>
-                        <Route path="#/haha" render={function(){return(<div>haha</div>)}}/>
                     </Switch>
                 </div>
             </BrowserRouter>

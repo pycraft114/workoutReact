@@ -45,6 +45,7 @@ app.get('/',function(req,res){
 
 app.post("/getworkout",function(req,res){
     var data = req.body;
+    console.log("getworkout post req", data);
     var date = data.date;
 
 

@@ -21875,8 +21875,8 @@
 
 	  switch (action.type) {
 	    case "DATE_SELECTED":
-	      console.log("reducer called");
-	      return action.payload.date;
+	      console.log(action.payload);
+	      return action.payload;
 	  }
 
 	  return state;
@@ -21899,8 +21899,6 @@
 	    switch (action.type) {
 	        case "WORKOUT_SELECTED":
 	            return action.payload;
-	        case "DATE_SELECTED":
-	            return action.payload.selectedWorkout;
 	    }
 
 	    return state;
@@ -23863,8 +23861,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -23893,98 +23889,82 @@
 	            rep: null
 	        };
 
-	        _this.onDateChange = _this.onDateChange.bind(_this);
-	        _this.onSelectChange = _this.onSelectChange.bind(_this);
-	        _this.onKgRepChange = _this.onKgRepChange.bind(_this);
-	        _this.sendKgRep = _this.sendKgRep.bind(_this);
-	        _this.renderVolumeContainer = _this.renderVolumeContainer.bind(_this);
-	        _this.renderWorkoutContainer = _this.renderWorkoutContainer.bind(_this);
+	        /*this.onDateChange = this.onDateChange.bind(this);
+	        this.onSelectChange = this.onSelectChange.bind(this);
+	        this.onKgRepChange = this.onKgRepChange.bind(this);
+	        this.sendKgRep = this.sendKgRep.bind(this);
+	        this.renderVolumeContainer = this.renderVolumeContainer.bind(this);
+	        this.renderWorkoutContainer = this.renderWorkoutContainer.bind(this);*/
 	        return _this;
 	    }
 
-	    _createClass(ListContainer, [{
-	        key: 'onDateChange',
-	        value: function onDateChange(date) {
-	            var year = date._d.getFullYear().toString();
-	            var month = date._d.getMonth().toString();
-	            var day = date._d.getDate().toString();
-	            var resultDate = year.concat("-", month, "-", day);
-
-	            this.setState({ selectedDate: date, resultDate: resultDate });
-
-	            var that = this;
-	            _axios2.default.post('/getworkout', { "date": resultDate }).then(function (res) {
-	                var data = res.data;
-
-	                if (data !== that.state.error.NOT_FOUND) {
-	                    //밑에 둘라인 얘네는 왜 동기적으로 실행???
-	                    that.setState({ selectedWorkout: data });
-	                    console.log(that.state.selectedWorkout);
-	                } else {
-	                    that.setState({ selectedWorkout: [] });
-	                }
-	            });
-	        }
-	    }, {
-	        key: 'onSelectChange',
-	        value: function onSelectChange(evt) {
-
-	            //시간 복잡도 n**2 너무느림
-	            /*function onlyUnique(value, index, self) {
-	             return self.indexOf(value) === index;
-	             }*/
-
-	            var date = this.state.resultDate;
-	            var workout = evt.target.value;
-	            var newArr = [].concat(_toConsumableArray(this.state.selectedWorkout), [workout]);
-
-	            var uniqueArr = [].concat(_toConsumableArray(new Set(newArr)));
-
-	            //밑에 둘라인 얘네는 왜 비동기적으로 실행???
-	            this.setState({ selectedWorkout: uniqueArr });
-	            //console.log("line 85",this.state.selectedWorkout);
-
-	            _axios2.default.post('/savedateworkout', { "date": date, "selected_workout": uniqueArr }).then(function (res) {
-	                console.log(res);
-	            });
-	        }
-	    }, {
-	        key: 'onKgRepChange',
-	        value: function onKgRepChange(evt) {
-	            evt.target.id === 'kg' ? this.setState({ kg: evt.target.value }) : this.setState({ rep: evt.target.value });
-	        }
-	    }, {
-	        key: 'sendKgRep',
-	        value: function sendKgRep(evt) {
-	            if (evt.key === "Enter" || evt.target.id === "check") {
-	                if (this.state.kg && this.state.rep) {
-	                    console.log('called');
-	                } else {
-	                    console.log("smth empty");
-	                }
+	    /*onDateChange(date) {
+	        let year = date._d.getFullYear().toString();
+	        let month = date._d.getMonth().toString();
+	        let day = date._d.getDate().toString();
+	        let resultDate = year.concat("-",month,"-",day);
+	         this.setState({selectedDate:date,resultDate:resultDate});
+	           const that = this;
+	        axios.post('/getworkout',{"date":resultDate}).then(function(res){
+	            const data = res.data;
+	             if(data !== that.state.error.NOT_FOUND){
+	                //밑에 둘라인 얘네는 왜 동기적으로 실행???
+	                that.setState({selectedWorkout:data});
+	                console.log(that.state.selectedWorkout);
+	            }else{
+	                that.setState({selectedWorkout:[]});
+	            }
+	        });
+	      }
+	     onSelectChange(evt){
+	         //시간 복잡도 n**2 너무느림
+	        /!*function onlyUnique(value, index, self) {
+	         return self.indexOf(value) === index;
+	         }*!/
+	         var date = this.state.resultDate;
+	        var workout = evt.target.value;
+	        var newArr = [...this.state.selectedWorkout,workout];
+	         var uniqueArr = [...new Set(newArr)];
+	         //밑에 둘라인 얘네는 왜 비동기적으로 실행???
+	        this.setState({selectedWorkout:uniqueArr});
+	        //console.log("line 85",this.state.selectedWorkout);
+	         axios.post('/savedateworkout',{"date":date,"selected_workout":uniqueArr}).then(function(res){console.log(res)});
+	    }
+	     onKgRepChange(evt){
+	        evt.target.id ==='kg' ? this.setState({kg:evt.target.value}) : this.setState({rep:evt.target.value});
+	    }
+	     sendKgRep(evt){
+	        if(evt.key === "Enter" || evt.target.id === "check"){
+	            if(this.state.kg && this.state.rep){
+	                console.log('called');
+	            }else{
+	                console.log("smth empty");
 	            }
 	        }
-	    }, {
-	        key: 'renderWorkoutContainer',
-	        value: function renderWorkoutContainer() {
-	            return _react2.default.createElement(_WorkoutContainer2.default, {
-	                selectedDate: this.state.selectedDate,
-	                onDateChange: this.onDateChange,
-	                selectedWorkout: this.state.selectedWorkout,
-	                onSelectChange: this.onSelectChange
-	            });
-	        }
-	    }, {
-	        key: 'renderVolumeContainer',
-	        value: function renderVolumeContainer() {
-	            return _react2.default.createElement(_VolumeContainer2.default, {
-	                onKgRepChange: this.onKgRepChange,
-	                sendKgRep: this.sendKgRep,
-	                kg: this.state.kg,
-	                rep: this.state.rep
-	            });
-	        }
-	    }, {
+	    }
+	     renderWorkoutContainer(){
+	        return(
+	            <WorkoutContainer
+	                selectedDate={this.state.selectedDate}
+	                onDateChange={this.onDateChange}
+	                selectedWorkout={this.state.selectedWorkout}
+	                onSelectChange={this.onSelectChange}
+	            />
+	        )
+	    }
+	     renderVolumeContainer(){
+	        return(
+	            <VolumeContainer
+	                onKgRepChange={this.onKgRepChange}
+	                sendKgRep={this.sendKgRep}
+	                kg={this.state.kg}
+	                rep={this.state.rep}
+	            />
+	        )
+	    }
+	    */
+
+	    _createClass(ListContainer, [{
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -23996,15 +23976,7 @@
 	                    _react2.default.createElement(
 	                        _reactRouterDom.Switch,
 	                        null,
-	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/a', render: this.renderWorkoutContainer }),
-	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _WorkoutContainer2.default }),
-	                        _react2.default.createElement(_reactRouterDom.Route, { path: '#/haha', render: function render() {
-	                                return _react2.default.createElement(
-	                                    'div',
-	                                    null,
-	                                    'haha'
-	                                );
-	                            } })
+	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _WorkoutContainer2.default })
 	                    )
 	                )
 	            );
@@ -28832,7 +28804,7 @@
 	                        'Date Picker'
 	                    ),
 	                    _react2.default.createElement(_reactDatepicker2.default, {
-	                        selected: this.props.selectedDate,
+	                        selected: null,
 	                        onChange: this.props.action_selectDate
 	                    })
 	                ),
@@ -45182,23 +45154,23 @@
 	    var day = date._d.getDate().toString();
 	    var resultDate = year.concat("-", month, "-", day);
 
-	    _axios2.default.post('/getworkout', { "date": resultDate }).then(function (res) {
-	        var data = res.data;
+	    var postReq = _axios2.default.post('/getworkout', { "date": resultDate }); /*.then(function(res){
+	                                                                               const data = res.data;
+	                                                                               if(data !== "haha"){
+	                                                                               //밑에 둘라인 얘네는 왜 동기적으로 실행???
+	                                                                               console.log("haha");
+	                                                                               }else{
+	                                                                               return{
+	                                                                               type:"DATE_SELECTED",
+	                                                                               payload:{date:date,selectedWorkout:[]}
+	                                                                               }
+	                                                                               }
+	                                                                               });*/
 
-	        if (data !== "haha") {
-	            //밑에 둘라인 얘네는 왜 동기적으로 실행???
-	            console.log("haha");
-	        } else {
-	            return {
-	                type: "DATE_SELECTED",
-	                payload: { date: date, selectedWorkout: [] }
-	            };
-	        }
-	    });
-
-	    return {
-	        type: "DATE_SELECTED",
-	        payload: { date: date, selectedWorkout: [] }
+	    return function (dispatch) {
+	        postReq.then(function (data) {
+	            dispatch({ type: "DATE_SELECTED", payload: data });
+	        });
 	    };
 	};
 
