@@ -15,6 +15,10 @@ class VolumeContainer extends Component{
 
     }
 
+    componentDidMount(){
+        console.log(this.props.match.params);
+    }
+
     render(){
         return(
             <div className="volume-container">

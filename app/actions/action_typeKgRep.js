@@ -1,7 +1,6 @@
 /**
  * Created by chanwoopark on 2017. 6. 30..
  */
-
 export default function(evt){
     if(evt.target.id === 'kg'){
         return{

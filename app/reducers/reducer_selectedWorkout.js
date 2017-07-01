@@ -6,7 +6,6 @@ export default function(state=[],action){
         case "WORKOUT_SELECTED":
             return action.selectedWorkout;
         case "DATE_SELECTED":
-            console.log("called",action.response);
             return action.response;
     }
 

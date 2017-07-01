@@ -106,3 +106,7 @@ app.post("/savedateworkout",function(req,res){
 
 });
 
+app.post("/:date/:workout",function(req,res){
+    res.send(req.param)
+});
+

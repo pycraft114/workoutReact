@@ -37686,7 +37686,6 @@
 	        case "WORKOUT_SELECTED":
 	            return action.selectedWorkout;
 	        case "DATE_SELECTED":
-	            console.log("called", action.response);
 	            return action.response;
 	    }
 
@@ -38010,6 +38009,11 @@
 	    }
 
 	    _createClass(VolumeContainer, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            console.log(this.props.match.params);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -39845,7 +39849,8 @@
 	                    _react2.default.createElement(
 	                        _reactRouterDom.Switch,
 	                        null,
-	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _VolumeContainer2.default })
+	                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _WorkoutContainer2.default }),
+	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/:date/:workout', component: _VolumeContainer2.default })
 	                    )
 	                )
 	            );
@@ -44835,7 +44840,7 @@
 /* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -44846,6 +44851,12 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouterDom = __webpack_require__(356);
+
+	var _reactRedux = __webpack_require__(159);
+
+	var _redux = __webpack_require__(165);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44868,20 +44879,20 @@
 	    }
 
 	    _createClass(SelectedWorkout, [{
-	        key: "render",
+	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                "div",
-	                { className: "selected-workout-container" },
+	                'div',
+	                { className: 'selected-workout-container' },
 	                _react2.default.createElement(
-	                    "button",
-	                    { className: "selected-workout-button" },
+	                    _reactRouterDom.Link,
+	                    { to: '/' + this.props.selectedDate + '/' + this.props.selected, className: 'selected-workout-button' },
 	                    this.props.selected
 	                ),
 	                _react2.default.createElement(
-	                    "button",
-	                    { className: "delete-button" },
-	                    "x"
+	                    'button',
+	                    { className: 'delete-button' },
+	                    'x'
 	                )
 	            );
 	        }
@@ -44890,7 +44901,11 @@
 	    return SelectedWorkout;
 	}(_react.Component);
 
-	exports.default = SelectedWorkout;
+	function mapStateToProps(state) {
+	    return { selectedDate: state.selectedDate };
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(SelectedWorkout);
 
 /***/ }),
 /* 409 */
