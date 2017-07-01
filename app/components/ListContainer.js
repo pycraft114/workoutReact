@@ -131,7 +131,7 @@ export default class ListContainer extends Component{
             <BrowserRouter>
                 <div className="list-container">
                     <Switch>
-                        <Route path="/" component={WorkoutContainer}/>
+                        <Route path="/" component={VolumeContainer}/>
                     </Switch>
                 </div>
             </BrowserRouter>

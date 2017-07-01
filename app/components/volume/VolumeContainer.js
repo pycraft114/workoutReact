@@ -4,9 +4,12 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import KgRep from './KgRep';
+import action_typeKgRep from '../../actions/action_typeKgRep';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
 
-export default class VolumeContainer extends Component{
+class VolumeContainer extends Component{
     constructor(props){
         super(props);
 
@@ -24,26 +27,29 @@ export default class VolumeContainer extends Component{
                         <input
                             type="number"
                             id="kg"
-                            onChange={this.props.onKgRepChange}
-                            onKeyPress={this.props.sendKgRep}
+                            onChange={this.props.action_typeKgRep}
                         /> Kg x
                         <input
                             type="number"
                             id="rep"
-                            onChange={this.props.onKgRepChange}
-                            onKeyPress={this.props.sendKgRep}
+                            onChange={this.props.action_typeKgRep}
                         /> Rep
-                        <p onClick={this.props.sendKgRep} id="check">&#x2714;</p>
+                        <p id="check">&#x2714;</p>
                         <p>{this.props.kg}//{this.props.rep}</p>
                     </div>
                 </div>
-
-
-
-
-
             </div>
         )
     }
 
 }
+
+function mapStateToProps(state){
+    return{kg:state.kg,rep:state.rep}
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({action_typeKgRep:action_typeKgRep},dispatch)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(VolumeContainer);
