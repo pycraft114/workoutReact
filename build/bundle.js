@@ -39842,7 +39842,7 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                _reactRouterDom.BrowserRouter,
-	                null,
+	                { history: _reactRouterDom.browserHistory },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'list-container' },

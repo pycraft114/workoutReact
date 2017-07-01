@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var mysqlData = require('./mysqlData.json');
 var mysql = require('mysql');
+const port = process.env.PORT || 3000;
 
 
 
@@ -35,11 +36,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-app.listen(3000,function(){
+app.listen(port,function(){
     console.log("sever start on port 3000")
 });
 
-app.get('/',function(req,res){
+app.get('/*',function(req,res){
     res.sendfile(path.resolve("../../build/index.html"));
 });
 
