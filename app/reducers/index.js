@@ -19,6 +19,7 @@ const rootReducer = combineReducers({
     responseText:reducer_response,
     kg:reducer_kg,
     rep:reducer_rep,
+    kgRepList:reducer_kgRepList,
     workoutOptions:reducer_workoutOptions
 });
 //==> state{books:blah,
