@@ -7,10 +7,12 @@ export default function(evt,kg,rep,date,workout,prevVolumes){
     if(evt.key ==="Enter" || evt.target.id === "check"){
         if(kg&&rep){
             const newArr = [...prevVolumes,{kg:kg,rep:rep}];
-            let postReq = axios.post(`/${date}/${workout}`,newArr);
-            postReq.then((res) => {console.log(res)});
-            return{type:"SMTH",payload:"NOTHING"}
+
+            axios.post(`/${date}/${workout}`,newArr);
+
+            return{type:"KGREP_SENT",initialList:[]}
         }
     }
-    return {type:"SMTH",payload:"NOTHING"};
+
+    return {type:"DUMMY",payload:"DUMMY"};
 }

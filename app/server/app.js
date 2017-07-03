@@ -68,7 +68,7 @@ app.post("/getworkout",function(req,res){
 
 });
 
-app.post("/savedateworkout",function(req,res){
+app.post("/saveworkout",function(req,res){
     var data = req.body;
 
     var date = data.date;
@@ -91,11 +91,33 @@ app.post("/savedateworkout",function(req,res){
 
 });
 
+app.post("/getkgrep",function(req,res){
+    var date_workout = req.body.date_workout;
+
+    var query = "SELECT kg_rep FROM volume WHERE date_workout = ?";
+    query = mysql.format(query,date_workout);
+
+    var selectQuery = connection.query(query,function(err,result){
+        if(err){
+            throw err;
+        }
+        if(result.length){
+            console.log(result[0].kg_rep);
+            res.send(result);
+        }else{
+            res.send([]);
+        }
+
+    })
+
+
+
+});
+
+//하나의 url로 req에 따라 각기 다른 역할 수행 하도록
 app.post("/:date/:workout",function(req,res){
     //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
-    console.log("post req called");
     var volumeList = JSON.stringify(req.body);
-    var volumeList2 = req.body;
     var date_workout = req.params.date+"_"+req.params.workout;
 
 
@@ -107,8 +129,7 @@ app.post("/:date/:workout",function(req,res){
         if(err){
             throw err;
         }else{
-            console.log("kg rep saved success");
-            res.send("bye");
+            res.send("kg_rep saved");
         }
     })
 

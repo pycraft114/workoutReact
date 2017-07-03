@@ -17,7 +17,7 @@ import {connect} from 'react-redux';
 
 
 
-export default class ListContainer extends Component{
+class ListContainer extends Component{
     constructor(props){
         super(props);
 
@@ -30,6 +30,9 @@ export default class ListContainer extends Component{
         this.renderWorkoutContainer = this.renderWorkoutContainer.bind(this);*/
     }
 
+    ComponentDidMount(){
+        console.log(this.props.kgRepList);
+    }
     /*onDateChange(date) {
         let year = date._d.getFullYear().toString();
         let month = date._d.getMonth().toString();
@@ -132,6 +135,12 @@ export default class ListContainer extends Component{
 
 
 }
+
+function mapStateToProps(state){
+    return {kgRepList:state.kgRepList}
+}
+
+export default connect(mapStateToProps,null)(ListContainer);
 
 
 
