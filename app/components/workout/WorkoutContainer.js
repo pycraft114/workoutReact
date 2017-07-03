@@ -31,7 +31,7 @@ class WorkoutContainer extends Component{
                 </div>
                 <div className="workout-list">
                     {
-                        this.props.selectedWorkout.map(function(ele,idx){
+                        this.props.selectedWorkouts.map(function(ele,idx){
                             return(
                                 <SelectedWorkout
                                     key={idx}
@@ -44,9 +44,7 @@ class WorkoutContainer extends Component{
                          selected="Bench Press"
                          />*/
                     }
-                    <WorkoutSelector
-                        onSelectChange={this.props.action_selectWorkout}
-                    />
+                    <WorkoutSelector/>
                 </div>
             </div>
 
@@ -56,13 +54,12 @@ class WorkoutContainer extends Component{
 
 function mapStateToProps(state){
     return{
-        selectedDate:state.selectedDate,
-        selectedWorkout:state.selectedWorkout,
+        selectedWorkouts:state.selectedWorkouts
     };
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({action_selectDate:action_selectDate,action_selectWorkout:action_selectWorkout},dispatch);
+    return bindActionCreators({action_selectDate:action_selectDate},dispatch);
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(WorkoutContainer);

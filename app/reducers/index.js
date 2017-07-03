@@ -6,15 +6,16 @@ import {combineReducers,} from "redux";
 import reducer_response from "./reducer_response";
 import reducer_kg from "./reducer_kg";
 import reducer_rep from "./reducer_rep";
+import reducer_kgRepList from "./reducer_kgRepList";
 import reducer_selectedDate from "./reducer_selectedDate";
-import reducer_selectedWorkout from "./reducer_selectedWorkout";
+import reducer_selectedWorkouts from "./reducer_selectedWorkouts";
 import reducer_workoutOptions from "./reducer_workoutOptions";
 
 
 
 //combineReducer tells the redux how to create application state
 const rootReducer = combineReducers({
-    selectedWorkout:reducer_selectedWorkout,
+    selectedWorkouts:reducer_selectedWorkouts,
     selectedDate:reducer_selectedDate,
     responseText:reducer_response,
     kg:reducer_kg,

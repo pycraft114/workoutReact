@@ -14,8 +14,13 @@ class SelectedWorkout extends Component{
     render(){
         return(
             <div className="selected-workout-container">
-                <Link to={`/${this.props.selectedDate}/${this.props.selected}`} className="selected-workout-button">{this.props.selected}</Link>
+
+                <Link to={`/${this.props.selectedDate}/${this.props.selected}`}
+                      className="selected-workout-button">{this.props.selected}
+                </Link>
+
                 <button className="delete-button">x</button>
+
             </div>
         )
     }

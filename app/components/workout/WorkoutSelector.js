@@ -15,7 +15,7 @@ class WorkoutSelector extends Component{
 
 
         return(
-            <select onChange={(evt) => {this.props.action_selectWorkout(evt,this.props.selectedDate,this.props.selectedWorkout)}}>
+            <select onChange={(evt) => {this.props.action_selectWorkout(evt,this.props.selectedDate,this.props.selectedWorkouts)}}>
                 {
                     this.props.workoutOptions.map(function(currType){
                         return <option key={currType} value={currType}>{currType}</option>
@@ -29,7 +29,7 @@ class WorkoutSelector extends Component{
 
 function mapStateToProps(state){
     return{
-        selectedWorkout:state.selectedWorkout,
+        selectedWorkouts:state.selectedWorkouts,
         selectedDate:state.selectedDate,
         workoutOptions:state.workoutOptions,
     }

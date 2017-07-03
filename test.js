@@ -1,6 +1,7 @@
-function test(date){
-    let date = date;
-    console.log(date);
+function test(a){
+    console.log([...a,"Hello"]);
 }
 
-test("haha");
+var a = [];
+
+test(a);

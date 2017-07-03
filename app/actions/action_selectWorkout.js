@@ -9,6 +9,7 @@ export default function(evt,date,prevWorkout){
     let newArr = [...prevWorkout,selectedWorkout];
     const uniqeArr = [...new Set(newArr)];
 
+
     const postReq = axios.post("/savedateworkout",{"date":date,"selected_workout":uniqeArr});
 
     return (dispatch) => {

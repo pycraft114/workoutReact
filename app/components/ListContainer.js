@@ -21,16 +21,6 @@ export default class ListContainer extends Component{
     constructor(props){
         super(props);
 
-        this.state = {
-            selectedDate:null,
-            selectedWorkout:[],
-            resultDate:null,
-            error:{
-                NOT_FOUND:"NOT_FOUND"
-            },
-            kg:null,
-            rep:null
-        };
 
         /*this.onDateChange = this.onDateChange.bind(this);
         this.onSelectChange = this.onSelectChange.bind(this);
