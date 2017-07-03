@@ -1,7 +1,7 @@
-function test(a){
-    console.log([...a,"Hello"]);
-}
+var test = [];
+var a = JSON.stringify(test);
 
-var a = [];
 
-test(a);
+console.log(typeof test);
+console.log(typeof a);
+console.log(typeof "[]");

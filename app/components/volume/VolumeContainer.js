@@ -18,6 +18,7 @@ class VolumeContainer extends Component{
 
     componentDidMount(){
         this.workout = this.props.match.params.workout;
+        this.date = this.props.match.params.date;
     }
 
     render(){
@@ -33,34 +34,21 @@ class VolumeContainer extends Component{
                             type="number"
                             id="kg"
                             onChange={this.props.action_typeKgRep}
-                            onKeyPress={(evt) => {this.props.action_sendKgRep(
-                                evt,
-                                this.props.kg,
-                                this.props.rep,
-                                this.props.selectedDate,
-                                this.workout
-                            )}}
                         /> Kg x
 
                         <input
                             type="number"
                             id="rep"
                             onChange={this.props.action_typeKgRep}
-                            onKeyPress={(evt) => {this.props.action_sendKgRep(
-                                evt,
-                                this.props.kg,
-                                this.props.rep,
-                                this.props.selectedDate,
-                                this.workout
-                            )}}
                         /> Rep
 
                         <p onClick={(evt) => {this.props.action_sendKgRep(
                             evt,
                             this.props.kg,
                             this.props.rep,
-                            this.props.selectedDate,
-                            this.workout
+                            this.date,
+                            this.workout,
+                            this.props.kgRepList
                         )}} id="check">&#x2714;</p>
 
                         <p>{this.props.kg}//{this.props.rep}</p>
@@ -73,7 +61,11 @@ class VolumeContainer extends Component{
 }
 
 function mapStateToProps(state){
-    return{kg:state.kg,rep:state.rep,selectedDate:state.selectedDate}
+    return{
+        kg:state.kg,
+        rep:state.rep,
+        kgRepList : state.kgRepList
+    }
 }
 
 function mapDispatchToProps(dispatch){

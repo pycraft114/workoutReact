@@ -21856,7 +21856,7 @@
 	});
 
 	exports.default = function () {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 	  var action = arguments[1];
 
 	  return state;
@@ -38038,6 +38038,7 @@
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            this.workout = this.props.match.params.workout;
+	            this.date = this.props.match.params.date;
 	        }
 	    }, {
 	        key: 'render',
@@ -38070,25 +38071,19 @@
 	                        _react2.default.createElement('input', {
 	                            type: 'number',
 	                            id: 'kg',
-	                            onChange: this.props.action_typeKgRep,
-	                            onKeyPress: function onKeyPress(evt) {
-	                                _this2.props.action_sendKgRep(evt, _this2.props.kg, _this2.props.rep, _this2.props.selectedDate, _this2.workout);
-	                            }
+	                            onChange: this.props.action_typeKgRep
 	                        }),
 	                        ' Kg x',
 	                        _react2.default.createElement('input', {
 	                            type: 'number',
 	                            id: 'rep',
-	                            onChange: this.props.action_typeKgRep,
-	                            onKeyPress: function onKeyPress(evt) {
-	                                _this2.props.action_sendKgRep(evt, _this2.props.kg, _this2.props.rep, _this2.props.selectedDate, _this2.workout);
-	                            }
+	                            onChange: this.props.action_typeKgRep
 	                        }),
 	                        ' Rep',
 	                        _react2.default.createElement(
 	                            'p',
 	                            { onClick: function onClick(evt) {
-	                                    _this2.props.action_sendKgRep(evt, _this2.props.kg, _this2.props.rep, _this2.props.selectedDate, _this2.workout);
+	                                    _this2.props.action_sendKgRep(evt, _this2.props.kg, _this2.props.rep, _this2.date, _this2.workout, _this2.props.kgRepList);
 	                                }, id: 'check' },
 	                            '\u2714'
 	                        ),
@@ -38109,7 +38104,11 @@
 	}(_react.Component);
 
 	function mapStateToProps(state) {
-	    return { kg: state.kg, rep: state.rep, selectedDate: state.selectedDate };
+	    return {
+	        kg: state.kg,
+	        rep: state.rep,
+	        kgRepList: state.kgRepList
+	    };
 	}
 
 	function mapDispatchToProps(dispatch) {
@@ -39736,17 +39735,18 @@
 	    value: true
 	});
 
-	exports.default = function (evt, kg, rep, date, workout) {
+	exports.default = function (evt, kg, rep, date, workout, prevVolumes) {
 	    if (evt.key === "Enter" || evt.target.id === "check") {
 	        if (kg && rep) {
-	            var postReq = _axios2.default.post("/" + date + "/" + workout, { kg: kg, rep: rep });
+	            var newArr = [].concat(_toConsumableArray(prevVolumes), [{ kg: kg, rep: rep }]);
+	            var postReq = _axios2.default.post("/" + date + "/" + workout, newArr);
 	            postReq.then(function (res) {
 	                console.log(res);
 	            });
 	            return { type: "SMTH", payload: "NOTHING" };
 	        }
 	    }
-	    return;
+	    return { type: "SMTH", payload: "NOTHING" };
 	};
 
 	var _axios = __webpack_require__(328);
@@ -39754,6 +39754,10 @@
 	var _axios2 = _interopRequireDefault(_axios);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } } /**
+	                                                                                                                                                                                                     * Created by chanwoopark on 2017. 6. 30..
+	                                                                                                                                                                                                     */
 
 /***/ }),
 /* 357 */
@@ -44730,9 +44734,8 @@
 	                        { className: 'date-picker-header' },
 	                        'Date Picker'
 	                    ),
-	                    _react2.default.createElement(_reactDatepicker2.default
-	                    //selected={this.props.selectedDate}
-	                    , { onChange: this.props.action_selectDate
+	                    _react2.default.createElement(_reactDatepicker2.default, {
+	                        onChange: this.props.action_selectDate
 	                    })
 	                ),
 	                _react2.default.createElement(
@@ -44743,12 +44746,7 @@
 	                            key: idx,
 	                            selected: ele
 	                        });
-	                    })
-
-	                    /*<SelectedWorkout
-	                     selected="Bench Press"
-	                     />*/
-	                    ,
+	                    }),
 	                    _react2.default.createElement(_WorkoutSelector2.default, null)
 	                )
 	            );
@@ -44760,13 +44758,12 @@
 
 	function mapStateToProps(state) {
 	    return {
-	        selectedDate: state.selectedDate,
 	        selectedWorkouts: state.selectedWorkouts
 	    };
 	}
 
 	function mapDispatchToProps(dispatch) {
-	    return (0, _redux.bindActionCreators)({ action_selectDate: _action_selectDate2.default, action_selectWorkout: _action_selectWorkout2.default }, dispatch);
+	    return (0, _redux.bindActionCreators)({ action_selectDate: _action_selectDate2.default }, dispatch);
 	}
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(WorkoutContainer);
@@ -44804,7 +44801,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 6. 26..
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
+	//This Component can be only view rendering component which could be implemented by function.
 
 	var WorkoutSelector = function (_Component) {
 	    _inherits(WorkoutSelector, _Component);
@@ -44840,7 +44837,6 @@
 	}(_react.Component);
 
 	function mapStateToProps(state) {
-	    console.log("workoutselector component", state.selectedWorkouts);
 	    return {
 	        selectedWorkouts: state.selectedWorkouts,
 	        selectedDate: state.selectedDate,
@@ -44908,8 +44904,6 @@
 
 	var _reactRedux = __webpack_require__(159);
 
-	var _redux = __webpack_require__(165);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -44919,7 +44913,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 6. 26..
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
+	//This Component can be only view rendering component which could be implemented by function.
 
 	var SelectedWorkout = function (_Component) {
 	    _inherits(SelectedWorkout, _Component);

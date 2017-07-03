@@ -1,10 +1,11 @@
 /**
  * Created by chanwoopark on 2017. 6. 26..
  */
+//This Component can be only view rendering component which could be implemented by function.
+
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 class SelectedWorkout extends Component{
     constructor(props){

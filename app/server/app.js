@@ -70,31 +70,15 @@ app.post("/getworkout",function(req,res){
 
 app.post("/savedateworkout",function(req,res){
     var data = req.body;
+
     var date = data.date;
     var selected_workout = JSON.stringify(data.selected_workout);
 
-    var insert = {
-        'selected_workout': selected_workout,
-        'date':date
-    };
-
-    var update = {
-        'selected_workout': selected_workout
-    };
-
-    var qry = "INSERT INTO workoutList (date,selected_workout) VALUES (?,?) ON DUPLICATE KEY UPDATE selected_workout = ?";
+    var query = "INSERT INTO workoutList (date,selected_workout) VALUES (?,?) ON DUPLICATE KEY UPDATE selected_workout = ?";
     var value = [date,selected_workout,selected_workout];
-    qry = mysql.format(qry,value);
+    query = mysql.format(query,value);
 
-    /*
-     INSERT INTO workoutList
-     (date, selected_workout)
-     VALUES( [date], [selected_workout])
-     ON DUPLICATE KEY UPDATE
-     selected_workout = [selected_workout]
-     */
-
-    var saveQuery = connection.query(qry,
+    var saveQuery = connection.query(query,
         function (err, rows) {
         if (err) {
             throw err;
@@ -108,6 +92,25 @@ app.post("/savedateworkout",function(req,res){
 });
 
 app.post("/:date/:workout",function(req,res){
-    res.send(req.param)
+    //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
+    console.log("post req called");
+    var volumeList = JSON.stringify(req.body);
+    var volumeList2 = req.body;
+    var date_workout = req.params.date+"_"+req.params.workout;
+
+
+    var query = "INSERT INTO volume (date_workout,kg_rep) VALUES (?,?) ON DUPLICATE KEY UPDATE kg_rep = ?";
+    var value = [date_workout,volumeList,volumeList];
+    query = mysql.format(query,value);
+
+    var saveQuery = connection.query(query,function(err,rows){
+        if(err){
+            throw err;
+        }else{
+            console.log("kg rep saved success");
+            res.send("bye");
+        }
+    })
+
 });
 

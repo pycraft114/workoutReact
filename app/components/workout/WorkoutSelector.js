@@ -1,6 +1,8 @@
 /**
  * Created by chanwoopark on 2017. 6. 26..
  */
+//This Component can be only view rendering component which could be implemented by function.
+
 import React,{Component} from 'react';
 
 import {bindActionCreators} from 'redux';
