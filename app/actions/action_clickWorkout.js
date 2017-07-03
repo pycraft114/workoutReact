@@ -10,6 +10,7 @@ export default function(date,workout){
 
     return((dispatch) => {
         getKgRep.then((res) => {
+            console.log("action_click",res.data);
             dispatch({type:"WORKOUT_CLICKED",kgRepList:res.data})
         })
     })

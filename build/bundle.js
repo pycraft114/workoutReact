@@ -39744,6 +39744,7 @@
 	});
 
 	exports.default = function (evt, kg, rep, date, workout, prevVolumes) {
+	    console.log("prevVolumes", prevVolumes);
 	    if (evt.key === "Enter" || evt.target.id === "check") {
 	        if (kg && rep) {
 	            var newArr = [].concat(_toConsumableArray(prevVolumes), [{ kg: kg, rep: rep }]);
@@ -45011,6 +45012,7 @@
 
 	    return function (dispatch) {
 	        getKgRep.then(function (res) {
+	            console.log("action_click", res.data);
 	            dispatch({ type: "WORKOUT_CLICKED", kgRepList: res.data });
 	        });
 	    };

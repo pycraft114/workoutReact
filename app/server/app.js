@@ -102,8 +102,7 @@ app.post("/getkgrep",function(req,res){
             throw err;
         }
         if(result.length){
-            console.log(result[0].kg_rep);
-            res.send(result);
+            res.send(result[0].kg_rep);
         }else{
             res.send([]);
         }
