@@ -14,8 +14,6 @@ export default function(state = [],action){
         case "WORKOUT_CLICKED":
             return action.kgRepList;
 
-        case "BACKBTN_CLICKED":
-            return action.kgRepList;
     }
 
     return state;

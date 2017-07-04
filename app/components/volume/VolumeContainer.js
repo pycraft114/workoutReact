@@ -6,7 +6,6 @@ import axios from 'axios';
 import KgRep from './KgRep';
 import action_typeKgRep from '../../actions/action_typeKgRep';
 import action_sendKgRep from '../../actions/action_sendKgRep';
-import action_clickBackBtn from '../../actions/action_clickBackBtn';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -26,7 +25,6 @@ class VolumeContainer extends Component{
                     <Link
                         to="/"
                         className="back-button"
-                        onClick={this.props.action_clickBackBtn}
                     >
                         Back
                     </Link>
@@ -77,7 +75,6 @@ function mapDispatchToProps(dispatch){
     return bindActionCreators({
         action_typeKgRep,
         action_sendKgRep,
-        action_clickBackBtn
     },dispatch)
 }
 
