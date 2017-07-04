@@ -45022,7 +45022,7 @@
 	                    {
 	                        className: 'delete-button',
 	                        onClick: function onClick() {
-	                            _this2.props.action_deleteWorkout(_this2.props.idx, _this2.props.selectedWorkouts);
+	                            _this2.props.action_deleteWorkout(_this2.props.selectedDate, _this2.props.idx, _this2.props.selectedWorkouts);
 	                        }
 	                    },
 	                    'x'
@@ -45083,7 +45083,7 @@
 
 /***/ }),
 /* 413 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -45091,15 +45091,27 @@
 	    value: true
 	});
 
-	exports.default = function (idx, prevWorkouts) {
+	exports.default = function (date, idx, prevWorkouts) {
 	    var newArr = [].concat(_toConsumableArray(prevWorkouts));
 	    newArr.splice(idx, 1);
 
-	    return {
-	        type: "WORKOUTDELBTN_CLICKED",
-	        selectedWorkouts: newArr
+	    var saveReq = _axios2.default.post("/saveworkout", { "date": date, "selected_workout": newArr });
+
+	    return function (dispatch) {
+	        saveReq.then(function () {
+	            dispatch({
+	                type: "WORKOUTDELBTN_CLICKED",
+	                selectedWorkouts: newArr
+	            });
+	        });
 	    };
 	};
+
+	var _axios = __webpack_require__(328);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } } /**
 	                                                                                                                                                                                                     * Created by chanwoopark on 2017. 7. 4..
