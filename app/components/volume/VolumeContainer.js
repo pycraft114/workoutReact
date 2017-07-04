@@ -32,7 +32,10 @@ class VolumeContainer extends Component{
 
                 <div className="volume-list">
 
-                    <KgRep/>
+                    <KgRep
+                        date={this.date}
+                        workout={this.workout}
+                    />
 
                     <div className="input-volume">
                         <input

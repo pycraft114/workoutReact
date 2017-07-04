@@ -10,7 +10,7 @@ export default function(date,idx,prevWorkouts,currWorkout){
     var newArr = [...prevWorkouts];
     newArr.splice(idx,1);
 
-    const saveReq = axios.post("/saveworkout",{"date":date,"selected_workout":newArr});
+    const saveReq = axios.post("/updateworkout",{"date":date,"selected_workout":newArr});
     const delReq = axios.post("/deletekgrep",{"date_workout":date_workout});
 
     return (dispatch) => {

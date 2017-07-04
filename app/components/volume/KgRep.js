@@ -3,18 +3,35 @@
  */
 import React , {Component} from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import action_deleteKgRep from '../../actions/action_deleteKgRep';
 
 class KgRep extends Component{
     render(){
-        let kgRepList = this.props.kgRepList;
-
         return(
             <div className="kg-rep-container">
                 {
-                    kgRepList.map(function(obj,idx){
+                    this.props.kgRepList.map((obj,idx) => {
+                        console.log("this",this);
                         return(
                             <div className="kg-rep" key={idx}>
-                                {obj.kg} Kg x {obj.rep} Rep
+                                <div>
+                                    {obj.kg} Kg x {obj.rep} Rep
+                                </div>
+
+                                <button
+                                    className="kgrep-delete-button"
+                                    onClick={() => {
+                                        this.props.action_deleteKgRep(
+                                            this.props.date,
+                                            this.props.workout,
+                                            idx,
+                                            this.props.kgRepList
+                                        )
+                                    }}
+                                >
+                                    x
+                                </button>
                             </div>
                         )
                     })
@@ -24,8 +41,12 @@ class KgRep extends Component{
     }
 }
 
-function mapStateToProps(state,ownProps){
+function mapStateToProps(state){
     return { kgRepList:state.kgRepList }
 }
 
-export default connect(mapStateToProps,null)(KgRep);
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({action_deleteKgRep:action_deleteKgRep},dispatch)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(KgRep);

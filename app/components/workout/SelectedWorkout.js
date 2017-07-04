@@ -36,7 +36,7 @@ class SelectedWorkout extends Component{
                 </Link>
 
                 <button
-                    className="delete-button"
+                    className="workout-delete-button"
                     onClick={() => {
                         this.props.action_deleteWorkout(
                             this.props.selectedDate,

@@ -68,7 +68,7 @@ app.post("/getworkout",function(req,res){
 
 });
 
-app.post("/saveworkout",function(req,res){
+app.post("/updateworkout",function(req,res){
     var data = req.body;
 
     var date = data.date;
@@ -117,6 +117,7 @@ app.post("/getkgrep",function(req,res){
 app.post("/:date/:workout/update",function(req,res){
     //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
     var volumeList = JSON.stringify(req.body);
+    console.log("volumeList",volumeList);
     var date_workout = req.params.date+"_"+req.params.workout;
 
 
