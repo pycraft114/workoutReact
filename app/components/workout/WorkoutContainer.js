@@ -33,6 +33,7 @@ class WorkoutContainer extends Component{
                             return(
                                 <SelectedWorkout
                                     key={idx}
+                                    idx={idx}
                                     selected={ele}
                                 />
                             )

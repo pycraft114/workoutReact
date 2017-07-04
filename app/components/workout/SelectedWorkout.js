@@ -11,13 +11,15 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 
 import action_clickWorkout from "../../actions/action_clickWorkout";
+import action_deleteWorkout from "../../actions/action_deleteWorkout";
 
 class SelectedWorkout extends Component{
-    ComponentDidMount(){
-        console.log(this.props.kgRepList);
+    constructor(props){
+        super(props);
     }
 
     render(){
+        console.log(this.props.idx);
         return(
             <div className="selected-workout-container">
 
@@ -33,7 +35,17 @@ class SelectedWorkout extends Component{
                     {this.props.selected}
                 </Link>
 
-                <button className="delete-button">x</button>
+                <button
+                    className="delete-button"
+                    onClick={() => {
+                        this.props.action_deleteWorkout(
+                            this.props.idx,
+                            this.props.selectedWorkouts
+                        )
+                    }}
+                >
+                    x
+                </button>
 
             </div>
         )
@@ -42,11 +54,19 @@ class SelectedWorkout extends Component{
 }
 
 function mapStateToProps(state){
-    return{selectedDate:state.selectedDate,kgRepList:state.kgRepList};
+    return{
+        selectedDate:state.selectedDate,
+        kgRepList:state.kgRepList,
+        selectedWorkouts:state.selectedWorkouts
+    };
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({action_clickWorkout:action_clickWorkout},dispatch)
+    return bindActionCreators({
+        action_clickWorkout,
+        action_deleteWorkout
+
+    },dispatch)
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(SelectedWorkout);

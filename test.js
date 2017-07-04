@@ -1,7 +1,5 @@
-function test(a,b){
-    console.log(a,b);
-}
+const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+var test = [...fruits];
+var citrus = fruits.splice(4,1);
 
-function haha(c){
-    test
-}
+console.log(fruits);

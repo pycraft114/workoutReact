@@ -6,7 +6,9 @@ export default function(state=[],action){
         case "DATE_SELECTED":
             return action.response;
         case "WORKOUT_SELECTED":
-            return action.selectedWorkout;
+            return action.selectedWorkouts;
+        case "WORKOUTDELBTN_CLICKED":
+            return action.selectedWorkouts;
     }
 
     return state;

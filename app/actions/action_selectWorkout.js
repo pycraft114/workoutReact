@@ -15,7 +15,7 @@ export default function(evt,date,prevWorkout){
 
     return (dispatch) => {
         saveReq.then((res) => {
-            dispatch({type:"WORKOUT_SELECTED", selectedWorkout:uniqeArr})
+            dispatch({type:"WORKOUT_SELECTED", selectedWorkouts:uniqeArr})
         })
     }
 }

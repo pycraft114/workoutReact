@@ -24,7 +24,7 @@ class KgRep extends Component{
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state,ownProps){
     return { kgRepList:state.kgRepList }
 }
 
