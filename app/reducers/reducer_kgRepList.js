@@ -9,9 +9,12 @@
 export default function(state = [],action){
     switch(action.type){
         case "KGREP_SENT":
-            return action.initialList;
+            return action.kgRepList;
+
         case "WORKOUT_CLICKED":
-            console.log("reducer_kgreplist",action.kgRepList);
+            return action.kgRepList;
+
+        case "BACKBTN_CLICKED":
             return action.kgRepList;
     }
 

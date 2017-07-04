@@ -6,9 +6,10 @@ import axios from 'axios';
 import KgRep from './KgRep';
 import action_typeKgRep from '../../actions/action_typeKgRep';
 import action_sendKgRep from '../../actions/action_sendKgRep';
+import action_clickBackBtn from '../../actions/action_clickBackBtn';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
+import { Link } from 'react-router-dom';
 
 class VolumeContainer extends Component{
     componentDidMount(){
@@ -22,7 +23,13 @@ class VolumeContainer extends Component{
 
                 <div className="volume-header">
                     <p>Bench Press</p>
-                    <button className="back-button">Back</button>
+                    <Link
+                        to="/"
+                        className="back-button"
+                        onClick={this.props.action_clickBackBtn}
+                    >
+                        Back
+                    </Link>
                 </div>
 
                 <div className="volume-list">
@@ -67,7 +74,11 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({action_typeKgRep:action_typeKgRep,action_sendKgRep:action_sendKgRep},dispatch)
+    return bindActionCreators({
+        action_typeKgRep,
+        action_sendKgRep,
+        action_clickBackBtn
+    },dispatch)
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(VolumeContainer);
