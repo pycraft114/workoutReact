@@ -38067,9 +38067,9 @@
 	                    'div',
 	                    { className: 'volume-header' },
 	                    _react2.default.createElement(
-	                        'p',
+	                        'h1',
 	                        null,
-	                        'Bench Press'
+	                        this.workout
 	                    ),
 	                    _react2.default.createElement(
 	                        _reactRouterDom.Link,
@@ -39710,6 +39710,8 @@
 
 	    _createClass(KgRep, [{
 	        key: 'render',
+
+	        //renders as much as this.props.kgRepList length
 	        value: function render() {
 	            var _this2 = this;
 
@@ -39717,7 +39719,6 @@
 	                'div',
 	                { className: 'kg-rep-container' },
 	                this.props.kgRepList.map(function (obj, idx) {
-	                    console.log("this", _this2);
 	                    return _react2.default.createElement(
 	                        'div',
 	                        { className: 'kg-rep', key: idx },
@@ -45040,7 +45041,6 @@
 	        value: function render() {
 	            var _this2 = this;
 
-	            console.log(this.props.idx);
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'selected-workout-container' },
@@ -45106,7 +45106,6 @@
 
 	    return function (dispatch) {
 	        getKgRep.then(function (res) {
-	            console.log("action_click", res.data);
 	            dispatch({ type: "WORKOUT_CLICKED", kgRepList: res.data });
 	        });
 	    };

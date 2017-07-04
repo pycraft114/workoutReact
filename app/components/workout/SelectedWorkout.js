@@ -19,7 +19,6 @@ class SelectedWorkout extends Component{
     }
 
     render(){
-        console.log(this.props.idx);
         return(
             <div className="selected-workout-container">
 

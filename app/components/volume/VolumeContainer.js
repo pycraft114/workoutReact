@@ -21,7 +21,7 @@ class VolumeContainer extends Component{
             <div className="volume-container">
 
                 <div className="volume-header">
-                    <p>Bench Press</p>
+                    <h1>{this.workout}</h1>
                     <Link
                         to="/"
                         className="back-button"

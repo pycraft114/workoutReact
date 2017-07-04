@@ -7,14 +7,16 @@ import { bindActionCreators } from 'redux';
 import action_deleteKgRep from '../../actions/action_deleteKgRep';
 
 class KgRep extends Component{
+    //renders as much as this.props.kgRepList length
     render(){
         return(
             <div className="kg-rep-container">
                 {
                     this.props.kgRepList.map((obj,idx) => {
-                        console.log("this",this);
                         return(
+
                             <div className="kg-rep" key={idx}>
+
                                 <div>
                                     {obj.kg} Kg x {obj.rep} Rep
                                 </div>
@@ -32,7 +34,9 @@ class KgRep extends Component{
                                 >
                                     x
                                 </button>
+
                             </div>
+
                         )
                     })
                 }
