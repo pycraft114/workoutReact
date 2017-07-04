@@ -11,11 +11,6 @@ import {connect} from 'react-redux';
 
 
 class VolumeContainer extends Component{
-    constructor(props){
-        super(props);
-
-    }
-
     componentDidMount(){
         this.workout = this.props.match.params.workout;
         this.date = this.props.match.params.date;
@@ -24,11 +19,16 @@ class VolumeContainer extends Component{
     render(){
         return(
             <div className="volume-container">
+
                 <div className="volume-header">
                     <p>Bench Press</p>
                     <button className="back-button">Back</button>
                 </div>
+
                 <div className="volume-list">
+
+                    <KgRep/>
+
                     <div className="input-volume">
                         <input
                             type="number"
@@ -50,8 +50,6 @@ class VolumeContainer extends Component{
                             this.workout,
                             this.props.kgRepList
                         )}} id="check">&#x2714;</p>
-
-                        <p>{this.props.kg}//{this.props.rep}</p>
                     </div>
                 </div>
             </div>

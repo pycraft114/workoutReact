@@ -13,10 +13,6 @@ import { bindActionCreators } from "redux";
 import action_clickWorkout from "../../actions/action_clickWorkout";
 
 class SelectedWorkout extends Component{
-    constructor(props){
-        super(props)
-    }
-
     ComponentDidMount(){
         console.log(this.props.kgRepList);
     }

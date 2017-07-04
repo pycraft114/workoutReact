@@ -38036,10 +38036,10 @@
 	var VolumeContainer = function (_Component) {
 	    _inherits(VolumeContainer, _Component);
 
-	    function VolumeContainer(props) {
+	    function VolumeContainer() {
 	        _classCallCheck(this, VolumeContainer);
 
-	        return _possibleConstructorReturn(this, (VolumeContainer.__proto__ || Object.getPrototypeOf(VolumeContainer)).call(this, props));
+	        return _possibleConstructorReturn(this, (VolumeContainer.__proto__ || Object.getPrototypeOf(VolumeContainer)).apply(this, arguments));
 	    }
 
 	    _createClass(VolumeContainer, [{
@@ -38073,6 +38073,7 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'volume-list' },
+	                    _react2.default.createElement(_KgRep2.default, null),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'input-volume' },
@@ -38094,13 +38095,6 @@
 	                                    _this2.props.action_sendKgRep(evt, _this2.props.kg, _this2.props.rep, _this2.date, _this2.workout, _this2.props.kgRepList);
 	                                }, id: 'check' },
 	                            '\u2714'
-	                        ),
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            this.props.kg,
-	                            '//',
-	                            this.props.rep
 	                        )
 	                    )
 	                )
@@ -39658,7 +39652,7 @@
 /* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -39669,6 +39663,8 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(159);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39684,22 +39680,30 @@
 	var KgRep = function (_Component) {
 	    _inherits(KgRep, _Component);
 
-	    function KgRep(props) {
+	    function KgRep() {
 	        _classCallCheck(this, KgRep);
 
-	        return _possibleConstructorReturn(this, (KgRep.__proto__ || Object.getPrototypeOf(KgRep)).call(this, props));
+	        return _possibleConstructorReturn(this, (KgRep.__proto__ || Object.getPrototypeOf(KgRep)).apply(this, arguments));
 	    }
 
 	    _createClass(KgRep, [{
-	        key: "render",
+	        key: 'render',
 	        value: function render() {
+	            var kgRepList = this.props.kgRepList;
+
 	            return _react2.default.createElement(
-	                "div",
-	                { className: "kg-rep" },
-	                this.props.kg,
-	                " Kg x ",
-	                this.props.rep,
-	                " Rep"
+	                'div',
+	                { className: 'kg-rep-container' },
+	                kgRepList.map(function (obj, idx) {
+	                    return _react2.default.createElement(
+	                        'div',
+	                        { className: 'kg-rep', key: idx },
+	                        obj.kg,
+	                        ' Kg x ',
+	                        obj.rep,
+	                        ' Rep'
+	                    );
+	                })
 	            );
 	        }
 	    }]);
@@ -39707,7 +39711,11 @@
 	    return KgRep;
 	}(_react.Component);
 
-	exports.default = KgRep;
+	function mapStateToProps(state) {
+	    return { kgRepList: state.kgRepList };
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(KgRep);
 
 /***/ }),
 /* 355 */
@@ -44732,10 +44740,10 @@
 	var WorkoutContainer = function (_Component) {
 	    _inherits(WorkoutContainer, _Component);
 
-	    function WorkoutContainer(props) {
+	    function WorkoutContainer() {
 	        _classCallCheck(this, WorkoutContainer);
 
-	        return _possibleConstructorReturn(this, (WorkoutContainer.__proto__ || Object.getPrototypeOf(WorkoutContainer)).call(this, props));
+	        return _possibleConstructorReturn(this, (WorkoutContainer.__proto__ || Object.getPrototypeOf(WorkoutContainer)).apply(this, arguments));
 	    }
 
 	    _createClass(WorkoutContainer, [{
@@ -44944,10 +44952,10 @@
 	var SelectedWorkout = function (_Component) {
 	    _inherits(SelectedWorkout, _Component);
 
-	    function SelectedWorkout(props) {
+	    function SelectedWorkout() {
 	        _classCallCheck(this, SelectedWorkout);
 
-	        return _possibleConstructorReturn(this, (SelectedWorkout.__proto__ || Object.getPrototypeOf(SelectedWorkout)).call(this, props));
+	        return _possibleConstructorReturn(this, (SelectedWorkout.__proto__ || Object.getPrototypeOf(SelectedWorkout)).apply(this, arguments));
 	    }
 
 	    _createClass(SelectedWorkout, [{

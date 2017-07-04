@@ -15,13 +15,10 @@ import action_selectWorkout from '../../actions/action_selectWorkout';
 
 
 class WorkoutContainer extends Component{
-    constructor(props){
-        super(props);
-
-    }
     render(){
         return(
             <div className="workout-container">
+
                 <div className="date-picker-container">
                     <p className="date-picker-header">Date Picker</p>
 
@@ -29,6 +26,7 @@ class WorkoutContainer extends Component{
                         onChange={this.props.action_selectDate}
                     />
                 </div>
+
                 <div className="workout-list">
                     {
                         this.props.selectedWorkouts.map(function(ele,idx){
@@ -42,6 +40,7 @@ class WorkoutContainer extends Component{
                     }
                     <WorkoutSelector/>
                 </div>
+
             </div>
 
         )
