@@ -114,7 +114,7 @@ app.post("/getkgrep",function(req,res){
 });
 
 //하나의 url로 req에 따라 각기 다른 역할 수행 하도록
-app.post("/:date/:workout",function(req,res){
+app.post("/:date/:workout/update",function(req,res){
     //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
     var volumeList = JSON.stringify(req.body);
     var date_workout = req.params.date+"_"+req.params.workout;
@@ -134,3 +134,17 @@ app.post("/:date/:workout",function(req,res){
 
 });
 
+app.post("/deletekgrep",function(req,res){
+    //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
+    var date_workout = req.body.date_workout;
+
+    var deleteQuery = connection.query("DELETE FROM volume WHERE date_workout = ?",date_workout,function(err,rows){
+        if(err){
+            throw err;
+        }else{
+            console.log("deleted");
+            res.send("deleted");
+        }
+    })
+
+});

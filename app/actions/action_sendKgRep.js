@@ -8,7 +8,7 @@ export default function(evt,kg,rep,date,workout,prevVolumes){
         if(kg&&rep){
             const newArr = [...prevVolumes,{kg:kg,rep:rep}];
 
-            axios.post(`/${date}/${workout}`,newArr);
+            axios.post(`/${date}/${workout}/update`,newArr);
 
             return{type:"KGREP_SENT",kgRepList:newArr}
         }

@@ -41,7 +41,8 @@ class SelectedWorkout extends Component{
                         this.props.action_deleteWorkout(
                             this.props.selectedDate,
                             this.props.idx,
-                            this.props.selectedWorkouts
+                            this.props.selectedWorkouts,
+                            this.props.selected
                         )
                     }}
                 >

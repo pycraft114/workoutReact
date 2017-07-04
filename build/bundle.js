@@ -39767,7 +39767,7 @@
 	        if (kg && rep) {
 	            var newArr = [].concat(_toConsumableArray(prevVolumes), [{ kg: kg, rep: rep }]);
 
-	            _axios2.default.post("/" + date + "/" + workout, newArr);
+	            _axios2.default.post("/" + date + "/" + workout + "/update", newArr);
 
 	            return { type: "KGREP_SENT", kgRepList: newArr };
 	        }
@@ -44997,7 +44997,7 @@
 	                    {
 	                        className: 'delete-button',
 	                        onClick: function onClick() {
-	                            _this2.props.action_deleteWorkout(_this2.props.selectedDate, _this2.props.idx, _this2.props.selectedWorkouts);
+	                            _this2.props.action_deleteWorkout(_this2.props.selectedDate, _this2.props.idx, _this2.props.selectedWorkouts, _this2.props.selected);
 	                        }
 	                    },
 	                    'x'
@@ -45066,11 +45066,14 @@
 	    value: true
 	});
 
-	exports.default = function (date, idx, prevWorkouts) {
+	exports.default = function (date, idx, prevWorkouts, currWorkout) {
+
+	    var date_workout = date + "_" + currWorkout;
 	    var newArr = [].concat(_toConsumableArray(prevWorkouts));
 	    newArr.splice(idx, 1);
 
 	    var saveReq = _axios2.default.post("/saveworkout", { "date": date, "selected_workout": newArr });
+	    var delReq = _axios2.default.post("/deletekgrep", { "date_workout": date_workout });
 
 	    return function (dispatch) {
 	        saveReq.then(function () {
