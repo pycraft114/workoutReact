@@ -41,7 +41,9 @@ class WorkoutContainer extends Component{
                     }
                     <WorkoutSelector/>
                 </div>
-
+                <button id="something-btn" type="button" className="btn btn-success btn-sm">
+                    Something
+                </button>
             </div>
 
         )
