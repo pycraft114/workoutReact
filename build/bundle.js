@@ -45041,6 +45041,7 @@
 	        value: function render() {
 	            var _this2 = this;
 
+	            console.log(this.props.idx);
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'selected-workout-container' },
@@ -45054,16 +45055,15 @@
 	                    },
 	                    this.props.selected
 	                ),
-	                _react2.default.createElement(
-	                    'button',
-	                    {
-	                        className: 'workout-delete-button',
-	                        onClick: function onClick() {
-	                            _this2.props.action_deleteWorkout(_this2.props.selectedDate, _this2.props.idx, _this2.props.selectedWorkouts, _this2.props.selected);
-	                        }
-	                    },
-	                    'x'
-	                )
+	                _react2.default.createElement('img', {
+	                    src: './trash1600.png',
+	                    width: 28,
+	                    height: 28,
+	                    className: 'workout-delete-button',
+	                    onClick: function onClick() {
+	                        _this2.props.action_deleteWorkout(_this2.props.selectedDate, _this2.props.idx, _this2.props.selectedWorkouts, _this2.props.selected);
+	                    }
+	                })
 	            );
 	        }
 	    }]);
@@ -45635,7 +45635,7 @@
 
 
 	// module
-	exports.push([module.id, ".workout-list-container{\n    border:5px solid red;\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n    border:5px solid blue;\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n\n.date-picker-container{\n    border:5px solid green;\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}", ""]);
+	exports.push([module.id, ".list-container{\n    position:relative;\n    top:200px;\n    left:200px;\n}\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}", ""]);
 
 	// exports
 

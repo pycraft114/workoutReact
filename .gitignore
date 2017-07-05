@@ -7,3 +7,5 @@ imgVid
 mysqlData.json
 .gitignore
 .idea/workspace.xml
+*.png
+

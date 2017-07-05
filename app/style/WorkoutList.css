@@ -1,12 +1,19 @@
+.list-container{
+    position:relative;
+    top:200px;
+    left:200px;
+    border:1px solid red;
+}
+
 .workout-list-container{
-    border:5px solid red;
+
     margin-top:10px;
     margin-bottom:10px;
 
 }
 
 .workout-list{
-    border:5px solid blue;
+
     margin-top:10px;
     margin-bottom:10px;
 
@@ -20,7 +27,7 @@
 }
 
 .date-picker-container{
-    border:5px solid green;
+
     margin-top:10px;
     margin-bottom:10px;
 
@@ -28,4 +35,8 @@
 
 .date-picker-header{
     display:inline;
+}
+
+a{
+    text-decoration:none !important;
 }

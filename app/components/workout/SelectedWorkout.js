@@ -19,6 +19,7 @@ class SelectedWorkout extends Component{
     }
 
     render(){
+        console.log(this.props.idx);
         return(
             <div className="selected-workout-container">
 
@@ -34,7 +35,10 @@ class SelectedWorkout extends Component{
                     {this.props.selected}
                 </Link>
 
-                <button
+                <img
+                    src="./trash1600.png"
+                    width={28}
+                    height={28}
                     className="workout-delete-button"
                     onClick={() => {
                         this.props.action_deleteWorkout(
@@ -45,8 +49,7 @@ class SelectedWorkout extends Component{
                         )
                     }}
                 >
-                    x
-                </button>
+                </img>
 
             </div>
         )
