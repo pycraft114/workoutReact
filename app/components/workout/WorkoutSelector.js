@@ -4,30 +4,55 @@
 //This Component can be only view rendering component which could be implemented by function.
 
 import React,{Component} from 'react';
-
 import {bindActionCreators} from 'redux';
-
 import {connect} from 'react-redux';
+import { DropdownButton, MenuItem} from 'react-bootstrap';
+
 import action_selectWorkout from '../../actions/action_selectWorkout';
 
 
 class WorkoutSelector extends Component{
 
     render(){
-
-
         return(
-            <select onChange={(evt) => {this.props.action_selectWorkout(evt,this.props.selectedDate,this.props.selectedWorkouts)}}>
-                {
-                    this.props.workoutOptions.map(function(currType){
-                        return <option key={currType} value={currType}>{currType}</option>
-                    })
+            <DropdownButton
+                id="dropdown-basic"
+                title="Workout"
+                onChange={
+                    (evt) => {
+                        this.props.action_selectWorkout(
+                            evt,this.props.selectedDate,
+                            this.props.selectedWorkouts
+                        )
+                    }
                 }
-            </select>
+            >
+                {
+                    this.props.workoutOptions.map(
+                        function(currType){
+                            return <MenuItem
+                                key={currType}
+                                eventKey={currType}
+                            >
+                                {currType}
+                            </MenuItem>
+                        }
+                    )
+                }
+            </DropdownButton>
         )
     }
-
 }
+
+/*return(
+ <select onChange={(evt) => {this.props.action_selectWorkout(evt,this.props.selectedDate,this.props.selectedWorkouts)}}>
+ {
+ this.props.workoutOptions.map(function(currType){
+ return <option key={currType} value={currType}>{currType}</option>
+ })
+ }
+ </select>
+ )*/
 
 function mapStateToProps(state){
     return{
