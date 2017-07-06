@@ -74,15 +74,25 @@
 
 	var _ListContainer2 = _interopRequireDefault(_ListContainer);
 
+	var _GraphContainer = __webpack_require__(670);
+
+	var _GraphContainer2 = _interopRequireDefault(_GraphContainer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(670);
-	__webpack_require__(672);
+	/////
+
+
+	__webpack_require__(671);
+
+	/////
+
+	__webpack_require__(673);
 
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRedux.Provider,
 	    { store: (0, _redux.createStore)(_index2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default)) },
-	    _react2.default.createElement(_ListContainer2.default, null)
+	    _react2.default.createElement(_GraphContainer2.default, null)
 	), document.querySelector('.container'));
 
 /***/ }),
@@ -65147,10 +65157,84 @@
 /* 670 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 6..
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var GraphContainer = function (_Component) {
+	    _inherits(GraphContainer, _Component);
+
+	    function GraphContainer(props) {
+	        _classCallCheck(this, GraphContainer);
+
+	        return _possibleConstructorReturn(this, (GraphContainer.__proto__ || Object.getPrototypeOf(GraphContainer)).call(this, props));
+	    }
+
+	    _createClass(GraphContainer, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "div",
+	                { className: "haha" },
+	                _react2.default.createElement("canvas", { id: "myChart" })
+	            );
+	        }
+	    }]);
+
+	    return GraphContainer;
+	}(_react.Component);
+
+	exports.default = GraphContainer;
+
+
+	var ctx = document.getElementById('myChart').getContext('2d');
+	console.log(ctx);
+	var chart = new Chart(ctx, {
+	    // The type of chart we want to create
+	    type: 'line',
+
+	    // The data for our dataset
+	    data: {
+	        labels: ["January", "February", "March", "April", "May", "June", "July"],
+	        datasets: [{
+	            label: "My First dataset",
+	            backgroundColor: 'rgb(255, 99, 132)',
+	            borderColor: 'rgb(255, 99, 132)',
+	            data: [0, 10, 5, 2, 20, 30, 45]
+	        }]
+	    },
+
+	    // Configuration options go here
+	    options: {}
+	});
+
+/***/ }),
+/* 671 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(671);
+	var content = __webpack_require__(672);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -65175,7 +65259,7 @@
 	}
 
 /***/ }),
-/* 671 */
+/* 672 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(400)(undefined);
@@ -65189,13 +65273,13 @@
 
 
 /***/ }),
-/* 672 */
+/* 673 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(673);
+	var content = __webpack_require__(674);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -65220,7 +65304,7 @@
 	}
 
 /***/ }),
-/* 673 */
+/* 674 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(400)(undefined);
