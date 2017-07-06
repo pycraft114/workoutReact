@@ -39730,16 +39730,15 @@
 	                            obj.rep,
 	                            ' Rep'
 	                        ),
-	                        _react2.default.createElement(
-	                            'button',
-	                            {
-	                                className: 'kgrep-delete-button',
-	                                onClick: function onClick() {
-	                                    _this2.props.action_deleteKgRep(_this2.props.date, _this2.props.workout, idx, _this2.props.kgRepList);
-	                                }
-	                            },
-	                            'x'
-	                        )
+	                        _react2.default.createElement('img', {
+	                            src: '../trash1600.png',
+	                            width: 28,
+	                            height: 28,
+	                            className: 'kgrep-delete-button',
+	                            onClick: function onClick() {
+	                                _this2.props.action_deleteKgRep(_this2.props.date, _this2.props.workout, idx, _this2.props.kgRepList);
+	                            }
+	                        })
 	                    );
 	                })
 	            );
@@ -44848,11 +44847,6 @@
 	                        });
 	                    }),
 	                    _react2.default.createElement(_WorkoutSelector2.default, null)
-	                ),
-	                _react2.default.createElement(
-	                    'button',
-	                    { id: 'something-btn', type: 'button', className: 'btn btn-success btn-sm' },
-	                    'Something'
 	                )
 	            );
 	        }
@@ -65168,7 +65162,7 @@
 
 
 	// module
-	exports.push([module.id, ".list-container{\n    position:relative;\n    top:200px;\n    left:200px;\n    border:1px solid red;\n}\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n/*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*/\n\na{\n    text-decoration:none !important;\n}", ""]);
+	exports.push([module.id, ".list-container{\n    position:relative;\n    top:200px;\n    left:200px;\n    border:1px solid red;\n}\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n/*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*/\n\n.list-container{\n    padding:50px;\n}\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}", ""]);
 
 	// exports
 

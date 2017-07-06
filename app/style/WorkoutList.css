@@ -39,6 +39,18 @@
 }
 */
 
+.list-container{
+    padding:50px;
+}
+
+.selected-workout-button{
+    margin:3px;
+}
+
+.kg-rep div{
+    display:inline;
+}
+
 a{
     text-decoration:none !important;
 }

@@ -21,7 +21,10 @@ class KgRep extends Component{
                                     {obj.kg} Kg x {obj.rep} Rep
                                 </div>
 
-                                <button
+                                <img
+                                    src="../trash1600.png"
+                                    width={28}
+                                    height={28}
                                     className="kgrep-delete-button"
                                     onClick={() => {
                                         this.props.action_deleteKgRep(
@@ -32,8 +35,7 @@ class KgRep extends Component{
                                         )
                                     }}
                                 >
-                                    x
-                                </button>
+                                </img>
 
                             </div>
 
