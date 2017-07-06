@@ -103,6 +103,8 @@ export default class LoginSignUpPage extends React.Component{
     }
 }
 
+
+//seperate file
 (function(){
     var TxtType = function(el, toRotate, period) {
         this.toRotate = toRotate;

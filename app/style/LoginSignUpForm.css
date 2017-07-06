@@ -9,29 +9,6 @@ html, body {
 }
 
 
-.video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index:-1;
-}
-
-@media (min-aspect-ratio: 16/9) {
-    .video {
-        height: 300%;
-        top: -100%;
-    }
-}
-
-@media (max-aspect-ratio: 16/9) {
-    .video {
-        width: 300%;
-        left: -100%;
-    }
-}
-
 .button {
     width:263px;
     height:35px;
@@ -89,9 +66,9 @@ html, body {
 
 .login-signup-page{
     position:relative;
-    top:25vh;
+    top:20vh;
     text-align: center;
-    height:368px;
+    height:384px;
 }
 
 img{
@@ -100,4 +77,17 @@ img{
     border: 2px solid lightslategray;
     border-radius: 100%;
     padding: 7px;
+}
+
+.typewrite{
+    font-family:Impact;
+    color:#2E3940;
+}
+
+.react-infinite-slides{
+    height:70% !important;
+}
+.react-infinite-slides ul li{
+    width:13px !important;
+    height:13px !important;
 }
