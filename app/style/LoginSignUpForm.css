@@ -57,13 +57,6 @@ html, body {
     margin-bottom:13px;
 }
 
-.header{
-    color: white;
-    font-weight: bold;
-    font-size: 32px;
-    font-family: -webkit-pictograph;
-}
-
 .login-signup-page{
     position:relative;
     top:20vh;
@@ -88,6 +81,10 @@ img{
     height:70% !important;
 }
 .react-infinite-slides ul li{
-    width:13px !important;
-    height:13px !important;
+    width:10px !important;
+    height:10px !important;
+}
+
+.submit-form{
+    padding:2px;
 }
