@@ -63,6 +63,7 @@ export default class LoginSignUpPage extends React.Component{
 
                 <div className="logo-container">
                     <img
+                        className="dumbbell-logo"
                         src="./logo.jpg"
                         width={56}
                         height={53}
