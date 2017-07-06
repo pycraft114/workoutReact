@@ -8,4 +8,5 @@ mysqlData.json
 .gitignore
 .idea/workspace.xml
 *.png
+*.jpg
 

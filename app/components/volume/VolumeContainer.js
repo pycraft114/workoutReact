@@ -31,12 +31,6 @@ class VolumeContainer extends Component{
                 </div>
 
                 <div className="volume-list">
-
-                    <KgRep
-                        date={this.date}
-                        workout={this.workout}
-                    />
-
                     <div className="input-volume">
                         <input
                             type="number"
@@ -59,6 +53,12 @@ class VolumeContainer extends Component{
                             this.props.kgRepList
                         )}} id="check">&#x2714;</p>
                     </div>
+
+                    <KgRep
+                        date={this.date}
+                        workout={this.workout}
+                    >
+                    </KgRep>
                 </div>
             </div>
         )

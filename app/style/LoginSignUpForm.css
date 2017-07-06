@@ -94,5 +94,10 @@ html, body {
     height:368px;
 }
 
-
-
+img{
+    width: 84px;
+    height: 79px;
+    border: 2px solid lightslategray;
+    border-radius: 100%;
+    padding: 7px;
+}
