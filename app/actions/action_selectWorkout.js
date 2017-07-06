@@ -4,9 +4,7 @@
 import axios from 'axios';
 
 
-export default function(evt,date,prevWorkout){
-    const selectedWorkout = evt.target.value;
-
+export default function(selectedWorkout,date,prevWorkout){
 
     let newArr = [...prevWorkout,selectedWorkout];
     const uniqeArr = [...new Set(newArr)];

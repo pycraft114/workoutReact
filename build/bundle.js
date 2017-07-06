@@ -44929,14 +44929,17 @@
 	                {
 	                    id: 'dropdown-basic',
 	                    title: 'Workout',
-	                    onChange: function onChange(evt) {
-	                        _this2.props.action_selectWorkout(evt, _this2.props.selectedDate, _this2.props.selectedWorkouts);
+	                    onSelect: function onSelect(evtKey) {
+	                        _this2.props.action_selectWorkout(evtKey, _this2.props.selectedDate, _this2.props.selectedWorkouts);
 	                    }
 	                },
 	                this.props.workoutOptions.map(function (currType) {
 	                    return _react2.default.createElement(
 	                        _reactBootstrap.MenuItem,
-	                        { key: currType, eventKey: currType },
+	                        {
+	                            key: currType,
+	                            eventKey: currType
+	                        },
 	                        currType
 	                    );
 	                })
@@ -64491,8 +64494,7 @@
 	    value: true
 	});
 
-	exports.default = function (evt, date, prevWorkout) {
-	    var selectedWorkout = evt.target.value;
+	exports.default = function (selectedWorkout, date, prevWorkout) {
 
 	    var newArr = [].concat(_toConsumableArray(prevWorkout), [selectedWorkout]);
 	    var uniqeArr = [].concat(_toConsumableArray(new Set(newArr)));
@@ -65166,7 +65168,7 @@
 
 
 	// module
-	exports.push([module.id, ".list-container{\n    position:relative;\n    top:200px;\n    left:200px;\n    border:1px solid red;\n}\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}", ""]);
+	exports.push([module.id, ".list-container{\n    position:relative;\n    top:200px;\n    left:200px;\n    border:1px solid red;\n}\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n/*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*/\n\na{\n    text-decoration:none !important;\n}", ""]);
 
 	// exports
 

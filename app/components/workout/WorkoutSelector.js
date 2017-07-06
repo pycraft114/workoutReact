@@ -18,10 +18,11 @@ class WorkoutSelector extends Component{
             <DropdownButton
                 id="dropdown-basic"
                 title="Workout"
-                onChange={
-                    (evt) => {
+                onSelect={
+                    (evtKey) =>{
                         this.props.action_selectWorkout(
-                            evt,this.props.selectedDate,
+                            evtKey,
+                            this.props.selectedDate,
                             this.props.selectedWorkouts
                         )
                     }
