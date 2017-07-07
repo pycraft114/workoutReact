@@ -44755,10 +44755,12 @@
 	});
 
 	exports.default = function (date, workout, idx, prevVolumes) {
+	    var date_workout = date + "_" + workout;
+
 	    var newArr = [].concat(_toConsumableArray(prevVolumes));
 	    newArr.splice(idx, 1);
 
-	    _axios2.default.post("/" + date + "/" + workout + "/update", newArr);
+	    _axios2.default.put("/volume/" + date_workout, newArr);
 
 	    return {
 	        type: "VOL_DELETE_CLICKED",
@@ -44817,7 +44819,7 @@
 
 	            var newVolumes = [].concat(_toConsumableArray(prevVolumes), [{ kg: kg, rep: rep }]);
 
-	            _axios2.default.put("/volume/" + date_workout, newVolumes);
+	            _axios2.default.put("/kg_rep/" + date_workout, newVolumes);
 
 	            return { type: "KGREP_SENT", kgRepList: newVolumes };
 	        }
@@ -64570,13 +64572,13 @@
 	exports.default = function (selectedWorkout, date, prevWorkout) {
 
 	    var newArr = [].concat(_toConsumableArray(prevWorkout), [selectedWorkout]);
-	    var uniqeArr = [].concat(_toConsumableArray(new Set(newArr)));
+	    var selected_workouts = [].concat(_toConsumableArray(new Set(newArr)));
 
-	    var saveReq = _axios2.default.post("/updateworkout", { "date": date, "selected_workouts": uniqeArr });
+	    var saveReq = _axios2.default.put("/selected_workouts/" + date, { selected_workouts: selected_workouts });
 
 	    return function (dispatch) {
 	        saveReq.then(function (res) {
-	            dispatch({ type: "WORKOUT_SELECTED", selectedWorkouts: uniqeArr });
+	            dispatch({ type: "WORKOUT_SELECTED", selectedWorkouts: selected_workouts });
 	        });
 	    };
 	};

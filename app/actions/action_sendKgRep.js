@@ -10,7 +10,7 @@ export default function(evt,kg,rep,date,workout,prevVolumes){
 
             const newVolumes = [...prevVolumes,{kg:kg,rep:rep}];
 
-            axios.put(`/volume/${date_workout}`,newVolumes);
+            axios.put(`/kg_rep/${date_workout}`,newVolumes);
 
             return{type:"KGREP_SENT",kgRepList:newVolumes}
         }

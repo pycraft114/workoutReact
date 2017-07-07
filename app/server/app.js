@@ -41,7 +41,7 @@ app.listen(port,function(){
 });
 
 //refactored
-app.put("/workoutList/:date",function(req,res){
+app.put("/selected_workouts/:date",function(req,res){
     var date = req.params.date;
     var selected_workouts = JSON.stringify(req.body.selected_workouts);
     console.log(selected_workouts);
@@ -120,7 +120,8 @@ app.get("/kg_rep/:date_workout",function(req,res){
 
 //하나의 url로 req에 따라 각기 다른 역할 수행 하도록
 
-app.put("/volume/:date_workout",function(req,res){
+//refactored
+app.put("/kg_rep/:date_workout",function(req,res){
     //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
     var volumeList = JSON.stringify(req.body);
     var date_workout = req.params.date_workout;

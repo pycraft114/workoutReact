@@ -7,13 +7,13 @@ import axios from 'axios';
 export default function(selectedWorkout,date,prevWorkout){
 
     let newArr = [...prevWorkout,selectedWorkout];
-    const uniqeArr = [...new Set(newArr)];
+    const selected_workouts = [...new Set(newArr)];
 
-    const saveReq = axios.post("/updateworkout",{"date":date,"selected_workouts":uniqeArr});
+    const saveReq = axios.put(`/selected_workouts/${date}`,{selected_workouts});
 
     return (dispatch) => {
         saveReq.then((res) => {
-            dispatch({type:"WORKOUT_SELECTED", selectedWorkouts:uniqeArr})
+            dispatch({type:"WORKOUT_SELECTED", selectedWorkouts:selected_workouts})
         })
     }
 }
