@@ -44813,11 +44813,13 @@
 	exports.default = function (evt, kg, rep, date, workout, prevVolumes) {
 	    if (evt.key === "Enter" || evt.target.id === "check") {
 	        if (kg && rep) {
-	            var newArr = [].concat(_toConsumableArray(prevVolumes), [{ kg: kg, rep: rep }]);
+	            var date_workout = date + "_" + workout;
 
-	            _axios2.default.post("/" + date + "/" + workout + "/update", newArr);
+	            var newVolumes = [].concat(_toConsumableArray(prevVolumes), [{ kg: kg, rep: rep }]);
 
-	            return { type: "KGREP_SENT", kgRepList: newArr };
+	            _axios2.default.put("/volume/" + date_workout, newVolumes);
+
+	            return { type: "KGREP_SENT", kgRepList: newVolumes };
 	        }
 	    }
 
@@ -64738,7 +64740,7 @@
 	    var newArr = [].concat(_toConsumableArray(prevWorkouts));
 	    newArr.splice(idx, 1);
 
-	    var saveReq = _axios2.default.put("/" + date, { "selected_workouts": newArr });
+	    var saveReq = _axios2.default.put("/workoutList/" + date, { "selected_workouts": newArr });
 	    var delReq = _axios2.default.delete("/" + date_workout);
 
 	    return function (dispatch) {

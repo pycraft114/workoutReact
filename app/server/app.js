@@ -41,7 +41,7 @@ app.listen(port,function(){
 });
 
 //refactored
-app.put("/:date",function(req,res){
+app.put("/workoutList/:date",function(req,res){
     var date = req.params.date;
     var selected_workouts = JSON.stringify(req.body.selected_workouts);
     console.log(selected_workouts);
@@ -94,7 +94,7 @@ app.get("/selected_workouts/:date",function(req,res){
     //res.send("called");
 
 });
-
+//refactored
 app.get("/kg_rep/:date_workout",function(req,res){
     var date_workout = req.params.date_workout;
 
@@ -115,30 +115,33 @@ app.get("/kg_rep/:date_workout",function(req,res){
 
 });
 
-/*app.post("/getkgrep",function(req,res){
-    var date_workout = req.body.date_workout;
-
-    var query = "SELECT kg_rep FROM volume WHERE date_workout = ?";
-    query = mysql.format(query,date_workout);
-
-    var selectQuery = connection.query(query,function(err,result){
-        if(err){
-            throw err;
-        }
-        if(result.length){
-            res.send(result[0].kg_rep);
-        }else{
-            res.send([]);
-        }
-
-    })
-});*/
 
 //-----------------------------------------------------------------------------
 
 //하나의 url로 req에 따라 각기 다른 역할 수행 하도록
 
-app.post("/:date/:workout/update",function(req,res){
+app.put("/volume/:date_workout",function(req,res){
+    //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
+    var volumeList = JSON.stringify(req.body);
+    var date_workout = req.params.date_workout;
+
+
+    var query = "INSERT INTO volume (date_workout,kg_rep) VALUES (?,?) ON DUPLICATE KEY UPDATE kg_rep = ?";
+    var value = [date_workout,volumeList,volumeList];
+    query = mysql.format(query,value);
+
+    var saveQuery = connection.query(query,function(err,rows){
+        if(err){
+            throw err;
+        }else{
+            res.send("kg_rep saved");
+        }
+    })
+
+
+});
+
+/*app.post("/:date/:workout/update",function(req,res){
     //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
     var volumeList = JSON.stringify(req.body);
     console.log("volumeList",volumeList);
@@ -157,7 +160,7 @@ app.post("/:date/:workout/update",function(req,res){
         }
     })
 
-});
+});*/
 
 //refactored
 app.delete("/:date_workout",function(req,res){

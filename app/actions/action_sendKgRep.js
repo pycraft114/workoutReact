@@ -6,11 +6,13 @@ import axios from 'axios';
 export default function(evt,kg,rep,date,workout,prevVolumes){
     if(evt.key ==="Enter" || evt.target.id === "check"){
         if(kg&&rep){
-            const newArr = [...prevVolumes,{kg:kg,rep:rep}];
+            const date_workout = date+"_"+workout;
 
-            axios.post(`/${date}/${workout}/update`,newArr);
+            const newVolumes = [...prevVolumes,{kg:kg,rep:rep}];
 
-            return{type:"KGREP_SENT",kgRepList:newArr}
+            axios.put(`/volume/${date_workout}`,newVolumes);
+
+            return{type:"KGREP_SENT",kgRepList:newVolumes}
         }
     }
 
