@@ -40,9 +40,28 @@ app.listen(port,function(){
     console.log("sever start on port 3000")
 });
 
+app.put("/:date",function(req,res){
+    var date = req.params.date;
+    var selected_workouts = JSON.stringify(req.body.selected_workouts);
+    console.log(selected_workouts);
 
 
-app.post("/updateworkout",function(req,res){
+    var query = "INSERT INTO workoutList (date,selected_workouts) VALUES (?,?) ON DUPLICATE KEY UPDATE selected_workouts = ?";
+    var value = [date,selected_workouts,selected_workouts];
+    query = mysql.format(query,value);
+
+    var saveQuery = connection.query(query,
+        function (err, rows) {
+            if (err) {
+                throw err;
+            }
+            else {
+                res.send("save success")
+            }
+        })
+});
+
+/*app.post("/updateworkout",function(req,res){
     var data = req.body;
 
     var date = data.date;
@@ -61,9 +80,7 @@ app.post("/updateworkout",function(req,res){
             res.send("save success")
         }
     })
-
-
-});
+});*/
 
 //-------------------------------------------------------------
 /*
@@ -138,7 +155,21 @@ app.post("/:date/:workout/update",function(req,res){
 
 });
 
-app.post("/deletekgrep",function(req,res){
+app.delete("/:date_workout",function(req,res){
+    var date_workout = req.params.date_workout;
+
+
+    var deleteQuery = connection.query("DELETE FROM volume WHERE date_workout = ?",date_workout,function(err,rows){
+        if(err){
+            throw err;
+        }else{
+            console.log("deleted");
+            res.send("deleted");
+        }
+    })
+});
+
+/*app.post("/deletekgrep",function(req,res){
     //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
     var date_workout = req.body.date_workout;
 
@@ -151,7 +182,7 @@ app.post("/deletekgrep",function(req,res){
         }
     })
 
-});
+});*/
 
 
 app.get('/*',function(req,res){

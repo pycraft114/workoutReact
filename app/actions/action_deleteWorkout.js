@@ -7,11 +7,12 @@ import axios from 'axios';
 export default function(date,idx,prevWorkouts,currWorkout){
 
     var date_workout = date+"_"+currWorkout;
+
     var newArr = [...prevWorkouts];
     newArr.splice(idx,1);
 
-    const saveReq = axios.post("/updateworkout",{"date":date,"selected_workout":newArr});
-    const delReq = axios.post("/deletekgrep",{"date_workout":date_workout});
+    const saveReq = axios.put(`/${date}`,{"selected_workouts":newArr});
+    const delReq = axios.delete(`/${date_workout}`);
 
     return (dispatch) => {
         saveReq.then(() => {

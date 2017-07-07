@@ -64734,11 +64734,12 @@
 	exports.default = function (date, idx, prevWorkouts, currWorkout) {
 
 	    var date_workout = date + "_" + currWorkout;
+
 	    var newArr = [].concat(_toConsumableArray(prevWorkouts));
 	    newArr.splice(idx, 1);
 
-	    var saveReq = _axios2.default.post("/updateworkout", { "date": date, "selected_workout": newArr });
-	    var delReq = _axios2.default.post("/deletekgrep", { "date_workout": date_workout });
+	    var saveReq = _axios2.default.put("/" + date, { "selected_workouts": newArr });
+	    var delReq = _axios2.default.delete("/" + date_workout);
 
 	    return function (dispatch) {
 	        saveReq.then(function () {
