@@ -40,6 +40,7 @@ app.listen(port,function(){
     console.log("sever start on port 3000")
 });
 
+//refactored
 app.put("/:date",function(req,res){
     var date = req.params.date;
     var selected_workouts = JSON.stringify(req.body.selected_workouts);
@@ -61,26 +62,6 @@ app.put("/:date",function(req,res){
         })
 });
 
-/*app.post("/updateworkout",function(req,res){
-    var data = req.body;
-
-    var date = data.date;
-    var selected_workouts = JSON.stringify(data.selected_workouts);
-
-    var query = "INSERT INTO workoutList (date,selected_workouts) VALUES (?,?) ON DUPLICATE KEY UPDATE selected_workout = ?";
-    var value = [date,selected_workouts,selected_workouts];
-    query = mysql.format(query,value);
-
-    var saveQuery = connection.query(query,
-        function (err, rows) {
-        if (err) {
-            throw err;
-        }
-        else {
-            res.send("save success")
-        }
-    })
-});*/
 
 //-------------------------------------------------------------
 /*
@@ -90,6 +71,8 @@ app.put("/:date",function(req,res){
 대신에 하나의 url로 다양하게 fetching 할 수 있겠지.
 /get/:smth/:smth 으로 와일드카드 사용하는것도 가능
  */
+
+//refactored
 app.get("/selected_workouts/:date",function(req,res){
     var date = req.params.date;
     console.log("get req", date);
@@ -112,7 +95,27 @@ app.get("/selected_workouts/:date",function(req,res){
 
 });
 
-app.post("/getkgrep",function(req,res){
+app.get("/kg_rep/:date_workout",function(req,res){
+    var date_workout = req.params.date_workout;
+
+    var query = "SELECT kg_rep FROM volume WHERE date_workout = ?";
+    query = mysql.format(query,date_workout);
+
+    var selectQuery = connection.query(query,function(err,result){
+        if(err){
+            throw err;
+        }
+        if(result.length){
+            res.send(result[0].kg_rep);
+        }else{
+            res.send([]);
+        }
+
+    })
+
+});
+
+/*app.post("/getkgrep",function(req,res){
     var date_workout = req.body.date_workout;
 
     var query = "SELECT kg_rep FROM volume WHERE date_workout = ?";
@@ -129,11 +132,12 @@ app.post("/getkgrep",function(req,res){
         }
 
     })
-});
+});*/
 
 //-----------------------------------------------------------------------------
 
 //하나의 url로 req에 따라 각기 다른 역할 수행 하도록
+
 app.post("/:date/:workout/update",function(req,res){
     //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
     var volumeList = JSON.stringify(req.body);
@@ -155,6 +159,7 @@ app.post("/:date/:workout/update",function(req,res){
 
 });
 
+//refactored
 app.delete("/:date_workout",function(req,res){
     var date_workout = req.params.date_workout;
 
@@ -168,21 +173,6 @@ app.delete("/:date_workout",function(req,res){
         }
     })
 });
-
-/*app.post("/deletekgrep",function(req,res){
-    //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
-    var date_workout = req.body.date_workout;
-
-    var deleteQuery = connection.query("DELETE FROM volume WHERE date_workout = ?",date_workout,function(err,rows){
-        if(err){
-            throw err;
-        }else{
-            console.log("deleted");
-            res.send("deleted");
-        }
-    })
-
-});*/
 
 
 app.get('/*',function(req,res){

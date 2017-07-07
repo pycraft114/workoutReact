@@ -64706,7 +64706,7 @@
 	exports.default = function (date, workout) {
 	    var date_workout = date + "_" + workout;
 
-	    var getKgRep = _axios2.default.post("/getkgrep", { date_workout: date_workout });
+	    var getKgRep = _axios2.default.get("/kg_rep/" + date_workout);
 
 	    return function (dispatch) {
 	        getKgRep.then(function (res) {

@@ -6,7 +6,7 @@ import axios from 'axios';
 export default function(date,workout){
     var date_workout = date+"_"+workout;
 
-    const getKgRep = axios.post("/getkgrep",{date_workout:date_workout});
+    const getKgRep = axios.get(`/kg_rep/${date_workout}`);
 
     return((dispatch) => {
         getKgRep.then((res) => {
