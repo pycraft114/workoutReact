@@ -11,10 +11,11 @@ export default function(date){
     console.log("date",resultDate);
 
 
-    var postReq = axios.post('/getworkout',{"date":resultDate});
+    var getReq = axios.get(`/selected_workouts/${resultDate}`);
 
     return(dispatch) => {
-        postReq.then((res) => {
+        getReq.then((res) => {
+            console.log(res.data);
             dispatch({type:"DATE_SELECTED", date: resultDate, response:res.data})
         })
     };

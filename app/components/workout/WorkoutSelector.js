@@ -10,7 +10,7 @@ import { DropdownButton, MenuItem} from 'react-bootstrap';
 
 import action_selectWorkout from '../../actions/action_selectWorkout';
 
-
+//this component is reusable
 class WorkoutSelector extends Component{
 
     render(){

@@ -125,7 +125,7 @@ class ListContainer extends Component{
                 <div className="list-container">
                     <Switch>
                         <Route exact path="/" component={WorkoutContainer}/>
-                        <Route path="/:date/:workout" component={VolumeContainer}/>
+                        <Route exact path="/:date/:workout" component={VolumeContainer}/>
                     </Switch>
                 </div>
             </BrowserRouter>

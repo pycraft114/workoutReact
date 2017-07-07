@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
     kg:reducer_kg,
     rep:reducer_rep,
     kgRepList:reducer_kgRepList,
-    workoutOptions:reducer_workoutOptions
+    workoutOptions:reducer_workoutOptions,
 });
 //==> state{books:blah,
 //          activeBook:blah}

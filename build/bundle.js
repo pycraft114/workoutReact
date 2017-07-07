@@ -92,7 +92,7 @@
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRedux.Provider,
 	    { store: (0, _redux.createStore)(_index2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default)) },
-	    _react2.default.createElement(_GraphContainer2.default, null)
+	    _react2.default.createElement(_ListContainer2.default, null)
 	), document.querySelector('.container'));
 
 /***/ }),
@@ -38220,7 +38220,7 @@
 	                        _reactRouterDom.Switch,
 	                        null,
 	                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _WorkoutContainer2.default }),
-	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/:date/:workout', component: _VolumeContainer2.default })
+	                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/:date/:workout', component: _VolumeContainer2.default })
 	                    )
 	                )
 	            );
@@ -44980,6 +44980,7 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	//This Component can be only view rendering component which could be implemented by function.
 
+	//this component is reusable
 	var WorkoutSelector = function (_Component) {
 	    _inherits(WorkoutSelector, _Component);
 
@@ -64569,7 +64570,7 @@
 	    var newArr = [].concat(_toConsumableArray(prevWorkout), [selectedWorkout]);
 	    var uniqeArr = [].concat(_toConsumableArray(new Set(newArr)));
 
-	    var saveReq = _axios2.default.post("/updateworkout", { "date": date, "selected_workout": uniqeArr });
+	    var saveReq = _axios2.default.post("/updateworkout", { "date": date, "selected_workouts": uniqeArr });
 
 	    return function (dispatch) {
 	        saveReq.then(function (res) {
@@ -65138,10 +65139,11 @@
 	    var resultDate = year.concat("-", month, "-", day);
 	    console.log("date", resultDate);
 
-	    var postReq = _axios2.default.post('/getworkout', { "date": resultDate });
+	    var getReq = _axios2.default.get("/selected_workouts/" + resultDate);
 
 	    return function (dispatch) {
-	        postReq.then(function (res) {
+	        getReq.then(function (res) {
+	            console.log(res.data);
 	            dispatch({ type: "DATE_SELECTED", date: resultDate, response: res.data });
 	        });
 	    };
@@ -65157,7 +65159,7 @@
 /* 670 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -65190,12 +65192,36 @@
 	    }
 
 	    _createClass(GraphContainer, [{
-	        key: "render",
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var ctx = document.getElementById('myChart').getContext('2d');
+	            console.log(ctx);
+	            var chart = new Chart(ctx, {
+	                // The type of chart we want to create
+	                type: 'line',
+
+	                // The data for our dataset
+	                data: {
+	                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+	                    datasets: [{
+	                        label: "My First dataset",
+	                        backgroundColor: 'rgb(255, 99, 132)',
+	                        borderColor: 'rgb(255, 99, 132)',
+	                        data: [0, 10, 5, 2, 20, 30, 45]
+	                    }]
+	                },
+
+	                // Configuration options go here
+	                options: {}
+	            });
+	        }
+	    }, {
+	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                "div",
-	                { className: "haha" },
-	                _react2.default.createElement("canvas", { id: "myChart" })
+	                'div',
+	                { className: 'haha' },
+	                _react2.default.createElement('canvas', { id: 'myChart' })
 	            );
 	        }
 	    }]);
@@ -65204,28 +65230,6 @@
 	}(_react.Component);
 
 	exports.default = GraphContainer;
-
-
-	var ctx = document.getElementById('myChart').getContext('2d');
-	console.log(ctx);
-	var chart = new Chart(ctx, {
-	    // The type of chart we want to create
-	    type: 'line',
-
-	    // The data for our dataset
-	    data: {
-	        labels: ["January", "February", "March", "April", "May", "June", "July"],
-	        datasets: [{
-	            label: "My First dataset",
-	            backgroundColor: 'rgb(255, 99, 132)',
-	            borderColor: 'rgb(255, 99, 132)',
-	            data: [0, 10, 5, 2, 20, 30, 45]
-	        }]
-	    },
-
-	    // Configuration options go here
-	    options: {}
-	});
 
 /***/ }),
 /* 671 */
