@@ -2,15 +2,16 @@
  * Created by chanwoopark on 2017. 6. 29..
  */
 import React,{Component} from 'react';
-import WorkoutSelector from './WorkoutSelector';
-import SelectedWorkout from './SelectedWorkout';
 import DatePicker from 'react-datepicker';
 import {bindActionCreators} from 'redux';
 
 import {connect} from 'react-redux';
-import action_selectDate from '../../actions/action_selectDate';
 
+import action_selectDate from '../../actions/action_selectDate';
 import action_selectWorkout from '../../actions/action_selectWorkout';
+
+import SelectedWorkout from './SelectedWorkout';
+import Selector from '../../components/Selector';
 
 
 
@@ -39,22 +40,44 @@ class WorkoutContainer extends Component{
                             )
                         })
                     }
-                    <WorkoutSelector/>
+                    <Selector
+                        title="Workout"
+                        options={this.props.workoutOptions}
+                        onSelect={
+                            (evtKey) => {
+                                this.props.action_selectWorkout(
+                                    evtKey,
+                                    this.props.selectedDate,
+                                    this.props.selectedWorkouts
+                                )
+                            }
+                        }
+                    />
                 </div>
             </div>
 
         )
     }
 }
+/*
+Selector에게 넘겨줘야할것
+title,onSelect action,option
+*/
+
 
 function mapStateToProps(state){
     return{
-        selectedWorkouts:state.selectedWorkouts
+        selectedWorkouts:state.selectedWorkouts,
+        selectedDate:state.selectedDate,
+        workoutOptions:state.workoutOptions
     };
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({action_selectDate:action_selectDate},dispatch);
+    return bindActionCreators({
+        action_selectDate,
+        action_selectWorkout
+    },dispatch);
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(WorkoutContainer);

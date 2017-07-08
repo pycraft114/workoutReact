@@ -5,7 +5,7 @@ import React from 'react';
 
 import {ArrowLeft,ArrowRight,Dots, Slides } from 'react-infinite-slide';
 
-import SubmitForm from './SubmitForm';
+import SubmitForm from '../components/SubmitForm';
 
 
 export default class LoginSignUpPage extends React.Component{

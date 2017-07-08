@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var mysqlData = require('./mysqlData.json');
 var mysql = require('mysql');
-const port = process.env.PORT || 3000;
+
 
 
 
@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-app.listen(port,function(){
+app.listen(3000,function(){
     console.log("sever start on port 3000")
 });
 
@@ -62,8 +62,28 @@ app.put("/selected_workouts/:date",function(req,res){
         })
 });
 
+app.put("/kg_rep/:date_workout",function(req,res){
+    //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
+    var volumeList = JSON.stringify(req.body);
+    var date_workout = req.params.date_workout;
 
-//-------------------------------------------------------------
+
+    var query = "INSERT INTO volume (date_workout,kg_rep) VALUES (?,?) ON DUPLICATE KEY UPDATE kg_rep = ?";
+    var value = [date_workout,volumeList,volumeList];
+    query = mysql.format(query,value);
+
+    var saveQuery = connection.query(query,function(err,rows){
+        if(err){
+            throw err;
+        }else{
+            res.send("kg_rep saved");
+        }
+    })
+
+
+});
+
+
 /*
 얘네둘 좀더 범용적으로 만들지, 직관적으로 url나눌지 고민해봐야함
 더 범용적으로 만들경우 클라이언트에서 post요청 처리할때 알아야 할게 많음
@@ -94,6 +114,7 @@ app.get("/selected_workouts/:date",function(req,res){
     //res.send("called");
 
 });
+
 //refactored
 app.get("/kg_rep/:date_workout",function(req,res){
     var date_workout = req.params.date_workout;
@@ -114,54 +135,6 @@ app.get("/kg_rep/:date_workout",function(req,res){
     })
 
 });
-
-
-//-----------------------------------------------------------------------------
-
-//하나의 url로 req에 따라 각기 다른 역할 수행 하도록
-
-//refactored
-app.put("/kg_rep/:date_workout",function(req,res){
-    //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
-    var volumeList = JSON.stringify(req.body);
-    var date_workout = req.params.date_workout;
-
-
-    var query = "INSERT INTO volume (date_workout,kg_rep) VALUES (?,?) ON DUPLICATE KEY UPDATE kg_rep = ?";
-    var value = [date_workout,volumeList,volumeList];
-    query = mysql.format(query,value);
-
-    var saveQuery = connection.query(query,function(err,rows){
-        if(err){
-            throw err;
-        }else{
-            res.send("kg_rep saved");
-        }
-    })
-
-
-});
-
-/*app.post("/:date/:workout/update",function(req,res){
-    //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
-    var volumeList = JSON.stringify(req.body);
-    console.log("volumeList",volumeList);
-    var date_workout = req.params.date+"_"+req.params.workout;
-
-
-    var query = "INSERT INTO volume (date_workout,kg_rep) VALUES (?,?) ON DUPLICATE KEY UPDATE kg_rep = ?";
-    var value = [date_workout,volumeList,volumeList];
-    query = mysql.format(query,value);
-
-    var saveQuery = connection.query(query,function(err,rows){
-        if(err){
-            throw err;
-        }else{
-            res.send("kg_rep saved");
-        }
-    })
-
-});*/
 
 //refactored
 app.delete("/:date_workout",function(req,res){

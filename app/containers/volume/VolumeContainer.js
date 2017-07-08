@@ -2,13 +2,14 @@
  * Created by chanwoopark on 2017. 6. 29..
  */
 import React,{Component} from 'react';
-import axios from 'axios';
-import KgRep from './KgRep';
-import action_typeKgRep from '../../actions/action_typeKgRep';
-import action_sendKgRep from '../../actions/action_sendKgRep';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import action_typeKgRep from '../../actions/action_typeKgRep';
+import action_sendKgRep from '../../actions/action_sendKgRep';
+
+import KgRep from './KgRep';
 
 class VolumeContainer extends Component{
     componentDidMount(){

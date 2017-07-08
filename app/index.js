@@ -7,9 +7,9 @@ import thunk from 'redux-thunk';
 
 
 /////
-import LoginSignUpPage from './components/LoginSignUpPage';
-import ListContainer from './components/ListContainer';
-import GraphContainer from './components/graph/GraphContainer';
+import LoginSignUpPage from './containers/LoginSignUpPage';
+import ListContainer from './containers/ListContainer';
+import GraphContainer from './containers/graph/GraphContainer';
 /////
 
 

@@ -2,13 +2,13 @@
  * Created by chanwoopark on 2017. 6. 26..
  */
 //This Component can be only view rendering component which could be implemented by function.
-
+//재사용성 더 고려해볼것
 import React,{Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { DropdownButton, MenuItem} from 'react-bootstrap';
 
-import action_selectWorkout from '../../actions/action_selectWorkout';
+import action_selectWorkout from '../actions/action_selectWorkout';
 
 //this component is reusable
 class WorkoutSelector extends Component{

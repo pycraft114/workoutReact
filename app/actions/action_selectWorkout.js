@@ -4,9 +4,8 @@
 import axios from 'axios';
 
 
-export default function(selectedWorkout,date,prevWorkout){
-
-    let newArr = [...prevWorkout,selectedWorkout];
+export default function(selectedWorkout,date,prevWorkouts){
+    let newArr = [...prevWorkouts,selectedWorkout];
     const selected_workouts = [...new Set(newArr)];
 
     const saveReq = axios.put(`/selected_workouts/${date}`,{selected_workouts});
