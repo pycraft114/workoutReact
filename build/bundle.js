@@ -44720,7 +44720,7 @@
 	    var newArr = [].concat(_toConsumableArray(prevVolumes));
 	    newArr.splice(idx, 1);
 
-	    _axios2.default.put("/volume/" + date_workout, newArr);
+	    _axios2.default.put("/kg_rep/" + date_workout, newArr);
 
 	    return {
 	        type: "VOL_DELETE_CLICKED",
@@ -45440,7 +45440,7 @@
 	    var newArr = [].concat(_toConsumableArray(prevWorkouts));
 	    newArr.splice(idx, 1);
 
-	    var saveReq = _axios2.default.put("/workoutList/" + date, { "selected_workouts": newArr });
+	    var saveReq = _axios2.default.put("/selected_workouts/" + date, { "selected_workouts": newArr });
 	    var delReq = _axios2.default.delete("/" + date_workout);
 
 	    return function (dispatch) {

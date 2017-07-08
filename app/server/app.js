@@ -67,18 +67,29 @@ app.put("/kg_rep/:date_workout",function(req,res){
     var volumeList = JSON.stringify(req.body);
     var date_workout = req.params.date_workout;
 
+    if(volumeList !== "[]"){
+        var query = "INSERT INTO volume (date_workout,kg_rep) VALUES (?,?) ON DUPLICATE KEY UPDATE kg_rep = ?";
+        var value = [date_workout,volumeList,volumeList];
+        query = mysql.format(query,value);
 
-    var query = "INSERT INTO volume (date_workout,kg_rep) VALUES (?,?) ON DUPLICATE KEY UPDATE kg_rep = ?";
-    var value = [date_workout,volumeList,volumeList];
-    query = mysql.format(query,value);
+        var saveQuery = connection.query(query,function(err,rows){
+            if(err){
+                throw err;
+            }else{
+                res.send("kg_rep saved");
+            }
+        })
+    }else{
+        var deleteQuery = connection.query("DELETE FROM volume WHERE date_workout = ?",date_workout,function(err){
+            if(err){
+                throw err;
+            }else{
+                res.send("volume row deleted");
+            }
+        })
+    }
 
-    var saveQuery = connection.query(query,function(err,rows){
-        if(err){
-            throw err;
-        }else{
-            res.send("kg_rep saved");
-        }
-    })
+
 
 
 });
