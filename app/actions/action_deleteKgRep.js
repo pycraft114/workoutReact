@@ -9,7 +9,7 @@ export default function(date,workout,idx,prevVolumes){
     var newArr = [...prevVolumes];
     newArr.splice(idx,1);
 
-    axios.put(`/volume/${date_workout}`,newArr);
+    axios.put(`/kg_rep/${date_workout}`,newArr);
 
     return{
         type:"VOL_DELETE_CLICKED",

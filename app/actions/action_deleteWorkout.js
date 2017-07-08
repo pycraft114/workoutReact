@@ -11,7 +11,7 @@ export default function(date,idx,prevWorkouts,currWorkout){
     var newArr = [...prevWorkouts];
     newArr.splice(idx,1);
 
-    const saveReq = axios.put(`/workoutList/${date}`,{"selected_workouts":newArr});
+    const saveReq = axios.put(`/selected_workouts/${date}`,{"selected_workouts":newArr});
     const delReq = axios.delete(`/${date_workout}`);
 
     return (dispatch) => {
