@@ -18,7 +18,7 @@ require('./style/WorkoutList.css');
 
 ReactDOM.render(
     <Provider store={createStore(reducers,applyMiddleware(thunk))}>
-        <ListContainer/>
+        <GraphContainer/>
     </Provider>
     , document.querySelector('.container')
 );

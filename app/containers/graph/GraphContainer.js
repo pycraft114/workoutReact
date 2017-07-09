@@ -2,13 +2,16 @@
  * Created by chanwoopark on 2017. 7. 6..
  */
 import React,{Component} from 'react';
+import { connect } from 'react-redux';
+import Selector from '../../components/Selector';
+import action_clickOption from '../../actions/action_clickOption';
+import {bindActionCreators} from 'redux';
 
-
-export default class GraphContainer extends Component{
+ class GraphContainer extends Component{
     constructor(props){
         super(props)
     }
-    componentDidMount(){
+    componentDidUpdate(){
         var ctx = document.getElementById('myChart').getContext('2d');
         console.log(ctx);
         var chart = new Chart(ctx, {
@@ -17,12 +20,12 @@ export default class GraphContainer extends Component{
 
             // The data for our dataset
             data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                labels: this.props.datesForChart,
                 datasets: [{
                     label: "My First dataset",
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
-                    data: [0, 10, 5, 2, 20, 30, 45],
+                    data: this.props.volumesForChart,
                 }]
             },
 
@@ -35,6 +38,17 @@ export default class GraphContainer extends Component{
         return(
             <div className="haha">
                 <canvas id="myChart"></canvas>
+                <Selector
+                    id="option-selector"
+                    title="Option"
+                    options={this.props.workoutOptions}
+                    onSelect={
+                        (evtKey) => {
+                            this.props.action_clickOption(evtKey)
+                        }
+                    }
+                />
+                {this.props.datesForChart}
             </div>
         )
 
@@ -42,3 +56,20 @@ export default class GraphContainer extends Component{
 
 }
 
+function mapStateToProps(state){
+    return{
+        selectedWorkouts:state.selectedWorkouts,
+        selectedDate:state.selectedDate,
+        workoutOptions:state.workoutOptions,
+        datesForChart:state.datesForChart,
+        volumesForChart:state.volumesForChart
+    };
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({
+        action_clickOption
+    },dispatch);
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(GraphContainer);

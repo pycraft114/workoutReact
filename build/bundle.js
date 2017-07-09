@@ -92,7 +92,7 @@
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRedux.Provider,
 	    { store: (0, _redux.createStore)(_index2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default)) },
-	    _react2.default.createElement(_ListContainer2.default, null)
+	    _react2.default.createElement(_GraphContainer2.default, null)
 	), document.querySelector('.container'));
 
 /***/ }),
@@ -37773,7 +37773,6 @@
 
 	  switch (action.type) {
 	    case "OPTION_CLICKED":
-	      console.log(action.dates);
 	      return action.dates;
 	  }
 	  return state;
@@ -44864,8 +44863,6 @@
 	        value: function render() {
 	            var _this2 = this;
 
-	            console.log("haha", this.props.datesForChart);
-	            console.log("hello", this.props.volumesForChart);
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'workout-container' },
@@ -44897,14 +44894,6 @@
 	                        options: this.props.workoutOptions,
 	                        onSelect: function onSelect(evtKey) {
 	                            _this2.props.action_selectWorkout(evtKey, _this2.props.selectedDate, _this2.props.selectedWorkouts);
-	                        }
-	                    }),
-	                    _react2.default.createElement(_Selector2.default, {
-	                        id: 'option-selector',
-	                        title: 'Option',
-	                        options: this.props.workoutOptions,
-	                        onSelect: function onSelect(evtKey) {
-	                            _this2.props.action_clickOption(evtKey);
 	                        }
 	                    })
 	                )
@@ -65161,6 +65150,18 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRedux = __webpack_require__(159);
+
+	var _Selector = __webpack_require__(420);
+
+	var _Selector2 = _interopRequireDefault(_Selector);
+
+	var _action_clickOption = __webpack_require__(416);
+
+	var _action_clickOption2 = _interopRequireDefault(_action_clickOption);
+
+	var _redux = __webpack_require__(165);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65182,8 +65183,8 @@
 	    }
 
 	    _createClass(GraphContainer, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
 	            var ctx = document.getElementById('myChart').getContext('2d');
 	            console.log(ctx);
 	            var chart = new Chart(ctx, {
@@ -65192,12 +65193,12 @@
 
 	                // The data for our dataset
 	                data: {
-	                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+	                    labels: this.props.datesForChart,
 	                    datasets: [{
 	                        label: "My First dataset",
 	                        backgroundColor: 'rgb(255, 99, 132)',
 	                        borderColor: 'rgb(255, 99, 132)',
-	                        data: [0, 10, 5, 2, 20, 30, 45]
+	                        data: this.props.volumesForChart
 	                    }]
 	                },
 
@@ -65208,10 +65209,21 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'haha' },
-	                _react2.default.createElement('canvas', { id: 'myChart' })
+	                _react2.default.createElement('canvas', { id: 'myChart' }),
+	                _react2.default.createElement(_Selector2.default, {
+	                    id: 'option-selector',
+	                    title: 'Option',
+	                    options: this.props.workoutOptions,
+	                    onSelect: function onSelect(evtKey) {
+	                        _this2.props.action_clickOption(evtKey);
+	                    }
+	                }),
+	                this.props.datesForChart
 	            );
 	        }
 	    }]);
@@ -65219,7 +65231,23 @@
 	    return GraphContainer;
 	}(_react.Component);
 
-	exports.default = GraphContainer;
+	function mapStateToProps(state) {
+	    return {
+	        selectedWorkouts: state.selectedWorkouts,
+	        selectedDate: state.selectedDate,
+	        workoutOptions: state.workoutOptions,
+	        datesForChart: state.datesForChart,
+	        volumesForChart: state.volumesForChart
+	    };
+	}
+
+	function mapDispatchToProps(dispatch) {
+	    return (0, _redux.bindActionCreators)({
+	        action_clickOption: _action_clickOption2.default
+	    }, dispatch);
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(GraphContainer);
 
 /***/ }),
 /* 674 */

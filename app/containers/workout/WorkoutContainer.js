@@ -57,16 +57,6 @@ class WorkoutContainer extends Component{
                             }
                         }
                     />
-                    <Selector
-                        id="option-selector"
-                        title="Option"
-                        options={this.props.workoutOptions}
-                        onSelect={
-                            (evtKey) => {
-                                this.props.action_clickOption(evtKey)
-                            }
-                        }
-                    />
                 </div>
             </div>
 
