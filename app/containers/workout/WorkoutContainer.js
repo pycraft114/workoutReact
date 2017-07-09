@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 
 import action_selectDate from '../../actions/action_selectDate';
 import action_selectWorkout from '../../actions/action_selectWorkout';
+import action_clickOption from '../../actions/action_clickOption';
 
 import SelectedWorkout from './SelectedWorkout';
 import Selector from '../../components/Selector';
@@ -17,6 +18,7 @@ import Selector from '../../components/Selector';
 
 
 class WorkoutContainer extends Component{
+
     render(){
         return(
             <div className="workout-container">
@@ -55,12 +57,16 @@ class WorkoutContainer extends Component{
                             }
                         }
                     />
-                    <button
-                        onClick={function(){
-                            var a = axios.get('/volumes/squat');
-                            a.then((res) => {console.log(res.data.volumes)});
-                        }}
-                    >haha</button>
+                    <Selector
+                        id="option-selector"
+                        title="Option"
+                        options={this.props.workoutOptions}
+                        onSelect={
+                            (evtKey) => {
+                                this.props.action_clickOption(evtKey)
+                            }
+                        }
+                    />
                 </div>
             </div>
 
@@ -77,14 +83,17 @@ function mapStateToProps(state){
     return{
         selectedWorkouts:state.selectedWorkouts,
         selectedDate:state.selectedDate,
-        workoutOptions:state.workoutOptions
+        workoutOptions:state.workoutOptions,
+        datesForChart:state.datesForChart,
+        volumesForChart:state.volumesForChart
     };
 }
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({
         action_selectDate,
-        action_selectWorkout
+        action_selectWorkout,
+        action_clickOption
     },dispatch);
 }
 
