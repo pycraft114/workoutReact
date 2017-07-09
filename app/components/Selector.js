@@ -13,7 +13,8 @@ export default class Selector extends Component{
     render(){
         return(
             <DropdownButton
-                id="dropdown-basic"
+                id={this.props.id}
+                bsStyle={this.props.bsStyle}
                 title={this.props.title}
                 onSelect={this.props.onSelect}
             >

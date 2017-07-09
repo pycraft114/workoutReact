@@ -44760,6 +44760,10 @@
 
 	var _redux = __webpack_require__(165);
 
+	var _axios = __webpack_require__(380);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
 	var _reactRedux = __webpack_require__(159);
 
 	var _action_selectDate = __webpack_require__(412);
@@ -44829,12 +44833,25 @@
 	                        });
 	                    }),
 	                    _react2.default.createElement(_Selector2.default, {
+	                        id: 'workout-selector',
 	                        title: 'Workout',
 	                        options: this.props.workoutOptions,
 	                        onSelect: function onSelect(evtKey) {
 	                            _this2.props.action_selectWorkout(evtKey, _this2.props.selectedDate, _this2.props.selectedWorkouts);
 	                        }
-	                    })
+	                    }),
+	                    _react2.default.createElement(
+	                        'button',
+	                        {
+	                            onClick: function onClick() {
+	                                var a = _axios2.default.get('/volumes/squat');
+	                                a.then(function (res) {
+	                                    console.log(res.data.volumes);
+	                                });
+	                            }
+	                        },
+	                        'haha'
+	                    )
 	                )
 	            );
 	        }
@@ -45506,7 +45523,8 @@
 	            return _react2.default.createElement(
 	                _reactBootstrap.DropdownButton,
 	                {
-	                    id: 'dropdown-basic',
+	                    id: this.props.id,
+	                    bsStyle: this.props.bsStyle,
 	                    title: this.props.title,
 	                    onSelect: this.props.onSelect
 	                },

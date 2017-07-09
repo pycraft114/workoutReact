@@ -88,10 +88,43 @@ app.put("/kg_rep/:date_workout",function(req,res){
             }
         })
     }
+});
 
+app.get('/volumes/:workout',function(req,res){
+    var workout = req.params.workout;
+    console.log(workout);
+    var getQuery = connection.query("SELECT * FROM volume WHERE date_workout LIKE ?",`%${workout}%`,function(err,result){
+        if(err){
+            throw err;
+        }else{
+            /*
+             [ RowDataPacket {
+             date_workout: '2017-7-4_Squat',
+             kg_rep: '[{"kg": "2", "rep": "1"}, {"kg": "20", "rep": "20"}, {"kg": "30", "rep": "30"}]' },
+             RowDataPacket {
+             date_workout: '2017-7-5_Squat',
+             kg_rep: '[{"kg": "5", "rep": "5"}]' },
+             RowDataPacket {
+             date_workout: '2017-7-6_Squat',
+             kg_rep: '[{"kg": "77", "rep": "77"}]' } ]
+              mysql로 부터 최초로 return되는 값
+            */
+            var volumes = [];
+            var dates = [];
+            result.map(function(currValue){
+                let totalVolume = 0;
 
-
-
+                var parsedKgRep = JSON.parse(currValue.kg_rep);
+                for(var i = 0; i < parsedKgRep.length; i++){
+                    totalVolume += (parsedKgRep[i].kg * parsedKgRep[i].rep );
+                }
+                dates.push(currValue.date_workout.split('_')[0]);
+                volumes.push(totalVolume);
+            });
+            var responseData = {dates,volumes};
+            res.send(responseData);
+        }
+    })
 });
 
 
@@ -150,8 +183,6 @@ app.get("/kg_rep/:date_workout",function(req,res){
 //refactored
 app.delete("/:date_workout",function(req,res){
     var date_workout = req.params.date_workout;
-
-
     var deleteQuery = connection.query("DELETE FROM volume WHERE date_workout = ?",date_workout,function(err,rows){
         if(err){
             throw err;
@@ -161,7 +192,6 @@ app.delete("/:date_workout",function(req,res){
         }
     })
 });
-
 
 app.get('/*',function(req,res){
     res.sendfile(path.resolve("../../build/index.html"));

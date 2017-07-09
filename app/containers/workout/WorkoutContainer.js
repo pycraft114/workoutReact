@@ -4,6 +4,7 @@
 import React,{Component} from 'react';
 import DatePicker from 'react-datepicker';
 import {bindActionCreators} from 'redux';
+import axios from 'axios';
 
 import {connect} from 'react-redux';
 
@@ -41,6 +42,7 @@ class WorkoutContainer extends Component{
                         })
                     }
                     <Selector
+                        id="workout-selector"
                         title="Workout"
                         options={this.props.workoutOptions}
                         onSelect={
@@ -53,6 +55,12 @@ class WorkoutContainer extends Component{
                             }
                         }
                     />
+                    <button
+                        onClick={function(){
+                            var a = axios.get('/volumes/squat');
+                            a.then((res) => {console.log(res.data.volumes)});
+                        }}
+                    >haha</button>
                 </div>
             </div>
 
