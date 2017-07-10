@@ -2,9 +2,10 @@
  * Created by chanwoopark on 2017. 6. 29..
  */
 import React,{Component} from 'react';
-import DatePicker from 'react-datepicker';
+import DatePicker from 'react-bootstrap-date-picker';
 import {bindActionCreators} from 'redux';
-import axios from 'axios';
+import {FormGroup,ControlLabel,HelpBlock,InputGroup} from 'react-bootstrap';
+
 
 import {connect} from 'react-redux';
 
@@ -18,17 +19,21 @@ import Selector from '../../components/Selector';
 
 
 class WorkoutContainer extends Component{
-
     render(){
         return(
             <div className="workout-container">
 
                 <div className="date-picker-container">
-                    <p className="date-picker-header">Date Picker</p>
-
-                    <DatePicker
-                        onChange={this.props.action_selectDate}
-                    />
+                    <InputGroup>
+                        <DatePicker
+                                id="example-datepicker"
+                                style={{width:'300px'}}
+                                clearButtonElement="x"
+                                showClearButton={true}
+                                dateFormat={"YYYY-MM-DD"}
+                                placeholder="Choose date"
+                        />
+                    </InputGroup>
                 </div>
 
                 <div className="workout-list">

@@ -6,15 +6,19 @@ import { connect } from 'react-redux';
 import Selector from '../../components/Selector';
 import action_clickOption from '../../actions/action_clickOption';
 import {bindActionCreators} from 'redux';
+var chart;
 
  class GraphContainer extends Component{
     constructor(props){
         super(props)
     }
+
     componentDidUpdate(){
+        if(chart){
+            chart.destroy();
+        }
         var ctx = document.getElementById('myChart').getContext('2d');
-        console.log(ctx);
-        var chart = new Chart(ctx, {
+        chart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'line',
 
@@ -37,7 +41,7 @@ import {bindActionCreators} from 'redux';
     render(){
         return(
             <div className="haha">
-                <canvas id="myChart"></canvas>
+                <canvas id="myChart">{this.props.datesForChart}</canvas>
                 <Selector
                     id="option-selector"
                     title="Option"
@@ -48,7 +52,6 @@ import {bindActionCreators} from 'redux';
                         }
                     }
                 />
-                {this.props.datesForChart}
             </div>
         )
 

@@ -9,6 +9,7 @@ export default function(selectedOption){
     return(
         (dispatch) => {
             getQuery.then((res) => {
+                console.log(res);
                 dispatch({
                     type:"OPTION_CLICKED",
                     dates:res.data.dates,

@@ -109,6 +109,7 @@ app.get('/volumes/:workout',function(req,res){
              kg_rep: '[{"kg": "77", "rep": "77"}]' } ]
               mysql로 부터 최초로 return되는 값
             */
+            console.log("result",result);
             var volumes = [];
             var dates = [];
             result.map(function(currValue){
