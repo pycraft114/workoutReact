@@ -21900,7 +21900,7 @@
 	});
 
 	exports.default = function () {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _moment2.default)();
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 	  var action = arguments[1];
 
 	  switch (action.type) {
@@ -44857,6 +44857,11 @@
 	    }
 
 	    _createClass(WorkoutContainer, [{
+	        key: 'shouldComponentUpdate',
+	        value: function shouldComponentUpdate() {
+	            return false;
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this2 = this;
@@ -44868,28 +44873,30 @@
 	                    'div',
 	                    { className: 'date-picker-container' },
 	                    _react2.default.createElement(
-	                        _reactBootstrap.InputGroup,
+	                        _reactBootstrap.FormGroup,
 	                        null,
-	                        _react2.default.createElement(_reactBootstrapDatePicker2.default, {
-	                            id: 'example-datepicker',
-	                            style: { width: '300px' },
-	                            clearButtonElement: 'x',
-	                            showClearButton: true,
-	                            dateFormat: "YYYY-MM-DD",
-	                            placeholder: 'Choose date'
-	                        })
+	                        _react2.default.createElement(
+	                            _reactBootstrap.InputGroup,
+	                            null,
+	                            _react2.default.createElement(_reactBootstrapDatePicker2.default, {
+	                                id: 'example-datepicker',
+	                                style: { width: '300px' },
+	                                clearButtonElement: 'x',
+	                                showClearButton: true,
+	                                dateFormat: "YYYY-MM-DD",
+	                                placeholder: 'Choose date',
+
+	                                onChange: function onChange(value, formatted) {
+	                                    _this2.props.action_selectDate(formatted);
+	                                }
+	                            })
+	                        )
 	                    )
 	                ),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'workout-list' },
-	                    this.props.selectedWorkouts.map(function (ele, idx) {
-	                        return _react2.default.createElement(_SelectedWorkout2.default, {
-	                            key: idx,
-	                            idx: idx,
-	                            selected: ele
-	                        });
-	                    }),
+	                    _react2.default.createElement(_SelectedWorkout2.default, null),
 	                    _react2.default.createElement(_Selector2.default, {
 	                        id: 'workout-selector',
 	                        title: 'Workout',
@@ -65110,18 +65117,14 @@
 	});
 
 	exports.default = function (date) {
-	    var year = date._d.getFullYear().toString();
-	    var month = (date._d.getMonth() + 1).toString();
-	    var day = date._d.getDate().toString();
-	    var resultDate = year.concat("-", month, "-", day);
-	    console.log("date", resultDate);
+	    console.log("date", date);
 
-	    var getReq = _axios2.default.get("/selected_workouts/" + resultDate);
+	    var getReq = _axios2.default.get("/selected_workouts/" + date);
 
 	    return function (dispatch) {
 	        getReq.then(function (res) {
 	            console.log(res.data);
-	            dispatch({ type: "DATE_SELECTED", date: resultDate, response: res.data });
+	            dispatch({ type: "DATE_SELECTED", date: date, response: res.data });
 	        });
 	    };
 	};
@@ -65250,30 +65253,36 @@
 	    _createClass(SelectedWorkout, [{
 	        key: 'render',
 	        value: function render() {
-	            var _this2 = this;
-
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'selected-workout-container' },
-	                _react2.default.createElement(
-	                    _reactRouterDom.Link,
-	                    { to: '/' + this.props.selectedDate + '/' + this.props.selected,
-	                        className: 'selected-workout-button',
-	                        onClick: function onClick() {
-	                            _this2.props.action_clickWorkout(_this2.props.selectedDate, _this2.props.selected);
-	                        }
-	                    },
-	                    this.props.selected
-	                ),
-	                _react2.default.createElement('img', {
-	                    src: './trash1600.png',
-	                    width: 28,
-	                    height: 28,
-	                    className: 'workout-delete-button',
-	                    onClick: function onClick() {
-	                        _this2.props.action_deleteWorkout(_this2.props.selectedDate, _this2.props.idx, _this2.props.selectedWorkouts, _this2.props.selected);
-	                    }
-	                })
+	                null,
+	                this.props.selectedWorkouts.map(function (ele, idx) {
+	                    var _this2 = this;
+
+	                    return _react2.default.createElement(
+	                        'div',
+	                        { className: 'selected-workout-container', key: idx },
+	                        _react2.default.createElement(
+	                            _reactRouterDom.Link,
+	                            { to: '/' + this.props.selectedDate + '/' + ele,
+	                                className: 'selected-workout-button',
+	                                onClick: function onClick() {
+	                                    _this2.props.action_clickWorkout(_this2.props.selectedDate, ele);
+	                                }
+	                            },
+	                            ele
+	                        ),
+	                        _react2.default.createElement('img', {
+	                            src: './trash1600.png',
+	                            width: 28,
+	                            height: 28,
+	                            className: 'workout-delete-button',
+	                            onClick: function onClick() {
+	                                _this2.props.action_deleteWorkout(_this2.props.selectedDate, idx, _this2.props.selectedWorkouts, ele);
+	                            }
+	                        })
+	                    );
+	                }.bind(this))
 	            );
 	        }
 	    }]);

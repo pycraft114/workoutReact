@@ -19,35 +19,37 @@ import Selector from '../../components/Selector';
 
 
 class WorkoutContainer extends Component{
+    shouldComponentUpdate(){
+        return false;
+    }
+
     render(){
         return(
             <div className="workout-container">
 
                 <div className="date-picker-container">
-                    <InputGroup>
-                        <DatePicker
-                                id="example-datepicker"
-                                style={{width:'300px'}}
-                                clearButtonElement="x"
-                                showClearButton={true}
-                                dateFormat={"YYYY-MM-DD"}
-                                placeholder="Choose date"
-                        />
-                    </InputGroup>
+                    <FormGroup>
+                        <InputGroup>
+                            <DatePicker
+                                    id="example-datepicker"
+                                    style={{width:'300px'}}
+                                    clearButtonElement="x"
+                                    showClearButton={true}
+                                    dateFormat={"YYYY-MM-DD"}
+                                    placeholder="Choose date"
+                                    
+                                    onChange={
+                                        (value,formatted) =>{
+                                            this.props.action_selectDate(formatted)
+                                        }
+                                    }
+                            />
+                        </InputGroup>
+                    </FormGroup>
                 </div>
 
                 <div className="workout-list">
-                    {
-                        this.props.selectedWorkouts.map(function(ele,idx){
-                            return(
-                                <SelectedWorkout
-                                    key={idx}
-                                    idx={idx}
-                                    selected={ele}
-                                />
-                            )
-                        })
-                    }
+                    <SelectedWorkout/>
                     <Selector
                         id="workout-selector"
                         title="Workout"

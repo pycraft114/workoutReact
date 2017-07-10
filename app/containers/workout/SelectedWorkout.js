@@ -16,40 +16,47 @@ import action_deleteWorkout from "../../actions/action_deleteWorkout";
 class SelectedWorkout extends Component{
     constructor(props){
         super(props);
+
     }
 
     render(){
         return(
-            <div className="selected-workout-container">
+            <div>
+                {this.props.selectedWorkouts.map(function(ele,idx){
+                    return(
+                        <div className="selected-workout-container" key={idx}>
 
-                <Link to={`/${this.props.selectedDate}/${this.props.selected}`}
-                      className="selected-workout-button"
-                      onClick={
-                          () => {this.props.action_clickWorkout(
-                              this.props.selectedDate,
-                              this.props.selected
-                          )}
-                      }
-                >
-                    {this.props.selected}
-                </Link>
+                            <Link to={`/${this.props.selectedDate}/${ele}`}
+                                  className="selected-workout-button"
+                                  onClick={
+                                      () => {this.props.action_clickWorkout(
+                                          this.props.selectedDate,
+                                          ele
+                                      )}
+                                  }
+                            >
+                                {ele}
+                            </Link>
 
-                <img
-                    src="./trash1600.png"
-                    width={28}
-                    height={28}
-                    className="workout-delete-button"
-                    onClick={() => {
-                        this.props.action_deleteWorkout(
-                            this.props.selectedDate,
-                            this.props.idx,
-                            this.props.selectedWorkouts,
-                            this.props.selected
-                        )
-                    }}
-                >
-                </img>
+                            <img
+                                src="./trash1600.png"
+                                width={28}
+                                height={28}
+                                className="workout-delete-button"
+                                onClick={() => {
+                                    this.props.action_deleteWorkout(
+                                        this.props.selectedDate,
+                                        idx,
+                                        this.props.selectedWorkouts,
+                                        ele
+                                    )
+                                }}
+                            >
+                            </img>
 
+                        </div>
+                    )
+                }.bind(this))}
             </div>
         )
     }
