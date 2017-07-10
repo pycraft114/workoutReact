@@ -44885,7 +44885,7 @@
 	                                showClearButton: true,
 	                                dateFormat: "YYYY-MM-DD",
 	                                placeholder: 'Choose date',
-
+	                                value: this.props.selectedDate,
 	                                onChange: function onChange(value, formatted) {
 	                                    _this2.props.action_selectDate(formatted);
 	                                }

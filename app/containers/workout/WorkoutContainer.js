@@ -37,7 +37,7 @@ class WorkoutContainer extends Component{
                                     showClearButton={true}
                                     dateFormat={"YYYY-MM-DD"}
                                     placeholder="Choose date"
-                                    
+                                    value={this.props.selectedDate}
                                     onChange={
                                         (value,formatted) =>{
                                             this.props.action_selectDate(formatted)
