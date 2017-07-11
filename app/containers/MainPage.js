@@ -7,9 +7,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import VolumeContainer from './volume/VolumeContainer';
 import WorkoutContainer from './workout/WorkoutContainer';
+import GraphContainer from './graph/GraphContainer';
+import DoughnutGraph from './graph/DoughnutGraph'
 
 
-export default class ListContainer extends Component{
+export default class MainPage extends Component{
     constructor(props){
         super(props);
 
@@ -17,7 +19,8 @@ export default class ListContainer extends Component{
     render(){
         return(
             <BrowserRouter>
-                <div className="list-container">
+                <div className="main-page">
+                    <GraphContainer/>
                     <Switch>
                         <Route exact path="/" component={WorkoutContainer}/>
                         <Route exact path="/:date/:workout" component={VolumeContainer}/>

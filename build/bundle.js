@@ -70,11 +70,11 @@
 
 	var _LoginSignUpPage2 = _interopRequireDefault(_LoginSignUpPage);
 
-	var _ListContainer = __webpack_require__(329);
+	var _MainPage = __webpack_require__(329);
 
-	var _ListContainer2 = _interopRequireDefault(_ListContainer);
+	var _MainPage2 = _interopRequireDefault(_MainPage);
 
-	var _GraphContainer = __webpack_require__(671);
+	var _GraphContainer = __webpack_require__(670);
 
 	var _GraphContainer2 = _interopRequireDefault(_GraphContainer);
 
@@ -83,16 +83,16 @@
 	/////
 
 
-	__webpack_require__(672);
+	__webpack_require__(673);
 
 	/////
 
-	__webpack_require__(674);
+	__webpack_require__(675);
 
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRedux.Provider,
 	    { store: (0, _redux.createStore)(_index2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default)) },
-	    _react2.default.createElement(_ListContainer2.default, null)
+	    _react2.default.createElement(_MainPage2.default, null)
 	), document.querySelector('.container'));
 
 /***/ }),
@@ -38147,6 +38147,14 @@
 
 	var _WorkoutContainer2 = _interopRequireDefault(_WorkoutContainer);
 
+	var _GraphContainer = __webpack_require__(670);
+
+	var _GraphContainer2 = _interopRequireDefault(_GraphContainer);
+
+	var _DoughnutGraph = __webpack_require__(672);
+
+	var _DoughnutGraph2 = _interopRequireDefault(_DoughnutGraph);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38158,16 +38166,16 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 
-	var ListContainer = function (_Component) {
-	    _inherits(ListContainer, _Component);
+	var MainPage = function (_Component) {
+	    _inherits(MainPage, _Component);
 
-	    function ListContainer(props) {
-	        _classCallCheck(this, ListContainer);
+	    function MainPage(props) {
+	        _classCallCheck(this, MainPage);
 
-	        return _possibleConstructorReturn(this, (ListContainer.__proto__ || Object.getPrototypeOf(ListContainer)).call(this, props));
+	        return _possibleConstructorReturn(this, (MainPage.__proto__ || Object.getPrototypeOf(MainPage)).call(this, props));
 	    }
 
-	    _createClass(ListContainer, [{
+	    _createClass(MainPage, [{
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -38175,7 +38183,8 @@
 	                null,
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'list-container' },
+	                    { className: 'main-page' },
+	                    _react2.default.createElement(_GraphContainer2.default, null),
 	                    _react2.default.createElement(
 	                        _reactRouterDom.Switch,
 	                        null,
@@ -38187,10 +38196,10 @@
 	        }
 	    }]);
 
-	    return ListContainer;
+	    return MainPage;
 	}(_react.Component);
 
-	exports.default = ListContainer;
+	exports.default = MainPage;
 
 /***/ }),
 /* 330 */
@@ -44824,15 +44833,11 @@
 
 	var _action_selectWorkout2 = _interopRequireDefault(_action_selectWorkout);
 
-	var _action_clickOption = __webpack_require__(666);
-
-	var _action_clickOption2 = _interopRequireDefault(_action_clickOption);
-
-	var _SelectedWorkout = __webpack_require__(667);
+	var _SelectedWorkout = __webpack_require__(666);
 
 	var _SelectedWorkout2 = _interopRequireDefault(_SelectedWorkout);
 
-	var _Selector = __webpack_require__(670);
+	var _Selector = __webpack_require__(669);
 
 	var _Selector2 = _interopRequireDefault(_Selector);
 
@@ -44930,8 +44935,7 @@
 	function mapDispatchToProps(dispatch) {
 	    return (0, _redux.bindActionCreators)({
 	        action_selectDate: _action_selectDate2.default,
-	        action_selectWorkout: _action_selectWorkout2.default,
-	        action_clickOption: _action_clickOption2.default
+	        action_selectWorkout: _action_selectWorkout2.default
 	    }, dispatch);
 	}
 
@@ -65172,37 +65176,6 @@
 /* 666 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	exports.default = function (selectedOption) {
-	    var getQuery = _axios2.default.get("/volumes/" + selectedOption);
-
-	    return function (dispatch) {
-	        getQuery.then(function (res) {
-	            console.log(res);
-	            dispatch({
-	                type: "OPTION_CLICKED",
-	                dates: res.data.dates,
-	                volumes: res.data.volumes
-	            });
-	        });
-	    };
-	};
-
-	var _axios = __webpack_require__(382);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 667 */
-/***/ (function(module, exports, __webpack_require__) {
-
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -65221,11 +65194,11 @@
 
 	var _redux = __webpack_require__(165);
 
-	var _action_clickWorkout = __webpack_require__(668);
+	var _action_clickWorkout = __webpack_require__(667);
 
 	var _action_clickWorkout2 = _interopRequireDefault(_action_clickWorkout);
 
-	var _action_deleteWorkout = __webpack_require__(669);
+	var _action_deleteWorkout = __webpack_require__(668);
 
 	var _action_deleteWorkout2 = _interopRequireDefault(_action_deleteWorkout);
 
@@ -65309,7 +65282,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SelectedWorkout);
 
 /***/ }),
-/* 668 */
+/* 667 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65337,7 +65310,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 669 */
+/* 668 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65377,7 +65350,7 @@
 	                                                                                                                                                                                                     */
 
 /***/ }),
-/* 670 */
+/* 669 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65387,6 +65360,10 @@
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _axios = __webpack_require__(382);
+
+	var _axios2 = _interopRequireDefault(_axios);
 
 	var _react = __webpack_require__(1);
 
@@ -65403,6 +65380,9 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 8..
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var haha = [1, 2, 34];
 
 	var Selector = function (_Component) {
 	    _inherits(Selector, _Component);
@@ -65444,7 +65424,7 @@
 	exports.default = Selector;
 
 /***/ }),
-/* 671 */
+/* 670 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65455,19 +65435,23 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _axios = __webpack_require__(382);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactRedux = __webpack_require__(159);
 
-	var _Selector = __webpack_require__(670);
+	var _Selector = __webpack_require__(669);
 
 	var _Selector2 = _interopRequireDefault(_Selector);
 
-	var _action_clickOption = __webpack_require__(666);
+	var _action_selectOption = __webpack_require__(671);
 
-	var _action_clickOption2 = _interopRequireDefault(_action_clickOption);
+	var _action_selectOption2 = _interopRequireDefault(_action_selectOption);
 
 	var _redux = __webpack_require__(165);
 
@@ -65490,34 +65474,36 @@
 	    function GraphContainer(props) {
 	        _classCallCheck(this, GraphContainer);
 
-	        return _possibleConstructorReturn(this, (GraphContainer.__proto__ || Object.getPrototypeOf(GraphContainer)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (GraphContainer.__proto__ || Object.getPrototypeOf(GraphContainer)).call(this, props));
+
+	        _this.initiateChart = _this.initiateChart.bind(_this);
+	        return _this;
 	    }
 
 	    _createClass(GraphContainer, [{
+	        key: 'initiateChart',
+	        value: function initiateChart() {
+	            var chart = new CanvasJS.Chart("chartContainer", {
+	                data: [{
+	                    type: "column",
+	                    dataPoints: [{ x: 10, y: 10 }, { x: 20, y: 15 }, { x: 30, y: 25 }, { x: 40, y: 30 }, { x: 50, y: 28 }]
+	                }]
+	            });
+
+	            chart.render();
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.initiateChart();
+	        }
+	    }, {
 	        key: 'componentDidUpdate',
 	        value: function componentDidUpdate() {
 	            if (chart) {
 	                chart.destroy();
 	            }
-	            var ctx = document.getElementById('myChart').getContext('2d');
-	            chart = new Chart(ctx, {
-	                // The type of chart we want to create
-	                type: 'line',
-
-	                // The data for our dataset
-	                data: {
-	                    labels: this.props.datesForChart,
-	                    datasets: [{
-	                        label: "My First dataset",
-	                        backgroundColor: 'rgb(255, 99, 132)',
-	                        borderColor: 'rgb(255, 99, 132)',
-	                        data: this.props.volumesForChart
-	                    }]
-	                },
-
-	                // Configuration options go here
-	                options: {}
-	            });
+	            this.initiateChart();
 	        }
 	    }, {
 	        key: 'render',
@@ -65527,17 +65513,13 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'haha' },
-	                _react2.default.createElement(
-	                    'canvas',
-	                    { id: 'myChart' },
-	                    this.props.datesForChart
-	                ),
+	                _react2.default.createElement('div', { id: 'chartContainer', style: { height: 300 + "px", width: 300 + "px" } }),
 	                _react2.default.createElement(_Selector2.default, {
 	                    id: 'option-selector',
 	                    title: 'Option',
 	                    options: this.props.workoutOptions,
 	                    onSelect: function onSelect(evtKey) {
-	                        _this2.props.action_clickOption(evtKey);
+	                        _this2.props.action_selectOption(evtKey);
 	                    }
 	                })
 	            );
@@ -65559,20 +65541,138 @@
 
 	function mapDispatchToProps(dispatch) {
 	    return (0, _redux.bindActionCreators)({
-	        action_clickOption: _action_clickOption2.default
+	        action_selectOption: _action_selectOption2.default
 	    }, dispatch);
 	}
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(GraphContainer);
 
 /***/ }),
+/* 671 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	exports.default = function (selectedOption) {
+	    var getQuery = _axios2.default.get("/volumes/" + selectedOption);
+
+	    return function (dispatch) {
+	        getQuery.then(function (res) {
+	            console.log(res);
+	            dispatch({
+	                type: "OPTION_CLICKED",
+	                dates: res.data.dates,
+	                volumes: res.data.volumes
+	            });
+	        });
+	    };
+	};
+
+	var _axios = __webpack_require__(382);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
 /* 672 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 11..
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var DoughnutGraph = function (_Component) {
+	    _inherits(DoughnutGraph, _Component);
+
+	    function DoughnutGraph(props) {
+	        _classCallCheck(this, DoughnutGraph);
+
+	        return _possibleConstructorReturn(this, (DoughnutGraph.__proto__ || Object.getPrototypeOf(DoughnutGraph)).call(this, props));
+	    }
+
+	    _createClass(DoughnutGraph, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var ctx = document.getElementById('myChart').getContext('2d');
+	            var chart = new Chart(ctx, {
+	                type: 'doughnut',
+	                data: {
+	                    labels: ["Red", "Blue", "Yellow"],
+	                    datasets: [{
+	                        data: [300, 50, 100],
+	                        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+	                        hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
+	                    }]
+	                },
+	                options: {
+	                    cutoutPercentage: 90,
+	                    responsive: false,
+	                    tooltips: {
+	                        callbacks: {
+	                            label: function label(tooltipItem, data) {
+	                                var allData = data.datasets[tooltipItem.datasetIndex].data;
+	                                var tooltipLabel = data.labels[tooltipItem.index];
+	                                var tooltipData = allData[tooltipItem.index];
+	                                var total = 0;
+	                                for (var i in allData) {
+	                                    total += allData[i];
+	                                }
+	                                var tooltipPercentage = Math.round(tooltipData / total * 100);
+	                                return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+	                            }
+	                        }
+	                    }
+	                }
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'canvas',
+	                { id: 'myChart' },
+	                'haha'
+	            );
+	        }
+	    }]);
+
+	    return DoughnutGraph;
+	}(_react.Component);
+
+	exports.default = DoughnutGraph;
+
+/***/ }),
+/* 673 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(673);
+	var content = __webpack_require__(674);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -65597,7 +65697,7 @@
 	}
 
 /***/ }),
-/* 673 */
+/* 674 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(376)(undefined);
@@ -65611,13 +65711,13 @@
 
 
 /***/ }),
-/* 674 */
+/* 675 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(675);
+	var content = __webpack_require__(676);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -65642,7 +65742,7 @@
 	}
 
 /***/ }),
-/* 675 */
+/* 676 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(376)(undefined);
@@ -65650,7 +65750,7 @@
 
 
 	// module
-	exports.push([module.id, ".list-container{\n    position:relative;\n    top:200px;\n    left:200px;\n    border:1px solid red;\n}\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n/*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*/\n\n.list-container{\n    padding:50px;\n}\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}", ""]);
+	exports.push([module.id, ".list-container{\n    position:relative;\n    top:200px;\n    left:200px;\n    border:1px solid red;\n}\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n/*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*/\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}", ""]);
 
 	// exports
 

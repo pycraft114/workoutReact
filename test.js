@@ -1,4 +1,3 @@
-var a = [1,2,"haha","2"];
-
-var str = `haha ${a}`;
-console.log(str);
+var a = new Date(2017,07,10);
+var b = a.getTime();
+console.log(a);

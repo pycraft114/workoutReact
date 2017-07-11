@@ -11,7 +11,6 @@ import {connect} from 'react-redux';
 
 import action_selectDate from '../../actions/action_selectDate';
 import action_selectWorkout from '../../actions/action_selectWorkout';
-import action_clickOption from '../../actions/action_clickOption';
 
 import SelectedWorkout from './SelectedWorkout';
 import Selector from '../../components/Selector';
@@ -90,7 +89,6 @@ function mapDispatchToProps(dispatch){
     return bindActionCreators({
         action_selectDate,
         action_selectWorkout,
-        action_clickOption
     },dispatch);
 }
 

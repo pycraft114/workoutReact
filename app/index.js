@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 
 /////
 import LoginSignUpPage from './containers/LoginSignUpPage';
-import ListContainer from './containers/ListContainer';
+import MainPage from './containers/MainPage';
 import GraphContainer from './containers/graph/GraphContainer';
 /////
 
@@ -18,7 +18,7 @@ require('./style/WorkoutList.css');
 
 ReactDOM.render(
     <Provider store={createStore(reducers,applyMiddleware(thunk))}>
-        <ListContainer/>
+        <MainPage/>
     </Provider>
     , document.querySelector('.container')
 );

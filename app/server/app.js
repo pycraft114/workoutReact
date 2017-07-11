@@ -160,6 +160,14 @@ app.get("/selected_workouts/:date",function(req,res){
 
 });
 
+/*app.get("/volume/workout",function(req,res){
+    var workoutOptions = req.query.workoutOptions;
+
+
+
+});*/
+
+
 //refactored
 app.get("/kg_rep/:date_workout",function(req,res){
     var date_workout = req.params.date_workout;

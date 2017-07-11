@@ -1,54 +1,62 @@
 /**
  * Created by chanwoopark on 2017. 7. 6..
  */
+import axios from 'axios';
+
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import Selector from '../../components/Selector';
-import action_clickOption from '../../actions/action_clickOption';
+import action_selectOption from '../../actions/action_selectOption';
 import {bindActionCreators} from 'redux';
 var chart;
 
  class GraphContainer extends Component{
     constructor(props){
-        super(props)
+        super(props);
+        this.initiateChart = this.initiateChart.bind(this);
+    }
+
+    initiateChart(){
+        var chart = new CanvasJS.Chart("chartContainer", {
+            data: [
+                {
+                    type: "column",
+                    dataPoints: [
+                        { x: 10, y: 10 },
+                        { x: 20, y: 15 },
+                        { x: 30, y: 25 },
+                        { x: 40, y: 30 },
+                        { x: 50, y: 28 }
+                    ]
+                }
+            ]
+        });
+
+        chart.render();
+    }
+
+    componentDidMount(){
+        this.initiateChart();
     }
 
     componentDidUpdate(){
         if(chart){
             chart.destroy();
         }
-        var ctx = document.getElementById('myChart').getContext('2d');
-        chart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'line',
-
-            // The data for our dataset
-            data: {
-                labels: this.props.datesForChart,
-                datasets: [{
-                    label: "My First dataset",
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: this.props.volumesForChart,
-                }]
-            },
-
-            // Configuration options go here
-            options: {}
-        });
+        this.initiateChart();
     }
 
     render(){
         return(
             <div className="haha">
-                <canvas id="myChart">{this.props.datesForChart}</canvas>
+                <div id="chartContainer" style={{height:300+"px", width: 300+"px"}}></div>
                 <Selector
                     id="option-selector"
                     title="Option"
                     options={this.props.workoutOptions}
                     onSelect={
                         (evtKey) => {
-                            this.props.action_clickOption(evtKey)
+                            this.props.action_selectOption(evtKey)
                         }
                     }
                 />
@@ -71,7 +79,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({
-        action_clickOption
+        action_selectOption
     },dispatch);
 }
 
