@@ -11,7 +11,7 @@ import reducer_selectedDate from "./reducer_selectedDate";
 import reducer_selectedWorkouts from "./reducer_selectedWorkouts";
 import reducer_workoutOptions from "./reducer_workoutOptions";
 import reducer_dataForCanvas from "./reducer_dataForCanvas";
-
+import reducer_dataForDoughnut from "./reducer_dataForDoughnut";
 
 
 //combineReducer tells the redux how to create application state
@@ -23,7 +23,8 @@ const rootReducer = combineReducers({
     rep:reducer_rep,
     kgRepList:reducer_kgRepList,
     workoutOptions:reducer_workoutOptions,
-    dataForCanvas:reducer_dataForCanvas
+    dataForCanvas:reducer_dataForCanvas,
+    dataForDoughnut:reducer_dataForDoughnut
 });
 //==> state{books:blah,
 //          activeBook:blah}

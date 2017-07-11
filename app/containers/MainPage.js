@@ -20,7 +20,7 @@ export default class MainPage extends Component{
         return(
             <BrowserRouter>
                 <div className="main-page">
-                    <GraphContainer/>
+                    <DoughnutGraph/>
                     <Switch>
                         <Route exact path="/" component={WorkoutContainer}/>
                         <Route exact path="/:date/:workout" component={VolumeContainer}/>

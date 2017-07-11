@@ -2,66 +2,79 @@
  * Created by chanwoopark on 2017. 7. 11..
  */
 import React,{Component} from 'react';
+import {connect} from 'react-redux';
 
-export default class DoughnutGraph extends Component{
+class DoughnutGraph extends Component{
     constructor(props){
         super(props)
     }
 
     componentDidMount(){
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var chart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    "Red",
-                    "Blue",
-                    "Yellow"
-                ],
-                datasets: [
+        var chart = new CanvasJS.Chart("chartContainer",
+            {
+                title:{
+                    text: "Days you have worked out",
+                    verticalAlign: 'top',
+                    horizontalAlign: 'left'
+                },
+                animationEnabled: true,
+                data: [
                     {
-                        data: [300, 50, 100],
-                        backgroundColor: [
-                            "#FF6384",
-                            "#36A2EB",
-                            "#FFCE56"
-                        ],
-                        hoverBackgroundColor: [
-                            "#FF6384",
-                            "#36A2EB",
-                            "#FFCE56"
+                        type: "doughnut",
+                        startAngle:270,
+                        toolTipContent: "{label}: <strong>#percent%</strong>",
+                        indexLabel: "{label} -{y}#percent%",
+                        innerRadius:"90%",
+                        dataPoints: [
+                            {  y: this.props.dataForDoughnut.daysWorkedOut, label: "Archives", color:"lightgreen"},
+                            {  y: this.props.dataForDoughnut.dayDifference-this.props.dataForDoughnut.daysWorkedOut, label: "Inbox" ,color:"blue"},
                         ]
                     }
                 ]
-            },
-            options: {
-                cutoutPercentage:90,
-                responsive:false,
-                tooltips: {
-                    callbacks: {
-                        label: function(tooltipItem, data) {
-                            var allData = data.datasets[tooltipItem.datasetIndex].data;
-                            var tooltipLabel = data.labels[tooltipItem.index];
-                            var tooltipData = allData[tooltipItem.index];
-                            var total = 0;
-                            for (var i in allData) {
-                                total += allData[i];
-                            }
-                            var tooltipPercentage = Math.round((tooltipData / total) * 100);
-                            return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
-                        }
+            });
+        chart.render();
+    }
+
+    componentDidUpdate(){
+        var chart = new CanvasJS.Chart("chartContainer",
+            {
+                title:{
+                    text: "Days you have worked out",
+                    verticalAlign: 'top',
+                    horizontalAlign: 'left'
+                },
+                animationEnabled: true,
+                data: [
+                    {
+                        type: "doughnut",
+                        startAngle:270,
+                        toolTipContent: "{label}: <strong>#percent%</strong>",
+                        indexLabel: "{label}-{y} #percent%",
+                        innerRadius:"90%",
+                        dataPoints: [
+                            {  y: this.props.dataForDoughnut.daysWorkedOut, label: "Archives", color:"lightgreen"},
+                            {  y: this.props.dataForDoughnut.dayDifference-this.props.dataForDoughnut.daysWorkedOut, label: "Inbox" ,color:"blue"},
+                        ]
                     }
-                }
-            }
-        });
+                ]
+            });
+        chart.render();
     }
 
     render(){
         return(
 
-                <canvas id="myChart">haha</canvas>
+            <div id="chartContainer" style={{height:300+"px", width: 100+"%"}}></div>
 
         )
     }
 
 }
+
+function mapStateToProps(state){
+    return({
+        dataForDoughnut:state.dataForDoughnut
+    })
+}
+
+export default connect(mapStateToProps,null)(DoughnutGraph)

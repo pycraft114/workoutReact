@@ -202,6 +202,40 @@ app.delete("/:date_workout",function(req,res){
     })
 });
 
+app.get("/days",function(req,res){
+    let getQuery = connection.query("SELECT date_workout FROM volume",function(err,results){
+        if (err){
+            throw err;
+        }
+
+        let hashMap = {};
+        for(let i = 0; i < results.length; i++){
+            let date = results[i].date_workout.split("_")[0];
+            hashMap[date] = true;
+        }
+
+        let responseData = {
+            startDate:results[0].date_workout.split("_")[0],
+            daysWorkedOut:Object.keys(hashMap).length
+        };
+
+        res.send(responseData);
+
+    })
+});
+/* returning data from sql
+[
+    RowDataPacket { date_workout: '2017-07-10_Bench Press' },
+    RowDataPacket { date_workout: '2017-07-12_Bench Press' },
+    RowDataPacket { date_workout: '2017-07-12_Squat' },
+    RowDataPacket { date_workout: '2017-07-13_Bench Press' },
+    RowDataPacket { date_workout: '2017-07-13_Dead Lift' },
+    RowDataPacket { date_workout: '2017-07-13_Example' }
+]
+    */
+
+
+
 app.get('/*',function(req,res){
     res.sendfile(path.resolve("../../build/index.html"));
 });
