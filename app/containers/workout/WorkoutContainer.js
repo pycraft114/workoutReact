@@ -68,7 +68,6 @@ class WorkoutContainer extends Component{
                             }
                         }
                     />
-                    <button onClick={this.props.action_DoughnutLoaded}>haha</button>
                 </div>
             </div>
 

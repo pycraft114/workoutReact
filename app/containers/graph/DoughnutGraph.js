@@ -9,34 +9,8 @@ class DoughnutGraph extends Component{
         super(props)
     }
 
-    componentDidMount(){
-        var chart = new CanvasJS.Chart("chartContainer",
-            {
-                title:{
-                    text: "Days you have worked out",
-                    verticalAlign: 'top',
-                    horizontalAlign: 'left'
-                },
-                animationEnabled: true,
-                data: [
-                    {
-                        type: "doughnut",
-                        startAngle:270,
-                        toolTipContent: "{label}: <strong>#percent%</strong>",
-                        indexLabel: "{label} -{y}#percent%",
-                        innerRadius:"90%",
-                        dataPoints: [
-                            {  y: this.props.dataForDoughnut.daysWorkedOut, label: "Archives", color:"lightgreen"},
-                            {  y: this.props.dataForDoughnut.dayDifference-this.props.dataForDoughnut.daysWorkedOut, label: "Inbox" ,color:"blue"},
-                        ]
-                    }
-                ]
-            });
-        chart.render();
-    }
-
     componentDidUpdate(){
-        var chart = new CanvasJS.Chart("chartContainer",
+        var chart = new CanvasJS.Chart("doughnutContainer",
             {
                 title:{
                     text: "Days you have worked out",
@@ -52,8 +26,8 @@ class DoughnutGraph extends Component{
                         indexLabel: "{label}-{y} #percent%",
                         innerRadius:"90%",
                         dataPoints: [
-                            {  y: this.props.dataForDoughnut.daysWorkedOut, label: "Archives", color:"lightgreen"},
-                            {  y: this.props.dataForDoughnut.dayDifference-this.props.dataForDoughnut.daysWorkedOut, label: "Inbox" ,color:"blue"},
+                            {y: this.props.dataForDoughnut.daysWorkedOut, label: "Days you have worked out", color:"green"},
+                            {y: this.props.dataForDoughnut.dayDifference-this.props.dataForDoughnut.daysWorkedOut, label: "Days you didn't" ,color:"lightgrey"},
                         ]
                     }
                 ]
@@ -64,7 +38,7 @@ class DoughnutGraph extends Component{
     render(){
         return(
 
-            <div id="chartContainer" style={{height:300+"px", width: 100+"%"}}></div>
+            <div id="doughnutContainer" style={{height:300+"px", width: 100+"%"}}></div>
 
         )
     }

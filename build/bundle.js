@@ -38193,7 +38193,8 @@
 	                        null,
 	                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _WorkoutContainer2.default }),
 	                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/:date/:workout', component: _VolumeContainer2.default })
-	                    )
+	                    ),
+	                    _react2.default.createElement(_GraphContainer2.default, null)
 	                )
 	            );
 	        }
@@ -44921,12 +44922,7 @@
 	                        onSelect: function onSelect(evtKey) {
 	                            _this2.props.action_selectWorkout(evtKey, _this2.props.selectedDate, _this2.props.selectedWorkouts);
 	                        }
-	                    }),
-	                    _react2.default.createElement(
-	                        'button',
-	                        { onClick: this.props.action_DoughnutLoaded },
-	                        'haha'
-	                    )
+	                    })
 	                )
 	            );
 	        }
@@ -65676,31 +65672,36 @@
 	        return _possibleConstructorReturn(this, (DoughnutGraph.__proto__ || Object.getPrototypeOf(DoughnutGraph)).call(this, props));
 	    }
 
-	    _createClass(DoughnutGraph, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var chart = new CanvasJS.Chart("chartContainer", {
-	                title: {
+	    /*componentDidMount(){
+	        var chart = new CanvasJS.Chart("chartContainer",
+	            {
+	                title:{
 	                    text: "Days you have worked out",
 	                    verticalAlign: 'top',
 	                    horizontalAlign: 'left'
 	                },
 	                animationEnabled: true,
-	                data: [{
-	                    type: "doughnut",
-	                    startAngle: 270,
-	                    toolTipContent: "{label}: <strong>#percent%</strong>",
-	                    indexLabel: "{label} -{y}#percent%",
-	                    innerRadius: "90%",
-	                    dataPoints: [{ y: this.props.dataForDoughnut.daysWorkedOut, label: "Archives", color: "lightgreen" }, { y: this.props.dataForDoughnut.dayDifference - this.props.dataForDoughnut.daysWorkedOut, label: "Inbox", color: "blue" }]
-	                }]
+	                data: [
+	                    {
+	                        type: "doughnut",
+	                        startAngle:270,
+	                        toolTipContent: "{label}: <strong>#percent%</strong>",
+	                        indexLabel: "{label} -{y}#percent%",
+	                        innerRadius:"90%",
+	                        dataPoints: [
+	                            {  y: this.props.dataForDoughnut.daysWorkedOut, label: "Archives", color:"lightgreen"},
+	                            {  y: this.props.dataForDoughnut.dayDifference-this.props.dataForDoughnut.daysWorkedOut, label: "Inbox" ,color:"blue"},
+	                        ]
+	                    }
+	                ]
 	            });
-	            chart.render();
-	        }
-	    }, {
+	        chart.render();
+	    }*/
+
+	    _createClass(DoughnutGraph, [{
 	        key: 'componentDidUpdate',
 	        value: function componentDidUpdate() {
-	            var chart = new CanvasJS.Chart("chartContainer", {
+	            var chart = new CanvasJS.Chart("doughnutContainer", {
 	                title: {
 	                    text: "Days you have worked out",
 	                    verticalAlign: 'top',
@@ -65713,7 +65714,7 @@
 	                    toolTipContent: "{label}: <strong>#percent%</strong>",
 	                    indexLabel: "{label}-{y} #percent%",
 	                    innerRadius: "90%",
-	                    dataPoints: [{ y: this.props.dataForDoughnut.daysWorkedOut, label: "Archives", color: "lightgreen" }, { y: this.props.dataForDoughnut.dayDifference - this.props.dataForDoughnut.daysWorkedOut, label: "Inbox", color: "blue" }]
+	                    dataPoints: [{ y: this.props.dataForDoughnut.daysWorkedOut, label: "Days you have worked out", color: "green" }, { y: this.props.dataForDoughnut.dayDifference - this.props.dataForDoughnut.daysWorkedOut, label: "Days you didn't", color: "lightgrey" }]
 	                }]
 	            });
 	            chart.render();
@@ -65721,7 +65722,7 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement('div', { id: 'chartContainer', style: { height: 300 + "px", width: 100 + "%" } });
+	            return _react2.default.createElement('div', { id: 'doughnutContainer', style: { height: 300 + "px", width: 100 + "%" } });
 	        }
 	    }]);
 

@@ -25,6 +25,7 @@ export default class MainPage extends Component{
                         <Route exact path="/" component={WorkoutContainer}/>
                         <Route exact path="/:date/:workout" component={VolumeContainer}/>
                     </Switch>
+                    <GraphContainer/>
                 </div>
             </BrowserRouter>
         )
