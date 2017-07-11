@@ -9,14 +9,25 @@ export default function(selectedOption){
     return(
         (dispatch) => {
             getQuery.then((res) => {
-                console.log(res);
+                let dates = res.data.dates;
+                let volumes = res.data.volumes;
+                let data = [];
+                for(let i = 0; i < dates.length; i++){
+                    data[i] = {x:i,y:volumes[i],label:dates[i]}
+                }
                 dispatch({
                     type:"OPTION_CLICKED",
-                    dates:res.data.dates,
-                    volumes:res.data.volumes
+                    dataForCanvas:data
                 })
             })
         }
     )
 
 }
+
+/*
+response structure
+res.data = [...]
+res.volumes = [...]
+both have same index
+*/

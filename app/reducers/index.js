@@ -10,8 +10,7 @@ import reducer_kgRepList from "./reducer_kgRepList";
 import reducer_selectedDate from "./reducer_selectedDate";
 import reducer_selectedWorkouts from "./reducer_selectedWorkouts";
 import reducer_workoutOptions from "./reducer_workoutOptions";
-import reducer_datesForChart from './reducer_datesForChart';
-import reducer_volumesForChart from './reducer_volumesForChart';
+import reducer_dataForCanvas from "./reducer_dataForCanvas";
 
 
 
@@ -24,8 +23,7 @@ const rootReducer = combineReducers({
     rep:reducer_rep,
     kgRepList:reducer_kgRepList,
     workoutOptions:reducer_workoutOptions,
-    datesForChart:reducer_datesForChart,
-    volumesForChart:reducer_volumesForChart
+    dataForCanvas:reducer_dataForCanvas
 });
 //==> state{books:blah,
 //          activeBook:blah}
