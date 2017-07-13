@@ -11,32 +11,28 @@ import SubmitForm from '../components/SubmitForm';
 export default class LoginSignUpPage extends React.Component{
     constructor(props){
         super(props);
+        
+        let formDatas={};
+        let inputIDs=["L-id","L-pw","S-id","S-pw","S-cf","S-em"];
 
-        let that = this;
-        let hashMap={};
-        let inputIdType=["L-id","L-pw","S-id","S-pw","S-cf","S-em"];
-
-        inputIdType.map(function(currType){
-            hashMap[currType] = function(val){
-                let obj = {};
-                obj[currType] = val;
-                this.setState(obj);
-            }.bind(that);
+        inputIDs.map(function(currEle){
+           formDatas[currEle] = null;
         });
-
-        this.state={
-            hashMap:hashMap
-        };
 
         this.onInputChange = this.onInputChange.bind(this);
         this.onButton = this.onButton.bind(this);
+
+        this.state={
+            formDatas:formDatas
+        };
     }
 
     onInputChange(evt){
         let inputId = evt.target.id;
         let value = evt.target.value;
-        //값을 입력할때마다 setState하는것 보다 버튼을 눌렀을때 value값을 가져오는게 낫지 않나?
-        this.state.hashMap[inputId](value);
+        let obj = Object.assign({},this.state.formDatas);
+        obj[inputId] = value;
+        this.setState({formDatas :obj});
     }
 
 
@@ -51,8 +47,7 @@ export default class LoginSignUpPage extends React.Component{
     /*
      props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
      props.button = {context : x ,evt : func}
-     props.inputTags
-     props.button을 넘겨줘야함
+     넘겨줘야함
      */
 
 

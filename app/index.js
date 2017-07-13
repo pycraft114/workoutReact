@@ -17,7 +17,7 @@ require('./style/MainPage.css');
 
 ReactDOM.render(
     <Provider store={createStore(reducers,applyMiddleware(thunk))}>
-        <MainPage/>
+        <LoginSignUpPage/>
     </Provider>
     , document.querySelector('.container')
 );

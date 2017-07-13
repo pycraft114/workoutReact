@@ -235,6 +235,8 @@ app.get("/days",function(req,res){
     */
 
 
+app.post("/signup",function(req,res){});
+
 
 app.get('/*',function(req,res){
     console.log("last get request called");

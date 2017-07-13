@@ -86,7 +86,7 @@
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRedux.Provider,
 	    { store: (0, _redux.createStore)(_index2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default)) },
-	    _react2.default.createElement(_MainPage2.default, null)
+	    _react2.default.createElement(_LoginSignUpPage2.default, null)
 	), document.querySelector('.container'));
 
 /***/ }),
@@ -37866,23 +37866,19 @@
 	        var _this = _possibleConstructorReturn(this, (LoginSignUpPage.__proto__ || Object.getPrototypeOf(LoginSignUpPage)).call(this, props));
 
 	        var that = _this;
-	        var hashMap = {};
-	        var inputIdType = ["L-id", "L-pw", "S-id", "S-pw", "S-cf", "S-em"];
+	        var formDatas = {};
+	        var inputIDs = ["L-id", "L-pw", "S-id", "S-pw", "S-cf", "S-em"];
 
-	        inputIdType.map(function (currType) {
-	            hashMap[currType] = function (val) {
-	                var obj = {};
-	                obj[currType] = val;
-	                this.setState(obj);
-	            }.bind(that);
+	        inputIDs.map(function (currEle) {
+	            formDatas[currEle] = null;
 	        });
-
-	        _this.state = {
-	            hashMap: hashMap
-	        };
 
 	        _this.onInputChange = _this.onInputChange.bind(_this);
 	        _this.onButton = _this.onButton.bind(_this);
+
+	        _this.state = {
+	            formDatas: formDatas
+	        };
 	        return _this;
 	    }
 
@@ -37891,8 +37887,9 @@
 	        value: function onInputChange(evt) {
 	            var inputId = evt.target.id;
 	            var value = evt.target.value;
-	            //값을 입력할때마다 setState하는것 보다 버튼을 눌렀을때 value값을 가져오는게 낫지 않나?
-	            this.state.hashMap[inputId](value);
+	            var obj = Object.assign({}, this.state.formDatas);
+	            obj[inputId] = value;
+	            this.setState({ formDatas: obj });
 	        }
 	    }, {
 	        key: 'onButton',
@@ -37905,8 +37902,7 @@
 	        /*
 	         props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
 	         props.button = {context : x ,evt : func}
-	         props.inputTags
-	         props.button을 넘겨줘야함
+	         넘겨줘야함
 	         */
 
 	    }, {
