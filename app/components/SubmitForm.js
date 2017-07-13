@@ -13,7 +13,7 @@ export default class SubmitForm extends Component{
     //props.button = {context : x ,evt : func}
     render(){
         return(
-            <div className="submit-form-container">
+            <div className="submit-form-container" autoComplete="off">
                 <form className="submit-form">
                     {
                         this.props.inputTags.map(function(currObj,index){
@@ -22,9 +22,10 @@ export default class SubmitForm extends Component{
                                     key={index}
                                     id={currObj.id}
                                     className="input"
-                                    type="text"
+                                    type={currObj.type || "text"}
                                     placeholder={currObj.placeholder}
                                     onChange={currObj.evt}
+                                    autoComplete="new-password"
                                 />
                             )
                         })

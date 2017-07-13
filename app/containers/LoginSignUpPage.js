@@ -114,15 +114,15 @@ export default class LoginSignUpPage extends React.Component{
                     <div>
                         <SubmitForm
                             inputTags={[{id:"L-id",placeholder:"Type your ID",evt:this.onInputChange},
-                                {id:"L-pw",placeholder:"Type your Password",evt:this.onInputChange}]}
+                                {id:"L-pw",placeholder:"Type your Password",evt:this.onInputChange,type:"password"}]}
                             button={{context:"LOGIN",evt:this.onLoginButton}}
                         />
                     </div>
                     <div>
                         <SubmitForm
                             inputTags={[{id:"S-id",placeholder:"Type your ID",evt:this.onInputChange},
-                                {id:"S-pw",placeholder:"Type your Password",evt:this.onInputChange},
-                                {id:"S-cf",placeholder:"Confirm Password",evt:this.onInputChange},
+                                {id:"S-pw",placeholder:"Type your Password",evt:this.onInputChange,type:"password"},
+                                {id:"S-cf",placeholder:"Confirm Password",evt:this.onInputChange,type:"password"},
                                 {id:"S-em",placeholder:"Type your Email",evt:this.onInputChange}]}
                             button={{context:"SIGN-UP",evt:this.onSignupButton}}
                         />

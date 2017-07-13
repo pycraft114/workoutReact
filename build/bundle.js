@@ -37979,7 +37979,7 @@
 	                        'div',
 	                        null,
 	                        _react2.default.createElement(_SubmitForm2.default, {
-	                            inputTags: [{ id: "L-id", placeholder: "Type your ID", evt: this.onInputChange }, { id: "L-pw", placeholder: "Type your Password", evt: this.onInputChange }],
+	                            inputTags: [{ id: "L-id", placeholder: "Type your ID", evt: this.onInputChange }, { id: "L-pw", placeholder: "Type your Password", evt: this.onInputChange, type: "password" }],
 	                            button: { context: "LOGIN", evt: this.onLoginButton }
 	                        })
 	                    ),
@@ -37987,7 +37987,7 @@
 	                        'div',
 	                        null,
 	                        _react2.default.createElement(_SubmitForm2.default, {
-	                            inputTags: [{ id: "S-id", placeholder: "Type your ID", evt: this.onInputChange }, { id: "S-pw", placeholder: "Type your Password", evt: this.onInputChange }, { id: "S-cf", placeholder: "Confirm Password", evt: this.onInputChange }, { id: "S-em", placeholder: "Type your Email", evt: this.onInputChange }],
+	                            inputTags: [{ id: "S-id", placeholder: "Type your ID", evt: this.onInputChange }, { id: "S-pw", placeholder: "Type your Password", evt: this.onInputChange, type: "password" }, { id: "S-cf", placeholder: "Confirm Password", evt: this.onInputChange, type: "password" }, { id: "S-em", placeholder: "Type your Email", evt: this.onInputChange }],
 	                            button: { context: "SIGN-UP", evt: this.onSignupButton }
 	                        })
 	                    )
@@ -39650,7 +39650,7 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                "div",
-	                { className: "submit-form-container" },
+	                { className: "submit-form-container", autoComplete: "off" },
 	                _react2.default.createElement(
 	                    "form",
 	                    { className: "submit-form" },
@@ -39659,9 +39659,10 @@
 	                            key: index,
 	                            id: currObj.id,
 	                            className: "input",
-	                            type: "text",
+	                            type: currObj.type || "text",
 	                            placeholder: currObj.placeholder,
-	                            onChange: currObj.evt
+	                            onChange: currObj.evt,
+	                            autoComplete: "new-password"
 	                        });
 	                    }),
 	                    _react2.default.createElement(
