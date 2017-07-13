@@ -4,6 +4,7 @@
 import React from 'react';
 
 import {ArrowLeft,ArrowRight,Dots, Slides } from 'react-infinite-slide';
+import axios from 'axios';
 
 import SubmitForm from '../components/SubmitForm';
 
@@ -11,7 +12,7 @@ import SubmitForm from '../components/SubmitForm';
 export default class LoginSignUpPage extends React.Component{
     constructor(props){
         super(props);
-        
+
         let formDatas={};
         let inputIDs=["L-id","L-pw","S-id","S-pw","S-cf","S-em"];
 
@@ -20,7 +21,8 @@ export default class LoginSignUpPage extends React.Component{
         });
 
         this.onInputChange = this.onInputChange.bind(this);
-        this.onButton = this.onButton.bind(this);
+        this.onLoginButton = this.onLoginButton.bind(this);
+        this.onSignupButton = this.onSignupButton.bind(this);
 
         this.state={
             formDatas:formDatas
@@ -36,10 +38,23 @@ export default class LoginSignUpPage extends React.Component{
     }
 
 
-    onButton(evt){
+    onLoginButton(evt){
         evt.preventDefault();
 
         console.log(this.state);
+    }
+
+    onSignupButton(evt){
+        evt.preventDefault();
+        console.log(this.state);
+        let inputValues = this.state.formDatas;
+
+        if(inputValues["S-id"]&&inputValues["S-em"]&&inputValues["S-cf"]&&inputValues["S-pw"]){
+            console.log("allwriten")
+        }else{
+            console.log("something empty");
+        }
+
     }
 
 
@@ -81,7 +96,7 @@ export default class LoginSignUpPage extends React.Component{
                         <SubmitForm
                             inputTags={[{id:"L-id",placeholder:"Type your ID",evt:this.onInputChange},
                                 {id:"L-pw",placeholder:"Type your Password",evt:this.onInputChange}]}
-                            button={{context:"LOGIN",evt:this.onButton}}
+                            button={{context:"LOGIN",evt:this.onLoginButton}}
                         />
                     </div>
                     <div>
@@ -90,7 +105,7 @@ export default class LoginSignUpPage extends React.Component{
                                 {id:"S-pw",placeholder:"Type your Password",evt:this.onInputChange},
                                 {id:"S-cf",placeholder:"Confirm Password",evt:this.onInputChange},
                                 {id:"S-em",placeholder:"Type your Email",evt:this.onInputChange}]}
-                            button={{context:"SIGN-UP",evt:this.onButton}}
+                            button={{context:"SIGN-UP",evt:this.onSignupButton}}
                         />
                     </div>
                 </Slides>
