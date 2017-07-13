@@ -241,13 +241,13 @@ app.post("/signup",function(req,res){
         if(err){
             throw err;
         }else if(results.length){
-            console.log("user already exist");
+            res.send("USER_EXIST");
         }else{
             let saveUser = connection.query("INSERT INTO user SET ?",{id:data.id,password:data.password,email:data.email},function(err,results){
                 if(err){
                     throw err;
                 }else{
-                    console.log("user saved");
+                    res.send("SIGNUP_SUCCESS");
                 }
             })
         }

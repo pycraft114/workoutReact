@@ -37881,7 +37881,8 @@
 	        _this.onSignupButton = _this.onSignupButton.bind(_this);
 
 	        _this.state = {
-	            formDatas: formDatas
+	            formDatas: formDatas,
+	            errorMsg: null
 	        };
 	        return _this;
 	    }
@@ -37905,22 +37906,33 @@
 	    }, {
 	        key: 'onSignupButton',
 	        value: function onSignupButton(evt) {
+	            var _this2 = this;
+
 	            evt.preventDefault();
 	            console.log(this.state);
 	            var inputValues = this.state.formDatas;
 
 	            if (inputValues["S-id"] && inputValues["S-em"] && inputValues["S-cf"] && inputValues["S-pw"]) {
 	                if (inputValues["S-pw"] === inputValues["S-cf"]) {
+
 	                    _axios2.default.post('/signup', {
 	                        id: inputValues["S-id"],
 	                        password: inputValues["S-pw"],
 	                        email: inputValues["S-em"]
+	                    }).then(function (res) {
+	                        if (res.data === "USER_EXIST") {
+	                            _this2.setState({ errorMsg: "User id already in use" });
+	                        } else if (res.data === "SIGNUP_SUCCESS") {
+	                            _this2.setState({ errorMsg: "Welcome to CONSISTENCY" });
+	                        }
 	                    });
 	                } else {
-	                    console.log("please confirm your password");
+	                    //"please confirm your password"
+	                    this.setState({ errorMsg: "Please confirm your password" });
 	                }
 	            } else {
-	                console.log("something empty");
+	                //something empty
+	                this.setState({ errorMsg: "Please fill out the blanks" });
 	            }
 	        }
 
@@ -37933,7 +37945,7 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-
+	            console.log("login signup page rendering");
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'login-signup-page' },
@@ -37979,6 +37991,11 @@
 	                            button: { context: "SIGN-UP", evt: this.onSignupButton }
 	                        })
 	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'error-msg' },
+	                    this.state.errorMsg
 	                )
 	            );
 	        }

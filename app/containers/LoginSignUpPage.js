@@ -25,7 +25,8 @@ export default class LoginSignUpPage extends React.Component{
         this.onSignupButton = this.onSignupButton.bind(this);
 
         this.state={
-            formDatas:formDatas
+            formDatas:formDatas,
+            errorMsg:null
         };
     }
 
@@ -51,16 +52,26 @@ export default class LoginSignUpPage extends React.Component{
 
         if(inputValues["S-id"]&&inputValues["S-em"]&&inputValues["S-cf"]&&inputValues["S-pw"]){
             if(inputValues["S-pw"] === inputValues["S-cf"]){
+
                 axios.post('/signup',{
                     id:inputValues["S-id"],
                     password:inputValues["S-pw"],
                     email:inputValues["S-em"]
+                }).then((res) => {
+                    if(res.data === "USER_EXIST"){
+                        this.setState({errorMsg:"User id already in use"});
+                    }else if(res.data === "SIGNUP_SUCCESS"){
+                        this.setState({errorMsg:"Welcome to CONSISTENCY"})
+                    }
                 })
+
             }else{
-                console.log("please confirm your password");
+                //"please confirm your password"
+                this.setState({errorMsg:"Please confirm your password"});
             }
         }else{
-            console.log("something empty");
+            //something empty
+            this.setState({errorMsg:"Please fill out the blanks"});
         }
 
     }
@@ -75,7 +86,7 @@ export default class LoginSignUpPage extends React.Component{
 
 
     render(){
-
+        console.log("login signup page rendering");
         return(
             <div className="login-signup-page">
 
@@ -117,6 +128,9 @@ export default class LoginSignUpPage extends React.Component{
                         />
                     </div>
                 </Slides>
+                <div className="error-msg">
+                    {this.state.errorMsg}
+                </div>
             </div>
         )
     }
