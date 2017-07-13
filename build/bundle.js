@@ -38136,11 +38136,11 @@
 
 	var _List2 = _interopRequireDefault(_List);
 
-	var _LineGraph = __webpack_require__(667);
+	var _LineGraph = __webpack_require__(666);
 
 	var _LineGraph2 = _interopRequireDefault(_LineGraph);
 
-	var _DoughnutGraph = __webpack_require__(669);
+	var _DoughnutGraph = __webpack_require__(668);
 
 	var _DoughnutGraph2 = _interopRequireDefault(_DoughnutGraph);
 
@@ -44303,15 +44303,11 @@
 
 	var _action_selectWorkout2 = _interopRequireDefault(_action_selectWorkout);
 
-	var _action_DoughnutLoaded = __webpack_require__(662);
-
-	var _action_DoughnutLoaded2 = _interopRequireDefault(_action_DoughnutLoaded);
-
-	var _SelectedWorkout = __webpack_require__(663);
+	var _SelectedWorkout = __webpack_require__(662);
 
 	var _SelectedWorkout2 = _interopRequireDefault(_SelectedWorkout);
 
-	var _Selector = __webpack_require__(666);
+	var _Selector = __webpack_require__(665);
 
 	var _Selector2 = _interopRequireDefault(_Selector);
 
@@ -44336,11 +44332,6 @@
 	    }
 
 	    _createClass(WorkoutContainer, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            this.props.action_DoughnutLoaded();
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this2 = this;
@@ -44409,8 +44400,7 @@
 	function mapDispatchToProps(dispatch) {
 	    return (0, _redux.bindActionCreators)({
 	        action_selectDate: _action_selectDate2.default,
-	        action_selectWorkout: _action_selectWorkout2.default,
-	        action_DoughnutLoaded: _action_DoughnutLoaded2.default
+	        action_selectWorkout: _action_selectWorkout2.default
 	    }, dispatch);
 	}
 
@@ -64657,47 +64647,6 @@
 	    value: true
 	});
 
-	exports.default = function () {
-	    var getReq = _axios2.default.get('/days');
-	    return function (dispatch) {
-	        getReq.then(function (res) {
-	            var startDate = res.data.startDate,
-	                year = startDate.split("-")[0],
-	                month = startDate.split("-")[1],
-	                day = startDate.split("-")[2],
-	                daysWorkedOut = res.data.daysWorkedOut,
-	                dayDifference = calculateDayDiff(new Date(year, month - 1, day), new Date());
-	            console.log(daysWorkedOut);
-	            console.log(dayDifference);
-
-	            dispatch({ type: "DOUGHNUT_LOADED", dataForDoughnut: { daysWorkedOut: daysWorkedOut, dayDifference: dayDifference } });
-	        });
-	    };
-	};
-
-	var _axios = __webpack_require__(378);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function calculateDayDiff(firstDay, secondDay) {
-	    var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-	    return Math.round(Math.abs((firstDay.getTime() - secondDay.getTime()) / oneDay));
-	} /**
-	   * Created by chanwoopark on 2017. 7. 11..
-	   */
-
-/***/ }),
-/* 663 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -64710,11 +64659,11 @@
 
 	var _redux = __webpack_require__(165);
 
-	var _action_clickWorkout = __webpack_require__(664);
+	var _action_clickWorkout = __webpack_require__(663);
 
 	var _action_clickWorkout2 = _interopRequireDefault(_action_clickWorkout);
 
-	var _action_deleteWorkout = __webpack_require__(665);
+	var _action_deleteWorkout = __webpack_require__(664);
 
 	var _action_deleteWorkout2 = _interopRequireDefault(_action_deleteWorkout);
 
@@ -64798,7 +64747,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SelectedWorkout);
 
 /***/ }),
-/* 664 */
+/* 663 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64826,7 +64775,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 665 */
+/* 664 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -64866,7 +64815,7 @@
 	                                                                                                                                                                                                     */
 
 /***/ }),
-/* 666 */
+/* 665 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64940,7 +64889,7 @@
 	exports.default = Selector;
 
 /***/ }),
-/* 667 */
+/* 666 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64961,11 +64910,11 @@
 
 	var _reactRedux = __webpack_require__(159);
 
-	var _Selector = __webpack_require__(666);
+	var _Selector = __webpack_require__(665);
 
 	var _Selector2 = _interopRequireDefault(_Selector);
 
-	var _action_selectOption = __webpack_require__(668);
+	var _action_selectOption = __webpack_require__(667);
 
 	var _action_selectOption2 = _interopRequireDefault(_action_selectOption);
 
@@ -65061,7 +65010,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(GraphContainer);
 
 /***/ }),
-/* 668 */
+/* 667 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -65096,7 +65045,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 669 */
+/* 668 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65112,6 +65061,12 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactRedux = __webpack_require__(159);
+
+	var _redux = __webpack_require__(165);
+
+	var _action_doughnutLoaded = __webpack_require__(669);
+
+	var _action_doughnutLoaded2 = _interopRequireDefault(_action_doughnutLoaded);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65134,17 +65089,18 @@
 	    }
 
 	    _createClass(DoughnutGraph, [{
-	        key: 'shouldComponentUpdate',
-	        value: function shouldComponentUpdate(nextProps, nextState) {
-	            console.log("should called");
-	            console.log("next props", nextProps);
-	            console.log("next state", nextState);
-	            return true;
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            this.props.action_doughnutLoaded();
 	        }
 	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            console.log("did mount called");
+	        key: 'shouldComponentUpdate',
+	        value: function shouldComponentUpdate(nextProps, nextState) {
+	            return this.props.dataForDoughnut !== nextProps.dataForDoughnut;
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
 	            var chart = new CanvasJS.Chart("doughnutContainer", {
 	                title: {
 	                    text: "Days you have worked out",
@@ -65179,7 +65135,51 @@
 	    };
 	}
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(DoughnutGraph);
+	function mapDispatchToProps(dispatch) {
+	    return (0, _redux.bindActionCreators)({ action_doughnutLoaded: _action_doughnutLoaded2.default }, dispatch);
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(DoughnutGraph);
+
+/***/ }),
+/* 669 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	exports.default = function () {
+	    var getReq = _axios2.default.get('/days');
+	    return function (dispatch) {
+	        getReq.then(function (res) {
+	            console.log("response came");
+	            var startDate = res.data.startDate,
+	                year = startDate.split("-")[0],
+	                month = startDate.split("-")[1],
+	                day = startDate.split("-")[2],
+	                daysWorkedOut = res.data.daysWorkedOut,
+	                dayDifference = calculateDayDiff(new Date(year, month - 1, day), new Date());
+
+	            dispatch({ type: "DOUGHNUT_LOADED", dataForDoughnut: { daysWorkedOut: daysWorkedOut, dayDifference: dayDifference } });
+	        });
+	    };
+	};
+
+	var _axios = __webpack_require__(378);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function calculateDayDiff(firstDay, secondDay) {
+	    var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+	    return Math.round(Math.abs((firstDay.getTime() - secondDay.getTime()) / oneDay));
+	} /**
+	   * Created by chanwoopark on 2017. 7. 11..
+	   */
 
 /***/ }),
 /* 670 */

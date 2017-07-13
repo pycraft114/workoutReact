@@ -4,20 +4,24 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 
+import {bindActionCreators} from 'redux';
+import action_doughnutLoaded from '../../actions/action_doughnutLoaded';
+
 class DoughnutGraph extends Component{
     constructor(props){
         super(props)
     }
 
-    shouldComponentUpdate(nextProps,nextState){
-        console.log("should called");
-        console.log("next props",nextProps);
-        console.log("next state",nextState);
-        return true;
+    componentWillMount(){
+        this.props.action_doughnutLoaded();
     }
 
-    componentDidMount(){
-        console.log("did mount called");
+    shouldComponentUpdate(nextProps,nextState) {
+        return (this.props.dataForDoughnut !== nextProps.dataForDoughnut)
+    }
+
+
+    componentDidUpdate(){
         var chart = new CanvasJS.Chart("doughnutContainer",
             {
                 title:{
@@ -60,4 +64,9 @@ function mapStateToProps(state){
     })
 }
 
-export default connect(mapStateToProps,null)(DoughnutGraph)
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({action_doughnutLoaded},dispatch)
+
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(DoughnutGraph)

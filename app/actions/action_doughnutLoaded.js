@@ -13,14 +13,15 @@ export default function(){
     return(
         (dispatch) => {
             getReq.then((res) => {
+                console.log("response came");
                 let startDate = res.data.startDate,
                     year = startDate.split("-")[0],
                     month = startDate.split("-")[1],
                     day = startDate.split("-")[2],
                     daysWorkedOut = res.data.daysWorkedOut,
                     dayDifference = calculateDayDiff(new Date(year,month-1,day),new Date());
-                    console.log(daysWorkedOut);
-                console.log(dayDifference);
+
+
 
 
                 dispatch({type:"DOUGHNUT_LOADED",dataForDoughnut:{daysWorkedOut,dayDifference}});
