@@ -50,3 +50,16 @@
 a{
     text-decoration:none !important;
 }
+
+
+.workout-container{
+    display:inline-block;
+    float: right;
+    margin-right: 101px;
+    margin-top: 31px;
+}
+
+.line-graph-container{
+    display:inline-block;
+    float:left;
+}

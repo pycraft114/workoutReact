@@ -34,6 +34,7 @@ class WorkoutContainer extends Component{
                                     dateFormat={"YYYY-MM-DD"}
                                     placeholder="Choose date"
                                     value={this.props.selectedDate}
+                                    calendarPlacement="top"
                                     onChange={
                                         (value,formatted) =>{
                                             this.props.action_selectDate(formatted)

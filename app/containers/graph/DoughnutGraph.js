@@ -22,7 +22,7 @@ class DoughnutGraph extends Component{
 
 
     componentDidUpdate(){
-        var chart = new CanvasJS.Chart("doughnutContainer",
+        var chart = new CanvasJS.Chart("doughnut-container",
             {
                 title:{
                     text: "Days you have worked out",
@@ -51,7 +51,7 @@ class DoughnutGraph extends Component{
     render(){
         return(
 
-            <div id="doughnutContainer" style={{height:300+"px", width: 100+"%"}}></div>
+            <div id="doughnut-container" style={{height:300+"px", width: 100+"%"}}></div>
 
         )
     }

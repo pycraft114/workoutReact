@@ -19,9 +19,16 @@ export default class MainPage extends Component{
         console.log("main page rendering");
         return(
                 <div className="main-page">
-                    <DoughnutGraph/>
-                    <List/>
-                    <LineGraph/>
+
+                    <div className="top">
+                        <DoughnutGraph/>
+                    </div>
+
+                    <div className="bottom">
+                        <List/>
+                        <LineGraph/>
+                    </div>
+
                 </div>
 
         )

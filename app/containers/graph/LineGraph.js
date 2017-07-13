@@ -18,6 +18,7 @@ import {bindActionCreators} from 'redux';
 
     initiateChart(){
         var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
             title:{
                 text:"Your Volume Growth"
             },
@@ -42,7 +43,7 @@ import {bindActionCreators} from 'redux';
 
     render(){
         return(
-            <div className="haha">
+            <div className="line-graph-container">
                 <div id="chartContainer" style={{height:300+"px", width: 300+"px"}}></div>
                 <Selector
                     id="option-selector"

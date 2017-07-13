@@ -13,7 +13,7 @@ import MainPage from './containers/MainPage';
 
 
 require('./style/LoginSignUpForm.css');
-require('./style/WorkoutList.css');
+require('./style/MainPage.css');
 
 ReactDOM.render(
     <Provider store={createStore(reducers,applyMiddleware(thunk))}>

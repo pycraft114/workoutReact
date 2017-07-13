@@ -38171,9 +38171,17 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'main-page' },
-	                _react2.default.createElement(_DoughnutGraph2.default, null),
-	                _react2.default.createElement(_List2.default, null),
-	                _react2.default.createElement(_LineGraph2.default, null)
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'top' },
+	                    _react2.default.createElement(_DoughnutGraph2.default, null)
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'bottom' },
+	                    _react2.default.createElement(_List2.default, null),
+	                    _react2.default.createElement(_LineGraph2.default, null)
+	                )
 	            );
 	        }
 	    }]);
@@ -44356,6 +44364,7 @@
 	                                dateFormat: "YYYY-MM-DD",
 	                                placeholder: 'Choose date',
 	                                value: this.props.selectedDate,
+	                                calendarPlacement: 'top',
 	                                onChange: function onChange(value, formatted) {
 	                                    _this2.props.action_selectDate(formatted);
 	                                }
@@ -64947,6 +64956,7 @@
 	        key: 'initiateChart',
 	        value: function initiateChart() {
 	            var chart = new CanvasJS.Chart("chartContainer", {
+	                animationEnabled: true,
 	                title: {
 	                    text: "Your Volume Growth"
 	                },
@@ -64975,7 +64985,7 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'haha' },
+	                { className: 'line-graph-container' },
 	                _react2.default.createElement('div', { id: 'chartContainer', style: { height: 300 + "px", width: 300 + "px" } }),
 	                _react2.default.createElement(_Selector2.default, {
 	                    id: 'option-selector',
@@ -65101,7 +65111,7 @@
 	    }, {
 	        key: 'componentDidUpdate',
 	        value: function componentDidUpdate() {
-	            var chart = new CanvasJS.Chart("doughnutContainer", {
+	            var chart = new CanvasJS.Chart("doughnut-container", {
 	                title: {
 	                    text: "Days you have worked out",
 	                    verticalAlign: 'top',
@@ -65122,7 +65132,7 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement('div', { id: 'doughnutContainer', style: { height: 300 + "px", width: 100 + "%" } });
+	            return _react2.default.createElement('div', { id: 'doughnut-container', style: { height: 300 + "px", width: 100 + "%" } });
 	        }
 	    }]);
 
@@ -65783,8 +65793,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!./WorkoutList.css", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!./WorkoutList.css");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!./MainPage.css", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!./MainPage.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -65802,7 +65812,7 @@
 
 
 	// module
-	exports.push([module.id, ".list-container{\n    position:relative;\n    top:200px;\n    left:200px;\n    border:1px solid red;\n}\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n/*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*/\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}", ""]);
+	exports.push([module.id, ".list-container{\n    position:relative;\n    top:200px;\n    left:200px;\n    border:1px solid red;\n}\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n/*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*/\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}\n\n\n.workout-container{\n    display:inline-block;\n    float: right;\n    margin-right: 101px;\n    margin-top: 31px;\n}\n\n.line-graph-container{\n    display:inline-block;\n    float:left;\n}", ""]);
 
 	// exports
 
