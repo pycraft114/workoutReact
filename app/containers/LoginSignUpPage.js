@@ -50,7 +50,15 @@ export default class LoginSignUpPage extends React.Component{
         let inputValues = this.state.formDatas;
 
         if(inputValues["S-id"]&&inputValues["S-em"]&&inputValues["S-cf"]&&inputValues["S-pw"]){
-            console.log("allwriten")
+            if(inputValues["S-pw"] === inputValues["S-cf"]){
+                axios.post('/signup',{
+                    id:inputValues["S-id"],
+                    password:inputValues["S-pw"],
+                    email:inputValues["S-em"]
+                })
+            }else{
+                console.log("please confirm your password");
+            }
         }else{
             console.log("something empty");
         }

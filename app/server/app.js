@@ -235,7 +235,24 @@ app.get("/days",function(req,res){
     */
 
 
-app.post("/signup",function(req,res){});
+app.post("/signup",function(req,res){
+    let data = req.body;
+    let checkUser = connection.query("SELECT * FROM user WHERE id = ?", data.id, function(err,results){
+        if(err){
+            throw err;
+        }else if(results.length){
+            console.log("user already exist");
+        }else{
+            let saveUser = connection.query("INSERT INTO user SET ?",{id:data.id,password:data.password,email:data.email},function(err,results){
+                if(err){
+                    throw err;
+                }else{
+                    console.log("user saved");
+                }
+            })
+        }
+    })
+});
 
 
 app.get('/*',function(req,res){
