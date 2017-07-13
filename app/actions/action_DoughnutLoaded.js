@@ -7,6 +7,7 @@ function calculateDayDiff(firstDay,secondDay){
     let oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
     return Math.round(Math.abs((firstDay.getTime() - secondDay.getTime())/(oneDay)));
 }
+
 export default function(){
     let getReq = axios.get('/days');
     return(

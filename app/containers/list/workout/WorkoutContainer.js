@@ -9,20 +9,16 @@ import {FormGroup,ControlLabel,HelpBlock,InputGroup} from 'react-bootstrap';
 
 import {connect} from 'react-redux';
 
-import action_selectDate from '../../actions/action_selectDate';
-import action_selectWorkout from '../../actions/action_selectWorkout';
-import action_DoughnutLoaded from "../../actions/action_DoughnutLoaded";
+import action_selectDate from '../../../actions/action_selectDate';
+import action_selectWorkout from '../../../actions/action_selectWorkout';
+import action_DoughnutLoaded from "../../../actions/action_DoughnutLoaded";
 
 import SelectedWorkout from './SelectedWorkout';
-import Selector from '../../components/Selector';
+import Selector from '../../../components/Selector';
 
 
 
 class WorkoutContainer extends Component{
-    shouldComponentUpdate(){
-        return false;
-    }
-
     componentDidMount(){
         this.props.action_DoughnutLoaded();
     }
@@ -53,7 +49,9 @@ class WorkoutContainer extends Component{
                 </div>
 
                 <div className="workout-list">
+
                     <SelectedWorkout/>
+
                     <Selector
                         id="workout-selector"
                         title="Workout"

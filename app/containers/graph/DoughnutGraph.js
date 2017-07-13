@@ -9,7 +9,15 @@ class DoughnutGraph extends Component{
         super(props)
     }
 
-    componentDidUpdate(){
+    shouldComponentUpdate(nextProps,nextState){
+        console.log("should called");
+        console.log("next props",nextProps);
+        console.log("next state",nextState);
+        return true;
+    }
+
+    componentDidMount(){
+        console.log("did mount called");
         var chart = new CanvasJS.Chart("doughnutContainer",
             {
                 title:{
@@ -34,6 +42,7 @@ class DoughnutGraph extends Component{
             });
         chart.render();
     }
+
 
     render(){
         return(

@@ -237,5 +237,6 @@ app.get("/days",function(req,res){
 
 
 app.get('/*',function(req,res){
+    console.log("last get request called");
     res.sendfile(path.resolve("../../build/index.html"));
 });

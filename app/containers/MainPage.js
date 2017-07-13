@@ -2,12 +2,11 @@
  * Created by chanwoopark on 2017. 6. 29..
  */
 import React,{Component} from 'react';
-import {BrowserRouter,Route,Switch} from 'react-router-dom';
-import 'react-datepicker/dist/react-datepicker.css';
 
-import VolumeContainer from './volume/VolumeContainer';
-import WorkoutContainer from './workout/WorkoutContainer';
-import GraphContainer from './graph/GraphContainer';
+
+
+import List from './list/List';
+import LineGraph from './graph/LineGraph';
 import DoughnutGraph from './graph/DoughnutGraph'
 
 
@@ -17,17 +16,14 @@ export default class MainPage extends Component{
 
     }
     render(){
+        console.log("main page rendering");
         return(
-            <BrowserRouter>
                 <div className="main-page">
                     <DoughnutGraph/>
-                    <Switch>
-                        <Route exact path="/" component={WorkoutContainer}/>
-                        <Route exact path="/:date/:workout" component={VolumeContainer}/>
-                    </Switch>
-                    <GraphContainer/>
+                    <List/>
+                    <LineGraph/>
                 </div>
-            </BrowserRouter>
+
         )
     }
 

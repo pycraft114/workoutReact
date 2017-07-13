@@ -64,13 +64,13 @@ export default class LoginSignUpPage extends React.Component{
                 <div className="logo-container">
                     <img
                         className="dumbbell-logo"
-                        src="./logo.jpg"
+                        src="https://image.freepik.com/free-icon/dumbbell_318-54696.jpg"
                         width={56}
                         height={53}
                     >
                     </img>
                     <h1>
-                        <a href="" className="typewrite" data-period={2000} data-type={'[ "CONSISTENCY" ]'}>
+                        <a href="" className="typewrite" data-period={2000} data-type={'[ "CONSISTENCY","JUST DO IT","DO YOU EVEN LIFT?" ]'}>
                         <span className="wrap">
                         </span>
                         </a>
