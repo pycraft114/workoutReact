@@ -30,13 +30,12 @@ export default class SubmitForm extends Component{
                             )
                         })
                     }
-                    <button
+                    <input
                         type="submit"
                         className="button"
                         onClick={this.props.button.evt}
-                    >
-                        {this.props.button.context}
-                    </button>
+                        value={this.props.button.context}
+                    />
                 </form>
             </div>
         )

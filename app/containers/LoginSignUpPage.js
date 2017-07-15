@@ -42,7 +42,18 @@ export default class LoginSignUpPage extends React.Component{
     onLoginButton(evt){
         evt.preventDefault();
 
-        console.log(this.state);
+        let inputValues = this.state.formDatas;
+
+        if(inputValues["L-id"]&&inputValues["L-pw"]){
+            axios.post('/login',{
+                id:inputValues["L-id"],
+                password:inputValues["L-pw"]
+            }).then((res) => {
+                console.log(res)
+            })
+        }else{
+            this.setState({errMsg:"Please fill out the blank"});
+        }
     }
 
     onSignupButton(evt){
@@ -123,7 +134,7 @@ export default class LoginSignUpPage extends React.Component{
                             inputTags={[{id:"S-id",placeholder:"Type your ID",evt:this.onInputChange},
                                 {id:"S-pw",placeholder:"Type your Password",evt:this.onInputChange,type:"password"},
                                 {id:"S-cf",placeholder:"Confirm Password",evt:this.onInputChange,type:"password"},
-                                {id:"S-em",placeholder:"Type your Email",evt:this.onInputChange}]}
+                                {id:"S-em",placeholder:"Type your Email",evt:this.onInputChange,type:"email"}]}
                             button={{context:"SIGN-UP",evt:this.onSignupButton}}
                         />
                     </div>

@@ -37901,7 +37901,18 @@
 	        value: function onLoginButton(evt) {
 	            evt.preventDefault();
 
-	            console.log(this.state);
+	            var inputValues = this.state.formDatas;
+
+	            if (inputValues["L-id"] && inputValues["L-pw"]) {
+	                _axios2.default.post('/login', {
+	                    id: inputValues["L-id"],
+	                    password: inputValues["L-pw"]
+	                }).then(function (res) {
+	                    console.log(res);
+	                });
+	            } else {
+	                this.setState({ errMsg: "Please fill out the blank" });
+	            }
 	        }
 	    }, {
 	        key: 'onSignupButton',
@@ -37987,7 +37998,7 @@
 	                        'div',
 	                        null,
 	                        _react2.default.createElement(_SubmitForm2.default, {
-	                            inputTags: [{ id: "S-id", placeholder: "Type your ID", evt: this.onInputChange }, { id: "S-pw", placeholder: "Type your Password", evt: this.onInputChange, type: "password" }, { id: "S-cf", placeholder: "Confirm Password", evt: this.onInputChange, type: "password" }, { id: "S-em", placeholder: "Type your Email", evt: this.onInputChange }],
+	                            inputTags: [{ id: "S-id", placeholder: "Type your ID", evt: this.onInputChange }, { id: "S-pw", placeholder: "Type your Password", evt: this.onInputChange, type: "password" }, { id: "S-cf", placeholder: "Confirm Password", evt: this.onInputChange, type: "password" }, { id: "S-em", placeholder: "Type your Email", evt: this.onInputChange, type: "email" }],
 	                            button: { context: "SIGN-UP", evt: this.onSignupButton }
 	                        })
 	                    )
@@ -39665,15 +39676,12 @@
 	                            autoComplete: "new-password"
 	                        });
 	                    }),
-	                    _react2.default.createElement(
-	                        "button",
-	                        {
-	                            type: "submit",
-	                            className: "button",
-	                            onClick: this.props.button.evt
-	                        },
-	                        this.props.button.context
-	                    )
+	                    _react2.default.createElement("input", {
+	                        type: "submit",
+	                        className: "button",
+	                        onClick: this.props.button.evt,
+	                        value: this.props.button.context
+	                    })
 	                )
 	            );
 	        }

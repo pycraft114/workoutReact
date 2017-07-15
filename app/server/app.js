@@ -9,6 +9,19 @@ var mysqlData = require('./mysqlData.json');
 var mysql = require('mysql');
 
 
+var jwt = require('jwt-simple');
+var config = require("./config");
+
+
+//-------------
+var bcrypt = require('bcrypt');
+const saltRounds = 10;
+//-------------
+
+function tokenForUser(user){
+    var issuedAtTime = new Date().getTime();
+    return jwt.encode({sub: user.id, iat: issuedAtTime},config.secret)
+}
 
 
 var connection = mysql.createConnection({
@@ -63,7 +76,7 @@ app.put("/selected_workouts/:date",function(req,res){
 });
 
 app.put("/kg_rep/:date_workout",function(req,res){
-    //data structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
+    //userData structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
     var volumeList = JSON.stringify(req.body);
     var date_workout = req.params.date_workout;
 
@@ -223,7 +236,7 @@ app.get("/days",function(req,res){
 
     })
 });
-/* returning data from sql
+/* returning userData from sql
 [
     RowDataPacket { date_workout: '2017-07-10_Bench Press' },
     RowDataPacket { date_workout: '2017-07-12_Bench Press' },
@@ -236,24 +249,32 @@ app.get("/days",function(req,res){
 
 
 app.post("/signup",function(req,res){
-    let data = req.body;
-    let checkUser = connection.query("SELECT * FROM user WHERE id = ?", data.id, function(err,results){
+    let userData = req.body;
+    let checkUser = connection.query("SELECT * FROM user WHERE id = ?", userData.id, function(err,results){
         if(err){
             throw err;
         }else if(results.length){
             res.send("USER_EXIST");
         }else{
-            let saveUser = connection.query("INSERT INTO user SET ?",{id:data.id,password:data.password,email:data.email},function(err,results){
-                if(err){
-                    throw err;
-                }else{
-                    res.send("SIGNUP_SUCCESS");
-                }
-            })
+            bcrypt.hash(userData.password, saltRounds, function(err,hash){
+                console.log(userData.password);
+                console.log(hash.length);
+                let saveUser = connection.query("INSERT INTO user SET ?",{id:userData.id,password:hash,email:userData.email},function(err,results){
+                    if(err){
+                        throw err;
+                    }else{
+                        res.send("SIGNUP_SUCCESS");
+                    }
+                })
+            });
         }
     })
 });
 
+app.post("/login",function(req,res){
+    console.log(req.body);
+    res.send("hi");
+});
 
 app.get('/*',function(req,res){
     console.log("last get request called");
