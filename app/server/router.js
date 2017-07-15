@@ -7,6 +7,7 @@ const mysql = require('mysql');
 const mysqlData = require('./mysqlData.json');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const passport = require('passport');
 
 
 //----------------Mysql settings-------------
@@ -253,6 +254,10 @@ module.exports = function(app){
         })
     });
 
+    const passportSettings = require('./passportSettings');
+    const loginAuthenticate = passport.authenticate('jwt',{session:false});
+    console.log(loginAuthenticate);
+
     app.post("/login",function(req,res){
         let userData = req.body;
 
@@ -276,4 +281,12 @@ module.exports = function(app){
             }
         })
     });
+
+    app.get("/test",loginAuthenticate,function(req,res){
+        console.log('auth success');
+        console.log(req);
+        res.send("success");
+    })
+
+
 };

@@ -23,10 +23,12 @@ export default class LoginSignUpPage extends React.Component{
         this.onInputChange = this.onInputChange.bind(this);
         this.onLoginButton = this.onLoginButton.bind(this);
         this.onSignupButton = this.onSignupButton.bind(this);
+        this.onTestButton = this.onTestButton.bind(this);
 
         this.state={
             formDatas:formDatas,
-            errorMsg:null
+            errorMsg:null,
+            token:null
         };
     }
 
@@ -49,11 +51,17 @@ export default class LoginSignUpPage extends React.Component{
                 id:inputValues["L-id"],
                 password:inputValues["L-pw"]
             }).then((res) => {
-                console.log(res.data);
+                this.setState({token : res.data.token});
             })
         }else{
             this.setState({errMsg:"Please fill out the blank"});
         }
+    }
+
+    onTestButton(evt){
+        evt.preventDefault();
+        let token = this.state.token;
+        axios.get('/test',{headers:{authorization:token}});
     }
 
     onSignupButton(evt){
@@ -142,6 +150,7 @@ export default class LoginSignUpPage extends React.Component{
                 <div className="error-msg">
                     {this.state.errorMsg}
                 </div>
+                <button onClick={this.onTestButton}>hahaha</button>
             </div>
         )
     }

@@ -37879,10 +37879,12 @@
 	        _this.onInputChange = _this.onInputChange.bind(_this);
 	        _this.onLoginButton = _this.onLoginButton.bind(_this);
 	        _this.onSignupButton = _this.onSignupButton.bind(_this);
+	        _this.onTestButton = _this.onTestButton.bind(_this);
 
 	        _this.state = {
 	            formDatas: formDatas,
-	            errorMsg: null
+	            errorMsg: null,
+	            token: null
 	        };
 	        return _this;
 	    }
@@ -37899,6 +37901,8 @@
 	    }, {
 	        key: 'onLoginButton',
 	        value: function onLoginButton(evt) {
+	            var _this2 = this;
+
 	            evt.preventDefault();
 
 	            var inputValues = this.state.formDatas;
@@ -37908,16 +37912,23 @@
 	                    id: inputValues["L-id"],
 	                    password: inputValues["L-pw"]
 	                }).then(function (res) {
-	                    console.log(res.data);
+	                    _this2.setState({ token: res.data.token });
 	                });
 	            } else {
 	                this.setState({ errMsg: "Please fill out the blank" });
 	            }
 	        }
 	    }, {
+	        key: 'onTestButton',
+	        value: function onTestButton(evt) {
+	            evt.preventDefault();
+	            var token = this.state.token;
+	            _axios2.default.get('/test', { headers: { authorization: token } });
+	        }
+	    }, {
 	        key: 'onSignupButton',
 	        value: function onSignupButton(evt) {
-	            var _this2 = this;
+	            var _this3 = this;
 
 	            evt.preventDefault();
 	            console.log(this.state);
@@ -37932,9 +37943,9 @@
 	                        email: inputValues["S-em"]
 	                    }).then(function (res) {
 	                        if (res.data === "USER_EXIST") {
-	                            _this2.setState({ errorMsg: "User id already in use" });
+	                            _this3.setState({ errorMsg: "User id already in use" });
 	                        } else if (res.data === "SIGNUP_SUCCESS") {
-	                            _this2.setState({ errorMsg: "Welcome to CONSISTENCY" });
+	                            _this3.setState({ errorMsg: "Welcome to CONSISTENCY" });
 	                        }
 	                    });
 	                } else {
@@ -38007,6 +38018,11 @@
 	                    'div',
 	                    { className: 'error-msg' },
 	                    this.state.errorMsg
+	                ),
+	                _react2.default.createElement(
+	                    'button',
+	                    { onClick: this.onTestButton },
+	                    'hahaha'
 	                )
 	            );
 	        }
