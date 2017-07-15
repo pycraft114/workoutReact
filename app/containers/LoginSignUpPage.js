@@ -49,7 +49,7 @@ export default class LoginSignUpPage extends React.Component{
                 id:inputValues["L-id"],
                 password:inputValues["L-pw"]
             }).then((res) => {
-                console.log(res)
+                console.log(res.data);
             })
         }else{
             this.setState({errMsg:"Please fill out the blank"});

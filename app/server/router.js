@@ -1,6 +1,8 @@
 /**
  * Created by chanwoopark on 2017. 7. 15..
  */
+const jwt = require('jwt-simple');
+const jwtConfig = require('./config');
 const mysql = require('mysql');
 const mysqlData = require('./mysqlData.json');
 const bcrypt = require('bcrypt');
@@ -25,8 +27,16 @@ connection.connect(err => {
 });
 //--------------------------------------------
 
+//---------------JWT settings-----------------
+function tokenForUser(user){
+    const issuedAtTime = new Date().getTime();
+    return jwt.encode({sub:user.id, iat:issuedAtTime}, jwtConfig.secret)
+}
+//--------------------------------------------
+
+
 module.exports = function(app){
-    
+
     //refactored
     app.put("/selected_workouts/:date",function(req,res){
         var date = req.params.date;
@@ -251,13 +261,14 @@ module.exports = function(app){
                 throw err;
             }else if(results[0]){
                 let dbUser = results[0];
-                bcrypt.compare(userData.password, dbUser.password, function(err,res){
+                bcrypt.compare(userData.password, dbUser.password, function(err,compareResult){
                     if(err){
                         throw err;
-                    }else if(res === true){
-                        console.log("password same");
+                    }else if(compareResult === true){
+                        console.log(tokenForUser(dbUser));
+                        res.send({token : tokenForUser(dbUser)});
                     }else{
-                        console.log("passwor wrong");
+                        res.send("WRONG_PASSWORD");
                     }
                 })
             }else{

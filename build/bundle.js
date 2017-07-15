@@ -37908,7 +37908,7 @@
 	                    id: inputValues["L-id"],
 	                    password: inputValues["L-pw"]
 	                }).then(function (res) {
-	                    console.log(res);
+	                    console.log(res.data);
 	                });
 	            } else {
 	                this.setState({ errMsg: "Please fill out the blank" });
