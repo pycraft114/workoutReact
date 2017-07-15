@@ -27,6 +27,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-preset-stage-1": "^6.1.18",
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
     "chart.js": "^2.6.0",
     "connect-flash": "^0.1.1",
@@ -41,6 +42,7 @@
     "mysql": "^2.13.0",
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0",
     "react": "^0.14.3",
     "react-bootstrap": "^0.31.0",
