@@ -257,8 +257,6 @@ app.post("/signup",function(req,res){
             res.send("USER_EXIST");
         }else{
             bcrypt.hash(userData.password, saltRounds, function(err,hash){
-                console.log(userData.password);
-                console.log(hash.length);
                 let saveUser = connection.query("INSERT INTO user SET ?",{id:userData.id,password:hash,email:userData.email},function(err,results){
                     if(err){
                         throw err;
@@ -272,8 +270,26 @@ app.post("/signup",function(req,res){
 });
 
 app.post("/login",function(req,res){
-    console.log(req.body);
-    res.send("hi");
+    let userData = req.body;
+
+    let getUser = connection.query("SELECT * FROM user where id = ?",userData.id,function(err,results){
+        if(err){
+            throw err;
+        }else if(results[0]){
+            let dbUser = results[0];
+            bcrypt.compare(userData.password, dbUser.password, function(err,res){
+                if(err){
+                    throw err;
+                }else if(res === true){
+                    console.log("password same");
+                }else{
+                    console.log("passwor wrong");
+                }
+            })
+        }else{
+            res.send("USER_NOT_FOUND");
+        }
+    })
 });
 
 app.get('/*',function(req,res){
