@@ -1,4 +1,2 @@
-var a;
-var b = a || "dt";
-
-console.log(b);
+var a = {hi:1 ,hello:2};
+console.log(...a);

@@ -1,12 +1,12 @@
 /**
  * Created by chanwoopark on 2017. 6. 21..
  */
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var path = require('path');
-var router = require('./router');
-
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const path = require('path');
+const router = require('./router');
+const cors = require('cors');
 
 /*
 //-------------
@@ -22,7 +22,7 @@ app.use(express.static('../../build'));
 //bodyparser setting 없이는 post 요청 get요청 처리 안
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
+app.use(cors());
 
 app.listen(3000,function(){
     console.log("sever start on port 3000")

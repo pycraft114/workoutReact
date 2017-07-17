@@ -256,7 +256,7 @@ module.exports = function(app){
 
     const passportSettings = require('./passportSettings');
     const loginAuthenticate = passport.authenticate('jwt',{session:false});
-    console.log(loginAuthenticate);
+
 
     app.post("/login",function(req,res){
         let userData = req.body;
@@ -270,7 +270,6 @@ module.exports = function(app){
                     if(err){
                         throw err;
                     }else if(compareResult === true){
-                        console.log(tokenForUser(dbUser));
                         res.send({token : tokenForUser(dbUser)});
                     }else{
                         res.send("WRONG_PASSWORD");
@@ -281,12 +280,5 @@ module.exports = function(app){
             }
         })
     });
-
-    app.get("/test",loginAuthenticate,function(req,res){
-        console.log('auth success');
-        console.log(req);
-        res.send("success");
-    })
-
 
 };

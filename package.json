@@ -31,6 +31,7 @@
     "body-parser": "^1.17.2",
     "chart.js": "^2.6.0",
     "connect-flash": "^0.1.1",
+    "cors": "^2.8.4",
     "css-loader": "^0.28.4",
     "express": "^4.15.3",
     "express-session": "^1.15.3",

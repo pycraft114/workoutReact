@@ -5,6 +5,8 @@ import React from 'react';
 
 import {ArrowLeft,ArrowRight,Dots, Slides } from 'react-infinite-slide';
 import axios from 'axios';
+import { browserHistory } from 'react-router';
+
 
 import SubmitForm from '../components/SubmitForm';
 
@@ -23,12 +25,10 @@ export default class LoginSignUpPage extends React.Component{
         this.onInputChange = this.onInputChange.bind(this);
         this.onLoginButton = this.onLoginButton.bind(this);
         this.onSignupButton = this.onSignupButton.bind(this);
-        this.onTestButton = this.onTestButton.bind(this);
 
         this.state={
             formDatas:formDatas,
             errorMsg:null,
-            token:null
         };
     }
 
@@ -51,17 +51,18 @@ export default class LoginSignUpPage extends React.Component{
                 id:inputValues["L-id"],
                 password:inputValues["L-pw"]
             }).then((res) => {
-                this.setState({token : res.data.token});
+                if(res.data === "WRONG_PASSWORD"){
+                    this.setState({errorMsg:"Wrong password"});
+                }else if(res.data === "USER_NOT_FOUND"){
+                    this.setState({errorMsg:"User not found"})
+                }else{
+                    localStorage.setItem('token',res.data.token);
+                    window.location.href = "/main";
+                }
             })
         }else{
-            this.setState({errMsg:"Please fill out the blank"});
+            this.setState({errorMsg:"Please fill out the blank"});
         }
-    }
-
-    onTestButton(evt){
-        evt.preventDefault();
-        let token = this.state.token;
-        axios.get('/test',{headers:{authorization:token}});
     }
 
     onSignupButton(evt){
@@ -96,7 +97,6 @@ export default class LoginSignUpPage extends React.Component{
     }
 
 
-
     /*
      props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
      props.button = {context : x ,evt : func}
@@ -105,7 +105,6 @@ export default class LoginSignUpPage extends React.Component{
 
 
     render(){
-        console.log("login signup page rendering");
         return(
             <div className="login-signup-page">
 
@@ -150,7 +149,6 @@ export default class LoginSignUpPage extends React.Component{
                 <div className="error-msg">
                     {this.state.errorMsg}
                 </div>
-                <button onClick={this.onTestButton}>hahaha</button>
             </div>
         )
     }
