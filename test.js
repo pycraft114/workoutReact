@@ -1,2 +1,3 @@
-var a = {hi:1 ,hello:2};
-console.log(...a);
+var a = [1,2,3];
+var b = [...a];
+console.log(a === b);

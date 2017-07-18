@@ -12,9 +12,7 @@ const jwtOptions = {
 };
 
 const jwtLogin = new JwtStrategy(jwtOptions,function(payload,done){
-    console.log(payload);
-    console.log("jwt called");
-    done(null,"something")
+
 });
 
 passport.use(jwtLogin);

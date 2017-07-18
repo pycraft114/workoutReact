@@ -12,7 +12,6 @@ dataPoints: [
 export default function(state=[],action){
     switch(action.type){
         case "OPTION_CLICKED":
-            console.log(action.dataForCanvas);
             return action.dataForCanvas
     }
 

@@ -32,6 +32,7 @@ export default class LoginSignUpPage extends React.Component{
         };
     }
 
+
     onInputChange(evt){
         let inputId = evt.target.id;
         let value = evt.target.value;
@@ -67,7 +68,6 @@ export default class LoginSignUpPage extends React.Component{
 
     onSignupButton(evt){
         evt.preventDefault();
-        console.log(this.state);
         let inputValues = this.state.formDatas;
 
         if(inputValues["S-id"]&&inputValues["S-em"]&&inputValues["S-cf"]&&inputValues["S-pw"]){
