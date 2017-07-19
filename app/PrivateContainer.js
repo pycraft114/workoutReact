@@ -9,33 +9,12 @@ import {connect} from 'react-redux';
 class PrivateContainer extends Component{
     constructor(props){
         super(props);
-        this.redirect = this.redirect.bind(this);
-    }
-
-    redirect(){
-        return(
-            <Redirect to="/"/>
-        )
-    }
-
-    componentWillMount(){
-        /*if(!this.props.authenticated){
-            browserHistory.replace("/")
-        }*/
-    }
-
-    componentDidMount(){
-        console.log("private did mount")
-    }
-
-    componentDidUpdate(){
-        console.log("private did update");
     }
 
     render(){
         return(
             <div>
-                {this.props.authenticated ? this.props.children : this.redirect()}
+                {this.props.authenticated ? this.props.children : <Redirect to="/"/>}
             </div>
         )
     }

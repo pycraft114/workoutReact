@@ -70797,8 +70797,6 @@
 
 	var _reactRouterDom = __webpack_require__(327);
 
-	var _reactRouter = __webpack_require__(371);
-
 	var _reactRedux = __webpack_require__(159);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -70818,41 +70816,16 @@
 	    function PrivateContainer(props) {
 	        _classCallCheck(this, PrivateContainer);
 
-	        var _this = _possibleConstructorReturn(this, (PrivateContainer.__proto__ || Object.getPrototypeOf(PrivateContainer)).call(this, props));
-
-	        _this.redirect = _this.redirect.bind(_this);
-	        return _this;
+	        return _possibleConstructorReturn(this, (PrivateContainer.__proto__ || Object.getPrototypeOf(PrivateContainer)).call(this, props));
 	    }
 
 	    _createClass(PrivateContainer, [{
-	        key: 'redirect',
-	        value: function redirect() {
-	            return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' });
-	        }
-	    }, {
-	        key: 'componentWillMount',
-	        value: function componentWillMount() {
-	            /*if(!this.props.authenticated){
-	                browserHistory.replace("/")
-	            }*/
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            console.log("private did mount");
-	        }
-	    }, {
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {
-	            console.log("private did update");
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                this.props.authenticated ? this.props.children : this.redirect()
+	                this.props.authenticated ? this.props.children : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' })
 	            );
 	        }
 	    }]);
