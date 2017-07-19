@@ -57,6 +57,7 @@ export default class LoginSignUpPage extends React.Component{
                 }else if(res.data === "USER_NOT_FOUND"){
                     this.setState({errorMsg:"User not found"})
                 }else{
+                    console.log("login success");
                     localStorage.setItem('token',res.data.token);
                     window.location.href = "/main";
                 }

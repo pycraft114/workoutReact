@@ -26,7 +26,7 @@ const rootReducer = combineReducers({
     workoutOptions:reducer_workoutOptions,
     dataForCanvas:reducer_dataForCanvas,
     dataForDoughnut:reducer_dataForDoughnut,
-    authenticated:reducer_authenticate
+    isAuthed:reducer_authenticate
 });
 //==> state{books:blah,
 //          activeBook:blah}

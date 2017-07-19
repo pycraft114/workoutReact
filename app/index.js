@@ -10,6 +10,7 @@ import {browserHistory} from 'react-router';
 /////
 import LoginSignUpPage from './containers/LoginSignUpPage';
 import MainPage from './containers/MainPage';
+import PrivateContainer from './PrivateContainer';
 /////
 require('./style/LoginSignUpForm.css');
 require('./style/MainPage.css');
@@ -21,7 +22,7 @@ const store = createStoreWithMiddleware(reducers);
 
 const store = applyMiddleware(thunk)(createStore)(reducers);
 const token = localStorage.getItem('token');
-console.log(token);
+
 if(token){
     store.dispatch({type:"USER_AUTHED"});
 }
@@ -32,7 +33,9 @@ ReactDOM.render(
         <BrowserRouter history ={browserHistory}>
             <Switch>
                 <Route exact path = "/" component={LoginSignUpPage}/>
-                <Route exact path = "/main" component={MainPage}/>
+                <PrivateContainer>
+                    <Route exact path = "/main" component={MainPage}/>
+                </PrivateContainer>
             </Switch>
         </BrowserRouter>
     </Provider>

@@ -78,14 +78,18 @@
 
 	var _MainPage2 = _interopRequireDefault(_MainPage);
 
+	var _PrivateContainer = __webpack_require__(731);
+
+	var _PrivateContainer2 = _interopRequireDefault(_PrivateContainer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/////
-
+	__webpack_require__(732);
 
 	/////
-	__webpack_require__(731);
-	__webpack_require__(736);
+
+	__webpack_require__(737);
 
 	/*
 	const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
@@ -94,7 +98,7 @@
 
 	var store = (0, _redux.applyMiddleware)(_reduxThunk2.default)(_redux.createStore)(_index2.default);
 	var token = localStorage.getItem('token');
-	console.log(token);
+
 	if (token) {
 	    store.dispatch({ type: "USER_AUTHED" });
 	}
@@ -109,7 +113,11 @@
 	            _reactRouterDom.Switch,
 	            null,
 	            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _LoginSignUpPage2.default }),
-	            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/main', component: _MainPage2.default })
+	            _react2.default.createElement(
+	                _PrivateContainer2.default,
+	                null,
+	                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/main', component: _MainPage2.default })
+	            )
 	        )
 	    )
 	), document.querySelector('.container'));
@@ -21817,7 +21825,7 @@
 	    workoutOptions: _reducer_workoutOptions2.default,
 	    dataForCanvas: _reducer_dataForCanvas2.default,
 	    dataForDoughnut: _reducer_dataForDoughnut2.default,
-	    authenticated: _reducer_autheticate2.default
+	    isAuthed: _reducer_autheticate2.default
 	});
 	//==> state{books:blah,
 	//          activeBook:blah}
@@ -37836,7 +37844,7 @@
 	});
 
 	exports.default = function () {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 	    var action = arguments[1];
 
 	    switch (action.type) {
@@ -47601,6 +47609,7 @@
 	                    } else if (res.data === "USER_NOT_FOUND") {
 	                        _this2.setState({ errorMsg: "User not found" });
 	                    } else {
+	                        console.log("login success");
 	                        localStorage.setItem('token', res.data.token);
 	                        window.location.href = "/main";
 	                    }
@@ -49436,7 +49445,6 @@
 	    _createClass(MainPage, [{
 	        key: 'render',
 	        value: function render() {
-	            console.log("main page rendering");
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'main-page' },
@@ -70775,10 +70783,97 @@
 /* 731 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouterDom = __webpack_require__(327);
+
+	var _reactRouter = __webpack_require__(371);
+
+	var _reactRedux = __webpack_require__(159);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 18..
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var PrivateContainer = function (_Component) {
+	    _inherits(PrivateContainer, _Component);
+
+	    function PrivateContainer(props) {
+	        _classCallCheck(this, PrivateContainer);
+
+	        var _this = _possibleConstructorReturn(this, (PrivateContainer.__proto__ || Object.getPrototypeOf(PrivateContainer)).call(this, props));
+
+	        _this.redirect = _this.redirect.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(PrivateContainer, [{
+	        key: 'redirect',
+	        value: function redirect() {
+	            return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' });
+	        }
+	    }, {
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            /*if(!this.props.authenticated){
+	                browserHistory.replace("/")
+	            }*/
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            console.log("private did mount");
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            console.log("private did update");
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                this.props.authenticated ? this.props.children : this.redirect()
+	            );
+	        }
+	    }]);
+
+	    return PrivateContainer;
+	}(_react.Component);
+
+	function mapStateToProps(state) {
+	    return { authenticated: state.isAuthed };
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(PrivateContainer);
+
+/***/ }),
+/* 732 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(732);
+	var content = __webpack_require__(733);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -70786,7 +70881,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(734)(content, options);
+	var update = __webpack_require__(735)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -70803,10 +70898,10 @@
 	}
 
 /***/ }),
-/* 732 */
+/* 733 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(733)(undefined);
+	exports = module.exports = __webpack_require__(734)(undefined);
 	// imports
 
 
@@ -70817,7 +70912,7 @@
 
 
 /***/ }),
-/* 733 */
+/* 734 */
 /***/ (function(module, exports) {
 
 	/*
@@ -70899,7 +70994,7 @@
 
 
 /***/ }),
-/* 734 */
+/* 735 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -70945,7 +71040,7 @@
 	var	singletonCounter = 0;
 	var	stylesInsertedAtTop = [];
 
-	var	fixUrls = __webpack_require__(735);
+	var	fixUrls = __webpack_require__(736);
 
 	module.exports = function(list, options) {
 		if (false) {
@@ -71258,7 +71353,7 @@
 
 
 /***/ }),
-/* 735 */
+/* 736 */
 /***/ (function(module, exports) {
 
 	
@@ -71353,13 +71448,13 @@
 
 
 /***/ }),
-/* 736 */
+/* 737 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(737);
+	var content = __webpack_require__(738);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -71367,7 +71462,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(734)(content, options);
+	var update = __webpack_require__(735)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -71384,10 +71479,10 @@
 	}
 
 /***/ }),
-/* 737 */
+/* 738 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(733)(undefined);
+	exports = module.exports = __webpack_require__(734)(undefined);
 	// imports
 
 
