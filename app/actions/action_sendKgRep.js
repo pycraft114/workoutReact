@@ -2,6 +2,7 @@
  * Created by chanwoopark on 2017. 6. 30..
  */
 import axios from 'axios';
+import {KGREP_SENT} from './actionTypes';
 
 export default function(evt,kg,rep,date,workout,prevVolumes){
     if(evt.key ==="Enter" || evt.target.id === "check"){
@@ -12,7 +13,7 @@ export default function(evt,kg,rep,date,workout,prevVolumes){
 
             axios.put(`/kg_rep/${date_workout}`,newVolumes);
 
-            return{type:"KGREP_SENT",kgRepList:newVolumes}
+            return{type:KGREP_SENT,kgRepList:newVolumes}
         }
     }
 

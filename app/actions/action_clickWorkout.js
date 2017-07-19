@@ -2,7 +2,7 @@
  * Created by chanwoopark on 2017. 7. 3..
  */
 import axios from 'axios';
-
+import {WORKOUT_CLICKED} from './actionTypes';
 export default function(date,workout){
     var date_workout = date+"_"+workout;
 
@@ -10,7 +10,7 @@ export default function(date,workout){
 
     return((dispatch) => {
         getKgRep.then((res) => {
-            dispatch({type:"WORKOUT_CLICKED",kgRepList:res.data})
+            dispatch({type:WORKOUT_CLICKED,kgRepList:res.data})
         })
     })
 

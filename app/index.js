@@ -10,7 +10,7 @@ import {browserHistory} from 'react-router';
 /////
 import LoginSignUpPage from './containers/LoginSignUpPage';
 import MainPage from './containers/MainPage';
-import PrivateContainer from './PrivateContainer';
+import Gate from './containers/Gate';
 /////
 require('./style/LoginSignUpForm.css');
 require('./style/MainPage.css');
@@ -23,19 +23,39 @@ const store = createStoreWithMiddleware(reducers);
 const store = applyMiddleware(thunk)(createStore)(reducers);
 const token = localStorage.getItem('token');
 
-if(token){
+function authUser(){
+    console.log("authenticated user");
     store.dispatch({type:"USER_AUTHED"});
 }
+if(token){
+    authUser();
+}
+const states = store.getState();
+const isAuthed = states.isAuthed;
+console.log("is authed?",isAuthed);
 
+function renderLoginPage(){
+    return (
+        <Gate bool={!isAuthed} redirUrl="/main">
+            <Route exact path = "/" component={LoginSignUpPage}/>
+        </Gate>
+    )
+}
+
+function renderMainPage(){
+    return(
+        <Gate bool={isAuthed} redirUrl="/">
+        <Route exact path = "/main" component={MainPage} key="MainPage"/>
+    </Gate>
+    )
+}
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter history ={browserHistory}>
             <Switch>
-                <Route exact path = "/" component={LoginSignUpPage}/>
-                <PrivateContainer>
-                    <Route exact path = "/main" component={MainPage}/>
-                </PrivateContainer>
+                {renderLoginPage()}
+                {renderMainPage()}
             </Switch>
         </BrowserRouter>
     </Provider>

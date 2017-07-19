@@ -2,7 +2,7 @@
  * Created by chanwoopark on 2017. 7. 6..
  */
 import axios from 'axios';
-
+import {OPTION_CLICKED} from './actionTypes';
 export default function(selectedOption){
     var getQuery = axios.get(`/volumes/${selectedOption}`);
 
@@ -16,7 +16,7 @@ export default function(selectedOption){
                     data[i] = {x:i,y:volumes[i],label:dates[i]}
                 }
                 dispatch({
-                    type:"OPTION_CLICKED",
+                    type:OPTION_CLICKED,
                     dataForCanvas:data
                 })
             })

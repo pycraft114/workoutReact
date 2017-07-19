@@ -1,0 +1,44 @@
+/**
+ * Created by chanwoopark on 2017. 7. 19..
+ */
+/*
+ possible messages = "WRONG_PASSWORD :""Wrong password",
+ USER_NOT_FOUND : User not found,
+ BLANK_INPUT :  Please fill out the blank
+ USER_EXIST : User id already in use
+ SIGNUP_SUCCESS : Welcome to CONSISTENCY
+ CONFIRM_FAIL : Please confirm your password
+
+ */
+
+export const OPTIONBTN_CLICKED = "OPTIONBTN_CLICKED",
+
+             WORKOUT_CLICKED = "WORKOUT_CLICKED",
+
+             VOL_DELETE_CLICKED = "WORKOUT_CLICKED",
+
+             USER_NOT_FOUND = "USER_NOT_FOUND",
+
+             BLANK_INPUT = "BLANK_INPUT",
+
+             USER_EXIST = "USER_EXIST",
+
+             SIGNUP_SUCCESS = "SIGNUP_SUCCESS",
+
+             CONFIRM_FAIL = "CONFIRM_FAIL",
+
+             WORKOUTDELBTN_CLICKED = "WORKOUTDELBTN_CLICKED",
+
+             DOUGHNUT_LOADED = "DOUGHNUT_LOADED",
+
+             DATE_SELECTED = "DATE_SELECTED",
+
+             OPTION_CLICKED = "OPTION_CLICKED",
+
+             WORKOUT_SELECTED = "WORKOUT_SELECTED",
+
+             KGREP_SENT = "KGREP_SENT",
+
+             KG_TYPED = "KG_TYPED",
+
+             REP_TYPED = "REP_TYPED";

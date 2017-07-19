@@ -3,7 +3,7 @@
  */
 import {combineReducers,} from "redux";
 
-import reducer_response from "./reducer_response";
+import reducer_message from "./reducer_message";
 import reducer_kg from "./reducer_kg";
 import reducer_rep from "./reducer_rep";
 import reducer_kgRepList from "./reducer_kgRepList";
@@ -19,7 +19,7 @@ import reducer_authenticate from './reducer_autheticate';
 const rootReducer = combineReducers({
     selectedWorkouts:reducer_selectedWorkouts,
     selectedDate:reducer_selectedDate,
-    responseText:reducer_response,
+    message:reducer_message,
     kg:reducer_kg,
     rep:reducer_rep,
     kgRepList:reducer_kgRepList,

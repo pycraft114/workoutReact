@@ -2,7 +2,7 @@
  * Created by chanwoopark on 2017. 7. 4..
  */
 import axios from 'axios';
-
+import {WORKOUTDELBTN_CLICKED} from './actionTypes';
 
 export default function(date,idx,prevWorkouts,currWorkout){
 
@@ -17,7 +17,7 @@ export default function(date,idx,prevWorkouts,currWorkout){
     return (dispatch) => {
         saveReq.then(() => {
             dispatch({
-                type:"WORKOUTDELBTN_CLICKED",
+                type:WORKOUTDELBTN_CLICKED,
                 selectedWorkouts:newArr
             })
         })

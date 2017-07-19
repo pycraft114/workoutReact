@@ -32,6 +32,9 @@ export default class LoginSignUpPage extends React.Component{
         };
     }
 
+    componentDidMount(){
+        console.log("componentdidmout",this.props);
+    }
 
     onInputChange(evt){
         let inputId = evt.target.id;
@@ -59,7 +62,7 @@ export default class LoginSignUpPage extends React.Component{
                 }else{
                     console.log("login success");
                     localStorage.setItem('token',res.data.token);
-                    window.location.href = "/main";
+                    this.props.authUser();
                 }
             })
         }else{
