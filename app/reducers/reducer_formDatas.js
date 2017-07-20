@@ -15,7 +15,7 @@ export default function(state = {},action){
         case INPUT_MODIFIED:
             const tagId = action.tagId,
                   value = action.value;
-            return {...state, tagId:value};
+            return {"haha": 3000};
     }
     return state;
 }

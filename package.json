@@ -52,6 +52,7 @@
     "react-chartjs": "^0.8.0",
     "react-datepicker": "^0.48.0",
     "react-dom": "^0.14.3",
+    "react-infinite-slide": "^0.1.2",
     "react-redux": "4.3.0",
     "react-router": "^2.0.1",
     "react-router-dom": "^4.1.1",

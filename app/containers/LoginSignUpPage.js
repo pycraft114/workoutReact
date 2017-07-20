@@ -14,16 +14,15 @@ import SubmitForm from '../components/SubmitForm';
 import action_clickLoginBtn from '../actions/action_clickLoginBtn';
 import action_changeInput from '../actions/action_changeInput';
 
-class LoginSignUpPage extends React.Component{
+export default class LoginSignUpPage extends React.Component{
     constructor(props){
         super(props);
 
-        let formDatas={};
-        let inputIDs=["L-id","L-pw","S-id","S-pw","S-cf","S-em"];
+        this.state={
+            haha:this.props.formDatas
+        };
 
-        inputIDs.map(function(currEle){
-           formDatas[currEle] = null;
-        });
+        let inputIDs=["L-id","L-pw","S-id","S-pw","S-cf","S-em"];
 
         this.onSignupButton = this.onSignupButton.bind(this);
     }
@@ -59,7 +58,17 @@ class LoginSignUpPage extends React.Component{
 
     }
 
+    componentDidMount(){
+        console.log("lsp mount")
+    }
+    componentDidUpdate(){
+        console.log("lsp update")
+    }
 
+    shouldComponentUpdate(nextProps, nextState){
+        console.log(nextProps);
+        console.log(nextState);
+    }
 
     /*
      props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
@@ -67,10 +76,11 @@ class LoginSignUpPage extends React.Component{
      를 SubmitForm 에게 넘겨줘야함
      */
 
-
     render(){
+        console.log("render being called");
         return(
             <div className="login-signup-page">
+
 
                 <div className="logo-container">
                     <img
@@ -95,7 +105,7 @@ class LoginSignUpPage extends React.Component{
                         height="100%">
                     <div>
                         <SubmitForm
-                            haha = {this.state.formDatas}
+                            example = {this.props.formDatas}
                             inputTags={[{id:"L-id",placeholder:"Type your ID",evt:(evt) => {action_changeInput(evt,evt.target.id,evt.target.value)}},
                                 {id:"L-pw",placeholder:"Type your Password",evt:(evt) => {action_changeInput(evt,evt.target.id,evt.target.value)},type:"password"}]}
                             button={{context:"LOGIN",evt:action_clickLoginBtn}}
@@ -114,6 +124,7 @@ class LoginSignUpPage extends React.Component{
                 <div className="error-msg">
                     {this.props.message}
                 </div>
+                <button onClick={() => {console.log("haha clicked",this.props.formDatas)}}>ahha</button>
             </div>
         )
     }
@@ -133,7 +144,7 @@ function mapDispatchToProps(dispatch){
     },dispatch)
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(LoginSignUpPage);
+connect(mapStateToProps,mapDispatchToProps)(SubmitForm);
 
 
 

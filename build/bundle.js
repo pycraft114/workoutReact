@@ -37949,8 +37949,6 @@
 	    value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	exports.default = function () {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	    var action = arguments[1];
@@ -37959,7 +37957,7 @@
 	        case _actionTypes.INPUT_MODIFIED:
 	            var tagId = action.tagId,
 	                value = action.value;
-	            return _extends({}, state, { tagId: value });
+	            return { "haha": 3000 };
 	    }
 	    return state;
 	};
@@ -47697,12 +47695,11 @@
 
 	        var _this = _possibleConstructorReturn(this, (LoginSignUpPage.__proto__ || Object.getPrototypeOf(LoginSignUpPage)).call(this, props));
 
-	        var formDatas = {};
-	        var inputIDs = ["L-id", "L-pw", "S-id", "S-pw", "S-cf", "S-em"];
+	        _this.state = {
+	            haha: _this.props.formDatas
+	        };
 
-	        inputIDs.map(function (currEle) {
-	            formDatas[currEle] = null;
-	        });
+	        var inputIDs = ["L-id", "L-pw", "S-id", "S-pw", "S-cf", "S-em"];
 
 	        _this.onSignupButton = _this.onSignupButton.bind(_this);
 	        return _this;
@@ -47739,6 +47736,22 @@
 	                this.setState({ errorMsg: "Please fill out the blanks" });
 	            }
 	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            console.log("lsp mount");
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            console.log("lsp update");
+	        }
+	    }, {
+	        key: 'shouldComponentUpdate',
+	        value: function shouldComponentUpdate(nextProps, nextState) {
+	            console.log(nextProps);
+	            console.log(nextState);
+	        }
 
 	        /*
 	         props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
@@ -47749,6 +47762,9 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this3 = this;
+
+	            console.log("render being called");
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'login-signup-page' },
@@ -47782,7 +47798,7 @@
 	                        'div',
 	                        null,
 	                        _react2.default.createElement(_SubmitForm2.default, {
-	                            haha: this.state.formDatas,
+	                            example: this.props.formDatas,
 	                            inputTags: [{ id: "L-id", placeholder: "Type your ID", evt: function evt(_evt) {
 	                                    (0, _action_changeInput2.default)(_evt, _evt.target.id, _evt.target.value);
 	                                } }, { id: "L-pw", placeholder: "Type your Password", evt: function evt(_evt2) {
@@ -47812,6 +47828,13 @@
 	                    'div',
 	                    { className: 'error-msg' },
 	                    this.props.message
+	                ),
+	                _react2.default.createElement(
+	                    'button',
+	                    { onClick: function onClick() {
+	                            console.log("haha clicked", _this3.props.formDatas);
+	                        } },
+	                    'ahha'
 	                )
 	            );
 	        }
@@ -47819,6 +47842,9 @@
 
 	    return LoginSignUpPage;
 	}(_react2.default.Component);
+
+	exports.default = LoginSignUpPage;
+
 
 	function mapStateToProps(state) {
 	    return {
@@ -47834,10 +47860,9 @@
 	    }, dispatch);
 	}
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LoginSignUpPage);
+	(0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SubmitForm2.default);
 
 	//seperate file / for logo animation
-
 	(function () {
 	    var TxtType = function TxtType(el, toRotate, period) {
 	        this.toRotate = toRotate;
@@ -49572,13 +49597,16 @@
 /* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 
 	exports.default = function (evt, tagId, value) {
+	    console.log("action_changeInput being called");
+	    console.log("tagId", tagId);
+	    console.log("value", value);
 	    return {
 	        type: _actionTypes.INPUT_MODIFIED,
 	        tagId: tagId,
