@@ -14,13 +14,9 @@ import SubmitForm from '../components/SubmitForm';
 import action_clickLoginBtn from '../actions/action_clickLoginBtn';
 import action_changeInput from '../actions/action_changeInput';
 
-export default class LoginSignUpPage extends React.Component{
+class LoginSignUpPage extends React.Component{
     constructor(props){
         super(props);
-
-        this.state={
-            haha:this.props.formDatas
-        };
 
         let inputIDs=["L-id","L-pw","S-id","S-pw","S-cf","S-em"];
 
@@ -58,16 +54,8 @@ export default class LoginSignUpPage extends React.Component{
 
     }
 
-    componentDidMount(){
-        console.log("lsp mount")
-    }
     componentDidUpdate(){
-        console.log("lsp update")
-    }
-
-    shouldComponentUpdate(nextProps, nextState){
-        console.log(nextProps);
-        console.log(nextState);
+        console.log(this.props.formDatas);
     }
 
     /*
@@ -77,7 +65,6 @@ export default class LoginSignUpPage extends React.Component{
      */
 
     render(){
-        console.log("render being called");
         return(
             <div className="login-signup-page">
 
@@ -105,18 +92,17 @@ export default class LoginSignUpPage extends React.Component{
                         height="100%">
                     <div>
                         <SubmitForm
-                            example = {this.props.formDatas}
-                            inputTags={[{id:"L-id",placeholder:"Type your ID",evt:(evt) => {action_changeInput(evt,evt.target.id,evt.target.value)}},
-                                {id:"L-pw",placeholder:"Type your Password",evt:(evt) => {action_changeInput(evt,evt.target.id,evt.target.value)},type:"password"}]}
-                            button={{context:"LOGIN",evt:action_clickLoginBtn}}
+                            inputTags={[{id:"L-id",placeholder:"Type your ID",evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)}},
+                                {id:"L-pw",placeholder:"Type your Password",evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)},type:"password"}]}
+                            button={{context:"LOGIN",evt:this.props.action_clickLoginBtn}}
                         />
                     </div>
                     <div>
                         <SubmitForm
-                            inputTags={[{id:"S-id",placeholder:"Type your ID",evt:(evt) => {action_changeInput(evt,evt.target.id,evt.target.value)}},
-                                {id:"S-pw",placeholder:"Type your Password",evt:(evt) => {action_changeInput(evt,evt.target.id,evt.target.value)},type:"password"},
-                                {id:"S-cf",placeholder:"Confirm Password",evt:(evt) => {action_changeInput(evt,evt.target.id,evt.target.value)},type:"password"},
-                                {id:"S-em",placeholder:"Type your Email",evt:(evt) => {action_changeInput(evt,evt.target.id,evt.target.value)}}]}
+                            inputTags={[{id:"S-id",placeholder:"Type your ID",evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)}},
+                                {id:"S-pw",placeholder:"Type your Password",evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)},type:"password"},
+                                {id:"S-cf",placeholder:"Confirm Password",evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)},type:"password"},
+                                {id:"S-em",placeholder:"Type your Email",evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)}}]}
                             button={{context:"SIGN-UP",evt:this.onSignupButton}}
                         />
                     </div>
@@ -124,7 +110,6 @@ export default class LoginSignUpPage extends React.Component{
                 <div className="error-msg">
                     {this.props.message}
                 </div>
-                <button onClick={() => {console.log("haha clicked",this.props.formDatas)}}>ahha</button>
             </div>
         )
     }
@@ -144,7 +129,7 @@ function mapDispatchToProps(dispatch){
     },dispatch)
 }
 
-connect(mapStateToProps,mapDispatchToProps)(SubmitForm);
+export default connect(mapStateToProps,mapDispatchToProps)(LoginSignUpPage);
 
 
 

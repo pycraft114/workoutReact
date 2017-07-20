@@ -9,13 +9,13 @@ inputIDs.map(function(currType){
 
 import {INPUT_MODIFIED} from '../actions/actionTypes'
 
+const modifiedForm = {};
 
-export default function(state = {},action){
+export default function(state = initialDatas,action){
     switch(action.type){
         case INPUT_MODIFIED:
-            const tagId = action.tagId,
-                  value = action.value;
-            return {"haha": 3000};
+            modifiedForm[action.tagId] = action.value;
+            return modifiedForm;
     }
     return state;
 }

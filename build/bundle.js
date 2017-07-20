@@ -37950,14 +37950,13 @@
 	});
 
 	exports.default = function () {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialDatas;
 	    var action = arguments[1];
 
 	    switch (action.type) {
 	        case _actionTypes.INPUT_MODIFIED:
-	            var tagId = action.tagId,
-	                value = action.value;
-	            return { "haha": 3000 };
+	            modifiedForm[action.tagId] = action.value;
+	            return modifiedForm;
 	    }
 	    return state;
 	};
@@ -37972,6 +37971,8 @@
 	inputIDs.map(function (currType) {
 	    initialDatas[currType] = null;
 	});
+
+	var modifiedForm = {};
 
 /***/ }),
 /* 328 */
@@ -47695,10 +47696,6 @@
 
 	        var _this = _possibleConstructorReturn(this, (LoginSignUpPage.__proto__ || Object.getPrototypeOf(LoginSignUpPage)).call(this, props));
 
-	        _this.state = {
-	            haha: _this.props.formDatas
-	        };
-
 	        var inputIDs = ["L-id", "L-pw", "S-id", "S-pw", "S-cf", "S-em"];
 
 	        _this.onSignupButton = _this.onSignupButton.bind(_this);
@@ -47737,20 +47734,9 @@
 	            }
 	        }
 	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            console.log("lsp mount");
-	        }
-	    }, {
 	        key: 'componentDidUpdate',
 	        value: function componentDidUpdate() {
-	            console.log("lsp update");
-	        }
-	    }, {
-	        key: 'shouldComponentUpdate',
-	        value: function shouldComponentUpdate(nextProps, nextState) {
-	            console.log(nextProps);
-	            console.log(nextState);
+	            console.log(this.props.formDatas);
 	        }
 
 	        /*
@@ -47764,7 +47750,6 @@
 	        value: function render() {
 	            var _this3 = this;
 
-	            console.log("render being called");
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'login-signup-page' },
@@ -47798,13 +47783,12 @@
 	                        'div',
 	                        null,
 	                        _react2.default.createElement(_SubmitForm2.default, {
-	                            example: this.props.formDatas,
 	                            inputTags: [{ id: "L-id", placeholder: "Type your ID", evt: function evt(_evt) {
-	                                    (0, _action_changeInput2.default)(_evt, _evt.target.id, _evt.target.value);
+	                                    _this3.props.action_changeInput(_evt, _evt.target.id, _evt.target.value);
 	                                } }, { id: "L-pw", placeholder: "Type your Password", evt: function evt(_evt2) {
-	                                    (0, _action_changeInput2.default)(_evt2, _evt2.target.id, _evt2.target.value);
+	                                    _this3.props.action_changeInput(_evt2, _evt2.target.id, _evt2.target.value);
 	                                }, type: "password" }],
-	                            button: { context: "LOGIN", evt: _action_clickLoginBtn2.default }
+	                            button: { context: "LOGIN", evt: this.props.action_clickLoginBtn }
 	                        })
 	                    ),
 	                    _react2.default.createElement(
@@ -47812,13 +47796,13 @@
 	                        null,
 	                        _react2.default.createElement(_SubmitForm2.default, {
 	                            inputTags: [{ id: "S-id", placeholder: "Type your ID", evt: function evt(_evt3) {
-	                                    (0, _action_changeInput2.default)(_evt3, _evt3.target.id, _evt3.target.value);
+	                                    _this3.props.action_changeInput(_evt3, _evt3.target.id, _evt3.target.value);
 	                                } }, { id: "S-pw", placeholder: "Type your Password", evt: function evt(_evt4) {
-	                                    (0, _action_changeInput2.default)(_evt4, _evt4.target.id, _evt4.target.value);
+	                                    _this3.props.action_changeInput(_evt4, _evt4.target.id, _evt4.target.value);
 	                                }, type: "password" }, { id: "S-cf", placeholder: "Confirm Password", evt: function evt(_evt5) {
-	                                    (0, _action_changeInput2.default)(_evt5, _evt5.target.id, _evt5.target.value);
+	                                    _this3.props.action_changeInput(_evt5, _evt5.target.id, _evt5.target.value);
 	                                }, type: "password" }, { id: "S-em", placeholder: "Type your Email", evt: function evt(_evt6) {
-	                                    (0, _action_changeInput2.default)(_evt6, _evt6.target.id, _evt6.target.value);
+	                                    _this3.props.action_changeInput(_evt6, _evt6.target.id, _evt6.target.value);
 	                                } }],
 	                            button: { context: "SIGN-UP", evt: this.onSignupButton }
 	                        })
@@ -47828,13 +47812,6 @@
 	                    'div',
 	                    { className: 'error-msg' },
 	                    this.props.message
-	                ),
-	                _react2.default.createElement(
-	                    'button',
-	                    { onClick: function onClick() {
-	                            console.log("haha clicked", _this3.props.formDatas);
-	                        } },
-	                    'ahha'
 	                )
 	            );
 	        }
@@ -47842,9 +47819,6 @@
 
 	    return LoginSignUpPage;
 	}(_react2.default.Component);
-
-	exports.default = LoginSignUpPage;
-
 
 	function mapStateToProps(state) {
 	    return {
@@ -47860,9 +47834,10 @@
 	    }, dispatch);
 	}
 
-	(0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SubmitForm2.default);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LoginSignUpPage);
 
 	//seperate file / for logo animation
+
 	(function () {
 	    var TxtType = function TxtType(el, toRotate, period) {
 	        this.toRotate = toRotate;
