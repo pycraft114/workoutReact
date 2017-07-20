@@ -6,6 +6,7 @@ import React,{Component} from 'react';
 export default class SubmitForm extends Component{
     constructor(props){
         super(props);
+
     }
 
     //array of object를 받는게 나을것 같아

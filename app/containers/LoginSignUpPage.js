@@ -2,16 +2,18 @@
  * Created by chanwoopark on 2017. 6. 23..
  */
 import React from 'react';
-
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import {ArrowLeft,ArrowRight,Dots, Slides } from 'react-infinite-slide';
 import axios from 'axios';
-import { browserHistory } from 'react-router';
 
-
+//Components
 import SubmitForm from '../components/SubmitForm';
 
+//actions
+import action_clickLoginBtn from '../actions/action_clickLoginBtn';
 
-export default class LoginSignUpPage extends React.Component{
+class LoginSignUpPage extends React.Component{
     constructor(props){
         super(props);
 
@@ -23,17 +25,13 @@ export default class LoginSignUpPage extends React.Component{
         });
 
         this.onInputChange = this.onInputChange.bind(this);
-        this.onLoginButton = this.onLoginButton.bind(this);
         this.onSignupButton = this.onSignupButton.bind(this);
+        this.dummy = this.dummy.bind(this);
 
         this.state={
             formDatas:formDatas,
             errorMsg:null,
         };
-    }
-
-    componentDidMount(){
-        console.log("componentdidmout",this.props);
     }
 
     onInputChange(evt){
@@ -45,34 +43,9 @@ export default class LoginSignUpPage extends React.Component{
     }
 
 
-    onLoginButton(evt){
-        evt.preventDefault();
-
-        let inputValues = this.state.formDatas;
-
-        if(inputValues["L-id"]&&inputValues["L-pw"]){
-            axios.post('/login',{
-                id:inputValues["L-id"],
-                password:inputValues["L-pw"]
-            }).then((res) => {
-                if(res.data === "WRONG_PASSWORD"){
-                    this.setState({errorMsg:"Wrong password"});
-                }else if(res.data === "USER_NOT_FOUND"){
-                    this.setState({errorMsg:"User not found"})
-                }else{
-                    console.log("login success");
-                    localStorage.setItem('token',res.data.token);
-                    this.props.authUser();
-                }
-            })
-        }else{
-            this.setState({errorMsg:"Please fill out the blank"});
-        }
-    }
-
     onSignupButton(evt){
         evt.preventDefault();
-        let inputValues = this.state.formDatas;
+        var inputValues = this.state.formDatas;
 
         if(inputValues["S-id"]&&inputValues["S-em"]&&inputValues["S-cf"]&&inputValues["S-pw"]){
             if(inputValues["S-pw"] === inputValues["S-cf"]){
@@ -101,14 +74,22 @@ export default class LoginSignUpPage extends React.Component{
     }
 
 
+    dummy(){
+        console.log("dummy called");
+        return(
+            <div>hahahahah</div>
+        )
+    }
+
     /*
      props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
      props.button = {context : x ,evt : func}
-     넘겨줘야함
+     를 SubmitForm 에게 넘겨줘야함
      */
 
 
     render(){
+        var inputValues2 = this.state.formDatas;
         return(
             <div className="login-signup-page">
 
@@ -135,9 +116,14 @@ export default class LoginSignUpPage extends React.Component{
                         height="100%">
                     <div>
                         <SubmitForm
+                            inputvals = {inputValues2}
                             inputTags={[{id:"L-id",placeholder:"Type your ID",evt:this.onInputChange},
                                 {id:"L-pw",placeholder:"Type your Password",evt:this.onInputChange,type:"password"}]}
-                            button={{context:"LOGIN",evt:this.onLoginButton}}
+                            button={{context:"LOGIN",evt:(evt) =>{
+                                evt.preventDefault();
+                                this.props.action_clickLoginBtn()
+                            }}}
+                            information={inputValues2}
                         />
                     </div>
                     <div>
@@ -151,12 +137,25 @@ export default class LoginSignUpPage extends React.Component{
                     </div>
                 </Slides>
                 <div className="error-msg">
-                    {this.state.errorMsg}
+                    {this.props.message}
                 </div>
+                <div>{this.dummy()}</div>
             </div>
         )
     }
 }
+
+function mapStateToProps(state){
+    return {message : state.message};
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({
+        action_clickLoginBtn
+    },dispatch)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(LoginSignUpPage);
 
 
 //seperate file

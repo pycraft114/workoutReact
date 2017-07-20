@@ -9,11 +9,6 @@ export default class Gate extends Component{
         super(props);
     }
 
-    componentDidMount(){
-        console.log("gate mount",this.props);
-    }
-
-
     render(){
         return(
             <div key={this.props.key}>
