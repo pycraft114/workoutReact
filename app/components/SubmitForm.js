@@ -9,6 +9,13 @@ export default class SubmitForm extends Component{
 
     }
 
+    componentDidMount(){
+        console.log(this.props.haha);
+    }
+
+    componentDidUpdate(){
+        console.log(this.props.haha);
+    }
     //array of object를 받는게 나을것 같아
     //props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
     //props.button = {context : x ,evt : func}

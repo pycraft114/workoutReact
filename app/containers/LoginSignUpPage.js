@@ -12,6 +12,7 @@ import SubmitForm from '../components/SubmitForm';
 
 //actions
 import action_clickLoginBtn from '../actions/action_clickLoginBtn';
+import action_changeInput from '../actions/action_changeInput';
 
 class LoginSignUpPage extends React.Component{
     constructor(props){
@@ -24,22 +25,7 @@ class LoginSignUpPage extends React.Component{
            formDatas[currEle] = null;
         });
 
-        this.onInputChange = this.onInputChange.bind(this);
         this.onSignupButton = this.onSignupButton.bind(this);
-        this.dummy = this.dummy.bind(this);
-
-        this.state={
-            formDatas:formDatas,
-            errorMsg:null,
-        };
-    }
-
-    onInputChange(evt){
-        let inputId = evt.target.id;
-        let value = evt.target.value;
-        let obj = Object.assign({},this.state.formDatas);
-        obj[inputId] = value;
-        this.setState({formDatas :obj});
     }
 
 
@@ -74,12 +60,6 @@ class LoginSignUpPage extends React.Component{
     }
 
 
-    dummy(){
-        console.log("dummy called");
-        return(
-            <div>hahahahah</div>
-        )
-    }
 
     /*
      props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
@@ -89,7 +69,6 @@ class LoginSignUpPage extends React.Component{
 
 
     render(){
-        var inputValues2 = this.state.formDatas;
         return(
             <div className="login-signup-page">
 
@@ -116,21 +95,18 @@ class LoginSignUpPage extends React.Component{
                         height="100%">
                     <div>
                         <SubmitForm
-                            inputvals = {inputValues2}
-                            inputTags={[{id:"L-id",placeholder:"Type your ID",evt:this.onInputChange},
-                                {id:"L-pw",placeholder:"Type your Password",evt:this.onInputChange,type:"password"}]}
-                            button={{context:"LOGIN",evt:(evt) =>{
-                                evt.preventDefault();
-                                this.props.action_clickLoginBtn(inputValues2["L-id"],inputValues2["L-pw"]);
-                            }}}
+                            haha = {this.state.formDatas}
+                            inputTags={[{id:"L-id",placeholder:"Type your ID",evt:(evt) => {action_changeInput(evt,evt.target.id,evt.target.value)}},
+                                {id:"L-pw",placeholder:"Type your Password",evt:(evt) => {action_changeInput(evt,evt.target.id,evt.target.value)},type:"password"}]}
+                            button={{context:"LOGIN",evt:action_clickLoginBtn}}
                         />
                     </div>
                     <div>
                         <SubmitForm
-                            inputTags={[{id:"S-id",placeholder:"Type your ID",evt:this.onInputChange},
-                                {id:"S-pw",placeholder:"Type your Password",evt:this.onInputChange,type:"password"},
-                                {id:"S-cf",placeholder:"Confirm Password",evt:this.onInputChange,type:"password"},
-                                {id:"S-em",placeholder:"Type your Email",evt:this.onInputChange,type:"email"}]}
+                            inputTags={[{id:"S-id",placeholder:"Type your ID",evt:(evt) => {action_changeInput(evt,evt.target.id,evt.target.value)}},
+                                {id:"S-pw",placeholder:"Type your Password",evt:(evt) => {action_changeInput(evt,evt.target.id,evt.target.value)},type:"password"},
+                                {id:"S-cf",placeholder:"Confirm Password",evt:(evt) => {action_changeInput(evt,evt.target.id,evt.target.value)},type:"password"},
+                                {id:"S-em",placeholder:"Type your Email",evt:(evt) => {action_changeInput(evt,evt.target.id,evt.target.value)}}]}
                             button={{context:"SIGN-UP",evt:this.onSignupButton}}
                         />
                     </div>
@@ -138,26 +114,35 @@ class LoginSignUpPage extends React.Component{
                 <div className="error-msg">
                     {this.props.message}
                 </div>
-                <div>{this.dummy()}</div>
             </div>
         )
     }
 }
 
 function mapStateToProps(state){
-    return {message : state.message};
+    return {
+        message : state.message,
+        formDatas : state.formDatas
+    };
 }
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({
-        action_clickLoginBtn
+        action_clickLoginBtn,
+        action_changeInput
     },dispatch)
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(LoginSignUpPage);
 
 
-//seperate file
+
+
+
+
+
+
+//seperate file / for logo animation
 (function(){
     var TxtType = function(el, toRotate, period) {
         this.toRotate = toRotate;
