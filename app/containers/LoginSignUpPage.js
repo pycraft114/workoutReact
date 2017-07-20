@@ -121,9 +121,8 @@ class LoginSignUpPage extends React.Component{
                                 {id:"L-pw",placeholder:"Type your Password",evt:this.onInputChange,type:"password"}]}
                             button={{context:"LOGIN",evt:(evt) =>{
                                 evt.preventDefault();
-                                this.props.action_clickLoginBtn()
+                                this.props.action_clickLoginBtn(inputValues2["L-id"],inputValues2["L-pw"]);
                             }}}
-                            information={inputValues2}
                         />
                     </div>
                     <div>
