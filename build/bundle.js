@@ -47768,8 +47768,9 @@
 
 	            var inputIds = this.state.inputIds,
 	                placeholders = this.state.placeholders,
-	                btnContext = this.state.btnContext;
-
+	                btnContext = this.state.btnContext,
+	                formDatas = this.props.formDatas;
+	            console.log(formDatas);
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'login-signup-page' },
@@ -47820,7 +47821,10 @@
 
 	                            button: {
 	                                context: btnContext.login,
-	                                evt: this.props.action_clickLoginBtn
+	                                evt: function evt(_evt3) {
+	                                    _evt3.preventDefault();
+	                                    _this3.props.action_clickLoginBtn(_evt3, _this3.props.formDatas.loginId, _this3.props.formDatas.loginPassword);
+	                                }
 	                            }
 	                        })
 	                    ),
@@ -47828,14 +47832,14 @@
 	                        'div',
 	                        null,
 	                        _react2.default.createElement(_SubmitForm2.default, {
-	                            inputTags: [{ id: "S-id", placeholder: "Type your ID", evt: function evt(_evt3) {
-	                                    _this3.props.action_changeInput(_evt3, _evt3.target.id, _evt3.target.value);
-	                                } }, { id: "S-pw", placeholder: "Type your Password", evt: function evt(_evt4) {
+	                            inputTags: [{ id: "S-id", placeholder: "Type your ID", evt: function evt(_evt4) {
 	                                    _this3.props.action_changeInput(_evt4, _evt4.target.id, _evt4.target.value);
-	                                }, type: "password" }, { id: "S-cf", placeholder: "Confirm Password", evt: function evt(_evt5) {
+	                                } }, { id: "S-pw", placeholder: "Type your Password", evt: function evt(_evt5) {
 	                                    _this3.props.action_changeInput(_evt5, _evt5.target.id, _evt5.target.value);
-	                                }, type: "password" }, { id: "S-em", placeholder: "Type your Email", evt: function evt(_evt6) {
+	                                }, type: "password" }, { id: "S-cf", placeholder: "Confirm Password", evt: function evt(_evt6) {
 	                                    _this3.props.action_changeInput(_evt6, _evt6.target.id, _evt6.target.value);
+	                                }, type: "password" }, { id: "S-em", placeholder: "Type your Email", evt: function evt(_evt7) {
+	                                    _this3.props.action_changeInput(_evt7, _evt7.target.id, _evt7.target.value);
 	                                } }],
 	                            button: { context: "SIGN-UP", evt: this.onSignupButton }
 	                        })
@@ -49563,11 +49567,10 @@
 	    value: true
 	});
 
-	exports.default = function (evt, id, ff, fff) {
+	exports.default = function (evt, id, password) {
 	    evt.preventDefault();
 	    console.log("id", id);
-	    console.log("ff", ff);
-	    console.log("fff", fff);
+	    console.log("password", password);
 	    /*const loginReq = axios.post('/login',{id, password});
 	     if(id && password){
 	        return((dispatch) => {
@@ -49605,16 +49608,13 @@
 /* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 
 	exports.default = function (evt, tagId, value) {
-	    console.log("evt", evt);
-	    console.log("tagId", tagId);
-	    console.log("value", value);
 	    return {
 	        type: _actionTypes.INPUT_MODIFIED,
 	        tagId: tagId,

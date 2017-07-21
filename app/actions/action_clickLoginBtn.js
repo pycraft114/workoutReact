@@ -5,11 +5,10 @@
 import axios from 'axios';
 import {WRONG_PASSWORD,USER_NOT_FOUND} from './actionTypes';
 
-export default function(evt,id,ff,fff){
+export default function(evt,id,password){
     evt.preventDefault();
     console.log("id",id);
-    console.log("ff",ff);
-    console.log("fff",fff);
+    console.log("password",password);
     /*const loginReq = axios.post('/login',{id, password});
 
     if(id && password){

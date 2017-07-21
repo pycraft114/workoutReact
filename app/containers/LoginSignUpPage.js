@@ -84,8 +84,9 @@ class LoginSignUpPage extends React.Component{
     render(){
         const inputIds = this.state.inputIds,
             placeholders = this.state.placeholders,
-            btnContext = this.state.btnContext;
-
+            btnContext = this.state.btnContext,
+            formDatas = this.props.formDatas;
+        console.log(formDatas);
         return(
             <div className="login-signup-page">
 
@@ -118,12 +119,12 @@ class LoginSignUpPage extends React.Component{
                                     {
                                         id:inputIds.loginId,
                                         placeholder:placeholders.id,
-                                        evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)}
+                                        evt:(evt) => {this.props.action_changeInput(evt, evt.target.id, evt.target.value)}
                                     },
                                     {
                                         id:inputIds.loginPassword,
                                         placeholder:placeholders.password,
-                                        evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)},
+                                        evt:(evt) => {this.props.action_changeInput(evt, evt.target.id, evt.target.value)},
                                         type:"password"
                                     }
                                 ]
@@ -132,7 +133,10 @@ class LoginSignUpPage extends React.Component{
                             button={
                                 {
                                     context:btnContext.login,
-                                    evt:this.props.action_clickLoginBtn
+                                    evt:(evt) => {
+                                        evt.preventDefault();
+                                        this.props.action_clickLoginBtn(evt, this.props.formDatas.loginId, this.props.formDatas.loginPassword)
+                                    }
                                 }
                             }
                         />
