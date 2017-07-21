@@ -45,4 +45,6 @@ export const OPTIONBTN_CLICKED = "OPTIONBTN_CLICKED",
 
              REP_TYPED = "REP_TYPED",
 
-             INPUT_MODIFIED = "INPUT_MODIFIED";
+             INPUT_MODIFIED = "INPUT_MODIFIED",
+
+             USER_AUTHED = "USER_AUTHED";

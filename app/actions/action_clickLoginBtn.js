@@ -3,13 +3,11 @@
  */
 
 import axios from 'axios';
-import {WRONG_PASSWORD,USER_NOT_FOUND} from './actionTypes';
+import {WRONG_PASSWORD,USER_NOT_FOUND,USER_AUTHED,BLANK_INPUT} from './actionTypes';
 
 export default function(evt,id,password){
     evt.preventDefault();
-    console.log("id",id);
-    console.log("password",password);
-    /*const loginReq = axios.post('/login',{id, password});
+    const loginReq = axios.post('/login',{id, password});
 
     if(id && password){
         return((dispatch) => {
@@ -21,13 +19,12 @@ export default function(evt,id,password){
                 }else{
                     console.log("login success msg from action");
                     localStorage.setItem('token',res.data.token);
-                    dispatch({type:"USER_AUTHED"});
+                    dispatch({type:USER_AUTHED});
                 }
             })
         })
     }else{
-        return{type:"BLANK_INPUT"};
-    }*/
-    return{type:"hahaha"}
+        return{type:BLANK_INPUT};
+    }
 };
 

@@ -84,9 +84,8 @@ class LoginSignUpPage extends React.Component{
     render(){
         const inputIds = this.state.inputIds,
             placeholders = this.state.placeholders,
-            btnContext = this.state.btnContext,
-            formDatas = this.props.formDatas;
-        console.log(formDatas);
+            btnContext = this.state.btnContext;
+
         return(
             <div className="login-signup-page">
 

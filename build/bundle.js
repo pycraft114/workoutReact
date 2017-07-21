@@ -21931,7 +21931,8 @@
 	    KGREP_SENT = exports.KGREP_SENT = "KGREP_SENT",
 	    KG_TYPED = exports.KG_TYPED = "KG_TYPED",
 	    REP_TYPED = exports.REP_TYPED = "REP_TYPED",
-	    INPUT_MODIFIED = exports.INPUT_MODIFIED = "INPUT_MODIFIED";
+	    INPUT_MODIFIED = exports.INPUT_MODIFIED = "INPUT_MODIFIED",
+	    USER_AUTHED = exports.USER_AUTHED = "USER_AUTHED";
 
 /***/ }),
 /* 201 */
@@ -47768,9 +47769,8 @@
 
 	            var inputIds = this.state.inputIds,
 	                placeholders = this.state.placeholders,
-	                btnContext = this.state.btnContext,
-	                formDatas = this.props.formDatas;
-	            console.log(formDatas);
+	                btnContext = this.state.btnContext;
+
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'login-signup-page' },
@@ -49569,27 +49569,25 @@
 
 	exports.default = function (evt, id, password) {
 	    evt.preventDefault();
-	    console.log("id", id);
-	    console.log("password", password);
-	    /*const loginReq = axios.post('/login',{id, password});
-	     if(id && password){
-	        return((dispatch) => {
-	            loginReq.then((res) => {
-	                if(res.data === WRONG_PASSWORD){
-	                    dispatch({type:WRONG_PASSWORD});
-	                }else if(res.data === USER_NOT_FOUND){
-	                    dispatch({type:USER_NOT_FOUND});
-	                }else{
+	    var loginReq = _axios2.default.post('/login', { id: id, password: password });
+
+	    if (id && password) {
+	        return function (dispatch) {
+	            loginReq.then(function (res) {
+	                if (res.data === _actionTypes.WRONG_PASSWORD) {
+	                    dispatch({ type: _actionTypes.WRONG_PASSWORD });
+	                } else if (res.data === _actionTypes.USER_NOT_FOUND) {
+	                    dispatch({ type: _actionTypes.USER_NOT_FOUND });
+	                } else {
 	                    console.log("login success msg from action");
-	                    localStorage.setItem('token',res.data.token);
-	                    dispatch({type:"USER_AUTHED"});
+	                    localStorage.setItem('token', res.data.token);
+	                    dispatch({ type: _actionTypes.USER_AUTHED });
 	                }
-	            })
-	        })
-	    }else{
-	        return{type:"BLANK_INPUT"};
-	    }*/
-	    return { type: "hahaha" };
+	            });
+	        };
+	    } else {
+	        return { type: _actionTypes.BLANK_INPUT };
+	    }
 	};
 
 	var _axios = __webpack_require__(435);
