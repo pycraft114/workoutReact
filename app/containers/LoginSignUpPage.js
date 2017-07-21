@@ -13,6 +13,7 @@ import SubmitForm from '../components/SubmitForm';
 //actions
 import action_clickLoginBtn from '../actions/action_clickLoginBtn';
 import action_changeInput from '../actions/action_changeInput';
+import action_clickSignupBtn from '../actions/action_clickSignupBtn';
 
 class LoginSignUpPage extends React.Component{
     constructor(props){
@@ -40,40 +41,7 @@ class LoginSignUpPage extends React.Component{
 
         };
 
-        this.onSignupButton = this.onSignupButton.bind(this);
     }
-
-
-    onSignupButton(evt){
-        evt.preventDefault();
-        var inputValues = this.state.formDatas;
-
-        if(inputValues["S-id"]&&inputValues["S-em"]&&inputValues["S-cf"]&&inputValues["S-pw"]){
-            if(inputValues["S-pw"] === inputValues["S-cf"]){
-
-                axios.post('/signup',{
-                    id:inputValues["S-id"],
-                    password:inputValues["S-pw"],
-                    email:inputValues["S-em"]
-                }).then((res) => {
-                    if(res.data === "USER_EXIST"){
-                        this.setState({errorMsg:"User id already in use"});
-                    }else if(res.data === "SIGNUP_SUCCESS"){
-                        this.setState({errorMsg:"Welcome to CONSISTENCY"})
-                    }
-                })
-
-            }else{
-                //"please confirm your password"
-                this.setState({errorMsg:"Please confirm your password"});
-            }
-        }else{
-            //something empty
-            this.setState({errorMsg:"Please fill out the blanks"});
-        }
-
-    }
-
 
     /*
      props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
@@ -118,12 +86,12 @@ class LoginSignUpPage extends React.Component{
                                     {
                                         id:inputIds.loginId,
                                         placeholder:placeholders.id,
-                                        evt:(evt) => {this.props.action_changeInput(evt, evt.target.id, evt.target.value)}
+                                        evt:(evt) => {this.props.action_changeInput(evt.target.id, evt.target.value)}
                                     },
                                     {
                                         id:inputIds.loginPassword,
                                         placeholder:placeholders.password,
-                                        evt:(evt) => {this.props.action_changeInput(evt, evt.target.id, evt.target.value)},
+                                        evt:(evt) => {this.props.action_changeInput(evt.target.id, evt.target.value)},
                                         type:"password"
                                     }
                                 ]
@@ -134,7 +102,7 @@ class LoginSignUpPage extends React.Component{
                                     context:btnContext.login,
                                     evt:(evt) => {
                                         evt.preventDefault();
-                                        this.props.action_clickLoginBtn(evt, this.props.formDatas.loginId, this.props.formDatas.loginPassword)
+                                        this.props.action_clickLoginBtn(this.props.formDatas.loginId, this.props.formDatas.loginPassword)
                                     }
                                 }
                             }
@@ -142,11 +110,14 @@ class LoginSignUpPage extends React.Component{
                     </div>
                     <div>
                         <SubmitForm
-                            inputTags={[{id:"S-id",placeholder:"Type your ID",evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)}},
-                                {id:"S-pw",placeholder:"Type your Password",evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)},type:"password"},
-                                {id:"S-cf",placeholder:"Confirm Password",evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)},type:"password"},
-                                {id:"S-em",placeholder:"Type your Email",evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)}}]}
-                            button={{context:"SIGN-UP",evt:this.onSignupButton}}
+                            inputTags={[{id:inputIds.signupId, placeholder:placeholders.id, evt:(evt) => {this.props.action_changeInput(evt.target.id,evt.target.value)}},
+                                {id:inputIds.signupPassword, placeholder:placeholders.password, evt:(evt) => {this.props.action_changeInput(evt.target.id,evt.target.value)},type:"password"},
+                                {id:inputIds.signupConfirm, placeholder:placeholders.confirm, evt:(evt) => {this.props.action_changeInput(evt.target.id,evt.target.value)},type:"password"},
+                                {id:inputIds.signupEmail, placeholder:placeholders.email, evt:(evt) => {this.props.action_changeInput(evt.target.id,evt.target.value)}}]}
+                            button={{context:"SIGN-UP",evt:(evt) => {
+                                evt.preventDefault();
+                                this.props.action_clickSignupBtn(this.props.formDatas.signupId,this.props.formDatas.signupPassword,this.props.formDatas.signupConfirm,this.props.formDatas.signupEmail);
+                            }}}
                         />
                     </div>
                 </Slides>
@@ -168,7 +139,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
     return bindActionCreators({
         action_clickLoginBtn,
-        action_changeInput
+        action_changeInput,
+        action_clickSignupBtn
     },dispatch)
 }
 
