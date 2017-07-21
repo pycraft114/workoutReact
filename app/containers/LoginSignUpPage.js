@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import {bindActionCreators,dispatch} from 'redux';
 import {ArrowLeft,ArrowRight,Dots, Slides } from 'react-infinite-slide';
 import axios from 'axios';
 
@@ -18,7 +18,27 @@ class LoginSignUpPage extends React.Component{
     constructor(props){
         super(props);
 
-        let inputIDs=["L-id","L-pw","S-id","S-pw","S-cf","S-em"];
+        this.state = {
+            inputIds : {
+                loginId:"loginId",
+                loginPassword:"loginPassword",
+                signupId:"signupId",
+                signupPassword:"signupPassword",
+                signupConfirm:"signupConfirm",
+                signupEmail:"signupEmail"
+            },
+            placeholders : {
+                id:"Type your ID",
+                password : "Type your password",
+                confirm : "Confirm your password",
+                email:"Type your email"
+            },
+            btnContext:{
+                login:"LOGIN",
+                signup:"SIGN UP"
+            },
+
+        };
 
         this.onSignupButton = this.onSignupButton.bind(this);
     }
@@ -54,9 +74,6 @@ class LoginSignUpPage extends React.Component{
 
     }
 
-    componentDidUpdate(){
-        console.log(this.props.formDatas);
-    }
 
     /*
      props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
@@ -65,6 +82,10 @@ class LoginSignUpPage extends React.Component{
      */
 
     render(){
+        const inputIds = this.state.inputIds,
+            placeholders = this.state.placeholders,
+            btnContext = this.state.btnContext;
+
         return(
             <div className="login-signup-page">
 
@@ -92,9 +113,28 @@ class LoginSignUpPage extends React.Component{
                         height="100%">
                     <div>
                         <SubmitForm
-                            inputTags={[{id:"L-id",placeholder:"Type your ID",evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)}},
-                                {id:"L-pw",placeholder:"Type your Password",evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)},type:"password"}]}
-                            button={{context:"LOGIN",evt:this.props.action_clickLoginBtn}}
+                            inputTags={
+                                [
+                                    {
+                                        id:inputIds.loginId,
+                                        placeholder:placeholders.id,
+                                        evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)}
+                                    },
+                                    {
+                                        id:inputIds.loginPassword,
+                                        placeholder:placeholders.password,
+                                        evt:(evt) => {this.props.action_changeInput(evt,evt.target.id,evt.target.value)},
+                                        type:"password"
+                                    }
+                                ]
+                            }
+
+                            button={
+                                {
+                                    context:btnContext.login,
+                                    evt:this.props.action_clickLoginBtn
+                                }
+                            }
                         />
                     </div>
                     <div>

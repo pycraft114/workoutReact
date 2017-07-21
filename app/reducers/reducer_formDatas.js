@@ -1,7 +1,7 @@
 /**
  * Created by chanwoopark on 2017. 7. 20..
  */
-const inputIDs=["L-id","L-pw","S-id","S-pw","S-cf","S-em"];
+const inputIDs=["loginId","loginPassword","signupId","signupPassword","signupConfirm","signupEmail"];
 const initialDatas = {};
 inputIDs.map(function(currType){
     initialDatas[currType] = null

@@ -37969,7 +37969,7 @@
 	/**
 	 * Created by chanwoopark on 2017. 7. 20..
 	 */
-	var inputIDs = ["L-id", "L-pw", "S-id", "S-pw", "S-cf", "S-em"];
+	var inputIDs = ["loginId", "loginPassword", "signupId", "signupPassword", "signupConfirm", "signupEmail"];
 	var initialDatas = {};
 	inputIDs.map(function (currType) {
 	    initialDatas[currType] = null;
@@ -47697,7 +47697,27 @@
 
 	        var _this = _possibleConstructorReturn(this, (LoginSignUpPage.__proto__ || Object.getPrototypeOf(LoginSignUpPage)).call(this, props));
 
-	        var inputIDs = ["L-id", "L-pw", "S-id", "S-pw", "S-cf", "S-em"];
+	        _this.state = {
+	            inputIds: {
+	                loginId: "loginId",
+	                loginPassword: "loginPassword",
+	                signupId: "signupId",
+	                signupPassword: "signupPassword",
+	                signupConfirm: "signupConfirm",
+	                signupEmail: "signupEmail"
+	            },
+	            placeholders: {
+	                id: "Type your ID",
+	                password: "Type your password",
+	                confirm: "Confirm your password",
+	                email: "Type your email"
+	            },
+	            btnContext: {
+	                login: "LOGIN",
+	                signup: "SIGN UP"
+	            }
+
+	        };
 
 	        _this.onSignupButton = _this.onSignupButton.bind(_this);
 	        return _this;
@@ -47734,11 +47754,6 @@
 	                this.setState({ errorMsg: "Please fill out the blanks" });
 	            }
 	        }
-	    }, {
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {
-	            console.log(this.props.formDatas);
-	        }
 
 	        /*
 	         props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
@@ -47750,6 +47765,10 @@
 	        key: 'render',
 	        value: function render() {
 	            var _this3 = this;
+
+	            var inputIds = this.state.inputIds,
+	                placeholders = this.state.placeholders,
+	                btnContext = this.state.btnContext;
 
 	            return _react2.default.createElement(
 	                'div',
@@ -47784,12 +47803,25 @@
 	                        'div',
 	                        null,
 	                        _react2.default.createElement(_SubmitForm2.default, {
-	                            inputTags: [{ id: "L-id", placeholder: "Type your ID", evt: function evt(_evt) {
+	                            inputTags: [{
+	                                id: inputIds.loginId,
+	                                placeholder: placeholders.id,
+	                                evt: function evt(_evt) {
 	                                    _this3.props.action_changeInput(_evt, _evt.target.id, _evt.target.value);
-	                                } }, { id: "L-pw", placeholder: "Type your Password", evt: function evt(_evt2) {
+	                                }
+	                            }, {
+	                                id: inputIds.loginPassword,
+	                                placeholder: placeholders.password,
+	                                evt: function evt(_evt2) {
 	                                    _this3.props.action_changeInput(_evt2, _evt2.target.id, _evt2.target.value);
-	                                }, type: "password" }],
-	                            button: { context: "LOGIN", evt: this.props.action_clickLoginBtn }
+	                                },
+	                                type: "password"
+	                            }],
+
+	                            button: {
+	                                context: btnContext.login,
+	                                evt: this.props.action_clickLoginBtn
+	                            }
 	                        })
 	                    ),
 	                    _react2.default.createElement(
@@ -49580,7 +49612,7 @@
 	});
 
 	exports.default = function (evt, tagId, value) {
-	    console.log("action_changeInput being called");
+	    console.log("evt", evt);
 	    console.log("tagId", tagId);
 	    console.log("value", value);
 	    return {
