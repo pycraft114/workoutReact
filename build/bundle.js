@@ -71032,22 +71032,30 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
-	exports.default = function (receivedComponent, bool) {
-	    if (bool) {
-	        return receivedComponent;
-	    } else {
-	        window.location.href = "/";
-	    }
-	};
+	exports.default = Gate;
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(159);
+	var _reactRouterDom = __webpack_require__(329);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function Gate(_ref) {
+	    var Component = _ref.component,
+	        isAuthed = _ref.isAuthed,
+	        path = _ref.path,
+	        redirUrl = _ref.redirUrl;
+
+	    return _react2.default.createElement(_reactRouterDom.Route, { path: path, render: function render(props) {
+	            if (isAuthed) {
+	                return _react2.default.createElement(Component, null);
+	            } else {
+	                return _react2.default.createElement(_reactRouterDom.Redirect, { to: { pathname: redirUrl, state: { from: props.location } } });
+	            }
+	        } });
+	}
 
 /***/ }),
 /* 737 */
@@ -71112,8 +71120,18 @@
 	                _react2.default.createElement(
 	                    _reactRouterDom.Switch,
 	                    null,
-	                    _react2.default.createElement(_reactRouterDom.Route, { path: '/main', component: (0, _Gate2.default)(_MainPage2.default, this.props.isAuthed) }),
-	                    _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _LoginSignUpPage2.default })
+	                    _react2.default.createElement(_Gate2.default, {
+	                        component: _LoginSignUpPage2.default,
+	                        isAuthed: !this.props.isAuthed,
+	                        path: '/login',
+	                        redirUrl: '/main'
+	                    }),
+	                    _react2.default.createElement(_Gate2.default, {
+	                        component: _MainPage2.default,
+	                        isAuthed: this.props.isAuthed,
+	                        path: '/main',
+	                        redirUrl: '/login'
+	                    })
 	                )
 	            );
 	        }
