@@ -20,7 +20,7 @@ class ForTest extends Component{
         return(
             <BrowserRouter history ={browserHistory}>
                 <Switch>
-                    <Route path="/main" component={Gate(MainPage)}/>
+                    <Route path="/main" component={Gate(MainPage,this.props.isAuthed)}/>
                     <Route path="/" component={LoginSignUpPage}/>
                 </Switch>
             </BrowserRouter>

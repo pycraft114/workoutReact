@@ -53,6 +53,7 @@ class LoginSignUpPage extends React.Component{
      */
 
     render(){
+        console.log("LoginSignUpPage rendering");
         const inputIds = this.state.inputIds,
             placeholders = this.state.placeholders,
             btnContext = this.state.btnContext;

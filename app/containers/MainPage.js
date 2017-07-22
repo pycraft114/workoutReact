@@ -21,6 +21,7 @@ export default class MainPage extends Component{
     }
 
     render(){
+        console.log("main page rendering");
         return(
                 <div className="main-page">
 
