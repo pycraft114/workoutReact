@@ -15,6 +15,11 @@ export default class MainPage extends Component{
         super(props);
 
     }
+
+    shouldComponentUpdate(){
+        return true;
+    }
+
     render(){
         return(
                 <div className="main-page">

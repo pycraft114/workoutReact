@@ -43,6 +43,9 @@ class LoginSignUpPage extends React.Component{
 
     }
 
+    shouldComponentUpdate(){
+        return true;
+    }
     /*
      props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
      props.button = {context : x ,evt : func}

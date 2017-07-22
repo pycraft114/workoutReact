@@ -82,14 +82,18 @@
 
 	var _Gate2 = _interopRequireDefault(_Gate);
 
+	var _ForTest = __webpack_require__(737);
+
+	var _ForTest2 = _interopRequireDefault(_ForTest);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/////
-	__webpack_require__(737);
+
 
 	/////
-
-	__webpack_require__(742);
+	__webpack_require__(738);
+	__webpack_require__(743);
 
 	/*
 	const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
@@ -111,27 +115,10 @@
 	var isAuthed = states.isAuthed;
 	console.log("is authed?", isAuthed);
 
-	function renderLoginPage() {
-	    return _react2.default.createElement(
-	        _Gate2.default,
-	        { bool: !isAuthed, redirUrl: '/main' },
-	        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _LoginSignUpPage2.default })
-	    );
-	}
-
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRedux.Provider,
 	    { store: store },
-	    _react2.default.createElement(
-	        _reactRouterDom.BrowserRouter,
-	        { history: _reactRouter.browserHistory },
-	        _react2.default.createElement(
-	            _reactRouterDom.Switch,
-	            null,
-	            _react2.default.createElement(_Gate2.default, { path: '/main', bool: isAuthed, redirUrl: '/', component: _MainPage2.default }),
-	            _react2.default.createElement(_Gate2.default, { path: '/', bool: !isAuthed, redirUrl: '/main', component: _LoginSignUpPage2.default })
-	        )
-	    )
+	    _react2.default.createElement(_ForTest2.default, null)
 	), document.querySelector('.container'));
 
 /***/ }),
@@ -47720,13 +47707,18 @@
 	        return _this;
 	    }
 
-	    /*
-	     props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
-	     props.button = {context : x ,evt : func}
-	     를 SubmitForm 에게 넘겨줘야함
-	     */
-
 	    _createClass(LoginSignUpPage, [{
+	        key: 'shouldComponentUpdate',
+	        value: function shouldComponentUpdate() {
+	            return true;
+	        }
+	        /*
+	         props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
+	         props.button = {context : x ,evt : func}
+	         를 SubmitForm 에게 넘겨줘야함
+	         */
+
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this2 = this;
@@ -49669,6 +49661,11 @@
 	    }
 
 	    _createClass(MainPage, [{
+	        key: 'shouldComponentUpdate',
+	        value: function shouldComponentUpdate() {
+	            return true;
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -49842,7 +49839,7 @@
 	                    _react2.default.createElement(
 	                        _reactRouterDom.Link,
 	                        {
-	                            to: '/',
+	                            to: '/main',
 	                            className: 'back-button'
 	                        },
 	                        'Back'
@@ -71042,6 +71039,8 @@
 
 	var _reactRouterDom = __webpack_require__(329);
 
+	var _reactRedux = __webpack_require__(159);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -71065,13 +71064,14 @@
 	        _this.bool = _this.props.bool;
 	        _this.redirUrl = _this.props.redirUrl;
 	        _this.component = _this.props.component;
+	        _this.smth = null;
 	        return _this;
 	    }
 
 	    _createClass(Gate, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            console.log(this.props);
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            this.smth = this.bool ? this.renderWhenTrue() : this.renderWhenFalse();
 	        }
 	    }, {
 	        key: 'renderWhenTrue',
@@ -71084,12 +71084,18 @@
 	            return _react2.default.createElement(_reactRouterDom.Redirect, { to: this.redirUrl });
 	        }
 	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            console.log("gate props", this.props);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
+	            console.log("gate render called");
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                this.props.bool ? this.renderWhenTrue() : this.renderWhenFalse()
+	                this.smth
 	            );
 	        }
 	    }]);
@@ -71097,16 +71103,110 @@
 	    return Gate;
 	}(_react.Component);
 
-	exports.default = Gate;
+	exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)()(Gate));
 
 /***/ }),
 /* 737 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouterDom = __webpack_require__(329);
+
+	var _reactRouter = __webpack_require__(373);
+
+	var _LoginSignUpPage = __webpack_require__(433);
+
+	var _LoginSignUpPage2 = _interopRequireDefault(_LoginSignUpPage);
+
+	var _MainPage = __webpack_require__(465);
+
+	var _MainPage2 = _interopRequireDefault(_MainPage);
+
+	var _Gate = __webpack_require__(736);
+
+	var _Gate2 = _interopRequireDefault(_Gate);
+
+	var _reactRedux = __webpack_require__(159);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 22..
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var ForTest = function (_Component) {
+	    _inherits(ForTest, _Component);
+
+	    function ForTest(props) {
+	        _classCallCheck(this, ForTest);
+
+	        return _possibleConstructorReturn(this, (ForTest.__proto__ || Object.getPrototypeOf(ForTest)).call(this, props));
+	    }
+
+	    _createClass(ForTest, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            console.log("fortest mounted");
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            console.log("fortest updated");
+	        }
+	    }, {
+	        key: 'shouldComponentUpdate',
+	        value: function shouldComponentUpdate() {
+	            return true;
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                _reactRouterDom.BrowserRouter,
+	                { history: _reactRouter.browserHistory },
+	                _react2.default.createElement(
+	                    _reactRouterDom.Switch,
+	                    null,
+	                    _react2.default.createElement(_Gate2.default, { exact: true, path: '/main', bool: this.props.isAuthed, redirUrl: '/', component: _MainPage2.default }),
+	                    _react2.default.createElement(_Gate2.default, { exact: true, path: '/', bool: !this.props.isAuthed, redirUrl: '/main', component: _LoginSignUpPage2.default })
+	                )
+	            );
+	        }
+	    }]);
+
+	    return ForTest;
+	}(_react.Component);
+
+	function mapStateToProps(state) {
+	    return { isAuthed: state.isAuthed };
+	}
+
+	exports.default = (0, _reactRouter.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(ForTest));
+
+/***/ }),
+/* 738 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(738);
+	var content = __webpack_require__(739);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -71114,7 +71214,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(740)(content, options);
+	var update = __webpack_require__(741)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -71131,10 +71231,10 @@
 	}
 
 /***/ }),
-/* 738 */
+/* 739 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(739)(undefined);
+	exports = module.exports = __webpack_require__(740)(undefined);
 	// imports
 
 
@@ -71145,7 +71245,7 @@
 
 
 /***/ }),
-/* 739 */
+/* 740 */
 /***/ (function(module, exports) {
 
 	/*
@@ -71227,7 +71327,7 @@
 
 
 /***/ }),
-/* 740 */
+/* 741 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -71273,7 +71373,7 @@
 	var	singletonCounter = 0;
 	var	stylesInsertedAtTop = [];
 
-	var	fixUrls = __webpack_require__(741);
+	var	fixUrls = __webpack_require__(742);
 
 	module.exports = function(list, options) {
 		if (false) {
@@ -71586,7 +71686,7 @@
 
 
 /***/ }),
-/* 741 */
+/* 742 */
 /***/ (function(module, exports) {
 
 	
@@ -71681,13 +71781,13 @@
 
 
 /***/ }),
-/* 742 */
+/* 743 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(743);
+	var content = __webpack_require__(744);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -71695,7 +71795,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(740)(content, options);
+	var update = __webpack_require__(741)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -71712,10 +71812,10 @@
 	}
 
 /***/ }),
-/* 743 */
+/* 744 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(739)(undefined);
+	exports = module.exports = __webpack_require__(740)(undefined);
 	// imports
 
 

@@ -11,6 +11,8 @@ import {browserHistory} from 'react-router';
 import LoginSignUpPage from './containers/LoginSignUpPage';
 import MainPage from './containers/MainPage';
 import Gate from './containers/Gate';
+import ForTest from './containers/ForTest';
+
 /////
 require('./style/LoginSignUpForm.css');
 require('./style/MainPage.css');
@@ -35,23 +37,9 @@ const states = store.getState();
 const isAuthed = states.isAuthed;
 console.log("is authed?",isAuthed);
 
-function renderLoginPage(){
-    return (
-        <Gate bool={!isAuthed} redirUrl="/main">
-            <Route exact path = "/" component={LoginSignUpPage}/>
-        </Gate>
-    )
-}
-
-
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter history ={browserHistory}>
-            <Switch>
-                <Gate path="/main" bool={isAuthed} redirUrl="/" component={MainPage}/>
-                <Gate path="/" bool={!isAuthed} redirUrl="/main" component={LoginSignUpPage}/>
-            </Switch>
-        </BrowserRouter>
+        <ForTest/>
     </Provider>
     , document.querySelector('.container')
 );
