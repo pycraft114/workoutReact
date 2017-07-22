@@ -17,7 +17,7 @@ export default class List extends Component{
         return(
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/" component={WorkoutContainer}/>
+                    <Route exact path="/main" component={WorkoutContainer}/>
                     <Route exact path="/:date/:workout" component={VolumeContainer}/>
                 </Switch>
             </BrowserRouter>

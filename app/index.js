@@ -30,6 +30,7 @@ function authUser(){
 if(token){
     authUser();
 }
+
 const states = store.getState();
 const isAuthed = states.isAuthed;
 console.log("is authed?",isAuthed);
@@ -42,20 +43,13 @@ function renderLoginPage(){
     )
 }
 
-function renderMainPage(){
-    return(
-        <Gate bool={isAuthed} redirUrl="/">
-        <Route exact path = "/main" component={MainPage} key="MainPage"/>
-    </Gate>
-    )
-}
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter history ={browserHistory}>
             <Switch>
-                {renderLoginPage()}
-                {renderMainPage()}
+                <Gate path="/main" bool={isAuthed} redirUrl="/" component={MainPage}/>
+                <Gate path="/" bool={!isAuthed} redirUrl="/main" component={LoginSignUpPage}/>
             </Switch>
         </BrowserRouter>
     </Provider>

@@ -12,7 +12,7 @@ import reducer_selectedWorkouts from "./reducer_selectedWorkouts";
 import reducer_workoutOptions from "./reducer_workoutOptions";
 import reducer_dataForCanvas from "./reducer_dataForCanvas";
 import reducer_dataForDoughnut from "./reducer_dataForDoughnut";
-import reducer_authenticate from './reducer_autheticate';
+import reducer_isAuthed from './reducer_isAuthed';
 import reducer_formDatas from './reducer_formDatas';
 
 
@@ -27,7 +27,7 @@ const rootReducer = combineReducers({
     workoutOptions:reducer_workoutOptions,
     dataForCanvas:reducer_dataForCanvas,
     dataForDoughnut:reducer_dataForDoughnut,
-    isAuthed:reducer_authenticate,
+    isAuthed:reducer_isAuthed,
     formDatas:reducer_formDatas
 });
 //==> state{books:blah,

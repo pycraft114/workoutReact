@@ -106,6 +106,7 @@
 	if (token) {
 	    authUser();
 	}
+
 	var states = store.getState();
 	var isAuthed = states.isAuthed;
 	console.log("is authed?", isAuthed);
@@ -118,14 +119,6 @@
 	    );
 	}
 
-	function renderMainPage() {
-	    return _react2.default.createElement(
-	        _Gate2.default,
-	        { bool: isAuthed, redirUrl: '/' },
-	        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/main', component: _MainPage2.default, key: 'MainPage' })
-	    );
-	}
-
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRedux.Provider,
 	    { store: store },
@@ -135,8 +128,8 @@
 	        _react2.default.createElement(
 	            _reactRouterDom.Switch,
 	            null,
-	            renderLoginPage(),
-	            renderMainPage()
+	            _react2.default.createElement(_Gate2.default, { path: '/main', bool: isAuthed, redirUrl: '/', component: _MainPage2.default }),
+	            _react2.default.createElement(_Gate2.default, { path: '/', bool: !isAuthed, redirUrl: '/main', component: _LoginSignUpPage2.default })
 	        )
 	    )
 	), document.querySelector('.container'));
@@ -21827,9 +21820,9 @@
 
 	var _reducer_dataForDoughnut2 = _interopRequireDefault(_reducer_dataForDoughnut);
 
-	var _reducer_autheticate = __webpack_require__(326);
+	var _reducer_isAuthed = __webpack_require__(326);
 
-	var _reducer_autheticate2 = _interopRequireDefault(_reducer_autheticate);
+	var _reducer_isAuthed2 = _interopRequireDefault(_reducer_isAuthed);
 
 	var _reducer_formDatas = __webpack_require__(327);
 
@@ -21851,7 +21844,7 @@
 	    workoutOptions: _reducer_workoutOptions2.default,
 	    dataForCanvas: _reducer_dataForCanvas2.default,
 	    dataForDoughnut: _reducer_dataForDoughnut2.default,
-	    isAuthed: _reducer_autheticate2.default,
+	    isAuthed: _reducer_isAuthed2.default,
 	    formDatas: _reducer_formDatas2.default
 	});
 	//==> state{books:blah,
@@ -49482,21 +49475,12 @@
 	        return _possibleConstructorReturn(this, (SubmitForm.__proto__ || Object.getPrototypeOf(SubmitForm)).call(this, props));
 	    }
 
-	    _createClass(SubmitForm, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {
-	            console.log(this.props.haha);
-	        }
-	    }, {
-	        key: "componentDidUpdate",
-	        value: function componentDidUpdate() {
-	            console.log(this.props.haha);
-	        }
-	        //array of object를 받는게 나을것 같아
-	        //props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
-	        //props.button = {context : x ,evt : func}
+	    //array of object를 받는게 나을것 같아
+	    //props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
+	    //props.button = {context : x ,evt : func}
 
-	    }, {
+
+	    _createClass(SubmitForm, [{
 	        key: "render",
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -49554,7 +49538,7 @@
 	                } else if (res.data === _actionTypes.USER_NOT_FOUND) {
 	                    dispatch({ type: _actionTypes.USER_NOT_FOUND });
 	                } else {
-	                    console.log("login success msg from action");
+	                    console.log("login success msg from clickLoginBtn");
 	                    localStorage.setItem('token', res.data.token);
 	                    dispatch({ type: _actionTypes.USER_AUTHED });
 	                }
@@ -49601,18 +49585,13 @@
 /* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 
 	exports.default = function (id, password, confirm, email) {
-	    console.log("id", id);
-	    console.log("password", password);
-	    console.log("confirm", confirm);
-	    console.log("email", email);
-
 	    if (id && password && confirm && email) {
 	        if (password === confirm) {
 	            var signupReq = _axios2.default.post('/signup', { id: id, password: password, email: email });
@@ -49772,7 +49751,7 @@
 	                _react2.default.createElement(
 	                    _reactRouterDom.Switch,
 	                    null,
-	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _WorkoutContainer2.default }),
+	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/main', component: _WorkoutContainer2.default }),
 	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/:date/:workout', component: _VolumeContainer2.default })
 	                )
 	            );
@@ -71080,16 +71059,37 @@
 	    function Gate(props) {
 	        _classCallCheck(this, Gate);
 
-	        return _possibleConstructorReturn(this, (Gate.__proto__ || Object.getPrototypeOf(Gate)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (Gate.__proto__ || Object.getPrototypeOf(Gate)).call(this, props));
+
+	        _this.path = _this.props.path;
+	        _this.bool = _this.props.bool;
+	        _this.redirUrl = _this.props.redirUrl;
+	        _this.component = _this.props.component;
+	        return _this;
 	    }
 
 	    _createClass(Gate, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            console.log(this.props);
+	        }
+	    }, {
+	        key: 'renderWhenTrue',
+	        value: function renderWhenTrue() {
+	            return _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: this.path, component: this.component });
+	        }
+	    }, {
+	        key: 'renderWhenFalse',
+	        value: function renderWhenFalse() {
+	            return _react2.default.createElement(_reactRouterDom.Redirect, { to: this.redirUrl });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                { key: this.props.key },
-	                this.props.bool ? this.props.children : _react2.default.createElement(_reactRouterDom.Redirect, { to: this.props.redirUrl })
+	                null,
+	                this.props.bool ? this.renderWhenTrue() : this.renderWhenFalse()
 	            );
 	        }
 	    }]);

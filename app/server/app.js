@@ -31,6 +31,5 @@ app.listen(3000,function(){
 router(app);
 
 app.get('/*',function(req,res){
-    console.log("last get request called");
     res.sendfile(path.resolve("../../build/index.html"));
 });
