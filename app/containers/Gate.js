@@ -9,13 +9,17 @@ export default function(receivedComponent){
         };
 
         componentWillMount(){
+            console.log(this.context);
             if(!this.props.isAuthed){
-                this.context.router.push('/')
+                this.context.router.history.push('/')
             }
         }
-        
+
         render(){
-            return <receivedComponent {...this.props}/>
+            console.log("gate called");
+            return (
+                <receivedComponent {...this.props}/>
+            )
         }
     }
 

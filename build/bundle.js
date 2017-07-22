@@ -71033,11 +71033,50 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	exports.default = function (receivedComponent) {
+	    var Authentication = function (_Component) {
+	        _inherits(Authentication, _Component);
+
+	        function Authentication() {
+	            _classCallCheck(this, Authentication);
+
+	            return _possibleConstructorReturn(this, (Authentication.__proto__ || Object.getPrototypeOf(Authentication)).apply(this, arguments));
+	        }
+
+	        _createClass(Authentication, [{
+	            key: 'componentWillMount',
+	            value: function componentWillMount() {
+	                console.log(this.context);
+	                if (!this.props.isAuthed) {
+	                    this.context.router.history.push('/');
+	                }
+	            }
+	        }, {
+	            key: 'render',
+	            value: function render() {
+	                console.log("gate called");
+	                return _react2.default.createElement('receivedComponent', this.props);
+	            }
+	        }]);
+
+	        return Authentication;
+	    }(_react.Component);
+
+	    Authentication.contextTypes = {
+	        router: _react2.default.PropTypes.object
+	    };
+
+
+	    function mapStateToProps(state) {
+	        return { isAuthed: state.isAuthed };
+	    }
+
+	    return (0, _reactRedux.connect)(mapStateToProps)(Authentication);
+	};
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouterDom = __webpack_require__(329);
 
 	var _reactRedux = __webpack_require__(159);
 
@@ -71047,63 +71086,7 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 18..
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-
-	var Gate = function (_Component) {
-	    _inherits(Gate, _Component);
-
-	    function Gate(props) {
-	        _classCallCheck(this, Gate);
-
-	        var _this = _possibleConstructorReturn(this, (Gate.__proto__ || Object.getPrototypeOf(Gate)).call(this, props));
-
-	        _this.path = _this.props.path;
-	        _this.bool = _this.props.bool;
-	        _this.redirUrl = _this.props.redirUrl;
-	        _this.component = _this.props.component;
-	        _this.smth = null;
-	        return _this;
-	    }
-
-	    _createClass(Gate, [{
-	        key: 'componentWillMount',
-	        value: function componentWillMount() {
-	            this.smth = this.bool ? this.renderWhenTrue() : this.renderWhenFalse();
-	        }
-	    }, {
-	        key: 'renderWhenTrue',
-	        value: function renderWhenTrue() {
-	            return _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: this.path, component: this.component });
-	        }
-	    }, {
-	        key: 'renderWhenFalse',
-	        value: function renderWhenFalse() {
-	            return _react2.default.createElement(_reactRouterDom.Redirect, { to: this.redirUrl });
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            console.log("gate props", this.props);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            console.log("gate render called");
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                this.smth
-	            );
-	        }
-	    }]);
-
-	    return Gate;
-	}(_react.Component);
-
-	exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)()(Gate));
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /***/ }),
 /* 737 */
@@ -71160,21 +71143,6 @@
 	    }
 
 	    _createClass(ForTest, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            console.log("fortest mounted");
-	        }
-	    }, {
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {
-	            console.log("fortest updated");
-	        }
-	    }, {
-	        key: 'shouldComponentUpdate',
-	        value: function shouldComponentUpdate() {
-	            return true;
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -71183,8 +71151,8 @@
 	                _react2.default.createElement(
 	                    _reactRouterDom.Switch,
 	                    null,
-	                    _react2.default.createElement(_Gate2.default, { exact: true, path: '/main', bool: this.props.isAuthed, redirUrl: '/', component: _MainPage2.default }),
-	                    _react2.default.createElement(_Gate2.default, { exact: true, path: '/', bool: !this.props.isAuthed, redirUrl: '/main', component: _LoginSignUpPage2.default })
+	                    _react2.default.createElement(_reactRouterDom.Route, { path: '/main', component: (0, _Gate2.default)(_MainPage2.default) }),
+	                    _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _LoginSignUpPage2.default })
 	                )
 	            );
 	        }

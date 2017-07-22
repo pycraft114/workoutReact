@@ -16,24 +16,12 @@ class ForTest extends Component{
         super(props)
     }
 
-    componentDidMount(){
-        console.log("fortest mounted");
-    }
-
-    componentDidUpdate(){
-        console.log("fortest updated");
-    }
-
-    shouldComponentUpdate(){
-        return true;
-    }
-
     render(){
         return(
             <BrowserRouter history ={browserHistory}>
                 <Switch>
-                    <Gate exact={true} path="/main" bool={this.props.isAuthed} redirUrl="/" component={MainPage}/>
-                    <Gate exact={true} path="/" bool={!this.props.isAuthed} redirUrl="/main" component={LoginSignUpPage}/>
+                    <Route path="/main" component={Gate(MainPage)}/>
+                    <Route path="/" component={LoginSignUpPage}/>
                 </Switch>
             </BrowserRouter>
         )
