@@ -4,7 +4,7 @@
 import React , {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import action_deleteKgRep from '../../../actions/action_deleteKgRep';
+import action_deleteKgRep from '../../../../actions/action_deleteKgRep';
 
 class KgRep extends Component{
     //renders as much as this.props.kgRepList length

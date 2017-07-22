@@ -8,10 +8,10 @@ import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import {browserHistory} from 'react-router';
 
 /////
-import LoginSignUpPage from './containers/LoginSignUpPage';
-import MainPage from './containers/MainPage';
+import LoginSignUpPage from './containers/loginSignUpPage/LoginSignUpPage';
+import MainPage from './containers/mainPage/MainPage';
 import Gate from './containers/Gate';
-import ForTest from './containers/ForTest';
+import ForTest from './containers/App';
 
 /////
 require('./style/LoginSignUpForm.css');

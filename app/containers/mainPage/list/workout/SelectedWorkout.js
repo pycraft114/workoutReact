@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 
-import action_clickWorkout from "../../../actions/action_clickWorkout";
-import action_deleteWorkout from "../../../actions/action_deleteWorkout";
+import action_clickWorkout from "../../../../actions/action_clickWorkout";
+import action_deleteWorkout from "../../../../actions/action_deleteWorkout";
 
 class SelectedWorkout extends Component{
     constructor(props){

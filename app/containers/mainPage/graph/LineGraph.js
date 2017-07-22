@@ -5,8 +5,8 @@ import axios from 'axios';
 
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
-import Selector from '../../components/Selector';
-import action_selectOption from '../../actions/action_selectOption';
+import Selector from '../../../components/Selector';
+import action_selectOption from '../../../actions/action_selectOption';
 import {bindActionCreators} from 'redux';
 
 

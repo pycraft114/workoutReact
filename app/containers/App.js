@@ -4,8 +4,8 @@
 import React,{ Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { browserHistory, withRouter } from 'react-router';
-import LoginSignUpPage from './LoginSignUpPage';
-import MainPage from './MainPage';
+import LoginSignUpPage from './loginSignUpPage/LoginSignUpPage';
+import MainPage from './mainPage/MainPage';
 import Gate from './Gate';
 import { connect } from 'react-redux'
 

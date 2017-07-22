@@ -82,9 +82,9 @@
 
 	var _Gate2 = _interopRequireDefault(_Gate);
 
-	var _ForTest = __webpack_require__(737);
+	var _App = __webpack_require__(737);
 
-	var _ForTest2 = _interopRequireDefault(_ForTest);
+	var _App2 = _interopRequireDefault(_App);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -118,7 +118,7 @@
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRedux.Provider,
 	    { store: store },
-	    _react2.default.createElement(_ForTest2.default, null)
+	    _react2.default.createElement(_App2.default, null)
 	), document.querySelector('.container'));
 
 /***/ }),
