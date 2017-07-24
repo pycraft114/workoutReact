@@ -3,7 +3,7 @@
  */
 
 import axios from 'axios';
-import {WRONG_PASSWORD,USER_NOT_FOUND,USER_AUTHED,BLANK_INPUT} from './actionTypes';
+import {WRONG_PASSWORD,USER_NOT_FOUND,USER_AUTHED,BLANK_INPUT} from '../actionTypes';
 
 export default function(id,password){
 

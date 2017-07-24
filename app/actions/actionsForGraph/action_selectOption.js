@@ -2,7 +2,7 @@
  * Created by chanwoopark on 2017. 7. 6..
  */
 import axios from 'axios';
-import {OPTION_CLICKED} from './actionTypes';
+import {OPTION_CLICKED} from '../actionTypes';
 export default function(selectedOption){
     const token = localStorage.getItem('token');
     const getQuery = axios.get(`/volumes/${selectedOption}`,{headers:{token}});

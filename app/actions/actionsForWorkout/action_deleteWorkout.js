@@ -2,7 +2,7 @@
  * Created by chanwoopark on 2017. 7. 4..
  */
 import axios from 'axios';
-import {WORKOUTDELBTN_CLICKED} from './actionTypes';
+import {WORKOUTDELBTN_CLICKED} from '../actionTypes';
 
 export default function(date,idx,prevWorkouts,currWorkout){
 

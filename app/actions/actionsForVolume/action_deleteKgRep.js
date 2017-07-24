@@ -2,7 +2,7 @@
  * Created by chanwoopark on 2017. 7. 4..
  */
 import axios from 'axios';
-import {VOL_DELETE_CLICKED} from './actionTypes';
+import {VOL_DELETE_CLICKED} from '../actionTypes';
 export default function(date,workout,idx,prevVolumes){
     var date_workout = date+"_"+workout;
 

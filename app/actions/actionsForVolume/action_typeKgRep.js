@@ -1,7 +1,7 @@
 /**
  * Created by chanwoopark on 2017. 6. 30..
  */
-import {KG_TYPED,REP_TYPED} from './actionTypes';
+import {KG_TYPED,REP_TYPED} from '../actionTypes';
 
 
 export default function(evt){

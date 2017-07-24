@@ -6,8 +6,8 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import action_typeKgRep from 'actions/action_typeKgRep';
-import action_sendKgRep from 'actions/action_sendKgRep';
+import action_typeKgRep from 'actions/actionsForVolume/action_typeKgRep';
+import action_sendKgRep from 'actions/actionsForVolume/action_sendKgRep';
 
 import KgRep from './KgRep';
 

@@ -1,7 +1,7 @@
 var HtmlWebPackPlugin = require('html-webpack-plugin');
-
-
 var path = require('path');
+
+
 module.exports = {
     entry: './app/index.js',
     output: {

@@ -9,8 +9,8 @@ import {FormGroup,ControlLabel,HelpBlock,InputGroup} from 'react-bootstrap';
 
 import {connect} from 'react-redux';
 
-import action_selectDate from 'actions/action_selectDate';
-import action_selectWorkout from 'actions/action_selectWorkout';
+import action_selectDate from 'actions/actionsForWorkout/action_selectDate';
+import action_selectWorkout from 'actions/actionsForWorkout/action_selectWorkout';
 
 
 import SelectedWorkout from './SelectedWorkout';

@@ -2,7 +2,7 @@
  * Created by chanwoopark on 2017. 7. 11..
  */
 import axios from 'axios';
-import {DOUGHNUT_LOADED} from './actionTypes';
+import {DOUGHNUT_LOADED} from '../actionTypes';
 
 function calculateDayDiff(firstDay,secondDay){
     let oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds

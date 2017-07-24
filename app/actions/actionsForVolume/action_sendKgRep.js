@@ -2,7 +2,7 @@
  * Created by chanwoopark on 2017. 6. 30..
  */
 import axios from 'axios';
-import {KGREP_SENT} from './actionTypes';
+import {KGREP_SENT} from '../actionTypes';
 
 export default function(evt,kg,rep,date,workout,prevVolumes){
     const token = localStorage.getItem('token');

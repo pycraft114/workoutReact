@@ -2,7 +2,7 @@
  * Created by chanwoopark on 2017. 6. 30..
  */
 import axios from 'axios';
-import {WORKOUT_SELECTED} from './actionTypes';
+import {WORKOUT_SELECTED} from '../actionTypes';
 
 export default function(selectedWorkout,date,prevWorkouts){
     const token = localStorage.getItem('token');

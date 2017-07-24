@@ -2,7 +2,7 @@
  * Created by chanwoopark on 2017. 7. 21..
  */
 import axios from 'axios';
-import {USER_EXIST,SIGNUP_SUCCESS,CONFIRM_FAIL,BLANK_INPUT} from "./actionTypes";
+import {USER_EXIST,SIGNUP_SUCCESS,CONFIRM_FAIL,BLANK_INPUT} from "../actionTypes";
 
 export default function(id, password, confirm, email){
     if(id && password && confirm && email){
