@@ -49766,7 +49766,7 @@
 /* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -49806,6 +49806,9 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 6. 29..
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
+
+	var smth = process.cwd();
+	console.log(smth);
 
 	var VolumeContainer = function (_Component) {
 	    _inherits(VolumeContainer, _Component);
@@ -49901,6 +49904,7 @@
 	}
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(VolumeContainer);
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
 /* 468 */
@@ -70613,6 +70617,10 @@
 	var _actionTypes = __webpack_require__(200);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	; /**
+	   * Created by chanwoopark on 2017. 7. 3..
+	   */
 
 /***/ }),
 /* 730 */

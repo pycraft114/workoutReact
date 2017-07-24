@@ -23,7 +23,17 @@ module.exports = {
     },
     plugins:[new HtmlWebPackPlugin({
         template:'./app/index.html'
-    })]
+    })],
+    resolve:{
+        alias:{
+            actions : path.resolve(__dirname, 'app', 'actions'),
+            components : path.resolve(__dirname, 'app', 'components'),
+            containers : path.resolve(__dirname, 'app', 'containers'),
+            reducers : path.resolve(__dirname, 'app', 'reducers'),
+            server : path.resolve(__dirname, 'app', 'server')
+        },
+        extensions:['','.js']
+    }
 };
 
 /*

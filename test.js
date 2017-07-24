@@ -1,10 +1,3 @@
-function haha(){
-    const hello = 3;
+if([]){
+    console.log('haha');
 }
-
-function hehe(){
-    const hello = 4;
-}
-
-haha();
-hehe();

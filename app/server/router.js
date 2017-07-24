@@ -99,26 +99,12 @@ module.exports = function(app){
     app.get('/volumes/:workout',authentication,function(req,res){
         const user = req.user;
         const workout = req.params.workout;
-        console.log("req came");
-        
+
         const value = [`%${user}%`,`%${workout}%`];
         const getQuery = connection.query("SELECT * FROM volume WHERE user_date_workout LIKE ? AND user_date_workout LIKE ?",value,function(err,result){
             if(err){
                 throw err;
             }else{
-                console.log("result",result);
-                /*
-                 [ RowDataPacket {
-                 date_workout: '2017-7-4_Squat',
-                 kg_rep: '[{"kg": "2", "rep": "1"}, {"kg": "20", "rep": "20"}, {"kg": "30", "rep": "30"}]' },
-                 RowDataPacket {
-                 date_workout: '2017-7-5_Squat',
-                 kg_rep: '[{"kg": "5", "rep": "5"}]' },
-                 RowDataPacket {
-                 date_workout: '2017-7-6_Squat',
-                 kg_rep: '[{"kg": "77", "rep": "77"}]' } ]
-                 mysql로 부터 최초로 return되는 값
-                 */
                 const volumes = [];
                 const dates = [];
                 result.map(function(currValue){
@@ -132,7 +118,6 @@ module.exports = function(app){
                     volumes.push(totalVolume);
                 });
                 const responseData = {dates,volumes};
-                console.log("responseData",responseData);
                 res.send(responseData);
             }
         })
