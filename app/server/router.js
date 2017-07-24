@@ -100,12 +100,13 @@ module.exports = function(app){
         const user = req.user;
         const workout = req.params.workout;
         console.log("req came");
-
-        const value = [user,workout];
+        
+        const value = [`%${user}%`,`%${workout}%`];
         const getQuery = connection.query("SELECT * FROM volume WHERE user_date_workout LIKE ? AND user_date_workout LIKE ?",value,function(err,result){
             if(err){
                 throw err;
             }else{
+                console.log("result",result);
                 /*
                  [ RowDataPacket {
                  date_workout: '2017-7-4_Squat',
@@ -127,10 +128,11 @@ module.exports = function(app){
                     for(let i = 0; i < parsedKgRep.length; i++){
                         totalVolume += (parsedKgRep[i].kg * parsedKgRep[i].rep );
                     }
-                    dates.push(currValue.date_workout.split('_')[0]);
+                    dates.push(currValue.user_date_workout.split('_')[1]);
                     volumes.push(totalVolume);
                 });
                 const responseData = {dates,volumes};
+                console.log("responseData",responseData);
                 res.send(responseData);
             }
         })
