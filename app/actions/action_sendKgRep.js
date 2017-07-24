@@ -5,13 +5,15 @@ import axios from 'axios';
 import {KGREP_SENT} from './actionTypes';
 
 export default function(evt,kg,rep,date,workout,prevVolumes){
+    const token = localStorage.getItem('token');
+
     if(evt.key ==="Enter" || evt.target.id === "check"){
         if(kg&&rep){
             const date_workout = date+"_"+workout;
 
             const newVolumes = [...prevVolumes,{kg:kg,rep:rep}];
 
-            axios.put(`/kg_rep/${date_workout}`,newVolumes);
+            axios.put(`/kg_rep/${date_workout}`,newVolumes,{headers:{token}});
 
             return{type:KGREP_SENT,kgRepList:newVolumes}
         }

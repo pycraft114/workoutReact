@@ -2,7 +2,7 @@
  * Created by chanwoopark on 2017. 7. 15..
  */
 const jwt = require('jwt-simple');
-const jwtConfig = require('./config');
+const jwtConfig = require('./jwtConfig');
 const mysql = require('mysql');
 const mysqlData = require('./mysqlData.json');
 const bcrypt = require('bcrypt');
@@ -33,20 +33,26 @@ function tokenForUser(user){
     const issuedAtTime = new Date().getTime();
     return jwt.encode({sub:user.id, iat:issuedAtTime}, jwtConfig.secret)
 }
+
+const passportSettings = require('./passportSettings');
+
+const authentication = passport.authenticate('jwt',{session:false});
 //--------------------------------------------
+
+
 
 
 module.exports = function(app){
 
     //refactored
-    app.put("/selected_workouts/:date",function(req,res){
-        var date = req.params.date;
-        var selected_workouts = JSON.stringify(req.body.selected_workouts);
-        console.log(selected_workouts);
+    app.put("/selected_workouts/:date",authentication,function(req,res){
+        const user = req.user;
+        const date = req.params.date;
+        const selected_workouts = JSON.stringify(req.body.selected_workouts);
+        const user_date = user+"_"+date;
 
-
-        var query = "INSERT INTO workoutList (date,selected_workouts) VALUES (?,?) ON DUPLICATE KEY UPDATE selected_workouts = ?";
-        var value = [date,selected_workouts,selected_workouts];
+        let query = "INSERT INTO workoutList (user_date,selected_workouts) VALUES (?,?) ON DUPLICATE KEY UPDATE selected_workouts = ?";
+        const value = [user_date,selected_workouts,selected_workouts];
         query = mysql.format(query,value);
 
         var saveQuery = connection.query(query,
@@ -60,17 +66,19 @@ module.exports = function(app){
             })
     });
 
-    app.put("/kg_rep/:date_workout",function(req,res){
+    app.put("/kg_rep/:date_workout",authentication,function(req,res){
+        const user = req.user;
         //userData structure : [{kg:??,rep:??} , {kg:??,rep:??} , {kg:??,rep:??}]
-        var volumeList = JSON.stringify(req.body);
-        var date_workout = req.params.date_workout;
+        const volumeList = JSON.stringify(req.body);
+        const date_workout = req.params.date_workout;
+        const user_date_workout = user+"_"+date_workout;
 
         if(volumeList !== "[]"){
-            var query = "INSERT INTO volume (date_workout,kg_rep) VALUES (?,?) ON DUPLICATE KEY UPDATE kg_rep = ?";
-            var value = [date_workout,volumeList,volumeList];
+            let query = "INSERT INTO volume (user_date_workout,kg_rep) VALUES (?,?) ON DUPLICATE KEY UPDATE kg_rep = ?";
+            const value = [user_date_workout,volumeList,volumeList];
             query = mysql.format(query,value);
 
-            var saveQuery = connection.query(query,function(err,rows){
+            const saveQuery = connection.query(query,function(err,rows){
                 if(err){
                     throw err;
                 }else{
@@ -78,7 +86,7 @@ module.exports = function(app){
                 }
             })
         }else{
-            var deleteQuery = connection.query("DELETE FROM volume WHERE date_workout = ?",date_workout,function(err){
+            const deleteQuery = connection.query("DELETE FROM volume WHERE user_date_workout = ?",user_date_workout,function(err){
                 if(err){
                     throw err;
                 }else{
@@ -88,10 +96,13 @@ module.exports = function(app){
         }
     });
 
-    app.get('/volumes/:workout',function(req,res){
-        var workout = req.params.workout;
-        console.log(workout);
-        var getQuery = connection.query("SELECT * FROM volume WHERE date_workout LIKE ?",`%${workout}%`,function(err,result){
+    app.get('/volumes/:workout',authentication,function(req,res){
+        const user = req.user;
+        const workout = req.params.workout;
+        console.log("req came");
+
+        const value = [user,workout];
+        const getQuery = connection.query("SELECT * FROM volume WHERE user_date_workout LIKE ? AND user_date_workout LIKE ?",value,function(err,result){
             if(err){
                 throw err;
             }else{
@@ -107,20 +118,19 @@ module.exports = function(app){
                  kg_rep: '[{"kg": "77", "rep": "77"}]' } ]
                  mysql로 부터 최초로 return되는 값
                  */
-                console.log("result",result);
-                var volumes = [];
-                var dates = [];
+                const volumes = [];
+                const dates = [];
                 result.map(function(currValue){
                     let totalVolume = 0;
 
-                    var parsedKgRep = JSON.parse(currValue.kg_rep);
-                    for(var i = 0; i < parsedKgRep.length; i++){
+                    const parsedKgRep = JSON.parse(currValue.kg_rep);
+                    for(let i = 0; i < parsedKgRep.length; i++){
                         totalVolume += (parsedKgRep[i].kg * parsedKgRep[i].rep );
                     }
                     dates.push(currValue.date_workout.split('_')[0]);
                     volumes.push(totalVolume);
                 });
-                var responseData = {dates,volumes};
+                const responseData = {dates,volumes};
                 res.send(responseData);
             }
         })
@@ -136,11 +146,12 @@ module.exports = function(app){
      */
 
 //refactored
-    app.get("/selected_workouts/:date",function(req,res){
-        var date = req.params.date;
-        console.log("get req", date);
+    app.get("/selected_workouts/:date",authentication,function(req,res){
+        const user = req.user;
+        const date = req.params.date;
+        const user_date = user+"_"+date;
 
-        var getWorkoutQuery = connection.query('SELECT selected_workouts FROM workoutList WHERE date=?', date, function (err, result) {
+        let getWorkoutQuery = connection.query('SELECT selected_workouts FROM workoutList WHERE user_date=?', user_date, function (err, result) {
             if (err) {
                 throw err;
             }
@@ -167,13 +178,15 @@ module.exports = function(app){
 
 
 //refactored
-    app.get("/kg_rep/:date_workout",function(req,res){
-        var date_workout = req.params.date_workout;
+    app.get("/kg_rep/:date_workout",authentication,function(req,res){
+        const user = req.user;
+        const date_workout = req.params.date_workout;
+        const user_date_workout = user+"_"+date_workout;
 
-        var query = "SELECT kg_rep FROM volume WHERE date_workout = ?";
-        query = mysql.format(query,date_workout);
+        let query = "SELECT kg_rep FROM volume WHERE user_date_workout = ?";
+        query = mysql.format(query,user_date_workout);
 
-        var selectQuery = connection.query(query,function(err,result){
+        const selectQuery = connection.query(query,function(err,result){
             if(err){
                 throw err;
             }
@@ -188,9 +201,12 @@ module.exports = function(app){
     });
 
 //refactored
-    app.delete("/:date_workout",function(req,res){
-        var date_workout = req.params.date_workout;
-        var deleteQuery = connection.query("DELETE FROM volume WHERE date_workout = ?",date_workout,function(err,rows){
+    app.delete("/:date_workout",authentication,function(req,res){
+        const user = req.user;
+        const date_workout = req.params.date_workout;
+        const user_date_workout = user+"_"+date_workout;
+
+        let deleteQuery = connection.query("DELETE FROM volume WHERE user_date_workout = ?",user_date_workout,function(err,rows){
             if(err){
                 throw err;
             }else{
@@ -200,24 +216,29 @@ module.exports = function(app){
         })
     });
 
-    app.get("/days",function(req,res){
-        let getQuery = connection.query("SELECT date_workout FROM volume",function(err,results){
+    app.get("/days",authentication,function(req,res){
+        const user = req.user;
+        let getQuery = connection.query("SELECT user_date_workout FROM volume WHERE user_date_workout LIKE ?",`%${user}%`,function(err,results){
             if (err){
                 throw err;
             }
+            if(results.length !== 0){
+                let hashMap = {};
 
-            let hashMap = {};
-            for(let i = 0; i < results.length; i++){
-                let date = results[i].date_workout.split("_")[0];
-                hashMap[date] = true;
+                for(let i = 0; i < results.length; i++){
+                    let date = results[i].user_date_workout.split("_")[1];
+                    hashMap[date] = true;
+                }
+
+                let responseData = {
+                    startDate:results[0].user_date_workout.split("_")[1],
+                    daysWorkedOut:Object.keys(hashMap).length
+                };
+
+                res.send(responseData);
+            }else{
+                res.send("NO_DATA")
             }
-
-            let responseData = {
-                startDate:results[0].date_workout.split("_")[0],
-                daysWorkedOut:Object.keys(hashMap).length
-            };
-
-            res.send(responseData);
 
         })
     });
@@ -253,9 +274,6 @@ module.exports = function(app){
             }
         })
     });
-
-    const passportSettings = require('./passportSettings');
-    const loginAuthenticate = passport.authenticate('jwt',{session:false});
 
 
     app.post("/login",function(req,res){

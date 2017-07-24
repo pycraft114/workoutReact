@@ -49939,13 +49939,15 @@
 	});
 
 	exports.default = function (evt, kg, rep, date, workout, prevVolumes) {
+	    var token = localStorage.getItem('token');
+
 	    if (evt.key === "Enter" || evt.target.id === "check") {
 	        if (kg && rep) {
 	            var date_workout = date + "_" + workout;
 
 	            var newVolumes = [].concat(_toConsumableArray(prevVolumes), [{ kg: kg, rep: rep }]);
 
-	            _axios2.default.put('/kg_rep/' + date_workout, newVolumes);
+	            _axios2.default.put('/kg_rep/' + date_workout, newVolumes, { headers: { token: token } });
 
 	            return { type: _actionTypes.KGREP_SENT, kgRepList: newVolumes };
 	        }
@@ -70416,7 +70418,8 @@
 	exports.default = function (date) {
 	    console.log("date", date);
 
-	    var getReq = _axios2.default.get('/selected_workouts/' + date);
+	    var token = localStorage.getItem('token');
+	    var getReq = _axios2.default.get('/selected_workouts/' + date, { headers: { token: token } });
 
 	    return function (dispatch) {
 	        getReq.then(function (res) {
@@ -70445,10 +70448,12 @@
 	});
 
 	exports.default = function (selectedWorkout, date, prevWorkouts) {
+	    var token = localStorage.getItem('token');
+
 	    var newArr = [].concat(_toConsumableArray(prevWorkouts), [selectedWorkout]);
 	    var selected_workouts = [].concat(_toConsumableArray(new Set(newArr)));
 
-	    var saveReq = _axios2.default.put('/selected_workouts/' + date, { selected_workouts: selected_workouts });
+	    var saveReq = _axios2.default.put('/selected_workouts/' + date, { selected_workouts: selected_workouts }, { headers: { token: token } });
 
 	    return function (dispatch) {
 	        saveReq.then(function (res) {
@@ -70589,9 +70594,10 @@
 	});
 
 	exports.default = function (date, workout) {
-	    var date_workout = date + "_" + workout;
+	    var token = localStorage.getItem('token');
 
-	    var getKgRep = _axios2.default.get('/kg_rep/' + date_workout);
+	    var date_workout = date + "_" + workout;
+	    var getKgRep = _axios2.default.get('/kg_rep/' + date_workout, { headers: { token: token } });
 
 	    return function (dispatch) {
 	        getKgRep.then(function (res) {
@@ -70857,7 +70863,8 @@
 	});
 
 	exports.default = function (selectedOption) {
-	    var getQuery = _axios2.default.get('/volumes/' + selectedOption);
+	    var token = localStorage.getItem('token');
+	    var getQuery = _axios2.default.get('/volumes/' + selectedOption, { headers: { token: token } });
 
 	    return function (dispatch) {
 	        getQuery.then(function (res) {
@@ -70991,18 +70998,21 @@
 	});
 
 	exports.default = function () {
-	    var getReq = _axios2.default.get('/days');
+	    var getReq = _axios2.default.get('/days', { headers: { token: token } });
 	    return function (dispatch) {
 	        getReq.then(function (res) {
-	            console.log("response came");
-	            var startDate = res.data.startDate,
-	                year = startDate.split("-")[0],
-	                month = startDate.split("-")[1],
-	                day = startDate.split("-")[2],
-	                daysWorkedOut = res.data.daysWorkedOut,
-	                dayDifference = calculateDayDiff(new Date(year, month - 1, day), new Date());
+	            if (res.data !== "NO_DATA") {
+	                var startDate = res.data.startDate,
+	                    year = startDate.split("-")[0],
+	                    month = startDate.split("-")[1],
+	                    day = startDate.split("-")[2],
+	                    daysWorkedOut = res.data.daysWorkedOut,
+	                    dayDifference = calculateDayDiff(new Date(year, month - 1, day), new Date());
 
-	            dispatch({ type: _actionTypes.DOUGHNUT_LOADED, dataForDoughnut: { daysWorkedOut: daysWorkedOut, dayDifference: dayDifference } });
+	                dispatch({ type: _actionTypes.DOUGHNUT_LOADED, dataForDoughnut: { daysWorkedOut: daysWorkedOut, dayDifference: dayDifference } });
+	            } else {
+	                dispatch({ type: "dummy" });
+	            }
 	        });
 	    };
 	};
@@ -71022,6 +71032,8 @@
 	    var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 	    return Math.round(Math.abs((firstDay.getTime() - secondDay.getTime()) / oneDay));
 	}
+
+	var token = localStorage.getItem('token');
 
 /***/ }),
 /* 736 */
@@ -71048,6 +71060,7 @@
 	        path = _ref.path,
 	        redirUrl = _ref.redirUrl;
 
+	    console.log("functional component gate called");
 	    return _react2.default.createElement(_reactRouterDom.Route, { path: path, render: function render(props) {
 	            if (isAuthed) {
 	                return _react2.default.createElement(Component, null);

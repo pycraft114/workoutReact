@@ -4,7 +4,8 @@
 import axios from 'axios';
 import {OPTION_CLICKED} from './actionTypes';
 export default function(selectedOption){
-    var getQuery = axios.get(`/volumes/${selectedOption}`);
+    const token = localStorage.getItem('token');
+    const getQuery = axios.get(`/volumes/${selectedOption}`,{headers:{token}});
 
     return(
         (dispatch) => {

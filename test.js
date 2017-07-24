@@ -1,4 +1,10 @@
-var a = true;
-var b = a;
-a = false;
-console.log(a,b);
+function haha(){
+    const hello = 3;
+}
+
+function hehe(){
+    const hello = 4;
+}
+
+haha();
+hehe();

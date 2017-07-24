@@ -10,7 +10,7 @@ import {browserHistory} from 'react-router';
 /////
 import LoginSignUpPage from './containers/loginSignUpPage/LoginSignUpPage';
 import MainPage from './containers/mainPage/MainPage';
-import Gate from './containers/Gate';
+import Gate from './components/Gate';
 import ForTest from './containers/App';
 
 /////

@@ -9,23 +9,26 @@ function calculateDayDiff(firstDay,secondDay){
     return Math.round(Math.abs((firstDay.getTime() - secondDay.getTime())/(oneDay)));
 }
 
+const token = localStorage.getItem('token');
+
+
 export default function(){
-    let getReq = axios.get('/days');
+    let getReq = axios.get('/days',{headers:{token}});
     return(
         (dispatch) => {
             getReq.then((res) => {
-                console.log("response came");
-                let startDate = res.data.startDate,
-                    year = startDate.split("-")[0],
-                    month = startDate.split("-")[1],
-                    day = startDate.split("-")[2],
-                    daysWorkedOut = res.data.daysWorkedOut,
-                    dayDifference = calculateDayDiff(new Date(year,month-1,day),new Date());
+                if(res.data !== "NO_DATA") {
+                    let startDate = res.data.startDate,
+                        year = startDate.split("-")[0],
+                        month = startDate.split("-")[1],
+                        day = startDate.split("-")[2],
+                        daysWorkedOut = res.data.daysWorkedOut,
+                        dayDifference = calculateDayDiff(new Date(year, month - 1, day), new Date());
 
-
-
-
-                dispatch({type:DOUGHNUT_LOADED,dataForDoughnut:{daysWorkedOut,dayDifference}});
+                    dispatch({type: DOUGHNUT_LOADED, dataForDoughnut: {daysWorkedOut, dayDifference}});
+                }else{
+                    dispatch({type:"dummy"});
+                }
             })
         }
     )

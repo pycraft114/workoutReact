@@ -4,9 +4,10 @@
 import axios from 'axios';
 import {WORKOUT_CLICKED} from './actionTypes';
 export default function(date,workout){
-    var date_workout = date+"_"+workout;
+    const token = localStorage.getItem('token')
 
-    const getKgRep = axios.get(`/kg_rep/${date_workout}`);
+    const date_workout = date+"_"+workout;
+    const getKgRep = axios.get(`/kg_rep/${date_workout}`,{headers:{token}});
 
     return((dispatch) => {
         getKgRep.then((res) => {
