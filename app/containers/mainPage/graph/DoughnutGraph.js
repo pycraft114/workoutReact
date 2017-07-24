@@ -5,7 +5,7 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 
 import {bindActionCreators} from 'redux';
-import action_doughnutLoaded from '../../../actions/action_doughnutLoaded';
+import action_doughnutLoaded from 'actions/action_doughnutLoaded';
 
 class DoughnutGraph extends Component{
     constructor(props){

@@ -8,12 +8,12 @@ import {ArrowLeft,ArrowRight,Dots, Slides } from 'react-infinite-slide';
 import axios from 'axios';
 
 //Components
-import SubmitForm from '../../components/SubmitForm';
+import SubmitForm from 'components/SubmitForm';
 
 //actions
-import action_clickLoginBtn from '../../actions/action_clickLoginBtn';
-import action_changeInput from '../../actions/action_changeInput';
-import action_clickSignupBtn from '../../actions/action_clickSignupBtn';
+import action_clickLoginBtn from 'actions/action_clickLoginBtn';
+import action_changeInput from 'actions/action_changeInput';
+import action_clickSignupBtn from 'actions/action_clickSignupBtn';
 
 class LoginSignUpPage extends React.Component{
     constructor(props){

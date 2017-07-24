@@ -70676,10 +70676,6 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _axios = __webpack_require__(435);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -70696,8 +70692,6 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 8..
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
-
-	var haha = [1, 2, 34];
 
 	var Selector = function (_Component) {
 	    _inherits(Selector, _Component);

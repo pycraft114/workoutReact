@@ -1,13 +1,8 @@
 /**
  * Created by chanwoopark on 2017. 7. 8..
  */
-import axios from 'axios';
-
-
 import React,{Component} from 'react';
 import { DropdownButton, MenuItem} from 'react-bootstrap';
-
-var haha = [1,2,34];
 
 export default class Selector extends Component{
     constructor(props){

@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { browserHistory, withRouter } from 'react-router';
 import LoginSignUpPage from './loginSignUpPage/LoginSignUpPage';
 import MainPage from './mainPage/MainPage';
-import Gate from '../components/Gate';
+import Gate from 'components/Gate';
 import { connect } from 'react-redux'
 
 
