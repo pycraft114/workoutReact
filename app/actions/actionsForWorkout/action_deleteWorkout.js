@@ -6,13 +6,14 @@ import {WORKOUTDELBTN_CLICKED} from '../actionTypes';
 
 export default function(date,idx,prevWorkouts,currWorkout){
 
-    var date_workout = date+"_"+currWorkout;
+    const date_workout = date+"_"+currWorkout;
 
-    var newArr = [...prevWorkouts];
+    const newArr = [...prevWorkouts];
     newArr.splice(idx,1);
 
     const saveReq = axios.put(`/selected_workouts/${date}`,{"selected_workouts":newArr});
-    const delReq = axios.delete(`/${date_workout}`);
+
+    axios.delete(`/${date_workout}`);
 
     return (dispatch) => {
         saveReq.then(() => {

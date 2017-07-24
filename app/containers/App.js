@@ -4,11 +4,12 @@
 import React,{ Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { browserHistory, withRouter } from 'react-router';
+import { connect } from 'react-redux'
+
+//import components
 import LoginSignUpPage from './loginSignUpPage/LoginSignUpPage';
 import MainPage from './mainPage/MainPage';
 import Gate from 'components/Gate';
-import { connect } from 'react-redux'
-
 
 
 class ForTest extends Component{

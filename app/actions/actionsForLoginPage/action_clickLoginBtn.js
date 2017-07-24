@@ -17,7 +17,6 @@ export default function(id,password){
                 }else if(res.data === USER_NOT_FOUND){
                     dispatch({type:USER_NOT_FOUND});
                 }else{
-                    console.log("login success msg from clickLoginBtn");
                     localStorage.setItem('token',res.data.token);
                     dispatch({type:USER_AUTHED});
                 }

@@ -3,8 +3,7 @@
  */
 import React,{Component} from 'react';
 
-
-
+//import components
 import List from './list/List';
 import LineGraph from './graph/LineGraph';
 import DoughnutGraph from './graph/DoughnutGraph'
@@ -16,15 +15,9 @@ export default class MainPage extends Component{
 
     }
 
-    shouldComponentUpdate(){
-        return true;
-    }
-
     render(){
-        console.log("main page rendering");
         return(
                 <div className="main-page">
-
                     <div className="top">
                         <DoughnutGraph/>
                     </div>
@@ -33,7 +26,6 @@ export default class MainPage extends Component{
                         <List/>
                         <LineGraph/>
                     </div>
-
                 </div>
 
         )

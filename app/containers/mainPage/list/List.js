@@ -3,7 +3,8 @@
  */
 import React,{Component} from 'react';
 import {BrowserRouter,Route,Switch} from 'react-router-dom';
-//-------------components------------------------------
+
+//import containers
 import VolumeContainer from './volume/VolumeContainer'
 import WorkoutContainer from './workout/WorkoutContainer';
 

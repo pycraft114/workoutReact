@@ -16,7 +16,7 @@ class DoughnutGraph extends Component{
         this.props.action_doughnutLoaded();
     }
 
-    shouldComponentUpdate(nextProps,nextState) {
+    shouldComponentUpdate(nextProps) {
         return (this.props.dataForDoughnut !== nextProps.dataForDoughnut)
     }
 

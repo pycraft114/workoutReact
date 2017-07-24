@@ -16,7 +16,6 @@ class KgRep extends Component{
                         return(
 
                             <div className="kg-rep" key={idx}>
-
                                 <div>
                                     {obj.kg} Kg x {obj.rep} Rep
                                 </div>
@@ -36,9 +35,7 @@ class KgRep extends Component{
                                     }}
                                 >
                                 </img>
-
                             </div>
-
                         )
                     })
                 }

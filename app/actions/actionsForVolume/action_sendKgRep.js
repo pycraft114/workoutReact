@@ -19,5 +19,5 @@ export default function(evt,kg,rep,date,workout,prevVolumes){
         }
     }
 
-    return {type:"DUMMY",payload:"DUMMY"};
+    return {type:"DUMMY"};
 }

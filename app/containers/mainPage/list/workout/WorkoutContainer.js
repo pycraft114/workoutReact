@@ -5,14 +5,13 @@ import React,{Component} from 'react';
 import DatePicker from 'react-bootstrap-date-picker';
 import {bindActionCreators} from 'redux';
 import {FormGroup,ControlLabel,HelpBlock,InputGroup} from 'react-bootstrap';
-
-
 import {connect} from 'react-redux';
 
+//import actions
 import action_selectDate from 'actions/actionsForWorkout/action_selectDate';
 import action_selectWorkout from 'actions/actionsForWorkout/action_selectWorkout';
 
-
+//import components
 import SelectedWorkout from './SelectedWorkout';
 import Selector from 'components/Selector';
 
@@ -22,7 +21,6 @@ class WorkoutContainer extends Component{
     render(){
         return(
             <div className="workout-container">
-
                 <div className="date-picker-container">
                     <FormGroup>
                         <InputGroup>
@@ -46,7 +44,6 @@ class WorkoutContainer extends Component{
                 </div>
 
                 <div className="workout-list">
-
                     <SelectedWorkout/>
 
                     <Selector
@@ -69,11 +66,6 @@ class WorkoutContainer extends Component{
         )
     }
 }
-/*
-Selector에게 넘겨줘야할것
-title,onSelect action,option
-*/
-
 
 function mapStateToProps(state){
     return{

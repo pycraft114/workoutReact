@@ -7,14 +7,13 @@ import {WORKOUT_SELECTED} from '../actionTypes';
 export default function(selectedWorkout,date,prevWorkouts){
     const token = localStorage.getItem('token');
 
-    let newArr = [...prevWorkouts,selectedWorkout];
-    const selected_workouts = [...new Set(newArr)];
+    const newArr = [...prevWorkouts,selectedWorkout];
 
-    const saveReq = axios.put(`/selected_workouts/${date}`,{selected_workouts},{headers:{token}});
+    const saveReq = axios.put(`/selected_workouts/${date}`, { selected_workouts : newArr }, { headers : { token } } );
 
     return (dispatch) => {
         saveReq.then((res) => {
-            dispatch({type:WORKOUT_SELECTED, selectedWorkouts:selected_workouts})
+            dispatch( { type:WORKOUT_SELECTED, selectedWorkouts:newArr } )
         })
     }
 }

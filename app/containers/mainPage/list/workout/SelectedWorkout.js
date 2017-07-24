@@ -2,14 +2,12 @@
  * Created by chanwoopark on 2017. 6. 26..
  */
 
-
-//This Component can be only view rendering component which could be implemented only by function.
-
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 
+//import actions
 import action_clickWorkout from "actions/actionsForWorkout/action_clickWorkout";
 import action_deleteWorkout from "actions/actionsForWorkout/action_deleteWorkout";
 
@@ -25,7 +23,6 @@ class SelectedWorkout extends Component{
                 {this.props.selectedWorkouts.map(function(ele,idx){
                     return(
                         <div className="selected-workout-container" key={idx}>
-
                             <Link to={`/${this.props.selectedDate}/${ele}`}
                                   className="selected-workout-button"
                                   onClick={
@@ -53,7 +50,6 @@ class SelectedWorkout extends Component{
                                 }}
                             >
                             </img>
-
                         </div>
                     )
                 }.bind(this))}

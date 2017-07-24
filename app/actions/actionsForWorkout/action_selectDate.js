@@ -5,14 +5,12 @@ import axios from 'axios';
 import {DATE_SELECTED} from '../actionTypes';
 
 export default function(date){
-    console.log("date",date);
-
     const token = localStorage.getItem('token');
+
     const getReq = axios.get(`/selected_workouts/${date}`,{headers:{token}});
 
     return(dispatch) => {
         getReq.then((res) => {
-            console.log(res.data);
             dispatch({type:DATE_SELECTED, date: date, response:res.data})
         })
     };

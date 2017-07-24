@@ -10,7 +10,7 @@ import action_selectOption from 'actions/actionsForGraph/action_selectOption';
 import {bindActionCreators} from 'redux';
 
 
- class GraphContainer extends Component{
+ class LineGraph extends Component{
     constructor(props){
         super(props);
         this.initiateChart = this.initiateChart.bind(this);
@@ -41,6 +41,11 @@ import {bindActionCreators} from 'redux';
         this.initiateChart();
     }
 
+    //Render LineGraph when only data for canvas changes
+    shouldComponentUpdate(nextProps){
+        return (this.props.dataForCanvas !== nextProps.dataForCanvas)
+    }
+
     render(){
         return(
             <div className="line-graph-container">
@@ -64,8 +69,6 @@ import {bindActionCreators} from 'redux';
 
 function mapStateToProps(state){
     return{
-        selectedWorkouts:state.selectedWorkouts,
-        selectedDate:state.selectedDate,
         workoutOptions:state.workoutOptions,
         dataForCanvas:state.dataForCanvas
     };
@@ -77,4 +80,4 @@ function mapDispatchToProps(dispatch){
     },dispatch);
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(GraphContainer);
+export default connect(mapStateToProps,mapDispatchToProps)(LineGraph);

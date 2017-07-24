@@ -6,14 +6,12 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 
+//import actions
 import action_typeKgRep from 'actions/actionsForVolume/action_typeKgRep';
 import action_sendKgRep from 'actions/actionsForVolume/action_sendKgRep';
 
+//import component
 import KgRep from './KgRep';
-
-
-var smth = process.cwd();
-console.log(smth);
 
 class VolumeContainer extends Component{
     componentDidMount(){
@@ -27,6 +25,7 @@ class VolumeContainer extends Component{
 
                 <div className="volume-header">
                     <h1>{this.workout}</h1>
+
                     <Link
                         to="/main"
                         className="back-button"

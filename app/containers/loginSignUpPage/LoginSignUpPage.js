@@ -5,7 +5,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators,dispatch} from 'redux';
 import {ArrowLeft,ArrowRight,Dots, Slides } from 'react-infinite-slide';
-import axios from 'axios';
 
 //Components
 import SubmitForm from 'components/SubmitForm';
@@ -42,10 +41,6 @@ class LoginSignUpPage extends React.Component{
         };
 
     }
-
-    shouldComponentUpdate(){
-        return true;
-    }
     /*
      props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
      props.button = {context : x ,evt : func}
@@ -53,7 +48,6 @@ class LoginSignUpPage extends React.Component{
      */
 
     render(){
-        console.log("LoginSignUpPage rendering");
         const inputIds = this.state.inputIds,
             placeholders = this.state.placeholders,
             btnContext = this.state.btnContext;
