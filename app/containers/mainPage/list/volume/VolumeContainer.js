@@ -1,9 +1,9 @@
 /**
  * Created by chanwoopark on 2017. 6. 29..
  */
-import React,{Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import React,{ Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 //import actions
@@ -67,8 +67,15 @@ class VolumeContainer extends Component{
             </div>
         )
     }
-
 }
+
+const propTypes = {
+    kg : PropTypes.string,
+    rep : PropTypes.string,
+    kgRepList : PropTypes.array
+};
+
+VolumeContainer.propTypes = propTypes;
 
 function mapStateToProps(state){
     return{

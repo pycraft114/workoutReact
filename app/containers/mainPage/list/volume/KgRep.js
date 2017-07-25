@@ -1,7 +1,7 @@
 /**
  * Created by chanwoopark on 2017. 6. 29..
  */
-import React , {Component} from 'react';
+import React , { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import action_deleteKgRep from 'actions/actionsForVolume/action_deleteKgRep';
@@ -43,6 +43,12 @@ class KgRep extends Component{
         );
     }
 }
+
+const propTypes = {
+    kgRepList : PropTypes.array
+};
+
+KgRep.propTypes = propTypes;
 
 function mapStateToProps(state){
     return { kgRepList:state.kgRepList }

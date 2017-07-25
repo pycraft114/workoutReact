@@ -1,7 +1,7 @@
 /**
  * Created by chanwoopark on 2017. 6. 23..
  */
-import React from 'react';
+import React,{ PropTypes } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators,dispatch} from 'redux';
 import {ArrowLeft,ArrowRight,Dots, Slides } from 'react-infinite-slide';
@@ -127,6 +127,13 @@ class LoginSignUpPage extends React.Component{
     }
 }
 
+//setting prop types
+const propTypes = {
+    message : PropTypes.string,
+    formDatas : PropTypes.object
+};
+LoginSignUpPage.propTypes = propTypes;
+
 function mapStateToProps(state){
     return {
         message : state.message,
@@ -209,5 +216,5 @@ export default connect(mapStateToProps,mapDispatchToProps)(LoginSignUpPage);
         css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
         document.body.appendChild(css);
     };
-})()
+})();
 

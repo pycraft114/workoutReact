@@ -1,10 +1,10 @@
 /**
  * Created by chanwoopark on 2017. 7. 11..
  */
-import React,{Component} from 'react';
-import {connect} from 'react-redux';
+import React,{ Component , PropTypes } from 'react';
+import { connect } from 'react-redux';
 
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 import action_doughnutLoaded from 'actions/actionsForGraph/action_doughnutLoaded';
 
 class DoughnutGraph extends Component{
@@ -57,6 +57,12 @@ class DoughnutGraph extends Component{
     }
 
 }
+
+const propTypes = {
+    dataForDoughnut : PropTypes.object
+};
+
+DoughnutGraph.propTypes = propTypes;
 
 function mapStateToProps(state){
     return({

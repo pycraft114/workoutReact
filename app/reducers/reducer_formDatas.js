@@ -2,6 +2,7 @@
  * Created by chanwoopark on 2017. 7. 20..
  */
 const inputIDs=["loginId","loginPassword","signupId","signupPassword","signupConfirm","signupEmail"];
+
 const initialDatas = {};
 inputIDs.map(function(currType){
     initialDatas[currType] = null

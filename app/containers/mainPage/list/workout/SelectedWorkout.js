@@ -2,7 +2,7 @@
  * Created by chanwoopark on 2017. 6. 26..
  */
 
-import React, {Component} from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
@@ -58,6 +58,14 @@ class SelectedWorkout extends Component{
     }
 
 }
+
+const propTypes = {
+    selectedDate : PropTypes.string,
+    kgRepList : PropTypes.array,
+    selectedWorkouts : PropTypes.array
+};
+
+SelectedWorkout.propTypes = propTypes;
 
 function mapStateToProps(state){
     return{

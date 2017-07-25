@@ -1,13 +1,11 @@
 /**
  * Created by chanwoopark on 2017. 7. 6..
  */
-import axios from 'axios';
-
-import React,{Component} from 'react';
+import React,{ Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Selector from 'components/Selector';
 import action_selectOption from 'actions/actionsForGraph/action_selectOption';
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 
 
  class LineGraph extends Component{
@@ -66,6 +64,13 @@ import {bindActionCreators} from 'redux';
     }
 
 }
+
+const propTypes = {
+    workoutOptions : PropTypes.array,
+    dataForCanvas : PropTypes.array
+};
+
+LineGraph.propTypes = propTypes;
 
 function mapStateToProps(state){
     return{
