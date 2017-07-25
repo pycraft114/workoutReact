@@ -5,7 +5,7 @@ export default function(state = null, action) {
     switch(action.type) {
         case "USER_AUTHED":
             return true;
-        case "USER_UNAUTH":
+        case "USER_DEAUTHED":
             return false;
     }
 

@@ -11,9 +11,7 @@
 
  */
 
-export const OPTIONBTN_CLICKED = "OPTIONBTN_CLICKED",
-
-             WORKOUT_CLICKED = "WORKOUT_CLICKED",
+export const WORKOUT_CLICKED = "WORKOUT_CLICKED",
 
              VOL_DELETE_CLICKED = "WORKOUT_CLICKED",
 
@@ -47,4 +45,6 @@ export const OPTIONBTN_CLICKED = "OPTIONBTN_CLICKED",
 
              INPUT_MODIFIED = "INPUT_MODIFIED",
 
-             USER_AUTHED = "USER_AUTHED";
+             USER_AUTHED = "USER_AUTHED",
+
+             USER_DEAUTHED = "USER_DEAUTHED";

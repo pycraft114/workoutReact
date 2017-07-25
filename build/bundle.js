@@ -79,7 +79,7 @@
 	/////
 	/*require('./style/LoginSignUpForm.css');
 	require('./style/MainPage.css');*/
-	__webpack_require__(622);
+	__webpack_require__(623);
 
 	/*
 	const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
@@ -21881,8 +21881,7 @@
 
 	 */
 
-	var OPTIONBTN_CLICKED = exports.OPTIONBTN_CLICKED = "OPTIONBTN_CLICKED",
-	    WORKOUT_CLICKED = exports.WORKOUT_CLICKED = "WORKOUT_CLICKED",
+	var WORKOUT_CLICKED = exports.WORKOUT_CLICKED = "WORKOUT_CLICKED",
 	    VOL_DELETE_CLICKED = exports.VOL_DELETE_CLICKED = "WORKOUT_CLICKED",
 	    WRONG_PASSWORD = exports.WRONG_PASSWORD = "WRONG_PASSWORD",
 	    USER_NOT_FOUND = exports.USER_NOT_FOUND = "USER_NOT_FOUND",
@@ -21899,7 +21898,8 @@
 	    KG_TYPED = exports.KG_TYPED = "KG_TYPED",
 	    REP_TYPED = exports.REP_TYPED = "REP_TYPED",
 	    INPUT_MODIFIED = exports.INPUT_MODIFIED = "INPUT_MODIFIED",
-	    USER_AUTHED = exports.USER_AUTHED = "USER_AUTHED";
+	    USER_AUTHED = exports.USER_AUTHED = "USER_AUTHED",
+	    USER_DEAUTHED = exports.USER_DEAUTHED = "USER_DEAUTHED";
 
 /***/ }),
 /* 201 */
@@ -22094,7 +22094,7 @@
 	    switch (action.type) {
 	        case "USER_AUTHED":
 	            return true;
-	        case "USER_UNAUTH":
+	        case "USER_DEAUTHED":
 	            return false;
 	    }
 
@@ -31827,7 +31827,7 @@
 
 	var _MainPage2 = _interopRequireDefault(_MainPage);
 
-	var _Gate = __webpack_require__(621);
+	var _Gate = __webpack_require__(622);
 
 	var _Gate2 = _interopRequireDefault(_Gate);
 
@@ -33901,6 +33901,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _redux = __webpack_require__(165);
+
+	var _reactRedux = __webpack_require__(159);
+
 	var _List = __webpack_require__(350);
 
 	var _List2 = _interopRequireDefault(_List);
@@ -33916,6 +33920,10 @@
 	var _SideBar = __webpack_require__(620);
 
 	var _SideBar2 = _interopRequireDefault(_SideBar);
+
+	var _action_clickLogout = __webpack_require__(621);
+
+	var _action_clickLogout2 = _interopRequireDefault(_action_clickLogout);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33963,6 +33971,12 @@
 	                            _react2.default.createElement('i', { className: 'glyphicon glyphicon-align-left' })
 	                        ),
 	                        _react2.default.createElement(
+	                            'button',
+	                            { type: 'button', className: 'btn btn-default btn-sm', onClick: this.props.action_clickLogout },
+	                            _react2.default.createElement('i', { className: 'glyphicon glyphicon-log-out' }),
+	                            ' Log out'
+	                        ),
+	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'top' },
 	                            _react2.default.createElement(_DoughnutGraph2.default, null)
@@ -33982,7 +33996,11 @@
 	    return MainPage;
 	}(_react.Component);
 
-	exports.default = MainPage;
+	function mapDispathToProps(dispatch) {
+	    return (0, _redux.bindActionCreators)({ action_clickLogout: _action_clickLogout2.default }, dispatch);
+	}
+
+	exports.default = (0, _reactRedux.connect)(null, mapDispathToProps)(MainPage);
 
 /***/ }),
 /* 350 */
@@ -55540,6 +55558,24 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+
+	exports.default = function () {
+	    localStorage.removeItem('token');
+
+	    return { type: _actionTypes.USER_DEAUTHED };
+	};
+
+	var _actionTypes = __webpack_require__(200);
+
+/***/ }),
+/* 622 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.default = Gate;
 
 	var _react = __webpack_require__(1);
@@ -55567,13 +55603,13 @@
 	}
 
 /***/ }),
-/* 622 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(623);
+	var content = __webpack_require__(624);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -55581,7 +55617,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(625)(content, options);
+	var update = __webpack_require__(626)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -55598,21 +55634,21 @@
 	}
 
 /***/ }),
-/* 623 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(624)(undefined);
+	exports = module.exports = __webpack_require__(625)(undefined);
 	// imports
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);", ""]);
 
 	// module
-	exports.push([module.id, ".wrapper {\n    display: flex;\n    align-items: stretch;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    min-height: 100vh;\n    margin-left: -250px;\n}\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    background: #7386D5;\n    color: #fff;\n    transition: all 0.3s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    background: #6d7fcc;\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n#content,.line-graph-container,.workout-container,#doughnut-container{\n    width:100%;\n    border:1px solid red;\n}\n\n#content{\n    padding-left:32px;\n    padding-right:32px;\n    padding-top:10px;\n}\n\n.line-graph-container,.workout-container{\n    padding: 6vh;\n}\n\n.bottom{\n    display:flex;\n}\n", ""]);
+	exports.push([module.id, ".wrapper {\n    display: flex;\n    align-items: stretch;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    min-height: 100vh;\n    margin-left: -250px;\n}\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    background: #7386D5;\n    color: #fff;\n    transition: all 0.3s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    background: #6d7fcc;\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n#content,.line-graph-container,.workout-container,#doughnut-container{\n    width:100%;\n    /*border:1px solid red;*/\n}\n\n#content{\n    padding-left:32px;\n    padding-right:32px;\n    padding-top:10px;\n}\n\n.line-graph-container,.workout-container{\n    padding: 6vh;\n}\n\n.bottom{\n    display:flex;\n}\n", ""]);
 
 	// exports
 
 
 /***/ }),
-/* 624 */
+/* 625 */
 /***/ (function(module, exports) {
 
 	/*
@@ -55694,7 +55730,7 @@
 
 
 /***/ }),
-/* 625 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -55740,7 +55776,7 @@
 	var	singletonCounter = 0;
 	var	stylesInsertedAtTop = [];
 
-	var	fixUrls = __webpack_require__(626);
+	var	fixUrls = __webpack_require__(627);
 
 	module.exports = function(list, options) {
 		if (false) {
@@ -56053,7 +56089,7 @@
 
 
 /***/ }),
-/* 626 */
+/* 627 */
 /***/ (function(module, exports) {
 
 	
