@@ -8,14 +8,12 @@ import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import {browserHistory} from 'react-router';
 
 /////
-import LoginSignUpPage from './containers/loginSignUpPage/LoginSignUpPage';
-import MainPage from './containers/mainPage/MainPage';
-import Gate from './components/Gate';
-import ForTest from './containers/App';
+import App from './containers/App';
 
 /////
-require('./style/LoginSignUpForm.css');
-require('./style/MainPage.css');
+/*require('./style/LoginSignUpForm.css');
+require('./style/MainPage.css');*/
+require('./style/SideBar.css');
 
 /*
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
@@ -39,7 +37,7 @@ console.log("is authed?",isAuthed);
 
 ReactDOM.render(
     <Provider store={store}>
-        <ForTest/>
+        <App/>
     </Provider>
-    , document.querySelector('.container')
+    , document.querySelector('.root-container')
 );

@@ -8,12 +8,14 @@ export default function(selectedWorkout,date,prevWorkouts){
     const token = localStorage.getItem('token');
 
     const newArr = [...prevWorkouts,selectedWorkout];
+    //get rid of duplicate elements
+    const selected_workouts = [...new Set(newArr)];
 
-    const saveReq = axios.put(`/selected_workouts/${date}`, { selected_workouts : newArr }, { headers : { token } } );
+    const saveReq = axios.put(`/selected_workouts/${date}`,{selected_workouts},{headers:{token}});
 
     return (dispatch) => {
         saveReq.then((res) => {
-            dispatch( { type:WORKOUT_SELECTED, selectedWorkouts:newArr } )
+            dispatch({type:WORKOUT_SELECTED, selectedWorkouts:selected_workouts})
         })
     }
 }
