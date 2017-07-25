@@ -34430,13 +34430,19 @@
 	    return WorkoutContainer;
 	}(_react.Component);
 
+	var propTypes = {
+	    selectedWorkouts: _react.PropTypes.array,
+	    selectedDate: _react.PropTypes.string,
+	    workoutOptions: _react.PropTypes.array.isRequired
+	};
+
+	WorkoutContainer.propTypes = propTypes;
+
 	function mapStateToProps(state) {
 	    return {
 	        selectedWorkouts: state.selectedWorkouts,
 	        selectedDate: state.selectedDate,
-	        workoutOptions: state.workoutOptions,
-	        datesForChart: state.datesForChart,
-	        volumesForChart: state.volumesForChart
+	        workoutOptions: state.workoutOptions
 	    };
 	}
 
@@ -54779,7 +54785,7 @@
 	}(_react.Component);
 
 	var propTypes = {
-	    selectedDate: _react.PropTypes.array,
+	    selectedDate: _react.PropTypes.string,
 	    kgRepList: _react.PropTypes.array,
 	    selectedWorkouts: _react.PropTypes.array
 	};

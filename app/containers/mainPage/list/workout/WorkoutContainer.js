@@ -1,11 +1,11 @@
 /**
  * Created by chanwoopark on 2017. 6. 29..
  */
-import React,{Component} from 'react';
+import React,{ Component, PropTypes } from 'react';
 import DatePicker from 'react-bootstrap-date-picker';
-import {bindActionCreators} from 'redux';
-import {FormGroup,ControlLabel,HelpBlock,InputGroup} from 'react-bootstrap';
-import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { FormGroup, ControlLabel, HelpBlock, InputGroup} from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 //import actions
 import action_selectDate from 'actions/actionsForWorkout/action_selectDate';
@@ -67,13 +67,19 @@ class WorkoutContainer extends Component{
     }
 }
 
+const propTypes = {
+    selectedWorkouts : PropTypes.array,
+    selectedDate : PropTypes.string,
+    workoutOptions : PropTypes.array.isRequired,
+};
+
+WorkoutContainer.propTypes = propTypes;
+
 function mapStateToProps(state){
     return{
         selectedWorkouts:state.selectedWorkouts,
         selectedDate:state.selectedDate,
         workoutOptions:state.workoutOptions,
-        datesForChart:state.datesForChart,
-        volumesForChart:state.volumesForChart
     };
 }
 
