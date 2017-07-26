@@ -30,12 +30,10 @@ class MainPage extends Component{
                     </div>
 
                     <div id="content">
-                        <button type="button" id="sidebarCollapse" className="btn btn-outline-secondary">
-                            <i className="glyphicon glyphicon-align-left"></i>
-                        </button>
-
-                        <button type="button" className="btn btn-default btn-sm" onClick={this.props.action_clickLogout}>
-                            <i className="glyphicon glyphicon-log-out"></i> Log out
+                        <button type="button" id="sidebarCollapse" className="btn btn-default btn-sm" on="">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </button>
 
                         <div className="top">
@@ -46,6 +44,10 @@ class MainPage extends Component{
                             <LineGraph/>
                             <List/>
                         </div>
+
+                        <button type="button" className="btn btn-default btn-sm" onClick={this.props.action_clickLogout}>
+                            <i className="glyphicon glyphicon-log-out"></i> Log out
+                        </button>
                     </div>
                 </div>
             </div>

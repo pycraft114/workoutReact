@@ -1,3 +1,4 @@
+/*
 
 
 .workout-list-container{
@@ -20,7 +21,7 @@
 
 
 }
-/*
+!*
 
 .date-picker-container{
 
@@ -32,7 +33,7 @@
 .date-picker-header{
     display:inline;
 }
-*/
+*!
 
 .selected-workout-button{
     margin:3px;
@@ -52,4 +53,4 @@ a{
 .line-graph-container{
     display:inline-block;
     float:left;
-}
+}*/

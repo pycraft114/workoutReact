@@ -33986,14 +33986,10 @@
 	                        { id: 'content' },
 	                        _react2.default.createElement(
 	                            'button',
-	                            { type: 'button', id: 'sidebarCollapse', className: 'btn btn-outline-secondary' },
-	                            _react2.default.createElement('i', { className: 'glyphicon glyphicon-align-left' })
-	                        ),
-	                        _react2.default.createElement(
-	                            'button',
-	                            { type: 'button', className: 'btn btn-default btn-sm', onClick: this.props.action_clickLogout },
-	                            _react2.default.createElement('i', { className: 'glyphicon glyphicon-log-out' }),
-	                            ' Log out'
+	                            { type: 'button', id: 'sidebarCollapse', className: 'btn btn-default btn-sm', on: '' },
+	                            _react2.default.createElement('span', null),
+	                            _react2.default.createElement('span', null),
+	                            _react2.default.createElement('span', null)
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
@@ -34005,6 +34001,12 @@
 	                            { className: 'bottom' },
 	                            _react2.default.createElement(_LineGraph2.default, null),
 	                            _react2.default.createElement(_List2.default, null)
+	                        ),
+	                        _react2.default.createElement(
+	                            'button',
+	                            { type: 'button', className: 'btn btn-default btn-sm', onClick: this.props.action_clickLogout },
+	                            _react2.default.createElement('i', { className: 'glyphicon glyphicon-log-out' }),
+	                            ' Log out'
 	                        )
 	                    )
 	                )
@@ -55584,8 +55586,15 @@
 	    var sidebarCollapse = document.querySelector("#sidebarCollapse");
 	    if (sidebarCollapse) {
 	        var sidebar = document.querySelector("#sidebar");
-	        sidebarCollapse.addEventListener("click", function () {
+	        sidebarCollapse.addEventListener("click", function (evt) {
 	            sidebar.className = sidebar.className ? '' : 'active';
+	            if (!evt.target.on) {
+	                evt.target.on = "true";
+	                evt.target.className = evt.target.className + " active";
+	            } else {
+	                evt.target.on = "";
+	                evt.target.className = "btn btn-default btn-sm";
+	            }
 	        });
 	    }
 	}
@@ -55634,7 +55643,7 @@
 	        redirUrl = _ref.redirUrl;
 
 	    console.log("functional component gate called");
-	    return _react2.default.createElement(_reactRouterDom.Route, { path: path, render: function render(props) {
+	    return _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: path, render: function render(props) {
 	            if (isAuthed) {
 	                return _react2.default.createElement(Component, null);
 	            } else {
@@ -56264,7 +56273,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n/*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*/\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}\n\n\n\n\n.line-graph-container{\n    display:inline-block;\n    float:left;\n}", ""]);
+	exports.push([module.id, "/*\n\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n!*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*!\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}\n\n\n\n\n.line-graph-container{\n    display:inline-block;\n    float:left;\n}*/\n", ""]);
 
 	// exports
 
@@ -56309,7 +56318,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);", ""]);
 
 	// module
-	exports.push([module.id, ".wrapper {\n    display: flex;\n    align-items: stretch;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    min-height: 100vh;\n    margin-left: -250px;\n}\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    background: #7386D5;\n    color: #fff;\n    transition: all 0.3s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    background: #6d7fcc;\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n#content,.line-graph-container,.list-container,#doughnut-container{\n    width:100%;\n    /*border:1px solid red;*/\n}\n\n#content{\n    padding-left:32px;\n    padding-right:32px;\n    padding-top:10px;\n}\n\n.line-graph-container,.workout-container{\n    padding: 6vh;\n}\n\n.bottom{\n    display:flex;\n}\n", ""]);
+	exports.push([module.id, ".wrapper {\n    display: flex;\n    align-items: stretch;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    min-height: 100vh;\n    margin-left: -250px;\n}\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    background: #7386D5;\n    color: #fff;\n    transition: all 0.8s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    background: #6d7fcc;\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n#content,.line-graph-container,.list-container,#doughnut-container{\n    width:100%;\n    /*border:1px solid red;*/\n}\n\n#content{\n    padding-left:32px;\n    padding-right:32px;\n    padding-top:10px;\n}\n\n\n\n/*whole main page css*/\n.line-graph-container,.list-container{\n    padding: 6vh;\n}\n\n.bottom{\n    display:flex;\n}\n\n.kg-rep-container{\n    height:153px;\n    overflow:scroll;\n}\n\n#sidebarCollapse {\n    width: 40px;\n    height: 40px;\n    background: #f5f5f5;\n}\n\n#sidebarCollapse span {\n    width: 80%;\n    height: 2px;\n    margin: 0 auto;\n    display: block;\n    background: #555;\n    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);\n}\n\n#sidebarCollapse.active span:first-of-type {\n    /* rotate first one */\n    transform: rotate(45deg) translate(5px, 5px);\n}\n#sidebarCollapse.active span:nth-of-type(2) {\n    /* second one is not visible */\n    opacity: 0;\n}\n#sidebarCollapse.active span:last-of-type {\n    /* rotate third one */\n    transform: rotate(-45deg) translate(5px, -5px);\n}\n\n#sidebarCollapse span {\n    /* no rotation */\n    transform: none;\n    /* all bars are visible */\n    opacity: 1;\n    margin: 5px auto;\n}\n", ""]);
 
 	// exports
 
