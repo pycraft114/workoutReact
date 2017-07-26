@@ -30,7 +30,7 @@ class MainPage extends Component{
                     </div>
 
                     <div id="content">
-                        <button type="button" id="sidebarCollapse" className="btn btn-default btn-sm" on="">
+                        <button type="button" id="sidebarCollapse" className="btn btn-default btn-sm" active="">
                             <span></span>
                             <span></span>
                             <span></span>

@@ -8,12 +8,12 @@ export function setSideBarSettings(){
         const sidebar = document.querySelector("#sidebar");
         sidebarCollapse.addEventListener("click",function(evt){
             sidebar.className = sidebar.className ? '' : 'active';
-            if(!evt.target.on){
-                evt.target.on = "true";
-                evt.target.className = evt.target.className+" active";
+            if(!sidebarCollapse.active){
+                sidebarCollapse.active = "true";
+                sidebarCollapse.className = evt.target.className+" active";
             }else{
-                evt.target.on = "";
-                evt.target.className = "btn btn-default btn-sm";
+                sidebarCollapse.active = "";
+                sidebarCollapse.className = "btn btn-default btn-sm";
             }
         })
     }

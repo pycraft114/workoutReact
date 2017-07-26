@@ -1,3 +1,3 @@
-if(null){
+if(""){
     console.log("haha");
 }
