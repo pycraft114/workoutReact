@@ -30,7 +30,8 @@ module.exports = {
             components : path.resolve(__dirname, 'app', 'components'),
             containers : path.resolve(__dirname, 'app', 'containers'),
             reducers : path.resolve(__dirname, 'app', 'reducers'),
-            server : path.resolve(__dirname, 'app', 'server')
+            server : path.resolve(__dirname, 'app', 'server'),
+            style : path.resolve(__dirname, 'app', 'style')
         },
         extensions:['','.js']
     }

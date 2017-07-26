@@ -2,12 +2,17 @@
  * Created by chanwoopark on 2017. 7. 25..
  */
 import React, { Component } from 'react';
+import { setSideBarSettings } from 'style/setSideBarSettings';
 
 export default class SideBar extends Component{
     constructor(props){
         super(props)
     }
 
+    componentDidMount(){
+        setSideBarSettings();
+    }
+    
     render(){
         return(
             <nav id="sidebar">
@@ -33,13 +38,3 @@ export default class SideBar extends Component{
         )
     }
 }
-
-(function(){
-    document.addEventListener("DOMContentLoaded",function(){
-        const sidebarCollapse = document.querySelector("#sidebarCollapse");
-        const sidebar = document.querySelector("#sidebar");
-        sidebarCollapse.addEventListener("click",function(){
-            sidebar.className = sidebar.className ? '' : 'active';
-        })
-    });
-})();

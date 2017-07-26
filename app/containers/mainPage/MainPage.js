@@ -1,6 +1,8 @@
 /**
  * Created by chanwoopark on 2017. 6. 29..
  */
+/*SHOULD BE STATELESS COMPONENT. RESTRUCTURE AFTER TEST IS DONE!!!!!!*/
+
 import React,{Component} from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';

@@ -11,8 +11,8 @@ import {browserHistory} from 'react-router';
 import App from './containers/App';
 
 /////
-/*require('./style/LoginSignUpForm.css');
-require('./style/MainPage.css');*/
+require('./style/LoginSignUpForm.css');
+require('./style/MainPage.css');
 require('./style/SideBar.css');
 
 /*
