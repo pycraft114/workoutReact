@@ -103,7 +103,7 @@ ul ul a {
     background: #6d7fcc;
 }
 
-#content,.line-graph-container,.workout-container,#doughnut-container{
+#content,.line-graph-container,.list-container,#doughnut-container{
     width:100%;
     /*border:1px solid red;*/
 }

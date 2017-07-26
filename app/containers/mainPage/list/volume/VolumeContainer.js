@@ -21,7 +21,7 @@ class VolumeContainer extends Component{
 
     render(){
         return(
-            <div className="volume-container">
+            <div className="list-container">
 
                 <div className="volume-header">
                     <h1>{this.workout}</h1>

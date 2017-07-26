@@ -34164,7 +34164,7 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'volume-container' },
+	                { className: 'list-container' },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'volume-header' },
@@ -34422,12 +34422,14 @@
 	});
 
 	exports.default = function (date, workout, idx, prevVolumes) {
+	    var token = localStorage.getItem('token');
+
 	    var date_workout = date + "_" + workout;
 
 	    var newArr = [].concat(_toConsumableArray(prevVolumes));
 	    newArr.splice(idx, 1);
 
-	    _axios2.default.put('/kg_rep/' + date_workout, newArr);
+	    _axios2.default.put('/kg_rep/' + date_workout, newArr, { headers: { token: token } });
 
 	    return {
 	        type: _actionTypes.VOL_DELETE_CLICKED,
@@ -34522,7 +34524,7 @@
 
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'workout-container' },
+	                { className: 'list-container' },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'date-picker-container' },
@@ -56262,7 +56264,7 @@
 
 
 	// module
-	exports.push([module.id, ".list-container{\n    position:relative;\n    top:200px;\n    left:200px;\n    border:1px solid red;\n}\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n/*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*/\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}\n\n\n.workout-container{\n    display:inline-block;\n    float: right;\n    margin-right: 101px;\n    margin-top: 31px;\n}\n\n.line-graph-container{\n    display:inline-block;\n    float:left;\n}", ""]);
+	exports.push([module.id, "\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n/*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*/\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}\n\n\n\n\n.line-graph-container{\n    display:inline-block;\n    float:left;\n}", ""]);
 
 	// exports
 
@@ -56307,7 +56309,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);", ""]);
 
 	// module
-	exports.push([module.id, ".wrapper {\n    display: flex;\n    align-items: stretch;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    min-height: 100vh;\n    margin-left: -250px;\n}\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    background: #7386D5;\n    color: #fff;\n    transition: all 0.3s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    background: #6d7fcc;\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n#content,.line-graph-container,.workout-container,#doughnut-container{\n    width:100%;\n    /*border:1px solid red;*/\n}\n\n#content{\n    padding-left:32px;\n    padding-right:32px;\n    padding-top:10px;\n}\n\n.line-graph-container,.workout-container{\n    padding: 6vh;\n}\n\n.bottom{\n    display:flex;\n}\n", ""]);
+	exports.push([module.id, ".wrapper {\n    display: flex;\n    align-items: stretch;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    min-height: 100vh;\n    margin-left: -250px;\n}\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    background: #7386D5;\n    color: #fff;\n    transition: all 0.3s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    background: #6d7fcc;\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n#content,.line-graph-container,.list-container,#doughnut-container{\n    width:100%;\n    /*border:1px solid red;*/\n}\n\n#content{\n    padding-left:32px;\n    padding-right:32px;\n    padding-top:10px;\n}\n\n.line-graph-container,.workout-container{\n    padding: 6vh;\n}\n\n.bottom{\n    display:flex;\n}\n", ""]);
 
 	// exports
 

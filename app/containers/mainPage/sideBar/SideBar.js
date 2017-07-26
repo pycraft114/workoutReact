@@ -12,7 +12,7 @@ export default class SideBar extends Component{
     componentDidMount(){
         setSideBarSettings();
     }
-    
+
     render(){
         return(
             <nav id="sidebar">

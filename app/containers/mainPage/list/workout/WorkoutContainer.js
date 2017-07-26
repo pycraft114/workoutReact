@@ -20,7 +20,7 @@ import Selector from 'components/Selector';
 class WorkoutContainer extends Component{
     render(){
         return(
-            <div className="workout-container">
+            <div className="list-container">
                 <div className="date-picker-container">
                     <FormGroup>
                         <InputGroup>
