@@ -31,9 +31,7 @@ class MainPage extends Component{
 
                     <div id="content">
                         <button type="button" id="sidebarCollapse" className="btn btn-default btn-sm" active="">
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                            MENU
                         </button>
 
                         <div className="top">
@@ -45,10 +43,12 @@ class MainPage extends Component{
                             <List/>
                         </div>
 
-                        <button type="button" className="btn btn-default btn-sm" onClick={this.props.action_clickLogout}>
+                        <button id="logout-button" type="button" className="btn btn-default btn-sm" onClick={this.props.action_clickLogout}>
                             <i className="glyphicon glyphicon-log-out"></i> Log out
                         </button>
                     </div>
+
+                    <div className="overlay"></div>
                 </div>
             </div>
 

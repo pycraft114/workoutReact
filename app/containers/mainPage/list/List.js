@@ -7,7 +7,6 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 //import containers
 import VolumeContainer from './volume/VolumeContainer'
 import WorkoutContainer from './workout/WorkoutContainer';
-import NoMatch from 'components/NoMatch';
 
 
 export default class List extends Component{
@@ -21,7 +20,7 @@ export default class List extends Component{
                 <Switch>
                     <Route exact path="/main" component={WorkoutContainer}/>
                     <Route exact path="/main/:date/:workout" component={VolumeContainer}/>
-                    <Redirect from='/main/:smth' component={NoMatch}/>
+                    <Redirect from='/main/:smth' to="/main"/>
                 </Switch>
             </BrowserRouter>
         )

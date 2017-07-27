@@ -10,7 +10,6 @@ import { connect } from 'react-redux'
 import LoginSignUpPage from './loginSignUpPage/LoginSignUpPage';
 import MainPage from './mainPage/MainPage';
 import Gate from 'components/Gate';
-import NoMatch from 'components/NoMatch';
 
 
 class ForTest extends Component{

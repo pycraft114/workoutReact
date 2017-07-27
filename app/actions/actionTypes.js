@@ -11,7 +11,7 @@
 
  */
 
-export const WORKOUT_CLICKED = "WORKOUT_CLICKED",
+export const KGREP_FETCHED = "KGREP_FETCHED",
 
              VOL_DELETE_CLICKED = "WORKOUT_CLICKED",
 

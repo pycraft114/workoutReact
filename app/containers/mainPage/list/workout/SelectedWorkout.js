@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 
 //import actions
-import action_clickWorkout from "actions/actionsForWorkout/action_clickWorkout";
 import action_deleteWorkout from "actions/actionsForWorkout/action_deleteWorkout";
 
 class SelectedWorkout extends Component{
@@ -19,18 +18,12 @@ class SelectedWorkout extends Component{
 
     render(){
         return(
-            <div>
+            <div className="selected-workout-container">
                 {this.props.selectedWorkouts.map(function(ele,idx){
                     return(
-                        <div className="selected-workout-container" key={idx}>
+                        <div className="selected-workout" key={idx}>
                             <Link to={`/main/${this.props.selectedDate}/${ele}`}
                                   className="selected-workout-button"
-                                  onClick={
-                                      () => {this.props.action_clickWorkout(
-                                          this.props.selectedDate,
-                                          ele
-                                      )}
-                                  }
                             >
                                 {ele}
                             </Link>
@@ -77,7 +70,6 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({
-        action_clickWorkout,
         action_deleteWorkout
 
     },dispatch)

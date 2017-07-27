@@ -6,15 +6,18 @@
 //한번바뀌고 난이후로 state의 값이 undefined으로 설정해주지 않는경우 절대로 이후에 default값을 가질 일은 없을것.
 
 //정확하게 reducer함수가 invoke될때 인자로 무엇이 전달되는가?
+import { KGREP_SENT, KGREP_FETCHED, VOL_DELETE_CLICKED } from 'actions/actionTypes';
+
+
 export default function(state = [],action){
     switch(action.type){
-        case "KGREP_SENT":
+        case KGREP_SENT:
             return action.kgRepList;
 
-        case "WORKOUT_CLICKED":
+        case KGREP_FETCHED:
             return action.kgRepList;
 
-        case "VOL_DELETE_CLICKED":
+        case VOL_DELETE_CLICKED:
             return action.kgRepList;
     }
 

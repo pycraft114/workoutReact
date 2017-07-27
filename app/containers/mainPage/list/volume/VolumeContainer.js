@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 //import actions
 import action_typeKgRep from 'actions/actionsForVolume/action_typeKgRep';
 import action_sendKgRep from 'actions/actionsForVolume/action_sendKgRep';
+import action_fetchKgRep from 'actions/actionsForWorkout/action_fetchKgRep';
 
 //import component
 import KgRep from './KgRep';
@@ -17,10 +18,10 @@ class VolumeContainer extends Component{
     componentWillMount(){
         this.workout = this.props.match.params.workout;
         this.date = this.props.match.params.date;
+        this.props.action_fetchKgRep(this.date,this.workout);
     }
 
     render(){
-        console.log("volume container being rendered");
         return(
             <div className="list-container">
 
@@ -90,6 +91,7 @@ function mapDispatchToProps(dispatch){
     return bindActionCreators({
         action_typeKgRep,
         action_sendKgRep,
+        action_fetchKgRep
     },dispatch)
 }
 

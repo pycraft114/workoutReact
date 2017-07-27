@@ -170,6 +170,8 @@ module.exports = function(app){
         const date_workout = req.params.date_workout;
         const user_date_workout = user+"_"+date_workout;
 
+        console.log('server', user_date_workout);
+
         let query = "SELECT kg_rep FROM volume WHERE user_date_workout = ?";
         query = mysql.format(query,user_date_workout);
 

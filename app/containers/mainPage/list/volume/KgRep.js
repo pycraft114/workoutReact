@@ -21,7 +21,7 @@ class KgRep extends Component{
                                 </div>
 
                                 <img
-                                    src="../trash1600.png"
+                                    src="/trash1600.png"
                                     width={28}
                                     height={28}
                                     className="kgrep-delete-button"

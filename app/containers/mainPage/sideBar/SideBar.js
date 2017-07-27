@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import { setSideBarSettings } from 'style/setSideBarSettings';
+import setSideBar2 from 'style/setSideBar2';
 
 export default class SideBar extends Component{
     constructor(props){
@@ -10,12 +11,16 @@ export default class SideBar extends Component{
     }
 
     componentDidMount(){
-        setSideBarSettings();
+        setSideBar2();
     }
 
     render(){
         return(
             <nav id="sidebar">
+                <div id="dismiss">
+                    <i className="glyphicon glyphicon-arrow-left"></i>
+                </div>
+
                 <div className="sidebar-header">
                     <h3>Collapsible Sidebar</h3>
                 </div>
