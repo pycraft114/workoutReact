@@ -12,6 +12,8 @@ import List from './list/List';
 import LineGraph from './graph/LineGraph';
 import DoughnutGraph from './graph/DoughnutGraph'
 import SideBar from './sideBar/SideBar';
+import NavBar from 'components/NavBar';
+import NavTab from 'components/NavTab'
 
 import action_clickLogout from 'actions/action_clickLogout';
 
@@ -24,7 +26,13 @@ class MainPage extends Component{
     render(){
         return(
             <div className="main-page">
+
+                <NavBar/>
+
                 <div className="wrapper">
+
+                    <NavTab/>
+
                     <div className="side">
                         <SideBar/>
                     </div>

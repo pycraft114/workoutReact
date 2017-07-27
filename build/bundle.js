@@ -77,12 +77,12 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/////
-	__webpack_require__(626);
+	__webpack_require__(628);
 
 	/////
 
-	__webpack_require__(631);
 	__webpack_require__(633);
+	__webpack_require__(635);
 
 	/*
 	const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
@@ -31831,7 +31831,7 @@
 
 	var _MainPage2 = _interopRequireDefault(_MainPage);
 
-	var _Gate = __webpack_require__(625);
+	var _Gate = __webpack_require__(627);
 
 	var _Gate2 = _interopRequireDefault(_Gate);
 
@@ -33943,7 +33943,15 @@
 
 	var _SideBar2 = _interopRequireDefault(_SideBar);
 
-	var _action_clickLogout = __webpack_require__(624);
+	var _NavBar = __webpack_require__(624);
+
+	var _NavBar2 = _interopRequireDefault(_NavBar);
+
+	var _NavTab = __webpack_require__(625);
+
+	var _NavTab2 = _interopRequireDefault(_NavTab);
+
+	var _action_clickLogout = __webpack_require__(626);
 
 	var _action_clickLogout2 = _interopRequireDefault(_action_clickLogout);
 
@@ -33976,9 +33984,11 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'main-page' },
+	                _react2.default.createElement(_NavBar2.default, null),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'wrapper' },
+	                    _react2.default.createElement(_NavTab2.default, null),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'side' },
@@ -55636,6 +55646,196 @@
 /* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 27..
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var NavBar = function (_Component) {
+	    _inherits(NavBar, _Component);
+
+	    function NavBar(props) {
+	        _classCallCheck(this, NavBar);
+
+	        return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
+	    }
+
+	    _createClass(NavBar, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "nav",
+	                { className: "navbar navbar-default", role: "navigation" },
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "navbar-header" },
+	                    _react2.default.createElement(
+	                        "button",
+	                        { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": ".navbar-ex1-collapse" },
+	                        _react2.default.createElement(
+	                            "span",
+	                            { className: "sr-only" },
+	                            "Toggle navigation"
+	                        ),
+	                        _react2.default.createElement("span", { className: "icon-bar" }),
+	                        _react2.default.createElement("span", { className: "icon-bar" }),
+	                        _react2.default.createElement("span", { className: "icon-bar" })
+	                    ),
+	                    _react2.default.createElement(
+	                        "a",
+	                        { className: "navbar-brand", href: "#" },
+	                        "CONSISTENCY"
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "collapse navbar-collapse navbar-ex1-collapse" },
+	                    _react2.default.createElement(
+	                        "ul",
+	                        { className: "nav navbar-nav" },
+	                        _react2.default.createElement(
+	                            "li",
+	                            { className: "active" },
+	                            _react2.default.createElement(
+	                                "a",
+	                                { href: "#" },
+	                                "Home"
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            "li",
+	                            null,
+	                            _react2.default.createElement(
+	                                "a",
+	                                { href: "#" },
+	                                "Record"
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            "li",
+	                            null,
+	                            _react2.default.createElement(
+	                                "a",
+	                                { href: "#" },
+	                                "Graph"
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        "ul",
+	                        { className: "nav navbar-nav navbar-right" },
+	                        _react2.default.createElement(
+	                            "button",
+	                            { type: "button", className: "btn btn-default navbar-btn" },
+	                            "Logout"
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return NavBar;
+	}(_react.Component);
+
+	exports.default = NavBar;
+
+/***/ }),
+/* 625 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 27..
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var NavTab = function (_Component) {
+	    _inherits(NavTab, _Component);
+
+	    function NavTab(props) {
+	        _classCallCheck(this, NavTab);
+
+	        return _possibleConstructorReturn(this, (NavTab.__proto__ || Object.getPrototypeOf(NavTab)).call(this, props));
+	    }
+
+	    _createClass(NavTab, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "ol",
+	                { className: "breadcrumb" },
+	                _react2.default.createElement(
+	                    "li",
+	                    null,
+	                    _react2.default.createElement(
+	                        "a",
+	                        { href: "#" },
+	                        "Home"
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    "li",
+	                    null,
+	                    _react2.default.createElement(
+	                        "a",
+	                        { href: "#" },
+	                        "Library"
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    "li",
+	                    { className: "active" },
+	                    "Data"
+	                )
+	            );
+	        }
+	    }]);
+
+	    return NavTab;
+	}(_react.Component);
+
+	exports.default = NavTab;
+
+/***/ }),
+/* 626 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -55651,7 +55851,7 @@
 	var _actionTypes = __webpack_require__(200);
 
 /***/ }),
-/* 625 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55686,13 +55886,13 @@
 	}
 
 /***/ }),
-/* 626 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(627);
+	var content = __webpack_require__(629);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -55700,7 +55900,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(629)(content, options);
+	var update = __webpack_require__(631)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -55717,21 +55917,21 @@
 	}
 
 /***/ }),
-/* 627 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(628)(undefined);
+	exports = module.exports = __webpack_require__(630)(undefined);
 	// imports
 
 
 	// module
-	exports.push([module.id, "input:-webkit-autofill {\n    -webkit-box-shadow: 0 0 0px 1000px white inset;\n}\nhtml, body {\n    margin:0;\n    padding:0;\n    overflow:hidden;\n    height:100%\n}\n\n\n.button {\n    width:263px;\n    height:35px;\n    outline: 0;\n    padding: 5px 12px;\n    color: #9fa8b0;\n    font-weight: bold;\n    font-size:17px;\n    text-shadow: 1px 1px #1f272b;\n    border: 1px solid #1c252b;\n    border-radius: 3px;\n    -moz-border-radius: 3px;\n    -webkit-border-radius: 3px;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#3D4850), color-stop(4%,#313d45), color-stop(100%,#232B30)); /* webkit */\n    box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* CSS3 */\n    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* Safari, Chrome */\n}\n.button:hover {\n    color: #fff;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#4C5A64), color-stop(4%,#404F5A), color-stop(100%,#2E3940)); /* webkit */\n}\n.button:active {\n    background-position: 0 top;\n    position: relative;\n    top: 1px;\n    color: #fff;\n    padding: 6px 12px 4px;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#20282D), color-stop(51%,#252E34), color-stop(100%,#222A30)); /* webkit */\n    -webkit-box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* Safari, Chrome */\n    box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* CSS3 */\n}\n\n.input{\n    width:255px;\n    height:35px;\n    border-radius:4px;\n    border:1px solid #9fa8b0;\n    padding-left:3px;\n    display:block;\n    margin:auto;\n    margin-bottom:13px;\n    background-color: rgba(999,999,999,0.7);\n\n}\n.input:first-child{\n    margin-bottom:13px;\n}\n\n.login-signup-page{\n    position:relative;\n    top:20vh;\n    text-align: center;\n    height:384px;\n}\n\n.dumbbell-logo{\n    width: 84px;\n    height: 79px;\n    border: 2px solid lightslategray;\n    border-radius: 100%;\n    padding: 7px;\n}\n\n.typewrite{\n    font-family:Impact;\n    color:#2E3940;\n}\n\n.react-infinite-slides{\n    height:70% !important;\n}\n.react-infinite-slides ul li{\n    width:10px !important;\n    height:10px !important;\n}\n\n.submit-form{\n    padding:2px;\n}", ""]);
+	exports.push([module.id, "input:-webkit-autofill {\n    -webkit-box-shadow: 0 0 0px 1000px white inset;\n}\nhtml, body {\n    margin:0;\n    padding:0;\n    overflow:hidden;\n    height:100%\n}\n\n\n.button {\n    width:263px;\n    height:35px;\n    outline: 0;\n    padding: 5px 12px;\n    color: #9fa8b0;\n    font-weight: bold;\n    font-size:17px;\n    text-shadow: 1px 1px #1f272b;\n    border: 1px solid #1c252b;\n    border-radius: 3px;\n    -moz-border-radius: 3px;\n    -webkit-border-radius: 3px;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#3D4850), color-stop(4%,#313d45), color-stop(100%,#232B30)); /* webkit */\n    box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* CSS3 */\n    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* Safari, Chrome */\n}\n.button:hover {\n    color: #fff;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#4C5A64), color-stop(4%,#404F5A), color-stop(100%,#2E3940)); /* webkit */\n}\n.button:active {\n    background-position: 0 top;\n    position: relative;\n    top: 1px;\n    color: #fff;\n    padding: 6px 12px 4px;\n    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#20282D), color-stop(51%,#252E34), color-stop(100%,#222A30)); /* webkit */\n    -webkit-box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* Safari, Chrome */\n    box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* CSS3 */\n}\n\n.input{\n    width:255px;\n    height:35px;\n    border-radius:4px;\n    border:1px solid #9fa8b0;\n    padding-left:3px;\n    display:block;\n    margin:auto;\n    margin-bottom:13px;\n    background-color: rgba(999,999,999,0.7);\n\n}\n.input:first-child{\n    margin-bottom:13px;\n}\n\n.login-signup-page{\n    position:relative;\n    top:20vh;\n    text-align: center;\n    height:384px;\n}\n\n.dumbbell-logo{\n    width: 81px;\n    height: 79px;\n    border: 2px solid lightslategray;\n    border-radius: 100%;\n    padding: 7px;\n}\n\n.typewrite{\n    font-family:Impact;\n    color:#2E3940;\n}\n\n.react-infinite-slides{\n    height:70% !important;\n}\n.react-infinite-slides ul li{\n    width:10px !important;\n    height:10px !important;\n}\n\n.submit-form{\n    padding:2px;\n}", ""]);
 
 	// exports
 
 
 /***/ }),
-/* 628 */
+/* 630 */
 /***/ (function(module, exports) {
 
 	/*
@@ -55813,7 +56013,7 @@
 
 
 /***/ }),
-/* 629 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -55859,7 +56059,7 @@
 	var	singletonCounter = 0;
 	var	stylesInsertedAtTop = [];
 
-	var	fixUrls = __webpack_require__(630);
+	var	fixUrls = __webpack_require__(632);
 
 	module.exports = function(list, options) {
 		if (false) {
@@ -56172,7 +56372,7 @@
 
 
 /***/ }),
-/* 630 */
+/* 632 */
 /***/ (function(module, exports) {
 
 	
@@ -56267,13 +56467,13 @@
 
 
 /***/ }),
-/* 631 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(632);
+	var content = __webpack_require__(634);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -56281,7 +56481,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(629)(content, options);
+	var update = __webpack_require__(631)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -56298,10 +56498,10 @@
 	}
 
 /***/ }),
-/* 632 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(628)(undefined);
+	exports = module.exports = __webpack_require__(630)(undefined);
 	// imports
 
 
@@ -56312,13 +56512,13 @@
 
 
 /***/ }),
-/* 633 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(634);
+	var content = __webpack_require__(636);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -56326,7 +56526,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(629)(content, options);
+	var update = __webpack_require__(631)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -56343,15 +56543,15 @@
 	}
 
 /***/ }),
-/* 634 */
+/* 636 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(628)(undefined);
+	exports = module.exports = __webpack_require__(630)(undefined);
 	// imports
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);", ""]);
 
 	// module
-	exports.push([module.id, "#content {\n    width: 100%;\n}\n\n.bottom{\n    display:flex;\n    justify-content: space-around;\n    flex-wrap: wrap-reverse;\n}\n.bottom div{\n    flex-grow:1;\n}\n\n#logout-button {\n    display:none;\n}\n\nbody{\n    overflow:scroll;\n}\n\n.wrapper {\n    display: block;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    height: 100vh;\n    position: fixed;\n    margin-left:-250px;\n    top: 0;\n    left: 0;\n    /* top layer */\n    z-index: 9999;\n}\n\n.overlay {\n    /* full screen */\n    width: 100vw;\n    height: 100vh;\n    /* transparent black */\n    background: rgba(0, 0, 0, 0.8);\n    position: fixed;\n    top: 0;\n    left: 0;\n    display: none;\n    /* middle layer, i.e. appears below the sidebar */\n    z-index: 9998;\n}\n\n#dismiss {\n    width: 35px;\n    height: 35px;\n    position: absolute;\n    /* top right corner of the sidebar */\n    top: 10px;\n    right: 10px;\n}\n\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    background: #7386D5;\n    color: #fff;\n    transition: all 0.3s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    background: #6d7fcc;\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n/*#content,.line-graph-container,.list-container,#doughnut-container{\n    width:100%;\n    !*border:1px solid red;*!\n}*/\n\n#content{\n    padding-left:32px;\n    padding-right:32px;\n    padding-top:10px;\n}\n", ""]);
+	exports.push([module.id, "#content {\n    width: 100%;\n}\n\n.bottom{\n    display:flex;\n    justify-content: space-around;\n    flex-wrap: wrap-reverse;\n}\n.bottom div{\n    flex-grow:1;\n}\n\n/*#logout-button {\n    display:none;\n}*/\n\nbody{\n    overflow:scroll;\n}\n\n.wrapper {\n    display: block;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    height: 100vh;\n    position: fixed;\n    margin-left:-250px;\n    top: 0;\n    left: 0;\n    /* top layer */\n    z-index: 9999;\n}\n\n.overlay {\n    /* full screen */\n    width: 100vw;\n    height: 100vh;\n    /* transparent black */\n    background: rgba(0, 0, 0, 0.8);\n    position: fixed;\n    top: 0;\n    left: 0;\n    display: none;\n    /* middle layer, i.e. appears below the sidebar */\n    z-index: 9998;\n}\n\n#dismiss {\n    width: 35px;\n    height: 35px;\n    position: absolute;\n    /* top right corner of the sidebar */\n    top: 10px;\n    right: 10px;\n}\n\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    background: #7386D5;\n    color: #fff;\n    transition: all 0.3s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    background: #6d7fcc;\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n/*#content,.line-graph-container,.list-container,#doughnut-container{\n    width:100%;\n    !*border:1px solid red;*!\n}*/\n\n#content{\n    padding-left:32px;\n    padding-right:32px;\n    padding-top:10px;\n}\n", ""]);
 
 	// exports
 

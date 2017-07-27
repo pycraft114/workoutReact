@@ -13,9 +13,9 @@
     flex-grow:1;
 }
 
-#logout-button {
+/*#logout-button {
     display:none;
-}
+}*/
 
 body{
     overflow:scroll;
