@@ -23,7 +23,7 @@ class SelectedWorkout extends Component{
                 {this.props.selectedWorkouts.map(function(ele,idx){
                     return(
                         <div className="selected-workout-container" key={idx}>
-                            <Link to={`/${this.props.selectedDate}/${ele}`}
+                            <Link to={`/main/${this.props.selectedDate}/${ele}`}
                                   className="selected-workout-button"
                                   onClick={
                                       () => {this.props.action_clickWorkout(

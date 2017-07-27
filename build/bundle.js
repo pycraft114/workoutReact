@@ -31878,7 +31878,7 @@
 	                    _react2.default.createElement(_Gate2.default, {
 	                        component: _MainPage2.default,
 	                        isAuthed: this.props.isAuthed,
-	                        path: '/main/:smth',
+	                        path: '/main',
 	                        redirUrl: '/login'
 	                    }),
 	                    _react2.default.createElement(_reactRouterDom.Redirect, { from: '/', to: '/login' })
@@ -34090,9 +34090,9 @@
 	                _react2.default.createElement(
 	                    _reactRouterDom.Switch,
 	                    null,
-	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/main/haha', component: _NoMatch2.default }),
 	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/main', component: _WorkoutContainer2.default }),
-	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/:date/:workout', component: _VolumeContainer2.default })
+	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/main/:date/:workout', component: _VolumeContainer2.default }),
+	                    _react2.default.createElement(_reactRouterDom.Redirect, { from: '/main/:smth', component: _NoMatch2.default })
 	                )
 	            );
 	        }
@@ -34164,8 +34164,8 @@
 	    }
 
 	    _createClass(VolumeContainer, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
 	            this.workout = this.props.match.params.workout;
 	            this.date = this.props.match.params.date;
 	        }
@@ -34174,6 +34174,7 @@
 	        value: function render() {
 	            var _this2 = this;
 
+	            console.log("volume container being rendered");
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'list-container' },
@@ -54912,7 +54913,7 @@
 	                        { className: 'selected-workout-container', key: idx },
 	                        _react2.default.createElement(
 	                            _reactRouterDom.Link,
-	                            { to: '/' + this.props.selectedDate + '/' + ele,
+	                            { to: '/main/' + this.props.selectedDate + '/' + ele,
 	                                className: 'selected-workout-button',
 	                                onClick: function onClick() {
 	                                    _this2.props.action_clickWorkout(_this2.props.selectedDate, ele);
@@ -55706,7 +55707,7 @@
 	        redirUrl = _ref.redirUrl;
 
 	    console.log("functional component gate called");
-	    return _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: path, render: function render(props) {
+	    return _react2.default.createElement(_reactRouterDom.Route, { path: path, render: function render(props) {
 	            if (isAuthed) {
 	                return _react2.default.createElement(Component, null);
 	            } else {

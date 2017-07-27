@@ -1,8 +1,8 @@
 /**
  * Created by chanwoopark on 2017. 7. 13..
  */
-import React,{Component} from 'react';
-import {BrowserRouter,Route,Switch} from 'react-router-dom';
+import React,{ Component } from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 //import containers
 import VolumeContainer from './volume/VolumeContainer'
@@ -19,9 +19,9 @@ export default class List extends Component{
         return(
             <BrowserRouter>
                 <Switch>
-                    <Route exact path='/main/haha' component={NoMatch}/>
                     <Route exact path="/main" component={WorkoutContainer}/>
-                    <Route exact path="/:date/:workout" component={VolumeContainer}/>
+                    <Route exact path="/main/:date/:workout" component={VolumeContainer}/>
+                    <Redirect from='/main/:smth' component={NoMatch}/>
                 </Switch>
             </BrowserRouter>
         )

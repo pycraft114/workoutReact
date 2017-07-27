@@ -14,12 +14,13 @@ import action_sendKgRep from 'actions/actionsForVolume/action_sendKgRep';
 import KgRep from './KgRep';
 
 class VolumeContainer extends Component{
-    componentDidMount(){
+    componentWillMount(){
         this.workout = this.props.match.params.workout;
         this.date = this.props.match.params.date;
     }
 
     render(){
+        console.log("volume container being rendered");
         return(
             <div className="list-container">
 

@@ -31,7 +31,7 @@ class ForTest extends Component{
                     <Gate
                         component={MainPage}
                         isAuthed={this.props.isAuthed}
-                        path="/main/:smth"
+                        path="/main"
                         redirUrl="/login"
                     />
                     <Redirect from="/" to="/login"/>

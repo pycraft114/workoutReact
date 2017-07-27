@@ -5,7 +5,7 @@ import { Redirect , Route } from 'react-router-dom';
 export default function Gate({component:Component,isAuthed,path,redirUrl}){
     console.log("functional component gate called");
     return(
-        <Route exact path={path} render={
+        <Route path={path} render={
             (props) => {
                 if(isAuthed){
                     return <Component/>
