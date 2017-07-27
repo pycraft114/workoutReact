@@ -77,12 +77,12 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/////
-	__webpack_require__(625);
+	__webpack_require__(626);
 
 	/////
 
-	__webpack_require__(630);
-	__webpack_require__(632);
+	__webpack_require__(631);
+	__webpack_require__(633);
 
 	/*
 	const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
@@ -31829,9 +31829,13 @@
 
 	var _MainPage2 = _interopRequireDefault(_MainPage);
 
-	var _Gate = __webpack_require__(624);
+	var _Gate = __webpack_require__(625);
 
 	var _Gate2 = _interopRequireDefault(_Gate);
+
+	var _NoMatch = __webpack_require__(617);
+
+	var _NoMatch2 = _interopRequireDefault(_NoMatch);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31874,9 +31878,10 @@
 	                    _react2.default.createElement(_Gate2.default, {
 	                        component: _MainPage2.default,
 	                        isAuthed: this.props.isAuthed,
-	                        path: '/main',
+	                        path: '/main/:smth',
 	                        redirUrl: '/login'
-	                    })
+	                    }),
+	                    _react2.default.createElement(_reactRouterDom.Redirect, { from: '/', to: '/login' })
 	                )
 	            );
 	        }
@@ -33928,19 +33933,19 @@
 
 	var _List2 = _interopRequireDefault(_List);
 
-	var _LineGraph = __webpack_require__(617);
+	var _LineGraph = __webpack_require__(618);
 
 	var _LineGraph2 = _interopRequireDefault(_LineGraph);
 
-	var _DoughnutGraph = __webpack_require__(619);
+	var _DoughnutGraph = __webpack_require__(620);
 
 	var _DoughnutGraph2 = _interopRequireDefault(_DoughnutGraph);
 
-	var _SideBar = __webpack_require__(621);
+	var _SideBar = __webpack_require__(622);
 
 	var _SideBar2 = _interopRequireDefault(_SideBar);
 
-	var _action_clickLogout = __webpack_require__(623);
+	var _action_clickLogout = __webpack_require__(624);
 
 	var _action_clickLogout2 = _interopRequireDefault(_action_clickLogout);
 
@@ -34049,6 +34054,10 @@
 
 	var _WorkoutContainer2 = _interopRequireDefault(_WorkoutContainer);
 
+	var _NoMatch = __webpack_require__(617);
+
+	var _NoMatch2 = _interopRequireDefault(_NoMatch);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34081,6 +34090,7 @@
 	                _react2.default.createElement(
 	                    _reactRouterDom.Switch,
 	                    null,
+	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/main/haha', component: _NoMatch2.default }),
 	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/main', component: _WorkoutContainer2.default }),
 	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/:date/:workout', component: _VolumeContainer2.default })
 	                )
@@ -55105,6 +55115,59 @@
 /* 617 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 27..
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var NoMatch = function (_Component) {
+	    _inherits(NoMatch, _Component);
+
+	    function NoMatch(props) {
+	        _classCallCheck(this, NoMatch);
+
+	        return _possibleConstructorReturn(this, (NoMatch.__proto__ || Object.getPrototypeOf(NoMatch)).call(this, props));
+	    }
+
+	    _createClass(NoMatch, [{
+	        key: "render",
+	        value: function render() {
+	            console.log("no match component rendered");
+	            return _react2.default.createElement(
+	                "div",
+	                null,
+	                "No Match for the URL"
+	            );
+	        }
+	    }]);
+
+	    return NoMatch;
+	}(_react.Component);
+
+	exports.default = NoMatch;
+
+/***/ }),
+/* 618 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -55123,7 +55186,7 @@
 
 	var _Selector2 = _interopRequireDefault(_Selector);
 
-	var _action_selectOption = __webpack_require__(618);
+	var _action_selectOption = __webpack_require__(619);
 
 	var _action_selectOption2 = _interopRequireDefault(_action_selectOption);
 
@@ -55233,7 +55296,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LineGraph);
 
 /***/ }),
-/* 618 */
+/* 619 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55271,7 +55334,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 619 */
+/* 620 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55290,7 +55353,7 @@
 
 	var _redux = __webpack_require__(165);
 
-	var _action_doughnutLoaded = __webpack_require__(620);
+	var _action_doughnutLoaded = __webpack_require__(621);
 
 	var _action_doughnutLoaded2 = _interopRequireDefault(_action_doughnutLoaded);
 
@@ -55374,7 +55437,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(DoughnutGraph);
 
 /***/ }),
-/* 620 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55422,7 +55485,7 @@
 	}
 
 /***/ }),
-/* 621 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55437,7 +55500,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _setSideBarSettings = __webpack_require__(622);
+	var _setSideBarSettings = __webpack_require__(623);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55569,7 +55632,7 @@
 	exports.default = SideBar;
 
 /***/ }),
-/* 622 */
+/* 623 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -55590,7 +55653,7 @@
 	            sidebar.className = sidebar.className ? '' : 'active';
 	            if (!sidebarCollapse.active) {
 	                sidebarCollapse.active = "true";
-	                sidebarCollapse.className = evt.target.className + " active";
+	                sidebarCollapse.className = sidebarCollapse.className + " active";
 	            } else {
 	                sidebarCollapse.active = "";
 	                sidebarCollapse.className = "btn btn-default btn-sm";
@@ -55600,7 +55663,7 @@
 	}
 
 /***/ }),
-/* 623 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55618,7 +55681,7 @@
 	var _actionTypes = __webpack_require__(200);
 
 /***/ }),
-/* 624 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55653,13 +55716,13 @@
 	}
 
 /***/ }),
-/* 625 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(626);
+	var content = __webpack_require__(627);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -55667,7 +55730,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(628)(content, options);
+	var update = __webpack_require__(629)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -55684,10 +55747,10 @@
 	}
 
 /***/ }),
-/* 626 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(627)(undefined);
+	exports = module.exports = __webpack_require__(628)(undefined);
 	// imports
 
 
@@ -55698,7 +55761,7 @@
 
 
 /***/ }),
-/* 627 */
+/* 628 */
 /***/ (function(module, exports) {
 
 	/*
@@ -55780,7 +55843,7 @@
 
 
 /***/ }),
-/* 628 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -55826,7 +55889,7 @@
 	var	singletonCounter = 0;
 	var	stylesInsertedAtTop = [];
 
-	var	fixUrls = __webpack_require__(629);
+	var	fixUrls = __webpack_require__(630);
 
 	module.exports = function(list, options) {
 		if (false) {
@@ -56139,7 +56202,7 @@
 
 
 /***/ }),
-/* 629 */
+/* 630 */
 /***/ (function(module, exports) {
 
 	
@@ -56234,13 +56297,13 @@
 
 
 /***/ }),
-/* 630 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(631);
+	var content = __webpack_require__(632);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -56248,7 +56311,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(628)(content, options);
+	var update = __webpack_require__(629)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -56265,10 +56328,10 @@
 	}
 
 /***/ }),
-/* 631 */
+/* 632 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(627)(undefined);
+	exports = module.exports = __webpack_require__(628)(undefined);
 	// imports
 
 
@@ -56279,13 +56342,13 @@
 
 
 /***/ }),
-/* 632 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(633);
+	var content = __webpack_require__(634);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -56293,7 +56356,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(628)(content, options);
+	var update = __webpack_require__(629)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -56310,15 +56373,15 @@
 	}
 
 /***/ }),
-/* 633 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(627)(undefined);
+	exports = module.exports = __webpack_require__(628)(undefined);
 	// imports
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);", ""]);
 
 	// module
-	exports.push([module.id, ".wrapper {\n    display: flex;\n    align-items: stretch;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    min-height: 100vh;\n    margin-left: -250px;\n}\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    background: #7386D5;\n    color: #fff;\n    transition: all 0.8s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    background: #6d7fcc;\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n#content,.line-graph-container,.list-container,#doughnut-container{\n    width:100%;\n    /*border:1px solid red;*/\n}\n\n#content{\n    padding-left:32px;\n    padding-right:32px;\n    padding-top:10px;\n}\n\n\n\n/*whole main page css*/\n.line-graph-container,.list-container{\n    padding: 6vh;\n}\n\n.bottom{\n    display:flex;\n}\n\n.kg-rep-container{\n    height:153px;\n    overflow:scroll;\n}\n\n#sidebarCollapse {\n    width: 40px;\n    height: 40px;\n    background: #f5f5f5;\n}\n\n#sidebarCollapse span {\n    width: 80%;\n    height: 2px;\n    margin: 0 auto;\n    display: block;\n    background: #555;\n    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);\n}\n\n#sidebarCollapse.active span:first-of-type {\n    /* rotate first one */\n    transform: rotate(45deg) translate(5px, 5px);\n}\n#sidebarCollapse.active span:nth-of-type(2) {\n    /* second one is not visible */\n    opacity: 0;\n}\n#sidebarCollapse.active span:last-of-type {\n    /* rotate third one */\n    transform: rotate(-45deg) translate(5px, -5px);\n}\n\n#sidebarCollapse span {\n    /* no rotation */\n    transform: none;\n    /* all bars are visible */\n    opacity: 1;\n    margin: 5px auto;\n}\n", ""]);
+	exports.push([module.id, ".wrapper {\n    display: flex;\n    align-items: stretch;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    min-height: 100vh;\n    margin-left: -250px;\n}\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    background: #7386D5;\n    color: #fff;\n    transition: all 0.8s;\n    position:relative;\n    z-index:3;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    background: #6d7fcc;\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n#content,.line-graph-container,.list-container,#doughnut-container{\n    width:100%;\n    /*border:1px solid red;*/\n}\n\n#content{\n    padding-left:32px;\n    padding-right:32px;\n    padding-top:10px;\n}\n\n\n\n/*whole main page css*/\n.line-graph-container,.list-container{\n    padding: 6vh;\n}\n\n.bottom{\n    display:flex;\n}\n\n.kg-rep-container{\n    height:153px;\n    overflow:scroll;\n}\n\n#sidebarCollapse {\n    width: 40px;\n    height: 40px;\n    background: white;\n    border-left:0px;\n    border-top-left-radius: 0px;\n    border-bottom-left-radius: 0px;\n    position:relative;\n    z-index:2;\n    right:33px;\n\n}\n\n#sidebarCollapse span {\n    width: 80%;\n    height: 2px;\n    margin: 0 auto;\n    display: block;\n    background: #555;\n    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);\n}\n\n#sidebarCollapse.active span:first-of-type {\n    /* rotate first one */\n    transform: rotate(45deg) translate(5px, 5px);\n}\n#sidebarCollapse.active span:nth-of-type(2) {\n    /* second one is not visible */\n    opacity: 0;\n}\n#sidebarCollapse.active span:last-of-type {\n    /* rotate third one */\n    transform: rotate(-45deg) translate(5px, -5px);\n}\n\n#sidebarCollapse span {\n    /* no rotation */\n    transform: none;\n    /* all bars are visible */\n    opacity: 1;\n    margin: 5px auto;\n}\n", ""]);
 
 	// exports
 

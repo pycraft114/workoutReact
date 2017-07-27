@@ -2,7 +2,7 @@
  * Created by chanwoopark on 2017. 7. 22..
  */
 import React,{ Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { browserHistory, withRouter } from 'react-router';
 import { connect } from 'react-redux'
 
@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 import LoginSignUpPage from './loginSignUpPage/LoginSignUpPage';
 import MainPage from './mainPage/MainPage';
 import Gate from 'components/Gate';
+import NoMatch from 'components/NoMatch';
 
 
 class ForTest extends Component{
@@ -30,9 +31,10 @@ class ForTest extends Component{
                     <Gate
                         component={MainPage}
                         isAuthed={this.props.isAuthed}
-                        path="/main"
+                        path="/main/:smth"
                         redirUrl="/login"
                     />
+                    <Redirect from="/" to="/login"/>
                 </Switch>
             </BrowserRouter>
         )

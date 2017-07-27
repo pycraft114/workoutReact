@@ -66,6 +66,8 @@ a, a:hover, a:focus {
     background: #7386D5;
     color: #fff;
     transition: all 0.8s;
+    position:relative;
+    z-index:3;
 }
 
 #sidebar .sidebar-header {
@@ -133,7 +135,14 @@ ul ul a {
 #sidebarCollapse {
     width: 40px;
     height: 40px;
-    background: #f5f5f5;
+    background: white;
+    border-left:0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    position:relative;
+    z-index:2;
+    right:33px;
+
 }
 
 #sidebarCollapse span {

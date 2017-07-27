@@ -10,7 +10,7 @@ export function setSideBarSettings(){
             sidebar.className = sidebar.className ? '' : 'active';
             if(!sidebarCollapse.active){
                 sidebarCollapse.active = "true";
-                sidebarCollapse.className = evt.target.className+" active";
+                sidebarCollapse.className = sidebarCollapse.className+" active";
             }else{
                 sidebarCollapse.active = "";
                 sidebarCollapse.className = "btn btn-default btn-sm";
