@@ -14,6 +14,8 @@ import DoughnutGraph from './graph/DoughnutGraph'
 import SideBar from './sideBar/SideBar';
 import NavBar from 'components/NavBar';
 import NavTab from 'components/NavTab'
+import WorkoutCard from 'components/WorkoutCard';
+import InlineCalendar from 'components/InlineCalendar';
 
 import action_clickLogout from 'actions/action_clickLogout';
 
@@ -36,6 +38,10 @@ class MainPage extends Component{
                     <div className="side">
                         <SideBar/>
                     </div>
+
+                    <WorkoutCard/>
+
+                    <InlineCalendar/>
 
                     <div id="content">
                         <button type="button" id="sidebarCollapse" className="btn btn-default btn-sm" active="">

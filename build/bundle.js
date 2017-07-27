@@ -77,12 +77,12 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/////
-	__webpack_require__(628);
+	__webpack_require__(630);
 
 	/////
 
-	__webpack_require__(633);
 	__webpack_require__(635);
+	__webpack_require__(637);
 
 	/*
 	const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
@@ -31831,7 +31831,7 @@
 
 	var _MainPage2 = _interopRequireDefault(_MainPage);
 
-	var _Gate = __webpack_require__(627);
+	var _Gate = __webpack_require__(629);
 
 	var _Gate2 = _interopRequireDefault(_Gate);
 
@@ -33951,7 +33951,15 @@
 
 	var _NavTab2 = _interopRequireDefault(_NavTab);
 
-	var _action_clickLogout = __webpack_require__(626);
+	var _WorkoutCard = __webpack_require__(626);
+
+	var _WorkoutCard2 = _interopRequireDefault(_WorkoutCard);
+
+	var _InlineCalendar = __webpack_require__(627);
+
+	var _InlineCalendar2 = _interopRequireDefault(_InlineCalendar);
+
+	var _action_clickLogout = __webpack_require__(628);
 
 	var _action_clickLogout2 = _interopRequireDefault(_action_clickLogout);
 
@@ -33994,6 +34002,8 @@
 	                        { className: 'side' },
 	                        _react2.default.createElement(_SideBar2.default, null)
 	                    ),
+	                    _react2.default.createElement(_WorkoutCard2.default, null),
+	                    _react2.default.createElement(_InlineCalendar2.default, null),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { id: 'content' },
@@ -55836,6 +55846,145 @@
 /* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 27..
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var WorkoutCard = function (_Component) {
+	    _inherits(WorkoutCard, _Component);
+
+	    function WorkoutCard(props) {
+	        _classCallCheck(this, WorkoutCard);
+
+	        return _possibleConstructorReturn(this, (WorkoutCard.__proto__ || Object.getPrototypeOf(WorkoutCard)).call(this, props));
+	    }
+
+	    _createClass(WorkoutCard, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "div",
+	                { className: "row" },
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "col-sm-6 col-md-3" },
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "thumbnail" },
+	                        _react2.default.createElement("img", { src: "https://previews.123rf.com/images/nikdoorg/nikdoorg1401/nikdoorg140100014/25118481-Bench-Press-Icon-Stock-Vector.jpg", width: "200", height: "300", alt: "..." }),
+	                        _react2.default.createElement(
+	                            "div",
+	                            { className: "caption" },
+	                            _react2.default.createElement(
+	                                "p",
+	                                null,
+	                                "a bodybuilding and weightlifting exercise in which a lifter lies on a bench with feet on the floor and raises a weight with both arms."
+	                            ),
+	                            _react2.default.createElement(
+	                                "p",
+	                                null,
+	                                _react2.default.createElement(
+	                                    "a",
+	                                    { href: "#", className: "btn btn-primary" },
+	                                    "Bench Press"
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return WorkoutCard;
+	}(_react.Component);
+
+	/*
+	thing to receive as a prop
+	img src
+	button content
+	p content above button
+	*/
+
+
+	exports.default = WorkoutCard;
+
+/***/ }),
+/* 627 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 27..
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var InlineCalendar = function (_Component) {
+	    _inherits(InlineCalendar, _Component);
+
+	    function InlineCalendar(props) {
+	        _classCallCheck(this, InlineCalendar);
+
+	        return _possibleConstructorReturn(this, (InlineCalendar.__proto__ || Object.getPrototypeOf(InlineCalendar)).call(this, props));
+	    }
+
+	    _createClass(InlineCalendar, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            $('#hello').datepicker({});
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement('div', { className: 'hahah', id: 'hello' });
+	        }
+	    }]);
+
+	    return InlineCalendar;
+	}(_react.Component);
+
+	exports.default = InlineCalendar;
+
+/***/ }),
+/* 628 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -55851,7 +56000,7 @@
 	var _actionTypes = __webpack_require__(200);
 
 /***/ }),
-/* 627 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55886,13 +56035,13 @@
 	}
 
 /***/ }),
-/* 628 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(629);
+	var content = __webpack_require__(631);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -55900,7 +56049,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(631)(content, options);
+	var update = __webpack_require__(633)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -55917,10 +56066,10 @@
 	}
 
 /***/ }),
-/* 629 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(630)(undefined);
+	exports = module.exports = __webpack_require__(632)(undefined);
 	// imports
 
 
@@ -55931,7 +56080,7 @@
 
 
 /***/ }),
-/* 630 */
+/* 632 */
 /***/ (function(module, exports) {
 
 	/*
@@ -56013,7 +56162,7 @@
 
 
 /***/ }),
-/* 631 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -56059,7 +56208,7 @@
 	var	singletonCounter = 0;
 	var	stylesInsertedAtTop = [];
 
-	var	fixUrls = __webpack_require__(632);
+	var	fixUrls = __webpack_require__(634);
 
 	module.exports = function(list, options) {
 		if (false) {
@@ -56372,7 +56521,7 @@
 
 
 /***/ }),
-/* 632 */
+/* 634 */
 /***/ (function(module, exports) {
 
 	
@@ -56467,13 +56616,13 @@
 
 
 /***/ }),
-/* 633 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(634);
+	var content = __webpack_require__(636);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -56481,7 +56630,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(631)(content, options);
+	var update = __webpack_require__(633)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -56498,10 +56647,10 @@
 	}
 
 /***/ }),
-/* 634 */
+/* 636 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(630)(undefined);
+	exports = module.exports = __webpack_require__(632)(undefined);
 	// imports
 
 
@@ -56512,13 +56661,13 @@
 
 
 /***/ }),
-/* 635 */
+/* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(636);
+	var content = __webpack_require__(638);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -56526,7 +56675,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(631)(content, options);
+	var update = __webpack_require__(633)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -56543,10 +56692,10 @@
 	}
 
 /***/ }),
-/* 636 */
+/* 638 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(630)(undefined);
+	exports = module.exports = __webpack_require__(632)(undefined);
 	// imports
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);", ""]);
 
