@@ -157,8 +157,12 @@ ul ul a {
     !*border:1px solid red;*!
 }*/
 
-#content{
-    padding-left:32px;
-    padding-right:32px;
-    padding-top:10px;
+.record{
+    padding:7vh;
+    padding-top:0px;
 }
+
+.record-contents{
+    display:flex;
+}
+
