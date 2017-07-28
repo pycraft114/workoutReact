@@ -56040,9 +56040,9 @@
 
 	var _InlineCalendar2 = _interopRequireDefault(_InlineCalendar);
 
-	var _Chest = __webpack_require__(629);
+	var _CardsContainer = __webpack_require__(629);
 
-	var _Chest2 = _interopRequireDefault(_Chest);
+	var _CardsContainer2 = _interopRequireDefault(_CardsContainer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -56081,7 +56081,7 @@
 	                        _react2.default.createElement(
 	                            _reactRouterDom.Switch,
 	                            null,
-	                            _react2.default.createElement(_reactRouterDom.Route, { path: '/main/record/chest', component: _Chest2.default })
+	                            _react2.default.createElement(_reactRouterDom.Route, { path: '/main/record/:category', component: _CardsContainer2.default })
 	                        )
 	                    )
 	                )
@@ -56125,7 +56125,9 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 
-	var chestTypes = [{ description: "blahblahblahbl", type: "Bench Press" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Something" }];
+	var chest = [{ description: "blahblahblahbl", type: "Bench Press" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Something" }];
+	var leg = [{ description: "blahblahblahbl", type: "leg" }, { description: "blahblahblahbl", type: "leg" }, { description: "blahblahblahbl", type: "leg" }];
+	var back = [{ description: "blahblahblahbl", type: "back" }, { description: "blahblahblahbl", type: "back" }, { description: "blahblahblahbl", type: "back" }];
 
 	var Chest = function (_Component) {
 	    _inherits(Chest, _Component);
@@ -56133,7 +56135,24 @@
 	    function Chest(props) {
 	        _classCallCheck(this, Chest);
 
-	        return _possibleConstructorReturn(this, (Chest.__proto__ || Object.getPrototypeOf(Chest)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (Chest.__proto__ || Object.getPrototypeOf(Chest)).call(this, props));
+
+	        console.log(_this.props);
+
+	        switch (_this.props.match.params.category) {
+	            case "chest":
+	                _this.type = chest;
+	                break;
+	            case "leg":
+	                _this.type = leg;
+	                break;
+	            case "back":
+	                _this.type = back;
+	                break;
+	            default:
+	                _this.type = [];
+	        }
+	        return _this;
 	    }
 
 	    _createClass(Chest, [{
@@ -56142,7 +56161,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'chest' },
-	                chestTypes.map(function (currEle, idx) {
+	                this.type.map(function (currEle, idx) {
 	                    return _react2.default.createElement(_WorkoutCard2.default, {
 	                        description: currEle.description,
 	                        workoutType: currEle.type,

@@ -7,7 +7,7 @@ import { browserHistory } from 'react-router';
 
 import NavTab from 'components/NavTab';
 import InlineCalendar from 'components/InlineCalendar';
-import Chest from './recordContents/Chest';
+import CardsContainer from './recordContents/CardsContainer';
 
 export default class Record extends Component{
     constructor(props){
@@ -23,7 +23,7 @@ export default class Record extends Component{
                     <InlineCalendar/>
                     <BrowserRouter history={browserHistory}>
                         <Switch>
-                            <Route path="/main/record/chest" component={Chest}/>
+                            <Route path="/main/record/:category" component={CardsContainer}/>
                         </Switch>
                     </BrowserRouter>
                 </div>
