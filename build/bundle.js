@@ -55802,8 +55802,6 @@
 
 	var _reactRouterDom = __webpack_require__(212);
 
-	var _reactRedux = __webpack_require__(159);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55864,7 +55862,7 @@
 	    return NavTab;
 	}(_react.Component);
 
-	exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)()(NavTab));
+	exports.default = NavTab;
 
 /***/ }),
 /* 626 */
@@ -56076,6 +56074,16 @@
 	    }
 
 	    _createClass(Record, [{
+	        key: 'shouldComponentUpdate',
+	        value: function shouldComponentUpdate() {
+	            return true;
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            console.log("record updated");
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -56103,7 +56111,7 @@
 	    return Record;
 	}(_react.Component);
 
-	exports.default = Record;
+	exports.default = (0, _reactRouterDom.withRouter)(Record);
 
 /***/ }),
 /* 629 */
@@ -56163,22 +56171,19 @@
 	    _createClass(CardsContainer, [{
 	        key: 'componentWillMount',
 	        value: function componentWillMount() {
-	            console.log(this.props.match.params.category);
+	            console.log("car container will mount");
 	            console.log(this.props);
 	        }
 	    }, {
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
-	            console.log(this.props.match.params.category);
+	            console.log("car container did mount");
 	            console.log(this.props);
 	        }
 	    }, {
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {
-	            console.log("cards container update");
-	            console.log(this.props.match.params.category);
-	            console.log(this.props);
-
+	        key: 'componentWillUpdate',
+	        value: function componentWillUpdate() {
+	            console.log("card container updated");
 	            switch (this.props.match.params.category) {
 	                case "chest":
 	                    this.type = chest;

@@ -28,21 +28,18 @@ class CardsContainer extends Component{
     }
 
     componentWillMount(){
-        console.log(this.props.match.params.category);
+        console.log("car container will mount");
         console.log(this.props)
     }
 
 
     componentDidMount(){
-        console.log(this.props.match.params.category);
+        console.log("car container did mount");
         console.log(this.props)
     }
 
-    componentDidUpdate(){
-        console.log("cards container update");
-        console.log(this.props.match.params.category);
-        console.log(this.props);
-
+    componentWillUpdate(){
+        console.log("card container updated");
         switch(this.props.match.params.category){
             case "chest":
                 this.type=chest;

@@ -2,18 +2,26 @@
  * Created by chanwoopark on 2017. 7. 28..
  */
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { browserHistory } from 'react-router';
 
 import NavTab from 'components/NavTab';
 import InlineCalendar from 'components/InlineCalendar';
 import CardsContainer from './recordContents/CardsContainer';
 
-export default class Record extends Component{
+class Record extends Component{
     constructor(props){
         super(props)
     }
 
+
+    shouldComponentUpdate(){
+        return true;
+    }
+
+    componentDidUpdate(){
+        console.log("record updated");
+    }
 
     render(){
         return(
@@ -33,3 +41,5 @@ export default class Record extends Component{
 
     }
 }
+
+export default withRouter(Record);
