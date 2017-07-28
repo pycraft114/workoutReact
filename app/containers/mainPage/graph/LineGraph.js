@@ -47,7 +47,7 @@ import { bindActionCreators } from 'redux';
     render(){
         return(
             <div className="line-graph-container">
-                <div id="chartContainer" style={{height:300+"px", width: 300+"px"}}></div>
+                <div id="chartContainer" style={{height:100+"%", width: 100+"%"}}></div>
                 <Selector
                     id="option-selector"
                     title="Option"

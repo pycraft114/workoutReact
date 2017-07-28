@@ -45,6 +45,7 @@ class MainPage extends Component{
                         <BrowserRouter history={browserHistory}>
                             <Switch>
                                 <Route path="/main/days" component={DoughnutGraph}/>
+                                <Route path="/main/graph" component={LineGraph}/>
                                 <Redirect from="/main" to="/main/days"/>
                             </Switch>
                         </BrowserRouter>

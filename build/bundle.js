@@ -34020,6 +34020,7 @@
 	                                _reactRouterDom.Switch,
 	                                null,
 	                                _react2.default.createElement(_reactRouterDom.Route, { path: '/main/days', component: _DoughnutGraph2.default }),
+	                                _react2.default.createElement(_reactRouterDom.Route, { path: '/main/graph', component: _LineGraph2.default }),
 	                                _react2.default.createElement(_reactRouterDom.Redirect, { from: '/main', to: '/main/days' })
 	                            )
 	                        )
@@ -55219,7 +55220,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'line-graph-container' },
-	                _react2.default.createElement('div', { id: 'chartContainer', style: { height: 300 + "px", width: 300 + "px" } }),
+	                _react2.default.createElement('div', { id: 'chartContainer', style: { height: 100 + "%", width: 100 + "%" } }),
 	                _react2.default.createElement(_Selector2.default, {
 	                    id: 'option-selector',
 	                    title: 'Option',
