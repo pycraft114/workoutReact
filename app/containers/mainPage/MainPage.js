@@ -6,6 +6,8 @@
 import React,{Component} from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { browserHistory } from 'react-router';
 
 //import components
 import List from './list/List';
@@ -28,38 +30,24 @@ class MainPage extends Component{
     render(){
         return(
             <div className="main-page">
-
-                <NavBar/>
-
                 <div className="wrapper">
-
-                    <NavTab/>
-
                     <div className="side">
                         <SideBar/>
                     </div>
 
-                    <WorkoutCard/>
-
-                    <InlineCalendar/>
-
                     <div id="content">
+                        <NavBar/>
+
                         <button type="button" id="sidebarCollapse" className="btn btn-default btn-sm" active="">
                             MENU
                         </button>
 
-                        <div className="top">
-                            <DoughnutGraph/>
-                        </div>
-
-                        <div className="bottom">
-                            <LineGraph/>
-                            <List/>
-                        </div>
-
-                        <button id="logout-button" type="button" className="btn btn-default btn-sm" onClick={this.props.action_clickLogout}>
-                            <i className="glyphicon glyphicon-log-out"></i> Log out
-                        </button>
+                        <BrowserRouter history={browserHistory}>
+                            <Switch>
+                                <Route path="/main/days" component={DoughnutGraph}/>
+                                <Redirect from="/main" to="/main/days"/>
+                            </Switch>
+                        </BrowserRouter>
                     </div>
 
                     <div className="overlay"></div>
@@ -69,6 +57,17 @@ class MainPage extends Component{
         )
     }
 }
+
+
+/*
+
+ <button id="logout-button" type="button" className="btn btn-default btn-sm" onClick={this.props.action_clickLogout}>
+    <i className="glyphicon glyphicon-log-out"></i> Log out
+ </button>
+
+
+*/
+
 
 function mapDispathToProps(dispatch){
     return bindActionCreators({action_clickLogout},dispatch);

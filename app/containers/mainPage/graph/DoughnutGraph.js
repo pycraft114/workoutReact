@@ -51,7 +51,7 @@ class DoughnutGraph extends Component{
     render(){
         return(
 
-            <div id="doughnut-container" style={{height:300+"px", width: 100+"%"}}></div>
+            <div id="doughnut-container" style={{height:100+"%", width: 100+"%"}}></div>
 
         )
     }

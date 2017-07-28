@@ -8,15 +8,24 @@ export default class InlineCalendar extends Component{
         super(props)
     }
 
+
     componentDidMount(){
-        $('#hello').datepicker({
+        $('#datetimepicker12').datetimepicker({
+            inline: true
         });
     }
 
 
     render(){
         return(
-            <div className="hahah" id="hello">
+            <div id="calendar">
+                <div className="form-group">
+                    <div className="row">
+                        <div className="col-md-8">
+                            <div id="datetimepicker12"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

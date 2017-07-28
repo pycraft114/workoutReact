@@ -3,7 +3,7 @@
  */
 import React,{ Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { browserHistory, withRouter } from 'react-router';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux'
 
 //import components
@@ -45,4 +45,4 @@ function mapStateToProps(state){
     return {isAuthed : state.isAuthed}
 }
 
-export default withRouter(connect(mapStateToProps,null)(ForTest));
+export default connect(mapStateToProps,null)(ForTest);

@@ -2,6 +2,7 @@
  * Created by chanwoopark on 2017. 7. 27..
  */
 import React,{ Component } from 'react';
+import DatePicker from 'react-bootstrap-date-picker';
 
 export default class NavTab extends Component {
     constructor(props){

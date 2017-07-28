@@ -31892,7 +31892,7 @@
 	    return { isAuthed: state.isAuthed };
 	}
 
-	exports.default = (0, _reactRouter.withRouter)((0, _reactRedux.connect)(mapStateToProps, null)(ForTest));
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(ForTest);
 
 /***/ }),
 /* 317 */
@@ -33927,6 +33927,10 @@
 
 	var _reactRedux = __webpack_require__(159);
 
+	var _reactRouterDom = __webpack_require__(212);
+
+	var _reactRouter = __webpack_require__(256);
+
 	var _List = __webpack_require__(351);
 
 	var _List2 = _interopRequireDefault(_List);
@@ -33992,42 +33996,32 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'main-page' },
-	                _react2.default.createElement(_NavBar2.default, null),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'wrapper' },
-	                    _react2.default.createElement(_NavTab2.default, null),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'side' },
 	                        _react2.default.createElement(_SideBar2.default, null)
 	                    ),
-	                    _react2.default.createElement(_WorkoutCard2.default, null),
-	                    _react2.default.createElement(_InlineCalendar2.default, null),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { id: 'content' },
+	                        _react2.default.createElement(_NavBar2.default, null),
 	                        _react2.default.createElement(
 	                            'button',
 	                            { type: 'button', id: 'sidebarCollapse', className: 'btn btn-default btn-sm', active: '' },
 	                            'MENU'
 	                        ),
 	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'top' },
-	                            _react2.default.createElement(_DoughnutGraph2.default, null)
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'bottom' },
-	                            _react2.default.createElement(_LineGraph2.default, null),
-	                            _react2.default.createElement(_List2.default, null)
-	                        ),
-	                        _react2.default.createElement(
-	                            'button',
-	                            { id: 'logout-button', type: 'button', className: 'btn btn-default btn-sm', onClick: this.props.action_clickLogout },
-	                            _react2.default.createElement('i', { className: 'glyphicon glyphicon-log-out' }),
-	                            ' Log out'
+	                            _reactRouterDom.BrowserRouter,
+	                            { history: _reactRouter.browserHistory },
+	                            _react2.default.createElement(
+	                                _reactRouterDom.Switch,
+	                                null,
+	                                _react2.default.createElement(_reactRouterDom.Route, { path: '/main/days', component: _DoughnutGraph2.default }),
+	                                _react2.default.createElement(_reactRouterDom.Redirect, { from: '/main', to: '/main/days' })
+	                            )
 	                        )
 	                    ),
 	                    _react2.default.createElement('div', { className: 'overlay' })
@@ -34038,6 +34032,15 @@
 
 	    return MainPage;
 	}(_react.Component);
+
+	/*
+
+	 <button id="logout-button" type="button" className="btn btn-default btn-sm" onClick={this.props.action_clickLogout}>
+	    <i className="glyphicon glyphicon-log-out"></i> Log out
+	 </button>
+
+
+	*/
 
 	function mapDispathToProps(dispatch) {
 	    return (0, _redux.bindActionCreators)({ action_clickLogout: _action_clickLogout2.default }, dispatch);
@@ -55370,7 +55373,7 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement('div', { id: 'doughnut-container', style: { height: 300 + "px", width: 100 + "%" } });
+	            return _react2.default.createElement('div', { id: 'doughnut-container', style: { height: 100 + "%", width: 100 + "%" } });
 	        }
 	    }]);
 
@@ -55772,7 +55775,7 @@
 /* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -55783,6 +55786,10 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrapDatePicker = __webpack_require__(359);
+
+	var _reactBootstrapDatePicker2 = _interopRequireDefault(_reactBootstrapDatePicker);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55805,33 +55812,33 @@
 	    }
 
 	    _createClass(NavTab, [{
-	        key: "render",
+	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                "ol",
-	                { className: "breadcrumb" },
+	                'ol',
+	                { className: 'breadcrumb' },
 	                _react2.default.createElement(
-	                    "li",
+	                    'li',
 	                    null,
 	                    _react2.default.createElement(
-	                        "a",
-	                        { href: "#" },
-	                        "Home"
+	                        'a',
+	                        { href: '#' },
+	                        'Home'
 	                    )
 	                ),
 	                _react2.default.createElement(
-	                    "li",
+	                    'li',
 	                    null,
 	                    _react2.default.createElement(
-	                        "a",
-	                        { href: "#" },
-	                        "Library"
+	                        'a',
+	                        { href: '#' },
+	                        'Library'
 	                    )
 	                ),
 	                _react2.default.createElement(
-	                    "li",
-	                    { className: "active" },
-	                    "Data"
+	                    'li',
+	                    { className: 'active' },
+	                    'Data'
 	                )
 	            );
 	        }
@@ -55967,12 +55974,30 @@
 	    _createClass(InlineCalendar, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
-	            $('#hello').datepicker({});
+	            $('#datetimepicker12').datetimepicker({
+	                inline: true
+	            });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement('div', { className: 'hahah', id: 'hello' });
+	            return _react2.default.createElement(
+	                'div',
+	                { id: 'calendar' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'form-group' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'row' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col-md-8' },
+	                            _react2.default.createElement('div', { id: 'datetimepicker12' })
+	                        )
+	                    )
+	                )
+	            );
 	        }
 	    }]);
 
