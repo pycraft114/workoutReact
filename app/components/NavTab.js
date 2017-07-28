@@ -2,9 +2,11 @@
  * Created by chanwoopark on 2017. 7. 27..
  */
 import React,{ Component } from 'react';
-import DatePicker from 'react-bootstrap-date-picker';
+import { withRouter, Link, BrowserRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default class NavTab extends Component {
+
+class NavTab extends Component {
     constructor(props){
         super(props);
     }
@@ -13,10 +15,12 @@ export default class NavTab extends Component {
     render(){
         return(
             <ol className="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Library</a></li>
-                <li className="active">Data</li>
+                <li><Link to="/main/record/chest">Chest</Link></li>
+                <li><Link to="/main/record/leg">Leg</Link></li>
+                <li><Link to="/main/record/back">Back</Link></li>
             </ol>
         )
     }
 }
+
+export default withRouter(connect()(NavTab))

@@ -6,7 +6,7 @@
 import React,{Component} from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect, Link} from 'react-router-dom';
 import { browserHistory } from 'react-router';
 
 //import components
@@ -28,6 +28,13 @@ class MainPage extends Component{
         super(props);
 
     }
+
+    shouldComponentUpdate(){
+        return true;
+    }
+
+
+
     render(){
         return(
             <div className="main-page">
@@ -45,9 +52,9 @@ class MainPage extends Component{
 
                         <BrowserRouter history={browserHistory}>
                             <Switch>
-                                <Route path="/main/days" component={DoughnutGraph}/>
-                                <Route path="/main/record" component={Record}/>
-                                <Route path="/main/graph" component={LineGraph}/>
+                                <Route  path="/main/days" component={DoughnutGraph}/>
+                                <Route  path="/main/record" component={Record}/>
+                                <Route  path="/main/graph" component={LineGraph}/>
                                 <Redirect from="/main" to="/main/days"/>
                             </Switch>
                         </BrowserRouter>

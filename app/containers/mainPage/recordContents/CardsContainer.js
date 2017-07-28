@@ -3,6 +3,10 @@
  */
 import React, { Component } from 'react';
 import WorkoutCard from 'components/WorkoutCard';
+import { withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import NavTab from 'components/NavTab';
 
 const chest = [
     {description:"blahblahblahbl", type:"Bench Press"},
@@ -12,18 +16,31 @@ const chest = [
 const leg = [
     {description:"blahblahblahbl", type:"leg"},
     {description:"blahblahblahbl", type:"leg"},
-    {description:"blahblahblahbl", type:"leg"}
 ];
 const back = [
-    {description:"blahblahblahbl", type:"back"},
-    {description:"blahblahblahbl", type:"back"},
     {description:"blahblahblahbl", type:"back"}
 ];
 
-export default class Chest extends Component{
+class CardsContainer extends Component{
     constructor(props){
         super(props);
+        this.type=[];
+    }
 
+    componentWillMount(){
+        console.log(this.props.match.params.category);
+        console.log(this.props)
+    }
+
+
+    componentDidMount(){
+        console.log(this.props.match.params.category);
+        console.log(this.props)
+    }
+
+    componentDidUpdate(){
+        console.log("cards container update");
+        console.log(this.props.match.params.category);
         console.log(this.props);
 
         switch(this.props.match.params.category){
@@ -43,7 +60,7 @@ export default class Chest extends Component{
 
     render(){
         return(
-            <div className="chest">
+            <div className="card-container">
                 {this.type.map(function(currEle,idx){
                     return(
                         <WorkoutCard
@@ -57,3 +74,5 @@ export default class Chest extends Component{
         )
     }
 }
+
+export default withRouter(connect()(CardsContainer));

@@ -33995,6 +33995,11 @@
 	    }
 
 	    _createClass(MainPage, [{
+	        key: 'shouldComponentUpdate',
+	        value: function shouldComponentUpdate() {
+	            return true;
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -55665,7 +55670,7 @@
 /* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -55676,6 +55681,8 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouterDom = __webpack_require__(212);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55698,73 +55705,73 @@
 	    }
 
 	    _createClass(NavBar, [{
-	        key: "render",
+	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                "nav",
-	                { className: "navbar navbar-default", role: "navigation" },
+	                'nav',
+	                { className: 'navbar navbar-default', role: 'navigation' },
 	                _react2.default.createElement(
-	                    "div",
-	                    { className: "navbar-header" },
+	                    'div',
+	                    { className: 'navbar-header' },
 	                    _react2.default.createElement(
-	                        "button",
-	                        { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": ".navbar-ex1-collapse" },
+	                        'button',
+	                        { type: 'button', className: 'navbar-toggle', 'data-toggle': 'collapse', 'data-target': '.navbar-ex1-collapse' },
 	                        _react2.default.createElement(
-	                            "span",
-	                            { className: "sr-only" },
-	                            "Toggle navigation"
+	                            'span',
+	                            { className: 'sr-only' },
+	                            'Toggle navigation'
 	                        ),
-	                        _react2.default.createElement("span", { className: "icon-bar" }),
-	                        _react2.default.createElement("span", { className: "icon-bar" }),
-	                        _react2.default.createElement("span", { className: "icon-bar" })
+	                        _react2.default.createElement('span', { className: 'icon-bar' }),
+	                        _react2.default.createElement('span', { className: 'icon-bar' }),
+	                        _react2.default.createElement('span', { className: 'icon-bar' })
 	                    ),
 	                    _react2.default.createElement(
-	                        "a",
-	                        { className: "navbar-brand", href: "#" },
-	                        "CONSISTENCY"
+	                        'a',
+	                        { className: 'navbar-brand', href: '#' },
+	                        'CONSISTENCY'
 	                    )
 	                ),
 	                _react2.default.createElement(
-	                    "div",
-	                    { className: "collapse navbar-collapse navbar-ex1-collapse" },
+	                    'div',
+	                    { className: 'collapse navbar-collapse navbar-ex1-collapse' },
 	                    _react2.default.createElement(
-	                        "ul",
-	                        { className: "nav navbar-nav" },
+	                        'ul',
+	                        { className: 'nav navbar-nav' },
 	                        _react2.default.createElement(
-	                            "li",
-	                            { className: "active" },
+	                            'li',
+	                            { className: 'active' },
 	                            _react2.default.createElement(
-	                                "a",
-	                                { href: "#" },
-	                                "Home"
+	                                _reactRouterDom.Link,
+	                                { to: '/main/days' },
+	                                'Home'
 	                            )
 	                        ),
 	                        _react2.default.createElement(
-	                            "li",
+	                            'li',
 	                            null,
 	                            _react2.default.createElement(
-	                                "a",
-	                                { href: "#" },
-	                                "Record"
+	                                _reactRouterDom.Link,
+	                                { to: '/main/record' },
+	                                'Record'
 	                            )
 	                        ),
 	                        _react2.default.createElement(
-	                            "li",
+	                            'li',
 	                            null,
 	                            _react2.default.createElement(
-	                                "a",
-	                                { href: "#" },
-	                                "Graph"
+	                                _reactRouterDom.Link,
+	                                { to: '/main/graph' },
+	                                'Graph'
 	                            )
 	                        )
 	                    ),
 	                    _react2.default.createElement(
-	                        "ul",
-	                        { className: "nav navbar-nav navbar-right" },
+	                        'ul',
+	                        { className: 'nav navbar-nav navbar-right' },
 	                        _react2.default.createElement(
-	                            "button",
-	                            { type: "button", className: "btn btn-default navbar-btn" },
-	                            "Logout"
+	                            'button',
+	                            { type: 'button', className: 'btn btn-default navbar-btn' },
+	                            'Logout'
 	                        )
 	                    )
 	                )
@@ -55793,9 +55800,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactBootstrapDatePicker = __webpack_require__(359);
+	var _reactRouterDom = __webpack_require__(212);
 
-	var _reactBootstrapDatePicker2 = _interopRequireDefault(_reactBootstrapDatePicker);
+	var _reactRedux = __webpack_require__(159);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55827,24 +55834,28 @@
 	                    'li',
 	                    null,
 	                    _react2.default.createElement(
-	                        'a',
-	                        { href: '#' },
-	                        'Home'
+	                        _reactRouterDom.Link,
+	                        { to: '/main/record/chest' },
+	                        'Chest'
 	                    )
 	                ),
 	                _react2.default.createElement(
 	                    'li',
 	                    null,
 	                    _react2.default.createElement(
-	                        'a',
-	                        { href: '#' },
-	                        'Library'
+	                        _reactRouterDom.Link,
+	                        { to: '/main/record/leg' },
+	                        'Leg'
 	                    )
 	                ),
 	                _react2.default.createElement(
 	                    'li',
-	                    { className: 'active' },
-	                    'Data'
+	                    null,
+	                    _react2.default.createElement(
+	                        _reactRouterDom.Link,
+	                        { to: '/main/record/back' },
+	                        'Back'
+	                    )
 	                )
 	            );
 	        }
@@ -55853,7 +55864,7 @@
 	    return NavTab;
 	}(_react.Component);
 
-	exports.default = NavTab;
+	exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)()(NavTab));
 
 /***/ }),
 /* 626 */
@@ -56068,16 +56079,16 @@
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                'div',
-	                { className: 'record' },
-	                _react2.default.createElement(_NavTab2.default, null),
+	                _reactRouterDom.BrowserRouter,
+	                { history: _reactRouter.browserHistory },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'record-contents' },
-	                    _react2.default.createElement(_InlineCalendar2.default, null),
+	                    { className: 'record' },
+	                    _react2.default.createElement(_NavTab2.default, null),
 	                    _react2.default.createElement(
-	                        _reactRouterDom.BrowserRouter,
-	                        { history: _reactRouter.browserHistory },
+	                        'div',
+	                        { className: 'record-contents' },
+	                        _react2.default.createElement(_InlineCalendar2.default, null),
 	                        _react2.default.createElement(
 	                            _reactRouterDom.Switch,
 	                            null,
@@ -56114,6 +56125,14 @@
 
 	var _WorkoutCard2 = _interopRequireDefault(_WorkoutCard);
 
+	var _reactRouterDom = __webpack_require__(212);
+
+	var _reactRedux = __webpack_require__(159);
+
+	var _NavTab = __webpack_require__(625);
+
+	var _NavTab2 = _interopRequireDefault(_NavTab);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56126,41 +56145,60 @@
 
 
 	var chest = [{ description: "blahblahblahbl", type: "Bench Press" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Something" }];
-	var leg = [{ description: "blahblahblahbl", type: "leg" }, { description: "blahblahblahbl", type: "leg" }, { description: "blahblahblahbl", type: "leg" }];
-	var back = [{ description: "blahblahblahbl", type: "back" }, { description: "blahblahblahbl", type: "back" }, { description: "blahblahblahbl", type: "back" }];
+	var leg = [{ description: "blahblahblahbl", type: "leg" }, { description: "blahblahblahbl", type: "leg" }];
+	var back = [{ description: "blahblahblahbl", type: "back" }];
 
-	var Chest = function (_Component) {
-	    _inherits(Chest, _Component);
+	var CardsContainer = function (_Component) {
+	    _inherits(CardsContainer, _Component);
 
-	    function Chest(props) {
-	        _classCallCheck(this, Chest);
+	    function CardsContainer(props) {
+	        _classCallCheck(this, CardsContainer);
 
-	        var _this = _possibleConstructorReturn(this, (Chest.__proto__ || Object.getPrototypeOf(Chest)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (CardsContainer.__proto__ || Object.getPrototypeOf(CardsContainer)).call(this, props));
 
-	        console.log(_this.props);
-
-	        switch (_this.props.match.params.category) {
-	            case "chest":
-	                _this.type = chest;
-	                break;
-	            case "leg":
-	                _this.type = leg;
-	                break;
-	            case "back":
-	                _this.type = back;
-	                break;
-	            default:
-	                _this.type = [];
-	        }
+	        _this.type = [];
 	        return _this;
 	    }
 
-	    _createClass(Chest, [{
+	    _createClass(CardsContainer, [{
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            console.log(this.props.match.params.category);
+	            console.log(this.props);
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            console.log(this.props.match.params.category);
+	            console.log(this.props);
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            console.log("cards container update");
+	            console.log(this.props.match.params.category);
+	            console.log(this.props);
+
+	            switch (this.props.match.params.category) {
+	                case "chest":
+	                    this.type = chest;
+	                    break;
+	                case "leg":
+	                    this.type = leg;
+	                    break;
+	                case "back":
+	                    this.type = back;
+	                    break;
+	                default:
+	                    this.type = [];
+	            }
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'chest' },
+	                { className: 'card-container' },
 	                this.type.map(function (currEle, idx) {
 	                    return _react2.default.createElement(_WorkoutCard2.default, {
 	                        description: currEle.description,
@@ -56172,10 +56210,10 @@
 	        }
 	    }]);
 
-	    return Chest;
+	    return CardsContainer;
 	}(_react.Component);
 
-	exports.default = Chest;
+	exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)()(CardsContainer));
 
 /***/ }),
 /* 630 */
@@ -56896,7 +56934,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);", ""]);
 
 	// module
-	exports.push([module.id, "#content {\n    width: 100%;\n}\n\n.bottom{\n    display:flex;\n    justify-content: space-around;\n    flex-wrap: wrap-reverse;\n}\n.bottom div{\n    flex-grow:1;\n}\n\n/*#logout-button {\n    display:none;\n}*/\n\nbody{\n    overflow:scroll;\n}\n\n.wrapper {\n    display: block;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    height: 100vh;\n    position: fixed;\n    margin-left:-250px;\n    top: 0;\n    left: 0;\n    /* top layer */\n    z-index: 9999;\n}\n\n.overlay {\n    /* full screen */\n    width: 100vw;\n    height: 100vh;\n    /* transparent black */\n    background: rgba(0, 0, 0, 0.8);\n    position: fixed;\n    top: 0;\n    left: 0;\n    display: none;\n    /* middle layer, i.e. appears below the sidebar */\n    z-index: 9998;\n}\n\n#dismiss {\n    width: 35px;\n    height: 35px;\n    position: absolute;\n    /* top right corner of the sidebar */\n    top: 10px;\n    right: 10px;\n}\n\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    background: #7386D5;\n    color: #fff;\n    transition: all 0.3s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    background: #6d7fcc;\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n/*#content,.line-graph-container,.list-container,#doughnut-container{\n    width:100%;\n    !*border:1px solid red;*!\n}*/\n\n.record{\n    padding:7vh;\n    padding-top:0px;\n}\n\n.record-contents{\n    display:flex;\n}\n\n", ""]);
+	exports.push([module.id, "#content {\n    width: 100%;\n}\n\n.bottom{\n    display:flex;\n    justify-content: space-around;\n    flex-wrap: wrap-reverse;\n}\n.bottom div{\n    flex-grow:1;\n}\n\n/*#logout-button {\n    display:none;\n}*/\n\nbody{\n    overflow:scroll;\n}\n\n.wrapper {\n    display: block;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    height: 100vh;\n    position: fixed;\n    margin-left:-250px;\n    top: 0;\n    left: 0;\n    /* top layer */\n    z-index: 9999;\n}\n\n.overlay {\n    /* full screen */\n    width: 100vw;\n    height: 100vh;\n    /* transparent black */\n    background: rgba(0, 0, 0, 0.8);\n    position: fixed;\n    top: 0;\n    left: 0;\n    display: none;\n    /* middle layer, i.e. appears below the sidebar */\n    z-index: 9998;\n}\n\n#dismiss {\n    width: 35px;\n    height: 35px;\n    position: absolute;\n    /* top right corner of the sidebar */\n    top: 10px;\n    right: 10px;\n}\n\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    background: #7386D5;\n    color: #fff;\n    transition: all 0.3s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    background: #6d7fcc;\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n/*#content,.line-graph-container,.list-container,#doughnut-container{\n    width:100%;\n    !*border:1px solid red;*!\n}*/\n\n.record{\n    padding:7vh;\n    padding-top:0px;\n}\n\n.record-contents{\n    display:flex;\n}\n\n.card-container{\n    display:flex;\n}\n\n", ""]);
 
 	// exports
 

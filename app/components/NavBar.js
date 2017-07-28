@@ -2,6 +2,7 @@
  * Created by chanwoopark on 2017. 7. 27..
  */
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class NavBar extends Component{
     constructor(props){
@@ -23,9 +24,9 @@ export default class NavBar extends Component{
 
                 <div className="collapse navbar-collapse navbar-ex1-collapse">
                     <ul className="nav navbar-nav">
-                        <li className="active"><a href="#">Home</a></li>
-                        <li><a href="#">Record</a></li>
-                        <li><a href="#">Graph</a></li>
+                        <li className="active"><Link to="/main/days">Home</Link></li>
+                        <li><Link to="/main/record">Record</Link></li>
+                        <li><Link to="/main/graph">Graph</Link></li>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
                         <button type="button" className="btn btn-default navbar-btn">Logout</button>

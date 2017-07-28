@@ -14,20 +14,21 @@ export default class Record extends Component{
         super(props)
     }
 
+
     render(){
         return(
-            <div className="record">
-                <NavTab/>
-                {/*record-contents에 display flex로 할것*/}
-                <div className="record-contents">
-                    <InlineCalendar/>
-                    <BrowserRouter history={browserHistory}>
+            <BrowserRouter history={browserHistory}>
+                <div className="record">
+                    <NavTab/>
+                    {/*record-contents에 display flex로 할것*/}
+                    <div className="record-contents">
+                        <InlineCalendar/>
                         <Switch>
                             <Route path="/main/record/:category" component={CardsContainer}/>
                         </Switch>
-                    </BrowserRouter>
+                    </div>
                 </div>
-            </div>
+            </BrowserRouter>
         )
 
     }
