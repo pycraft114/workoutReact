@@ -18,6 +18,7 @@ import NavBar from 'components/NavBar';
 import NavTab from 'components/NavTab'
 import WorkoutCard from 'components/WorkoutCard';
 import InlineCalendar from 'components/InlineCalendar';
+import Record from './Record';
 
 import action_clickLogout from 'actions/action_clickLogout';
 
@@ -45,6 +46,7 @@ class MainPage extends Component{
                         <BrowserRouter history={browserHistory}>
                             <Switch>
                                 <Route path="/main/days" component={DoughnutGraph}/>
+                                <Route path="/main/record" component={Record}/>
                                 <Route path="/main/graph" component={LineGraph}/>
                                 <Redirect from="/main" to="/main/days"/>
                             </Switch>

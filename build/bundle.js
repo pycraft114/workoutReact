@@ -77,12 +77,12 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/////
-	__webpack_require__(630);
+	__webpack_require__(631);
 
 	/////
 
-	__webpack_require__(635);
-	__webpack_require__(637);
+	__webpack_require__(636);
+	__webpack_require__(638);
 
 	/*
 	const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
@@ -31831,7 +31831,7 @@
 
 	var _MainPage2 = _interopRequireDefault(_MainPage);
 
-	var _Gate = __webpack_require__(629);
+	var _Gate = __webpack_require__(630);
 
 	var _Gate2 = _interopRequireDefault(_Gate);
 
@@ -33963,7 +33963,11 @@
 
 	var _InlineCalendar2 = _interopRequireDefault(_InlineCalendar);
 
-	var _action_clickLogout = __webpack_require__(628);
+	var _Record = __webpack_require__(628);
+
+	var _Record2 = _interopRequireDefault(_Record);
+
+	var _action_clickLogout = __webpack_require__(629);
 
 	var _action_clickLogout2 = _interopRequireDefault(_action_clickLogout);
 
@@ -34020,6 +34024,7 @@
 	                                _reactRouterDom.Switch,
 	                                null,
 	                                _react2.default.createElement(_reactRouterDom.Route, { path: '/main/days', component: _DoughnutGraph2.default }),
+	                                _react2.default.createElement(_reactRouterDom.Route, { path: '/main/record', component: _Record2.default }),
 	                                _react2.default.createElement(_reactRouterDom.Route, { path: '/main/graph', component: _LineGraph2.default }),
 	                                _react2.default.createElement(_reactRouterDom.Redirect, { from: '/main', to: '/main/days' })
 	                            )
@@ -56017,6 +56022,67 @@
 	    value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _NavTab = __webpack_require__(625);
+
+	var _NavTab2 = _interopRequireDefault(_NavTab);
+
+	var _InlineCalendar = __webpack_require__(627);
+
+	var _InlineCalendar2 = _interopRequireDefault(_InlineCalendar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 28..
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var Record = function (_Component) {
+	    _inherits(Record, _Component);
+
+	    function Record(props) {
+	        _classCallCheck(this, Record);
+
+	        return _possibleConstructorReturn(this, (Record.__proto__ || Object.getPrototypeOf(Record)).call(this, props));
+	    }
+
+	    _createClass(Record, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'record' },
+	                _react2.default.createElement(_NavTab2.default, null),
+	                _react2.default.createElement(_InlineCalendar2.default, null)
+	            );
+	        }
+	    }]);
+
+	    return Record;
+	}(_react.Component);
+
+	exports.default = Record;
+
+/***/ }),
+/* 629 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
 	exports.default = function () {
 	    localStorage.removeItem('token');
 
@@ -56026,7 +56092,7 @@
 	var _actionTypes = __webpack_require__(200);
 
 /***/ }),
-/* 629 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56061,13 +56127,13 @@
 	}
 
 /***/ }),
-/* 630 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(631);
+	var content = __webpack_require__(632);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -56075,7 +56141,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(633)(content, options);
+	var update = __webpack_require__(634)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -56092,10 +56158,10 @@
 	}
 
 /***/ }),
-/* 631 */
+/* 632 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(632)(undefined);
+	exports = module.exports = __webpack_require__(633)(undefined);
 	// imports
 
 
@@ -56106,7 +56172,7 @@
 
 
 /***/ }),
-/* 632 */
+/* 633 */
 /***/ (function(module, exports) {
 
 	/*
@@ -56188,7 +56254,7 @@
 
 
 /***/ }),
-/* 633 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -56234,7 +56300,7 @@
 	var	singletonCounter = 0;
 	var	stylesInsertedAtTop = [];
 
-	var	fixUrls = __webpack_require__(634);
+	var	fixUrls = __webpack_require__(635);
 
 	module.exports = function(list, options) {
 		if (false) {
@@ -56547,7 +56613,7 @@
 
 
 /***/ }),
-/* 634 */
+/* 635 */
 /***/ (function(module, exports) {
 
 	
@@ -56642,13 +56708,13 @@
 
 
 /***/ }),
-/* 635 */
+/* 636 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(636);
+	var content = __webpack_require__(637);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -56656,7 +56722,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(633)(content, options);
+	var update = __webpack_require__(634)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -56673,10 +56739,10 @@
 	}
 
 /***/ }),
-/* 636 */
+/* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(632)(undefined);
+	exports = module.exports = __webpack_require__(633)(undefined);
 	// imports
 
 
@@ -56687,13 +56753,13 @@
 
 
 /***/ }),
-/* 637 */
+/* 638 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(638);
+	var content = __webpack_require__(639);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -56701,7 +56767,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(633)(content, options);
+	var update = __webpack_require__(634)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -56718,10 +56784,10 @@
 	}
 
 /***/ }),
-/* 638 */
+/* 639 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(632)(undefined);
+	exports = module.exports = __webpack_require__(633)(undefined);
 	// imports
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);", ""]);
 
