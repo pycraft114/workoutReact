@@ -55853,15 +55853,6 @@
 	                        { to: '/main/record/back' },
 	                        'Back'
 	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'li',
-	                    null,
-	                    _react2.default.createElement(
-	                        _reactRouterDom.Link,
-	                        { to: '/main/graph' },
-	                        'test'
-	                    )
 	                )
 	            );
 	        }
@@ -56049,8 +56040,6 @@
 
 	var _reactRouter = __webpack_require__(256);
 
-	var _reactRedux = __webpack_require__(159);
-
 	var _NavTab = __webpack_require__(625);
 
 	var _NavTab2 = _interopRequireDefault(_NavTab);
@@ -56094,14 +56083,9 @@
 	                    { className: 'record' },
 	                    _react2.default.createElement(_NavTab2.default, null),
 	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'record-contents' },
-	                        _react2.default.createElement(_InlineCalendar2.default, null),
-	                        _react2.default.createElement(
-	                            _reactRouterDom.Switch,
-	                            null,
-	                            _react2.default.createElement(_reactRouterDom.Route, { path: '/main/record/:category', component: _CardsContainer2.default })
-	                        )
+	                        _reactRouterDom.Switch,
+	                        null,
+	                        _react2.default.createElement(_reactRouterDom.Route, { path: '/main/record/:category', component: _CardsContainer2.default })
 	                    )
 	                )
 	            );
@@ -56133,6 +56117,10 @@
 
 	var _WorkoutCard2 = _interopRequireDefault(_WorkoutCard);
 
+	var _InlineCalendar = __webpack_require__(627);
+
+	var _InlineCalendar2 = _interopRequireDefault(_InlineCalendar);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56153,7 +56141,7 @@
 	        var _this = _possibleConstructorReturn(this, (CardsContainer.__proto__ || Object.getPrototypeOf(CardsContainer)).call(this, props));
 
 	        _this.state = {
-	            chest: [{ description: "blahblahblahbl", type: "Bench Press" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Something" }],
+	            chest: [{ description: "blahblahblahbl", type: "Bench Press" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Something" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }],
 	            leg: [{ description: "blahblahblahbl", type: "leg" }, { description: "blahblahblahbl", type: "leg" }],
 	            back: [{ description: "blahblahblahbl", type: "back" }]
 	        };
@@ -56168,6 +56156,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'card-container' },
+	                _react2.default.createElement(_InlineCalendar2.default, null),
 	                this.state[category].map(function (currEle, idx) {
 	                    return _react2.default.createElement(_WorkoutCard2.default, {
 	                        description: currEle.description,
@@ -56903,7 +56892,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);", ""]);
 
 	// module
-	exports.push([module.id, "#content {\n    width: 100%;\n}\n\n.bottom{\n    display:flex;\n    justify-content: space-around;\n    flex-wrap: wrap-reverse;\n}\n.bottom div{\n    flex-grow:1;\n}\n\n/*#logout-button {\n    display:none;\n}*/\n\nbody{\n    overflow:scroll;\n}\n\n.wrapper {\n    display: block;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    height: 100vh;\n    position: fixed;\n    margin-left:-250px;\n    top: 0;\n    left: 0;\n    /* top layer */\n    z-index: 9999;\n}\n\n.overlay {\n    /* full screen */\n    width: 100vw;\n    height: 100vh;\n    /* transparent black */\n    background: rgba(0, 0, 0, 0.8);\n    position: fixed;\n    top: 0;\n    left: 0;\n    display: none;\n    /* middle layer, i.e. appears below the sidebar */\n    z-index: 9998;\n}\n\n#dismiss {\n    width: 35px;\n    height: 35px;\n    position: absolute;\n    /* top right corner of the sidebar */\n    top: 10px;\n    right: 10px;\n}\n\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    background: #7386D5;\n    color: #fff;\n    transition: all 0.3s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    background: #6d7fcc;\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n/*#content,.line-graph-container,.list-container,#doughnut-container{\n    width:100%;\n    !*border:1px solid red;*!\n}*/\n\n.record{\n    padding:7vh;\n    padding-top:0px;\n}\n\n.record-contents{\n    display:flex;\n}\n\n.card-container{\n    display:flex;\n}\n\n", ""]);
+	exports.push([module.id, "#content {\n    width: 100%;\n}\n\n.bottom{\n    display:flex;\n    justify-content: space-around;\n    flex-wrap: wrap-reverse;\n}\n.bottom div{\n    flex-grow:1;\n}\n\n/*#logout-button {\n    display:none;\n}*/\n\nbody{\n    overflow:scroll;\n}\n\n.wrapper {\n    display: block;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    height: 100vh;\n    position: fixed;\n    margin-left:-250px;\n    top: 0;\n    left: 0;\n    /* top layer */\n    z-index: 9999;\n}\n\n.overlay {\n    /* full screen */\n    width: 100vw;\n    height: 100vh;\n    /* transparent black */\n    background: rgba(0, 0, 0, 0.8);\n    position: fixed;\n    top: 0;\n    left: 0;\n    display: none;\n    /* middle layer, i.e. appears below the sidebar */\n    z-index: 9998;\n}\n\n#dismiss {\n    width: 35px;\n    height: 35px;\n    position: absolute;\n    /* top right corner of the sidebar */\n    top: 10px;\n    right: 10px;\n}\n\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    background: #7386D5;\n    color: #fff;\n    transition: all 0.3s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    background: #6d7fcc;\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n/*#content,.line-graph-container,.list-container,#doughnut-container{\n    width:100%;\n    !*border:1px solid red;*!\n}*/\n\n.record{\n    padding:7vh;\n    padding-top:0;\n}\n\n.card-container{\n    display:grid;\n    grid-gap:11px;\n    grid-template-columns:repeat(auto-fill, minmax(200px, 1fr))\n}\n", ""]);
 
 	// exports
 

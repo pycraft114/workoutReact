@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import WorkoutCard from 'components/WorkoutCard';
+import InlineCalendar from 'components/InlineCalendar';
 
 export default class CardsContainer extends Component{
     constructor(props){
@@ -11,7 +12,16 @@ export default class CardsContainer extends Component{
         this.state={
             chest:[{description:"blahblahblahbl", type:"Bench Press"},
                 {description:"blahblahblahbl", type:"Cable"},
-                {description:"blahblahblahbl", type:"Something"}],
+                {description:"blahblahblahbl", type:"Something"},
+                {description:"blahblahblahbl", type:"Cable"},
+                {description:"blahblahblahbl", type:"Cable"},
+                {description:"blahblahblahbl", type:"Cable"},
+                {description:"blahblahblahbl", type:"Cable"},
+                {description:"blahblahblahbl", type:"Cable"},
+                {description:"blahblahblahbl", type:"Cable"},
+                {description:"blahblahblahbl", type:"Cable"},
+                {description:"blahblahblahbl", type:"Cable"},
+            ],
             leg:[{description:"blahblahblahbl", type:"leg"},
                 {description:"blahblahblahbl", type:"leg"}],
             back:[{description:"blahblahblahbl", type:"back"}]
@@ -23,6 +33,7 @@ export default class CardsContainer extends Component{
 
         return(
             <div className="card-container">
+                <InlineCalendar/>
                 {this.state[category].map(function(currEle,idx){
                     return(
                         <WorkoutCard

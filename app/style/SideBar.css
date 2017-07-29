@@ -159,14 +159,11 @@ ul ul a {
 
 .record{
     padding:7vh;
-    padding-top:0px;
-}
-
-.record-contents{
-    display:flex;
+    padding-top:0;
 }
 
 .card-container{
-    display:flex;
+    display:grid;
+    grid-gap:11px;
+    grid-template-columns:repeat(auto-fill, minmax(200px, 1fr))
 }
-
