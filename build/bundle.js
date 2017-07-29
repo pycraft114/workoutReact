@@ -56153,57 +56153,22 @@
 	        var _this = _possibleConstructorReturn(this, (CardsContainer.__proto__ || Object.getPrototypeOf(CardsContainer)).call(this, props));
 
 	        _this.state = {
-	            type: [],
-	            path: _this.props.match.params.category
+	            chest: [{ description: "blahblahblahbl", type: "Bench Press" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Something" }],
+	            leg: [{ description: "blahblahblahbl", type: "leg" }, { description: "blahblahblahbl", type: "leg" }],
+	            back: [{ description: "blahblahblahbl", type: "back" }]
 	        };
 	        return _this;
 	    }
 
 	    _createClass(CardsContainer, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            console.log("cc d m", this.props);
-	        }
-	    }, {
-	        key: 'componentWillMount',
-	        value: function componentWillMount() {
-	            console.log("CardsContainer will update", this.props);
-	        }
-	    }, {
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {
-	            console.log("CardsContainer will update", this.props);
-	        }
-
-	        /*shouldComponentUpdate(nextProp,nextState){
-	            console.log("nextProp",nextProp);
-	            console.log("this.prop",this.props);
-	            console.log("nextState",nextState);
-	            console.log("thisState",this.state);
-	             if(nextProp.match.params.category !== this.props.match.params.category || nextState.type !== this.state.type){
-	                return true;
-	            }else{
-	                return false;
-	            }
-	        }*/
-
-	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var category = this.props.match.params.category;
+
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'card-container' },
-	                _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    this.props.match.params.category
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    'hello'
-	                ),
-	                this.state.type.map(function (currEle, idx) {
+	                this.state[category].map(function (currEle, idx) {
 	                    return _react2.default.createElement(_WorkoutCard2.default, {
 	                        description: currEle.description,
 	                        workoutType: currEle.type,

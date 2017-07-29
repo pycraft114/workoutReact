@@ -16,7 +16,6 @@ export default class NavTab extends Component {
                 <li><Link to="/main/record/chest">Chest</Link></li>
                 <li><Link to="/main/record/leg">Leg</Link></li>
                 <li><Link to="/main/record/back">Back</Link></li>
-                <li><Link to="/main/graph">test</Link></li>
             </ol>
         )
     }

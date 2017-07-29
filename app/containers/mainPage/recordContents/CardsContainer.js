@@ -9,43 +9,21 @@ export default class CardsContainer extends Component{
         super(props);
 
         this.state={
-            type:[],
-            path:this.props.match.params.category
+            chest:[{description:"blahblahblahbl", type:"Bench Press"},
+                {description:"blahblahblahbl", type:"Cable"},
+                {description:"blahblahblahbl", type:"Something"}],
+            leg:[{description:"blahblahblahbl", type:"leg"},
+                {description:"blahblahblahbl", type:"leg"}],
+            back:[{description:"blahblahblahbl", type:"back"}]
         };
     }
 
-    componentDidMount(){
-        console.log("cc d m",this.props);
-    }
-
-    componentWillMount(){
-        console.log("CardsContainer will update",this.props);
-    }
-
-    componentDidUpdate(){
-        console.log("CardsContainer will update",this.props);
-    }
-
-    /*shouldComponentUpdate(nextProp,nextState){
-        console.log("nextProp",nextProp);
-        console.log("this.prop",this.props);
-        console.log("nextState",nextState);
-        console.log("thisState",this.state);
-
-        if(nextProp.match.params.category !== this.props.match.params.category || nextState.type !== this.state.type){
-            return true;
-        }else{
-            return false;
-        }
-    }*/
-
-
     render(){
+        const category = this.props.match.params.category;
+
         return(
             <div className="card-container">
-                <div>{this.props.match.params.category}</div>
-                <div>hello</div>
-                {this.state.type.map(function(currEle,idx){
+                {this.state[category].map(function(currEle,idx){
                     return(
                         <WorkoutCard
                             description={currEle.description}
