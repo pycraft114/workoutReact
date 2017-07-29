@@ -48,8 +48,9 @@ class MainPage extends Component{
                                 <NavBar/>
                                 <Switch>
                                     <Route  path="/main/days" component={DoughnutGraph}/>
-                                    <Route  path="/main/record" component={Record}/>
+                                    <Route  path="/main/record/chest" component={Record}/>
                                     <Route  path="/main/graph" component={LineGraph}/>
+                                    <Redirect from="/main/record" to="/main/record/chest"/>
                                     <Redirect from="/main" to="/main/days"/>
                                 </Switch>
                             </div>
