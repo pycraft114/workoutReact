@@ -33995,11 +33995,6 @@
 	    }
 
 	    _createClass(MainPage, [{
-	        key: 'shouldComponentUpdate',
-	        value: function shouldComponentUpdate() {
-	            return true;
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -34016,7 +34011,6 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { id: 'content' },
-	                        _react2.default.createElement(_NavBar2.default, null),
 	                        _react2.default.createElement(
 	                            'button',
 	                            { type: 'button', id: 'sidebarCollapse', className: 'btn btn-default btn-sm', active: '' },
@@ -34026,12 +34020,17 @@
 	                            _reactRouterDom.BrowserRouter,
 	                            { history: _reactRouter.browserHistory },
 	                            _react2.default.createElement(
-	                                _reactRouterDom.Switch,
+	                                'div',
 	                                null,
-	                                _react2.default.createElement(_reactRouterDom.Route, { path: '/main/days', component: _DoughnutGraph2.default }),
-	                                _react2.default.createElement(_reactRouterDom.Route, { path: '/main/record', component: _Record2.default }),
-	                                _react2.default.createElement(_reactRouterDom.Route, { path: '/main/graph', component: _LineGraph2.default }),
-	                                _react2.default.createElement(_reactRouterDom.Redirect, { from: '/main', to: '/main/days' })
+	                                _react2.default.createElement(_NavBar2.default, null),
+	                                _react2.default.createElement(
+	                                    _reactRouterDom.Switch,
+	                                    null,
+	                                    _react2.default.createElement(_reactRouterDom.Route, { path: '/main/days', component: _DoughnutGraph2.default }),
+	                                    _react2.default.createElement(_reactRouterDom.Route, { path: '/main/record', component: _Record2.default }),
+	                                    _react2.default.createElement(_reactRouterDom.Route, { path: '/main/graph', component: _LineGraph2.default }),
+	                                    _react2.default.createElement(_reactRouterDom.Redirect, { from: '/main', to: '/main/days' })
+	                                )
 	                            )
 	                        )
 	                    ),
@@ -55854,6 +55853,15 @@
 	                        { to: '/main/record/back' },
 	                        'Back'
 	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                        _reactRouterDom.Link,
+	                        { to: '/main/graph' },
+	                        'test'
+	                    )
 	                )
 	            );
 	        }
@@ -56041,6 +56049,8 @@
 
 	var _reactRouter = __webpack_require__(256);
 
+	var _reactRedux = __webpack_require__(159);
+
 	var _NavTab = __webpack_require__(625);
 
 	var _NavTab2 = _interopRequireDefault(_NavTab);
@@ -56074,16 +56084,6 @@
 	    }
 
 	    _createClass(Record, [{
-	        key: 'shouldComponentUpdate',
-	        value: function shouldComponentUpdate() {
-	            return true;
-	        }
-	    }, {
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {
-	            console.log("record updated");
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -56111,7 +56111,7 @@
 	    return Record;
 	}(_react.Component);
 
-	exports.default = (0, _reactRouterDom.withRouter)(Record);
+	exports.default = Record;
 
 /***/ }),
 /* 629 */
@@ -56133,14 +56133,6 @@
 
 	var _WorkoutCard2 = _interopRequireDefault(_WorkoutCard);
 
-	var _reactRouterDom = __webpack_require__(212);
-
-	var _reactRedux = __webpack_require__(159);
-
-	var _NavTab = __webpack_require__(625);
-
-	var _NavTab2 = _interopRequireDefault(_NavTab);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56152,10 +56144,6 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 
-	var chest = [{ description: "blahblahblahbl", type: "Bench Press" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Something" }];
-	var leg = [{ description: "blahblahblahbl", type: "leg" }, { description: "blahblahblahbl", type: "leg" }];
-	var back = [{ description: "blahblahblahbl", type: "back" }];
-
 	var CardsContainer = function (_Component) {
 	    _inherits(CardsContainer, _Component);
 
@@ -56164,47 +56152,58 @@
 
 	        var _this = _possibleConstructorReturn(this, (CardsContainer.__proto__ || Object.getPrototypeOf(CardsContainer)).call(this, props));
 
-	        _this.type = [];
+	        _this.state = {
+	            type: [],
+	            path: _this.props.match.params.category
+	        };
 	        return _this;
 	    }
 
 	    _createClass(CardsContainer, [{
-	        key: 'componentWillMount',
-	        value: function componentWillMount() {
-	            console.log("car container will mount");
-	            console.log(this.props);
-	        }
-	    }, {
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
-	            console.log("car container did mount");
-	            console.log(this.props);
+	            console.log("cc d m", this.props);
 	        }
 	    }, {
-	        key: 'componentWillUpdate',
-	        value: function componentWillUpdate() {
-	            console.log("card container updated");
-	            switch (this.props.match.params.category) {
-	                case "chest":
-	                    this.type = chest;
-	                    break;
-	                case "leg":
-	                    this.type = leg;
-	                    break;
-	                case "back":
-	                    this.type = back;
-	                    break;
-	                default:
-	                    this.type = [];
-	            }
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            console.log("CardsContainer will update", this.props);
 	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            console.log("CardsContainer will update", this.props);
+	        }
+
+	        /*shouldComponentUpdate(nextProp,nextState){
+	            console.log("nextProp",nextProp);
+	            console.log("this.prop",this.props);
+	            console.log("nextState",nextState);
+	            console.log("thisState",this.state);
+	             if(nextProp.match.params.category !== this.props.match.params.category || nextState.type !== this.state.type){
+	                return true;
+	            }else{
+	                return false;
+	            }
+	        }*/
+
 	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'card-container' },
-	                this.type.map(function (currEle, idx) {
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    this.props.match.params.category
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    'hello'
+	                ),
+	                this.state.type.map(function (currEle, idx) {
 	                    return _react2.default.createElement(_WorkoutCard2.default, {
 	                        description: currEle.description,
 	                        workoutType: currEle.type,
@@ -56218,7 +56217,7 @@
 	    return CardsContainer;
 	}(_react.Component);
 
-	exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)()(CardsContainer));
+	exports.default = CardsContainer;
 
 /***/ }),
 /* 630 */

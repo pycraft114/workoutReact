@@ -4,23 +4,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
 
 import NavTab from 'components/NavTab';
 import InlineCalendar from 'components/InlineCalendar';
 import CardsContainer from './recordContents/CardsContainer';
 
-class Record extends Component{
+export default class Record extends Component{
     constructor(props){
-        super(props)
-    }
-
-
-    shouldComponentUpdate(){
-        return true;
-    }
-
-    componentDidUpdate(){
-        console.log("record updated");
+        super(props);
     }
 
     render(){
@@ -32,7 +24,7 @@ class Record extends Component{
                     <div className="record-contents">
                         <InlineCalendar/>
                         <Switch>
-                            <Route path="/main/record/:category" component={CardsContainer}/>
+                            <Route path='/main/record/:category' component={CardsContainer}/>
                         </Switch>
                     </div>
                 </div>
@@ -41,5 +33,3 @@ class Record extends Component{
 
     }
 }
-
-export default withRouter(Record);

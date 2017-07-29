@@ -3,62 +3,49 @@
  */
 import React, { Component } from 'react';
 import WorkoutCard from 'components/WorkoutCard';
-import { withRouter} from 'react-router-dom';
-import { connect } from 'react-redux';
 
-import NavTab from 'components/NavTab';
-
-const chest = [
-    {description:"blahblahblahbl", type:"Bench Press"},
-    {description:"blahblahblahbl", type:"Cable"},
-    {description:"blahblahblahbl", type:"Something"}
-    ];
-const leg = [
-    {description:"blahblahblahbl", type:"leg"},
-    {description:"blahblahblahbl", type:"leg"},
-];
-const back = [
-    {description:"blahblahblahbl", type:"back"}
-];
-
-class CardsContainer extends Component{
+export default class CardsContainer extends Component{
     constructor(props){
         super(props);
-        this.type=[];
+
+        this.state={
+            type:[],
+            path:this.props.match.params.category
+        };
+    }
+
+    componentDidMount(){
+        console.log("cc d m",this.props);
     }
 
     componentWillMount(){
-        console.log("car container will mount");
-        console.log(this.props)
+        console.log("CardsContainer will update",this.props);
     }
 
-
-    componentDidMount(){
-        console.log("car container did mount");
-        console.log(this.props)
+    componentDidUpdate(){
+        console.log("CardsContainer will update",this.props);
     }
 
-    componentWillUpdate(){
-        console.log("card container updated");
-        switch(this.props.match.params.category){
-            case "chest":
-                this.type=chest;
-                break;
-            case "leg":
-                this.type=leg;
-                break;
-            case "back":
-                this.type=back;
-                break;
-            default:
-                this.type=[];
+    /*shouldComponentUpdate(nextProp,nextState){
+        console.log("nextProp",nextProp);
+        console.log("this.prop",this.props);
+        console.log("nextState",nextState);
+        console.log("thisState",this.state);
+
+        if(nextProp.match.params.category !== this.props.match.params.category || nextState.type !== this.state.type){
+            return true;
+        }else{
+            return false;
         }
-    }
+    }*/
+
 
     render(){
         return(
             <div className="card-container">
-                {this.type.map(function(currEle,idx){
+                <div>{this.props.match.params.category}</div>
+                <div>hello</div>
+                {this.state.type.map(function(currEle,idx){
                     return(
                         <WorkoutCard
                             description={currEle.description}
@@ -71,5 +58,3 @@ class CardsContainer extends Component{
         )
     }
 }
-
-export default withRouter(connect()(CardsContainer));

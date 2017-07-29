@@ -29,12 +29,6 @@ class MainPage extends Component{
 
     }
 
-    shouldComponentUpdate(){
-        return true;
-    }
-
-
-
     render(){
         return(
             <div className="main-page">
@@ -44,19 +38,21 @@ class MainPage extends Component{
                     </div>
 
                     <div id="content">
-                        <NavBar/>
 
                         <button type="button" id="sidebarCollapse" className="btn btn-default btn-sm" active="">
                             MENU
                         </button>
 
                         <BrowserRouter history={browserHistory}>
-                            <Switch>
-                                <Route  path="/main/days" component={DoughnutGraph}/>
-                                <Route  path="/main/record" component={Record}/>
-                                <Route  path="/main/graph" component={LineGraph}/>
-                                <Redirect from="/main" to="/main/days"/>
-                            </Switch>
+                            <div>
+                                <NavBar/>
+                                <Switch>
+                                    <Route  path="/main/days" component={DoughnutGraph}/>
+                                    <Route  path="/main/record" component={Record}/>
+                                    <Route  path="/main/graph" component={LineGraph}/>
+                                    <Redirect from="/main" to="/main/days"/>
+                                </Switch>
+                            </div>
                         </BrowserRouter>
                     </div>
 
