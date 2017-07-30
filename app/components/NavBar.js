@@ -9,6 +9,20 @@ export default class NavBar extends Component{
         super(props)
     }
 
+    componentDidMount(){
+/*
+        $(".nav li").on("click", function() {
+            $(".nav li").removeClass("active");
+            $(this).addClass("active");
+        });
+*/
+
+        $(".nav li").on("click",function(){
+            $(".nav li").removeClass("active");
+            $(this).addClass("active");
+        })
+    }
+
     render(){
         return(
             <nav className="navbar navbar-default" role="navigation">

@@ -55705,6 +55705,21 @@
 	    }
 
 	    _createClass(NavBar, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            /*
+	                    $(".nav li").on("click", function() {
+	                        $(".nav li").removeClass("active");
+	                        $(this).addClass("active");
+	                    });
+	            */
+
+	            $(".nav li").on("click", function () {
+	                $(".nav li").removeClass("active");
+	                $(this).addClass("active");
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
