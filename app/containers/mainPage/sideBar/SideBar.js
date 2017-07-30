@@ -2,16 +2,10 @@
  * Created by chanwoopark on 2017. 7. 25..
  */
 import React, { Component } from 'react';
-import { setSideBarSettings } from 'style/setSideBarSettings';
-import setSideBar2 from 'style/setSideBar2';
 
 export default class SideBar extends Component{
     constructor(props){
         super(props)
-    }
-
-    componentDidMount(){
-        setSideBar2();
     }
 
     render(){
@@ -22,7 +16,7 @@ export default class SideBar extends Component{
                 </div>
 
                 <div className="sidebar-header">
-                    <h3>Collapsible Sidebar</h3>
+                    <h3>CONSISTENCY</h3>
                 </div>
 
                 <ul className="list-unstyled components">

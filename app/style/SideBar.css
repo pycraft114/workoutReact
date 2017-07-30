@@ -171,3 +171,7 @@ ul ul a {
 .thumbnail a{
     width:100%;
 }
+
+.navbar-header a:hover{
+    cursor:pointer;
+}

@@ -1,3 +1,6 @@
-if(""){
-    console.log("haha");
-}
+var test = "/main/record/something";
+
+
+var a = test.split("/");
+
+console.log(a);

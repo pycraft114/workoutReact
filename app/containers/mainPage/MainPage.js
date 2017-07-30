@@ -15,9 +15,6 @@ import LineGraph from './graph/LineGraph';
 import DoughnutGraph from './graph/DoughnutGraph'
 import SideBar from './sideBar/SideBar';
 import NavBar from 'components/NavBar';
-import NavTab from 'components/NavTab'
-import WorkoutCard from 'components/WorkoutCard';
-import InlineCalendar from 'components/InlineCalendar';
 import Record from './Record';
 
 import action_clickLogout from 'actions/action_clickLogout';
@@ -38,11 +35,6 @@ class MainPage extends Component{
                     </div>
 
                     <div id="content">
-
-                        <button type="button" id="sidebarCollapse" className="btn btn-default btn-sm" active="">
-                            MENU
-                        </button>
-
                         <BrowserRouter history={browserHistory}>
                             <div>
                                 <NavBar/>
@@ -57,7 +49,8 @@ class MainPage extends Component{
                         </BrowserRouter>
                     </div>
 
-                    <div className="overlay"></div>
+                    <div className="overlay">
+                    </div>
                 </div>
             </div>
 

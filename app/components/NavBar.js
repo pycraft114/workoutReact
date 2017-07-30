@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import setSideBarSettings from 'style/setSideBarSettings';
 
 export default class NavBar extends Component{
     constructor(props){
@@ -10,17 +11,28 @@ export default class NavBar extends Component{
     }
 
     componentDidMount(){
-/*
-        $(".nav li").on("click", function() {
-            $(".nav li").removeClass("active");
-            $(this).addClass("active");
-        });
-*/
+        const url = window.location.pathname;
+        const currentPage = url.split('/')[2];
+
+        switch(currentPage){
+            case"days":
+                $('.nav li:contains("Home")').addClass("active");
+                break;
+            case"record":
+                $('.nav li:contains("Record")').addClass("active");
+                break;
+            case"graph":
+                $('.nav li:contains("Graph")').addClass("active");
+                break;
+        }
 
         $(".nav li").on("click",function(){
             $(".nav li").removeClass("active");
+            console.log($(this));
             $(this).addClass("active");
-        })
+        });
+
+        setSideBarSettings();
     }
 
     render(){
@@ -33,12 +45,12 @@ export default class NavBar extends Component{
                         <span className="icon-bar"></span>
                         <span className="icon-bar"></span>
                     </button>
-                    <a className="navbar-brand" href="#">CONSISTENCY</a>
+                    <a className="navbar-brand" id="sidebarCollapse">MENU</a>
                 </div>
 
                 <div className="collapse navbar-collapse navbar-ex1-collapse">
                     <ul className="nav navbar-nav">
-                        <li className="active"><Link to="/main/days">Home</Link></li>
+                        <li><Link to="/main/days">Home</Link></li>
                         <li><Link to="/main/record">Record</Link></li>
                         <li><Link to="/main/graph">Graph</Link></li>
                     </ul>
