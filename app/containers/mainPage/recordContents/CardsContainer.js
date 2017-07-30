@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import WorkoutCard from 'components/WorkoutCard';
 import InlineCalendar from 'components/InlineCalendar';
 
+import WorkoutConatiner from 'containers/mainPage/list/workout/WorkoutContainer';
+
 export default class CardsContainer extends Component{
     constructor(props){
         super(props);
@@ -43,6 +45,7 @@ export default class CardsContainer extends Component{
                         />
                     )
                 })}
+                <WorkoutConatiner/>
             </div>
         )
     }

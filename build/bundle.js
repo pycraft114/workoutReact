@@ -34536,9 +34536,9 @@
 
 	var _redux = __webpack_require__(165);
 
-	var _reactBootstrap = __webpack_require__(499);
-
 	var _reactRedux = __webpack_require__(159);
+
+	var _reactBootstrap = __webpack_require__(499);
 
 	var _action_selectDate = __webpack_require__(612);
 
@@ -55630,8 +55630,6 @@
 	    _createClass(NavBar, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
-	            console.log(window.location);
-
 	            var url = window.location.pathname;
 	            var currentPage = url.split('/')[2];
 
@@ -55781,11 +55779,7 @@
 
 	var _NavTab2 = _interopRequireDefault(_NavTab);
 
-	var _InlineCalendar = __webpack_require__(626);
-
-	var _InlineCalendar2 = _interopRequireDefault(_InlineCalendar);
-
-	var _CardsContainer = __webpack_require__(627);
+	var _CardsContainer = __webpack_require__(626);
 
 	var _CardsContainer2 = _interopRequireDefault(_CardsContainer);
 
@@ -55930,84 +55924,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 27..
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-
-	var InlineCalendar = function (_Component) {
-	    _inherits(InlineCalendar, _Component);
-
-	    function InlineCalendar(props) {
-	        _classCallCheck(this, InlineCalendar);
-
-	        return _possibleConstructorReturn(this, (InlineCalendar.__proto__ || Object.getPrototypeOf(InlineCalendar)).call(this, props));
-	    }
-
-	    _createClass(InlineCalendar, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            $('#datetimepicker12').datetimepicker({
-	                inline: true
-	            });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { id: 'calendar' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'form-group' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'row' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-md-8' },
-	                            _react2.default.createElement('div', { id: 'datetimepicker12' })
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return InlineCalendar;
-	}(_react.Component);
-
-	exports.default = InlineCalendar;
-
-/***/ }),
-/* 627 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _WorkoutCard = __webpack_require__(628);
+	var _WorkoutCard = __webpack_require__(627);
 
 	var _WorkoutCard2 = _interopRequireDefault(_WorkoutCard);
 
-	var _InlineCalendar = __webpack_require__(626);
+	var _InlineCalendar = __webpack_require__(628);
 
 	var _InlineCalendar2 = _interopRequireDefault(_InlineCalendar);
+
+	var _WorkoutContainer = __webpack_require__(358);
+
+	var _WorkoutContainer2 = _interopRequireDefault(_WorkoutContainer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -56051,7 +55978,8 @@
 	                        workoutType: currEle.type,
 	                        key: idx
 	                    });
-	                })
+	                }),
+	                _react2.default.createElement(_WorkoutContainer2.default, null)
 	            );
 	        }
 	    }]);
@@ -56062,7 +55990,7 @@
 	exports.default = CardsContainer;
 
 /***/ }),
-/* 628 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -56146,6 +56074,97 @@
 
 
 	exports.default = WorkoutCard;
+
+/***/ }),
+/* 628 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _redux = __webpack_require__(165);
+
+	var _reactRedux = __webpack_require__(159);
+
+	var _action_selectDate = __webpack_require__(612);
+
+	var _action_selectDate2 = _interopRequireDefault(_action_selectDate);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 7. 27..
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var InlineCalendar = function (_Component) {
+	    _inherits(InlineCalendar, _Component);
+
+	    function InlineCalendar(props) {
+	        _classCallCheck(this, InlineCalendar);
+
+	        return _possibleConstructorReturn(this, (InlineCalendar.__proto__ || Object.getPrototypeOf(InlineCalendar)).call(this, props));
+	    }
+
+	    _createClass(InlineCalendar, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            $('#datetimepicker12').datetimepicker({
+	                inline: true,
+	                format: 'YYYY-MM-DD'
+	            });
+
+	            $('#datetimepicker12').on('dp.change', function (e) {
+	                var pickedDate = $('#datetimepicker12').data('date');
+	                this.props.action_selectDate(pickedDate);
+	            }.bind(this));
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { id: 'calendar' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'form-group' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'row' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col-md-8' },
+	                            _react2.default.createElement('div', { id: 'datetimepicker12' })
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return InlineCalendar;
+	}(_react.Component);
+
+	function mapDispatchToProps(dispatch) {
+	    return (0, _redux.bindActionCreators)({
+	        action_selectDate: _action_selectDate2.default
+	    }, dispatch);
+	}
+
+	exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(InlineCalendar);
 
 /***/ }),
 /* 629 */

@@ -4,8 +4,8 @@
 import React,{ Component, PropTypes } from 'react';
 import DatePicker from 'react-bootstrap-date-picker';
 import { bindActionCreators } from 'redux';
-import { FormGroup, ControlLabel, HelpBlock, InputGroup} from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { FormGroup, ControlLabel, HelpBlock, InputGroup} from 'react-bootstrap';
 
 //import actions
 import action_selectDate from 'actions/actionsForWorkout/action_selectDate';

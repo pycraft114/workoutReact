@@ -6,7 +6,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { browserHistory } from 'react-router';
 
 import NavTab from 'components/NavTab';
-import InlineCalendar from 'components/InlineCalendar';
 import CardsContainer from './recordContents/CardsContainer';
 
 export default class Record extends Component{
