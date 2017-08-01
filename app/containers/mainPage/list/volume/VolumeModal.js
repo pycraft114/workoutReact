@@ -49,8 +49,8 @@ class VolumeModal extends Component {
                                     evt,
                                     this.props.kg,
                                     this.props.rep,
-                                    this.date,
-                                    this.workout,
+                                    this.props.selectedDate,
+                                    this.props.clickedWorkout,
                                     this.props.kgRepList
                                 )}} id="check">&#x2714;</p>
                             </div>
@@ -81,7 +81,7 @@ function mapStateToProps(state){
         rep:state.rep,
         kgRepList : state.kgRepList,
         selectedDate : state.selectedDate,
-        selectedWorkout : state.selectedWorkout
+        clickedWorkout : state.clickedWorkout
     }
 }
 

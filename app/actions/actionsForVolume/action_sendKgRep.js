@@ -5,6 +5,8 @@ import axios from 'axios';
 import {KGREP_SENT} from '../actionTypes';
 
 export default function(evt,kg,rep,date,workout,prevVolumes){
+    console.log("kg rep sending");
+    console.log(date,workout);
     const token = localStorage.getItem('token');
 
     if(evt.key ==="Enter" || evt.target.id === "check"){

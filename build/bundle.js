@@ -34349,6 +34349,8 @@
 	});
 
 	exports.default = function (evt, kg, rep, date, workout, prevVolumes) {
+	    console.log("kg rep sending");
+	    console.log(date, workout);
 	    var token = localStorage.getItem('token');
 
 	    if (evt.key === "Enter" || evt.target.id === "check") {
@@ -56015,7 +56017,7 @@
 	        var _this = _possibleConstructorReturn(this, (CardsContainer.__proto__ || Object.getPrototypeOf(CardsContainer)).call(this, props));
 
 	        _this.state = {
-	            chest: [{ description: "blahblahblahbl", type: "Bench Press" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Something" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }],
+	            chest: [{ description: "blahblahblahbl", type: "Bench Press" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Something" }, { description: "blahblahblahbl", type: "Squat" }, { description: "blahblahblahbl", type: "Dead lift" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }],
 	            leg: [{ description: "blahblahblahbl", type: "leg" }, { description: "blahblahblahbl", type: "leg" }],
 	            back: [{ description: "blahblahblahbl", type: "back" }]
 	        };
@@ -56378,7 +56380,7 @@
 	                                _react2.default.createElement(
 	                                    'p',
 	                                    { onClick: function onClick(evt) {
-	                                            _this2.props.action_sendKgRep(evt, _this2.props.kg, _this2.props.rep, _this2.date, _this2.workout, _this2.props.kgRepList);
+	                                            _this2.props.action_sendKgRep(evt, _this2.props.kg, _this2.props.rep, _this2.props.selectedDate, _this2.props.clickedWorkout, _this2.props.kgRepList);
 	                                        }, id: 'check' },
 	                                    '\u2714'
 	                                )
@@ -56416,7 +56418,7 @@
 	        rep: state.rep,
 	        kgRepList: state.kgRepList,
 	        selectedDate: state.selectedDate,
-	        selectedWorkout: state.selectedWorkout
+	        clickedWorkout: state.clickedWorkout
 	    };
 	}
 
