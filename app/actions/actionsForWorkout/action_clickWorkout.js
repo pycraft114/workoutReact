@@ -2,7 +2,7 @@
  * Created by chanwoopark on 2017. 7. 3..
  */
 import axios from 'axios';
-import { KGREP_FETCHED } from '../actionTypes';
+import { WORKOUT_CLICKED } from '../actionTypes';
 
 
 export default function(date, workout) {
@@ -15,7 +15,7 @@ export default function(date, workout) {
     return ((dispatch) => {
         getKgRep.then((res) => {
             console.log('client', res.data);
-            dispatch({ type: KGREP_FETCHED, kgRepList: res.data});
+            dispatch({ type: WORKOUT_CLICKED, workout: workout, kgRepList: res.data});
         });
     })
 

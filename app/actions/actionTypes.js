@@ -37,6 +37,8 @@ export const KGREP_FETCHED = "KGREP_FETCHED",
 
              WORKOUT_SELECTED = "WORKOUT_SELECTED",
 
+             WORKOUT_CLICKED = "WORKOUT_CLICKED",
+
              KGREP_SENT = "KGREP_SENT",
 
              KG_TYPED = "KG_TYPED",

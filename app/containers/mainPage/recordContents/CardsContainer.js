@@ -42,6 +42,7 @@ export default class CardsContainer extends Component{
                             description={currEle.description}
                             workoutType={currEle.type}
                             key={idx}
+                            category={category}
                         />
                     )
                 })}

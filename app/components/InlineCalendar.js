@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import action_selectDate from 'actions/actionsForWorkout/action_selectDate';
 
@@ -19,7 +20,7 @@ class InlineCalendar extends Component{
             format:'YYYY-MM-DD'
         });
 
-        $('#datetimepicker12').on('dp.change',function(e){
+        $('#datetimepicker12').on('dp.change',function(){
             const pickedDate = $('#datetimepicker12').data('date');
             this.props.action_selectDate(pickedDate);
         }.bind(this))
@@ -46,4 +47,4 @@ function mapDispatchToProps(dispatch){
     },dispatch);
 }
 
-export default connect(null,mapDispatchToProps)(InlineCalendar);
+export default withRouter(connect(null, mapDispatchToProps)(InlineCalendar));

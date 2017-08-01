@@ -4,12 +4,14 @@
 import React,{ Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import {BrowserRouter, Router, Switch, Link } from 'react-router-dom';
+import { browserHistory } from 'react-router';
+
 
 //import actions
 import action_typeKgRep from 'actions/actionsForVolume/action_typeKgRep';
 import action_sendKgRep from 'actions/actionsForVolume/action_sendKgRep';
-import action_fetchKgRep from 'actions/actionsForWorkout/action_fetchKgRep';
+import action_clickWorkout from 'actions/actionsForWorkout/action_clickWorkout';
 
 //import component
 import KgRep from './KgRep';
@@ -52,6 +54,14 @@ class VolumeModal extends Component {
                                     this.props.kgRepList
                                 )}} id="check">&#x2714;</p>
                             </div>
+
+                            <div id="kg-rep-list">
+                                <KgRep
+                                    date={this.props.selectedDate}
+                                    workout={this.props.selectedWorkout}
+                                >
+                                </KgRep>
+                            </div>
                         </div>
 
                         <div className="modal-footer">
@@ -69,7 +79,9 @@ function mapStateToProps(state){
     return{
         kg:state.kg,
         rep:state.rep,
-        kgRepList : state.kgRepList
+        kgRepList : state.kgRepList,
+        selectedDate : state.selectedDate,
+        selectedWorkout : state.selectedWorkout
     }
 }
 
@@ -77,7 +89,7 @@ function mapDispatchToProps(dispatch){
     return bindActionCreators({
         action_typeKgRep,
         action_sendKgRep,
-        action_fetchKgRep
+        action_clickWorkout
     },dispatch)
 }
 
