@@ -45,6 +45,7 @@ export default class CardsContainer extends Component{
                         />
                     )
                 })}
+                {/*to test action select date works fine*/}
                 <WorkoutConatiner/>
             </div>
         )

@@ -47,8 +47,7 @@ import { bindActionCreators } from 'redux';
     render(){
         return(
             <div className="line-graph-container">
-                <div id="chartContainer" style={{height:100+"%", width: 100+"%"}}></div>
-                <Selector
+                {/*<Selector
                     id="option-selector"
                     title="Option"
                     options={this.props.workoutOptions}
@@ -57,7 +56,16 @@ import { bindActionCreators } from 'redux';
                             this.props.action_selectOption(evtKey)
                         }
                     }
-                />
+                />*/}
+                <div id="chartContainer" style={{height:80+"vh", width: 65+"%"}}></div>
+                <div className="selector">
+                    <p>fortest</p>
+                    <p>fortest</p>
+                    <p>fortest</p>
+                    <p>fortest</p>
+                    <p>fortest</p>
+                    <p>fortest</p>
+                </div>
             </div>
         )
 

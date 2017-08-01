@@ -55208,20 +55208,44 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this2 = this;
-
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'line-graph-container' },
-	                _react2.default.createElement('div', { id: 'chartContainer', style: { height: 100 + "%", width: 100 + "%" } }),
-	                _react2.default.createElement(_Selector2.default, {
-	                    id: 'option-selector',
-	                    title: 'Option',
-	                    options: this.props.workoutOptions,
-	                    onSelect: function onSelect(evtKey) {
-	                        _this2.props.action_selectOption(evtKey);
-	                    }
-	                })
+	                _react2.default.createElement('div', { id: 'chartContainer', style: { height: 80 + "vh", width: 65 + "%" } }),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'selector' },
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'fortest'
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'fortest'
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'fortest'
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'fortest'
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'fortest'
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'fortest'
+	                    )
+	                )
 	            );
 	        }
 	    }]);
@@ -55712,15 +55736,6 @@
 	                                { to: '/main/graph' },
 	                                'Graph'
 	                            )
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'ul',
-	                        { className: 'nav navbar-nav navbar-right' },
-	                        _react2.default.createElement(
-	                            'button',
-	                            { type: 'button', className: 'btn btn-default navbar-btn' },
-	                            'Logout'
 	                        )
 	                    )
 	                )

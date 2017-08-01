@@ -54,9 +54,6 @@ export default class NavBar extends Component{
                         <li><Link to="/main/record">Record</Link></li>
                         <li><Link to="/main/graph">Graph</Link></li>
                     </ul>
-                    <ul className="nav navbar-nav navbar-right">
-                        <button type="button" className="btn btn-default navbar-btn">Logout</button>
-                    </ul>
                 </div>
             </nav>
         )
