@@ -7,6 +7,7 @@ import { browserHistory } from 'react-router';
 
 import NavTab from 'components/NavTab';
 import CardsContainer from './recordContents/CardsContainer';
+import VolumeModal from './list/volume/VolumeModal';
 
 export default class Record extends Component{
     constructor(props){
@@ -18,6 +19,7 @@ export default class Record extends Component{
             <BrowserRouter history={browserHistory}>
                 <div className="record">
                     <NavTab/>
+                    <VolumeModal/>
                     <Switch>
                         <Route path='/main/record/:category' component={CardsContainer}/>
                     </Switch>

@@ -77,12 +77,12 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/////
-	__webpack_require__(631);
+	__webpack_require__(632);
 
 	/////
 
-	__webpack_require__(636);
-	__webpack_require__(638);
+	__webpack_require__(637);
+	__webpack_require__(639);
 
 	/*
 	const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
@@ -31831,7 +31831,7 @@
 
 	var _MainPage2 = _interopRequireDefault(_MainPage);
 
-	var _Gate = __webpack_require__(630);
+	var _Gate = __webpack_require__(631);
 
 	var _Gate2 = _interopRequireDefault(_Gate);
 
@@ -33955,7 +33955,7 @@
 
 	var _Record2 = _interopRequireDefault(_Record);
 
-	var _action_clickLogout = __webpack_require__(629);
+	var _action_clickLogout = __webpack_require__(630);
 
 	var _action_clickLogout2 = _interopRequireDefault(_action_clickLogout);
 
@@ -55798,6 +55798,10 @@
 
 	var _CardsContainer2 = _interopRequireDefault(_CardsContainer);
 
+	var _VolumeModal = __webpack_require__(629);
+
+	var _VolumeModal2 = _interopRequireDefault(_VolumeModal);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55828,6 +55832,7 @@
 	                    'div',
 	                    { className: 'record' },
 	                    _react2.default.createElement(_NavTab2.default, null),
+	                    _react2.default.createElement(_VolumeModal2.default, null),
 	                    _react2.default.createElement(
 	                        _reactRouterDom.Switch,
 	                        null,
@@ -56066,7 +56071,7 @@
 	                                null,
 	                                _react2.default.createElement(
 	                                    "a",
-	                                    { href: "#", className: "btn btn-primary" },
+	                                    { href: "#", className: "btn btn-primary", "data-toggle": "modal", "data-target": "#myModal" },
 	                                    this.props.workoutType
 	                                )
 	                            )
@@ -56191,6 +56196,165 @@
 	    value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _redux = __webpack_require__(165);
+
+	var _reactRedux = __webpack_require__(159);
+
+	var _reactRouterDom = __webpack_require__(212);
+
+	var _action_typeKgRep = __webpack_require__(353);
+
+	var _action_typeKgRep2 = _interopRequireDefault(_action_typeKgRep);
+
+	var _action_sendKgRep = __webpack_require__(354);
+
+	var _action_sendKgRep2 = _interopRequireDefault(_action_sendKgRep);
+
+	var _action_fetchKgRep = __webpack_require__(355);
+
+	var _action_fetchKgRep2 = _interopRequireDefault(_action_fetchKgRep);
+
+	var _KgRep = __webpack_require__(356);
+
+	var _KgRep2 = _interopRequireDefault(_KgRep);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by chanwoopark on 2017. 8. 1..
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	//import actions
+
+
+	//import component
+
+
+	var VolumeModal = function (_Component) {
+	    _inherits(VolumeModal, _Component);
+
+	    function VolumeModal(props) {
+	        _classCallCheck(this, VolumeModal);
+
+	        return _possibleConstructorReturn(this, (VolumeModal.__proto__ || Object.getPrototypeOf(VolumeModal)).call(this, props));
+	    }
+
+	    _createClass(VolumeModal, [{
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'modal fade', id: 'myModal', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'myModalLabel' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'modal-dialog', role: 'document' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'modal-content' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'modal-header' },
+	                            _react2.default.createElement(
+	                                'button',
+	                                { type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close' },
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { 'aria-hidden': 'true' },
+	                                    '\xD7'
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'h4',
+	                                { className: 'modal-title', id: 'myModalLabel' },
+	                                'THIS IS FOR TEST'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'modal-body' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'input-volume' },
+	                                _react2.default.createElement('input', {
+	                                    type: 'number',
+	                                    id: 'kg',
+	                                    onChange: this.props.action_typeKgRep
+	                                }),
+	                                ' Kg x',
+	                                _react2.default.createElement('input', {
+	                                    type: 'number',
+	                                    id: 'rep',
+	                                    onChange: this.props.action_typeKgRep
+	                                }),
+	                                ' Rep',
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    { onClick: function onClick(evt) {
+	                                            _this2.props.action_sendKgRep(evt, _this2.props.kg, _this2.props.rep, _this2.date, _this2.workout, _this2.props.kgRepList);
+	                                        }, id: 'check' },
+	                                    '\u2714'
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'modal-footer' },
+	                            _react2.default.createElement(
+	                                'button',
+	                                { type: 'button', className: 'btn btn-default', 'data-dismiss': 'modal' },
+	                                'Close'
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return VolumeModal;
+	}(_react.Component);
+
+	function mapStateToProps(state) {
+	    return {
+	        kg: state.kg,
+	        rep: state.rep,
+	        kgRepList: state.kgRepList
+	    };
+	}
+
+	function mapDispatchToProps(dispatch) {
+	    return (0, _redux.bindActionCreators)({
+	        action_typeKgRep: _action_typeKgRep2.default,
+	        action_sendKgRep: _action_sendKgRep2.default,
+	        action_fetchKgRep: _action_fetchKgRep2.default
+	    }, dispatch);
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(VolumeModal);
+
+/***/ }),
+/* 630 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
 	exports.default = function () {
 	    localStorage.removeItem('token');
 
@@ -56200,7 +56364,7 @@
 	var _actionTypes = __webpack_require__(200);
 
 /***/ }),
-/* 630 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56235,13 +56399,13 @@
 	}
 
 /***/ }),
-/* 631 */
+/* 632 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(632);
+	var content = __webpack_require__(633);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -56249,7 +56413,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(634)(content, options);
+	var update = __webpack_require__(635)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -56266,10 +56430,10 @@
 	}
 
 /***/ }),
-/* 632 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(633)(undefined);
+	exports = module.exports = __webpack_require__(634)(undefined);
 	// imports
 
 
@@ -56280,7 +56444,7 @@
 
 
 /***/ }),
-/* 633 */
+/* 634 */
 /***/ (function(module, exports) {
 
 	/*
@@ -56362,7 +56526,7 @@
 
 
 /***/ }),
-/* 634 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -56408,7 +56572,7 @@
 	var	singletonCounter = 0;
 	var	stylesInsertedAtTop = [];
 
-	var	fixUrls = __webpack_require__(635);
+	var	fixUrls = __webpack_require__(636);
 
 	module.exports = function(list, options) {
 		if (false) {
@@ -56721,7 +56885,7 @@
 
 
 /***/ }),
-/* 635 */
+/* 636 */
 /***/ (function(module, exports) {
 
 	
@@ -56816,13 +56980,13 @@
 
 
 /***/ }),
-/* 636 */
+/* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(637);
+	var content = __webpack_require__(638);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -56830,7 +56994,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(634)(content, options);
+	var update = __webpack_require__(635)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -56847,10 +57011,10 @@
 	}
 
 /***/ }),
-/* 637 */
+/* 638 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(633)(undefined);
+	exports = module.exports = __webpack_require__(634)(undefined);
 	// imports
 
 
@@ -56861,13 +57025,13 @@
 
 
 /***/ }),
-/* 638 */
+/* 639 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(639);
+	var content = __webpack_require__(640);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -56875,7 +57039,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(634)(content, options);
+	var update = __webpack_require__(635)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -56892,10 +57056,10 @@
 	}
 
 /***/ }),
-/* 639 */
+/* 640 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(633)(undefined);
+	exports = module.exports = __webpack_require__(634)(undefined);
 	// imports
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);", ""]);
 

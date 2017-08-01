@@ -16,7 +16,7 @@ export default class WorkoutCard extends Component{
                         <img src="https://previews.123rf.com/images/nikdoorg/nikdoorg1401/nikdoorg140100014/25118481-Bench-Press-Icon-Stock-Vector.jpg" width="200" height="300" alt="..."/>
                             <div className="caption">
                                 <p>{this.props.description}</p>
-                                <p><a href="#" className="btn btn-primary">{this.props.workoutType}</a></p>
+                                <p><a href="#" className="btn btn-primary" data-toggle="modal" data-target="#myModal">{this.props.workoutType}</a></p>
                             </div>
                     </div>
                 </div>
