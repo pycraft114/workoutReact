@@ -28,7 +28,7 @@ class VolumeModal extends Component {
                     <div className="modal-content">
                         <div className="modal-header">
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 className="modal-title" id="myModalLabel">THIS IS FOR TEST</h4>
+                            <h4 className="modal-title" id="myModalLabel">{this.props.clickedWorkout}</h4>
                         </div>
 
                         <div className="modal-body">

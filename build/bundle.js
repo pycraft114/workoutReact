@@ -22002,7 +22002,7 @@
 	});
 
 	exports.default = function () {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialDate;
 	  var action = arguments[1];
 
 	  switch (action.type) {
@@ -22012,6 +22012,15 @@
 
 	  return state;
 	};
+
+	/**
+	 * Created by chanwoopark on 2017. 6. 30..
+	 */
+	/**
+	 * Created by chanwoopark on 2017. 6. 30..
+	 */
+
+	var initialDate = moment().format("YYYY-MM-DD");
 
 /***/ }),
 /* 205 */
@@ -56356,7 +56365,7 @@
 	                            _react2.default.createElement(
 	                                'h4',
 	                                { className: 'modal-title', id: 'myModalLabel' },
-	                                'THIS IS FOR TEST'
+	                                this.props.clickedWorkout
 	                            )
 	                        ),
 	                        _react2.default.createElement(
