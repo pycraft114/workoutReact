@@ -25,7 +25,7 @@ class ForTest extends Component{
                         component={LoginSignUpPage}
                         isAuthed={!this.props.isAuthed}
                         path="/login"
-                        redirUrl="/main"
+                        redirUrl="/main/days"
                     />
                     <Gate
                         component={MainPage}

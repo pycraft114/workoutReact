@@ -15,21 +15,23 @@ class WorkoutCard extends Component{
     }
 
     render(){
+        const {action_clickWorkout, selectedDate, workoutType, key, description} = this.props;
+
         return(
-            <div key={this.props.key}>
+            <div key={key}>
                 <div>
                     <div className="thumbnail">
                         <img src="https://previews.123rf.com/images/nikdoorg/nikdoorg1401/nikdoorg140100014/25118481-Bench-Press-Icon-Stock-Vector.jpg" width="200" height="300" alt="..."/>
                             <div className="caption">
-                                <p>{this.props.description}</p>
+                                <p>{description}</p>
                                 <p><a
                                     href="#"
                                     className="btn btn-primary"
                                     data-toggle="modal"
                                     data-target="#myModal"
-                                    onClick={() => {this.props.action_clickWorkout(this.props.selectedDate,this.props.workoutType)}}
+                                    onClick={() => {action_clickWorkout(selectedDate, workoutType)}}
                                 >
-                                    {this.props.workoutType}
+                                    {workoutType}
                                 </a></p>
                             </div>
                     </div>

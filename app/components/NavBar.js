@@ -3,7 +3,6 @@
  */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import setSideBarSettings from 'style/setSideBarSettings';
 
 export default class NavBar extends Component{
     constructor(props){
@@ -12,9 +11,9 @@ export default class NavBar extends Component{
 
     componentDidMount(){
         const url = window.location.pathname;
-        const currentPage = url.split('/')[2];
+        const currentCategory = url.split('/')[2];
 
-        switch(currentPage){
+        switch(currentCategory){
             case"days":
                 $('.nav li:contains("Home")').addClass("active");
                 break;
@@ -28,11 +27,9 @@ export default class NavBar extends Component{
 
         $(".nav li").on("click",function(){
             $(".nav li").removeClass("active");
-            console.log($(this));
             $(this).addClass("active");
         });
 
-        setSideBarSettings();
     }
 
     render(){

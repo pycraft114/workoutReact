@@ -8,9 +8,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch, Redirect, Link} from 'react-router-dom';
 import { browserHistory } from 'react-router';
+import setSideBarSettings from 'style/setSideBarSettings';
 
 //import components
-import List from './list/List';
+
 import LineGraph from './graph/LineGraph';
 import DoughnutGraph from './graph/DoughnutGraph'
 import SideBar from './sideBar/SideBar';
@@ -24,6 +25,10 @@ class MainPage extends Component{
     constructor(props){
         super(props);
 
+    }
+
+    componentDidMount(){
+        setSideBarSettings();
     }
 
     render(){
