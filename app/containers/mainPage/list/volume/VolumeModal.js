@@ -11,7 +11,6 @@ import { browserHistory } from 'react-router';
 //import actions
 import action_typeKgRep from 'actions/actionsForVolume/action_typeKgRep';
 import action_sendKgRep from 'actions/actionsForVolume/action_sendKgRep';
-import action_clickWorkout from 'actions/actionsForWorkout/action_clickWorkout';
 
 //import component
 import KgRep from './KgRep';
@@ -22,13 +21,15 @@ class VolumeModal extends Component {
     }
 
     render(){
+        const { kg, rep, kgRepList, selectedDate, clickedWorkout, action_typeKgRep, action_sendKgRep } = this.props;
+
         return(
             <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 className="modal-title" id="myModalLabel">{this.props.clickedWorkout}</h4>
+                            <h4 className="modal-title" id="myModalLabel">{clickedWorkout}</h4>
                         </div>
 
                         <div className="modal-body">
@@ -36,29 +37,29 @@ class VolumeModal extends Component {
                                 <input
                                     type="number"
                                     id="kg"
-                                    onChange={this.props.action_typeKgRep}
+                                    onChange={action_typeKgRep}
                                 /> Kg x
 
                                 <input
                                     type="number"
                                     id="rep"
-                                    onChange={this.props.action_typeKgRep}
+                                    onChange={action_typeKgRep}
                                 /> Rep
 
-                                <p onClick={(evt) => {this.props.action_sendKgRep(
+                                <p onClick={(evt) => {action_sendKgRep(
                                     evt,
-                                    this.props.kg,
-                                    this.props.rep,
-                                    this.props.selectedDate,
-                                    this.props.clickedWorkout,
-                                    this.props.kgRepList
+                                    kg,
+                                    rep,
+                                    selectedDate,
+                                    clickedWorkout,
+                                    kgRepList
                                 )}} id="check">&#x2714;</p>
                             </div>
 
                             <div id="kg-rep-list">
                                 <KgRep
-                                    date={this.props.selectedDate}
-                                    workout={this.props.clickedWorkout}
+                                    date={selectedDate}
+                                    workout={clickedWorkout}
                                 >
                                 </KgRep>
                             </div>
@@ -89,7 +90,6 @@ function mapDispatchToProps(dispatch){
     return bindActionCreators({
         action_typeKgRep,
         action_sendKgRep,
-        action_clickWorkout
     },dispatch)
 }
 
