@@ -6,7 +6,7 @@ import axios from 'axios';
 import {WRONG_PASSWORD,USER_NOT_FOUND,USER_AUTHED,BLANK_INPUT} from '../actionTypes';
 
 export default function(id,password){
-
+    console.log(id,password);
     if(id && password){
         const loginReq = axios.post('/login',{id, password});
 

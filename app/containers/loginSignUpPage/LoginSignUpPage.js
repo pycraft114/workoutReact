@@ -54,7 +54,11 @@ class LoginSignUpPage extends React.Component{
 
     render(){
         const { inputIds, placeholders, btnContent } = this.state;
-        const { message, formDatas, action_clickLoginBtn, action_changeInput, action_clickSignupBtn } = this.props;
+        const { message, action_clickLoginBtn, action_changeInput, formDatas, action_clickSignupBtn } = this.props;
+        debugger;
+        var a = formDatas;
+        var b = this.props.formDatas;
+        console.log(a === b);
 
         return(
             <div className="login-signup-page">
@@ -103,8 +107,13 @@ class LoginSignUpPage extends React.Component{
                                 {
                                     content:btnContent.login,
                                     evt:(evt) => {
+                                        debugger;
+                                        var a = formDatas;
+                                        var b = this.props.formDatas;
+                                        console.log(formDatas === this.props.formDatas);
+                                        console.log(this.props.formDatas);
                                         evt.preventDefault();
-                                        action_clickLoginBtn(formDatas.loginId, formDatas.loginPassword)
+                                        action_clickLoginBtn(this.props.formDatas.loginId, formDatas.loginPassword)
                                     }
                                 }
                             }

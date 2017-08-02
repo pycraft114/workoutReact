@@ -13,6 +13,7 @@ export default class SubmitForm extends Component{
     //props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
     //props.button = {context : x ,evt : func}
     render(){
+
         return(
             <div className="submit-form-container" autoComplete="off">
                 <form className="submit-form">

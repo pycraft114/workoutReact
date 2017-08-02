@@ -32046,17 +32046,23 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
 	            var _state = this.state,
 	                inputIds = _state.inputIds,
 	                placeholders = _state.placeholders,
 	                btnContent = _state.btnContent;
 	            var _props = this.props,
 	                message = _props.message,
-	                formDatas = _props.formDatas,
 	                action_clickLoginBtn = _props.action_clickLoginBtn,
 	                action_changeInput = _props.action_changeInput,
+	                formDatas = _props.formDatas,
 	                action_clickSignupBtn = _props.action_clickSignupBtn;
 
+	            debugger;
+	            var a = formDatas;
+	            var b = this.props.formDatas;
+	            console.log(a === b);
 
 	            return _react2.default.createElement(
 	                'div',
@@ -32109,8 +32115,13 @@
 	                            button: {
 	                                content: btnContent.login,
 	                                evt: function evt(_evt3) {
+	                                    debugger;
+	                                    var a = formDatas;
+	                                    var b = _this2.props.formDatas;
+	                                    console.log(formDatas === _this2.props.formDatas);
+	                                    console.log(_this2.props.formDatas);
 	                                    _evt3.preventDefault();
-	                                    action_clickLoginBtn(formDatas.loginId, formDatas.loginPassword);
+	                                    action_clickLoginBtn(_this2.props.formDatas.loginId, formDatas.loginPassword);
 	                                }
 	                            }
 	                        })
@@ -32317,6 +32328,7 @@
 	    _createClass(SubmitForm, [{
 	        key: "render",
 	        value: function render() {
+
 	            return _react2.default.createElement(
 	                "div",
 	                { className: "submit-form-container", autoComplete: "off" },
@@ -32361,7 +32373,7 @@
 	});
 
 	exports.default = function (id, password) {
-
+	    console.log(id, password);
 	    if (id && password) {
 	        var loginReq = _axios2.default.post('/login', { id: id, password: password });
 
@@ -54898,10 +54910,6 @@
 
 	var _action_sendKgRep2 = _interopRequireDefault(_action_sendKgRep);
 
-	var _action_clickWorkout = __webpack_require__(616);
-
-	var _action_clickWorkout2 = _interopRequireDefault(_action_clickWorkout);
-
 	var _KgRep = __webpack_require__(622);
 
 	var _KgRep2 = _interopRequireDefault(_KgRep);
@@ -54935,7 +54943,15 @@
 	    _createClass(VolumeModal, [{
 	        key: 'render',
 	        value: function render() {
-	            var _this2 = this;
+	            var _props = this.props,
+	                kg = _props.kg,
+	                rep = _props.rep,
+	                kgRepList = _props.kgRepList,
+	                selectedDate = _props.selectedDate,
+	                clickedWorkout = _props.clickedWorkout,
+	                action_typeKgRep = _props.action_typeKgRep,
+	                action_sendKgRep = _props.action_sendKgRep;
+
 
 	            return _react2.default.createElement(
 	                'div',
@@ -54961,7 +54977,7 @@
 	                            _react2.default.createElement(
 	                                'h4',
 	                                { className: 'modal-title', id: 'myModalLabel' },
-	                                this.props.clickedWorkout
+	                                clickedWorkout
 	                            )
 	                        ),
 	                        _react2.default.createElement(
@@ -54973,19 +54989,19 @@
 	                                _react2.default.createElement('input', {
 	                                    type: 'number',
 	                                    id: 'kg',
-	                                    onChange: this.props.action_typeKgRep
+	                                    onChange: action_typeKgRep
 	                                }),
 	                                ' Kg x',
 	                                _react2.default.createElement('input', {
 	                                    type: 'number',
 	                                    id: 'rep',
-	                                    onChange: this.props.action_typeKgRep
+	                                    onChange: action_typeKgRep
 	                                }),
 	                                ' Rep',
 	                                _react2.default.createElement(
 	                                    'p',
 	                                    { onClick: function onClick(evt) {
-	                                            _this2.props.action_sendKgRep(evt, _this2.props.kg, _this2.props.rep, _this2.props.selectedDate, _this2.props.clickedWorkout, _this2.props.kgRepList);
+	                                            action_sendKgRep(evt, kg, rep, selectedDate, clickedWorkout, kgRepList);
 	                                        }, id: 'check' },
 	                                    '\u2714'
 	                                )
@@ -54994,8 +55010,8 @@
 	                                'div',
 	                                { id: 'kg-rep-list' },
 	                                _react2.default.createElement(_KgRep2.default, {
-	                                    date: this.props.selectedDate,
-	                                    workout: this.props.clickedWorkout
+	                                    date: selectedDate,
+	                                    workout: clickedWorkout
 	                                })
 	                            )
 	                        ),
@@ -55030,8 +55046,7 @@
 	function mapDispatchToProps(dispatch) {
 	    return (0, _redux.bindActionCreators)({
 	        action_typeKgRep: _action_typeKgRep2.default,
-	        action_sendKgRep: _action_sendKgRep2.default,
-	        action_clickWorkout: _action_clickWorkout2.default
+	        action_sendKgRep: _action_sendKgRep2.default
 	    }, dispatch);
 	}
 
