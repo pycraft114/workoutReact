@@ -35,7 +35,7 @@ export default class SubmitForm extends Component{
                         type="submit"
                         className="button"
                         onClick={this.props.button.evt}
-                        value={this.props.button.context}
+                        value={this.props.button.content}
                     />
                 </form>
             </div>

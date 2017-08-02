@@ -22,6 +22,7 @@ class DoughnutGraph extends Component{
 
 
     componentDidUpdate(){
+        const { dataForDoughnut } = this.props;
         var chart = new CanvasJS.Chart("doughnut-container",
             {
                 title:{
@@ -38,8 +39,8 @@ class DoughnutGraph extends Component{
                         indexLabel: "{label}-{y} #percent%",
                         innerRadius:"90%",
                         dataPoints: [
-                            {y: this.props.dataForDoughnut.daysWorkedOut, label: "Days you have worked out", color:"green"},
-                            {y: this.props.dataForDoughnut.dayDifference-this.props.dataForDoughnut.daysWorkedOut, label: "Days you didn't" ,color:"lightgrey"},
+                            {y: dataForDoughnut.daysWorkedOut, label: "Days you have worked out", color:"green"},
+                            {y: dataForDoughnut.dayDifference - dataForDoughnut.daysWorkedOut, label: "Days you didn't" ,color:"lightgrey"},
                         ]
                     }
                 ]
@@ -50,9 +51,7 @@ class DoughnutGraph extends Component{
 
     render(){
         return(
-
             <div id="doughnut-container" style={{height:100+"%", width: 100+"%"}}></div>
-
         )
     }
 

@@ -7,12 +7,14 @@ import { bindActionCreators } from 'redux';
 import action_deleteKgRep from 'actions/actionsForVolume/action_deleteKgRep';
 
 class KgRep extends Component{
-    //renders as much as this.props.kgRepList length
+    //renders as much as kgRepList length
     render(){
+        const { kgRepList, date, workout, action_deleteKgRep } = this.props;
+
         return(
             <div className="kg-rep-container">
                 {
-                    this.props.kgRepList.map((obj,idx) => {
+                    kgRepList.map((obj,idx) => {
                         return(
 
                             <div className="kg-rep" key={idx}>
@@ -26,11 +28,11 @@ class KgRep extends Component{
                                     height={28}
                                     className="kgrep-delete-button"
                                     onClick={() => {
-                                        this.props.action_deleteKgRep(
-                                            this.props.date,
-                                            this.props.workout,
+                                        action_deleteKgRep(
+                                            date,
+                                            workout,
                                             idx,
-                                            this.props.kgRepList
+                                            kgRepList
                                         )
                                     }}
                                 >

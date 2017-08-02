@@ -12,6 +12,7 @@ export default function(date,workout,idx,prevVolumes){
     const newArr = [...prevVolumes];
     newArr.splice(idx,1);
 
+    console.log(date,workout,idx,prevVolumes);
     axios.put(`/kg_rep/${date_workout}`,newArr,{headers:{token}});
 
     return{

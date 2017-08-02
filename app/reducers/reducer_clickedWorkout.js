@@ -8,5 +8,6 @@ export default function(state = null, action){
         case WORKOUT_CLICKED:
             return action.workout;
     }
+
     return state;
 }

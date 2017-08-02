@@ -21900,7 +21900,7 @@
 	 */
 
 	var KGREP_FETCHED = exports.KGREP_FETCHED = "KGREP_FETCHED",
-	    VOL_DELETE_CLICKED = exports.VOL_DELETE_CLICKED = "WORKOUT_CLICKED",
+	    VOL_DELETE_CLICKED = exports.VOL_DELETE_CLICKED = "VOL_DELETE_CLICKED",
 	    WRONG_PASSWORD = exports.WRONG_PASSWORD = "WRONG_PASSWORD",
 	    USER_NOT_FOUND = exports.USER_NOT_FOUND = "USER_NOT_FOUND",
 	    BLANK_INPUT = exports.BLANK_INPUT = "BLANK_INPUT",
@@ -22185,6 +22185,7 @@
 	        case _actionTypes.WORKOUT_CLICKED:
 	            return action.workout;
 	    }
+
 	    return state;
 	};
 
@@ -32022,7 +32023,7 @@
 	                confirm: "Confirm your password",
 	                email: "Type your email"
 	            },
-	            btnContext: {
+	            btnContent: {
 	                login: "LOGIN",
 	                signup: "SIGN UP"
 	            }
@@ -32033,7 +32034,7 @@
 	    }
 	    /*
 	     props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
-	     props.button = {context : x ,evt : func}
+	     props.button = {content : x ,evt : func}
 	     를 SubmitForm 에게 넘겨줘야함
 	     */
 
@@ -32045,11 +32046,17 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this2 = this;
+	            var _state = this.state,
+	                inputIds = _state.inputIds,
+	                placeholders = _state.placeholders,
+	                btnContent = _state.btnContent;
+	            var _props = this.props,
+	                message = _props.message,
+	                formDatas = _props.formDatas,
+	                action_clickLoginBtn = _props.action_clickLoginBtn,
+	                action_changeInput = _props.action_changeInput,
+	                action_clickSignupBtn = _props.action_clickSignupBtn;
 
-	            var inputIds = this.state.inputIds,
-	                placeholders = this.state.placeholders,
-	                btnContext = this.state.btnContext;
 
 	            return _react2.default.createElement(
 	                'div',
@@ -32088,22 +32095,22 @@
 	                                id: inputIds.loginId,
 	                                placeholder: placeholders.id,
 	                                evt: function evt(_evt) {
-	                                    _this2.props.action_changeInput(_evt.target.id, _evt.target.value);
+	                                    action_changeInput(_evt.target.id, _evt.target.value);
 	                                }
 	                            }, {
 	                                id: inputIds.loginPassword,
 	                                placeholder: placeholders.password,
 	                                evt: function evt(_evt2) {
-	                                    _this2.props.action_changeInput(_evt2.target.id, _evt2.target.value);
+	                                    action_changeInput(_evt2.target.id, _evt2.target.value);
 	                                },
 	                                type: "password"
 	                            }],
 
 	                            button: {
-	                                context: btnContext.login,
+	                                content: btnContent.login,
 	                                evt: function evt(_evt3) {
 	                                    _evt3.preventDefault();
-	                                    _this2.props.action_clickLoginBtn(_this2.props.formDatas.loginId, _this2.props.formDatas.loginPassword);
+	                                    action_clickLoginBtn(formDatas.loginId, formDatas.loginPassword);
 	                                }
 	                            }
 	                        })
@@ -32112,26 +32119,47 @@
 	                        'div',
 	                        null,
 	                        _react2.default.createElement(_SubmitForm2.default, {
-	                            inputTags: [{ id: inputIds.signupId, placeholder: placeholders.id, evt: function evt(_evt4) {
-	                                    _this2.props.action_changeInput(_evt4.target.id, _evt4.target.value);
-	                                } }, { id: inputIds.signupPassword, placeholder: placeholders.password, evt: function evt(_evt5) {
-	                                    _this2.props.action_changeInput(_evt5.target.id, _evt5.target.value);
-	                                }, type: "password" }, { id: inputIds.signupConfirm, placeholder: placeholders.confirm, evt: function evt(_evt6) {
-	                                    _this2.props.action_changeInput(_evt6.target.id, _evt6.target.value);
-	                                }, type: "password" }, { id: inputIds.signupEmail, placeholder: placeholders.email, evt: function evt(_evt7) {
-	                                    _this2.props.action_changeInput(_evt7.target.id, _evt7.target.value);
-	                                } }],
-	                            button: { context: "SIGN-UP", evt: function evt(_evt8) {
+	                            inputTags: [{
+	                                id: inputIds.signupId,
+	                                placeholder: placeholders.id,
+	                                evt: function evt(_evt4) {
+	                                    action_changeInput(_evt4.target.id, _evt4.target.value);
+	                                }
+	                            }, {
+	                                id: inputIds.signupPassword,
+	                                placeholder: placeholders.password,
+	                                evt: function evt(_evt5) {
+	                                    action_changeInput(_evt5.target.id, _evt5.target.value);
+	                                },
+	                                type: "password"
+	                            }, {
+	                                id: inputIds.signupConfirm,
+	                                placeholder: placeholders.confirm,
+	                                evt: function evt(_evt6) {
+	                                    action_changeInput(_evt6.target.id, _evt6.target.value);
+	                                },
+	                                type: "password"
+	                            }, {
+	                                id: inputIds.signupEmail,
+	                                placeholder: placeholders.email,
+	                                evt: function evt(_evt7) {
+	                                    action_changeInput(_evt7.target.id, _evt7.target.value);
+	                                }
+	                            }],
+	                            button: {
+	                                content: "SIGN-UP",
+	                                evt: function evt(_evt8) {
 	                                    _evt8.preventDefault();
-	                                    _this2.props.action_clickSignupBtn(_this2.props.formDatas.signupId, _this2.props.formDatas.signupPassword, _this2.props.formDatas.signupConfirm, _this2.props.formDatas.signupEmail);
-	                                } }
+	                                    action_clickSignupBtn(formDatas.signupId, formDatas.signupPassword, formDatas.signupConfirm, formDatas.signupEmail);
+	                                }
+	                            }
 	                        })
 	                    )
 	                ),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'error-msg' },
-	                    this.props.message
+	                    message
 	                )
 	            );
 	        }
@@ -32310,7 +32338,7 @@
 	                        type: "submit",
 	                        className: "button",
 	                        onClick: this.props.button.evt,
-	                        value: this.props.button.context
+	                        value: this.props.button.content
 	                    })
 	                )
 	            );
@@ -53944,6 +53972,8 @@
 	    }, {
 	        key: 'componentDidUpdate',
 	        value: function componentDidUpdate() {
+	            var dataForDoughnut = this.props.dataForDoughnut;
+
 	            var chart = new CanvasJS.Chart("doughnut-container", {
 	                title: {
 	                    text: "Days you have worked out",
@@ -53957,7 +53987,7 @@
 	                    toolTipContent: "{label}: <strong>#percent%</strong>",
 	                    indexLabel: "{label}-{y} #percent%",
 	                    innerRadius: "90%",
-	                    dataPoints: [{ y: this.props.dataForDoughnut.daysWorkedOut, label: "Days you have worked out", color: "green" }, { y: this.props.dataForDoughnut.dayDifference - this.props.dataForDoughnut.daysWorkedOut, label: "Days you didn't", color: "lightgrey" }]
+	                    dataPoints: [{ y: dataForDoughnut.daysWorkedOut, label: "Days you have worked out", color: "green" }, { y: dataForDoughnut.dayDifference - dataForDoughnut.daysWorkedOut, label: "Days you didn't", color: "lightgrey" }]
 	                }]
 	            });
 	            chart.render();
@@ -54693,6 +54723,7 @@
 	    return function (dispatch) {
 	        getKgRep.then(function (res) {
 	            console.log('client', res.data);
+	            console.log("action_clickWorkout");
 	            dispatch({ type: _actionTypes.WORKOUT_CLICKED, workout: workout, kgRepList: res.data });
 	        });
 	    };
@@ -54964,7 +54995,7 @@
 	                                { id: 'kg-rep-list' },
 	                                _react2.default.createElement(_KgRep2.default, {
 	                                    date: this.props.selectedDate,
-	                                    workout: this.props.selectedWorkout
+	                                    workout: this.props.clickedWorkout
 	                                })
 	                            )
 	                        ),
@@ -55121,14 +55152,19 @@
 	    _createClass(KgRep, [{
 	        key: 'render',
 
-	        //renders as much as this.props.kgRepList length
+	        //renders as much as kgRepList length
 	        value: function render() {
-	            var _this2 = this;
+	            var _props = this.props,
+	                kgRepList = _props.kgRepList,
+	                date = _props.date,
+	                workout = _props.workout,
+	                action_deleteKgRep = _props.action_deleteKgRep;
+
 
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'kg-rep-container' },
-	                this.props.kgRepList.map(function (obj, idx) {
+	                kgRepList.map(function (obj, idx) {
 	                    return _react2.default.createElement(
 	                        'div',
 	                        { className: 'kg-rep', key: idx },
@@ -55146,7 +55182,7 @@
 	                            height: 28,
 	                            className: 'kgrep-delete-button',
 	                            onClick: function onClick() {
-	                                _this2.props.action_deleteKgRep(_this2.props.date, _this2.props.workout, idx, _this2.props.kgRepList);
+	                                action_deleteKgRep(date, workout, idx, kgRepList);
 	                            }
 	                        })
 	                    );
@@ -55192,6 +55228,7 @@
 	    var newArr = [].concat(_toConsumableArray(prevVolumes));
 	    newArr.splice(idx, 1);
 
+	    console.log(date, workout, idx, prevVolumes);
 	    _axios2.default.put('/kg_rep/' + date_workout, newArr, { headers: { token: token } });
 
 	    return {

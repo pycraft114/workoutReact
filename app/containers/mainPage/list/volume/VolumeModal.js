@@ -58,7 +58,7 @@ class VolumeModal extends Component {
                             <div id="kg-rep-list">
                                 <KgRep
                                     date={this.props.selectedDate}
-                                    workout={this.props.selectedWorkout}
+                                    workout={this.props.clickedWorkout}
                                 >
                                 </KgRep>
                             </div>

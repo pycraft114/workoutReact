@@ -15,6 +15,7 @@ export default function(date, workout) {
     return ((dispatch) => {
         getKgRep.then((res) => {
             console.log('client', res.data);
+            console.log("action_clickWorkout");
             dispatch({ type: WORKOUT_CLICKED, workout: workout, kgRepList: res.data});
         });
     })

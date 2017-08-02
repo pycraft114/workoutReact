@@ -34,7 +34,7 @@ class LoginSignUpPage extends React.Component{
                 confirm : "Confirm your password",
                 email:"Type your email"
             },
-            btnContext:{
+            btnContent:{
                 login:"LOGIN",
                 signup:"SIGN UP"
             },
@@ -44,7 +44,7 @@ class LoginSignUpPage extends React.Component{
     }
     /*
      props.inputTags = [{id : x, placeholder : y, evt : func},{id : x, placeholder : y, evt : func}]
-     props.button = {context : x ,evt : func}
+     props.button = {content : x ,evt : func}
      를 SubmitForm 에게 넘겨줘야함
      */
 
@@ -53,9 +53,8 @@ class LoginSignUpPage extends React.Component{
     }
 
     render(){
-        const inputIds = this.state.inputIds,
-            placeholders = this.state.placeholders,
-            btnContext = this.state.btnContext;
+        const { inputIds, placeholders, btnContent } = this.state;
+        const { message, formDatas, action_clickLoginBtn, action_changeInput, action_clickSignupBtn } = this.props;
 
         return(
             <div className="login-signup-page">
@@ -89,12 +88,12 @@ class LoginSignUpPage extends React.Component{
                                     {
                                         id:inputIds.loginId,
                                         placeholder:placeholders.id,
-                                        evt:(evt) => {this.props.action_changeInput(evt.target.id, evt.target.value)}
+                                        evt:(evt) => {action_changeInput(evt.target.id, evt.target.value)}
                                     },
                                     {
                                         id:inputIds.loginPassword,
                                         placeholder:placeholders.password,
-                                        evt:(evt) => {this.props.action_changeInput(evt.target.id, evt.target.value)},
+                                        evt:(evt) => {action_changeInput(evt.target.id, evt.target.value)},
                                         type:"password"
                                     }
                                 ]
@@ -102,10 +101,10 @@ class LoginSignUpPage extends React.Component{
 
                             button={
                                 {
-                                    context:btnContext.login,
+                                    content:btnContent.login,
                                     evt:(evt) => {
                                         evt.preventDefault();
-                                        this.props.action_clickLoginBtn(this.props.formDatas.loginId, this.props.formDatas.loginPassword)
+                                        action_clickLoginBtn(formDatas.loginId, formDatas.loginPassword)
                                     }
                                 }
                             }
@@ -113,19 +112,44 @@ class LoginSignUpPage extends React.Component{
                     </div>
                     <div>
                         <SubmitForm
-                            inputTags={[{id:inputIds.signupId, placeholder:placeholders.id, evt:(evt) => {this.props.action_changeInput(evt.target.id,evt.target.value)}},
-                                {id:inputIds.signupPassword, placeholder:placeholders.password, evt:(evt) => {this.props.action_changeInput(evt.target.id,evt.target.value)},type:"password"},
-                                {id:inputIds.signupConfirm, placeholder:placeholders.confirm, evt:(evt) => {this.props.action_changeInput(evt.target.id,evt.target.value)},type:"password"},
-                                {id:inputIds.signupEmail, placeholder:placeholders.email, evt:(evt) => {this.props.action_changeInput(evt.target.id,evt.target.value)}}]}
-                            button={{context:"SIGN-UP",evt:(evt) => {
-                                evt.preventDefault();
-                                this.props.action_clickSignupBtn(this.props.formDatas.signupId,this.props.formDatas.signupPassword,this.props.formDatas.signupConfirm,this.props.formDatas.signupEmail);
-                            }}}
+                            inputTags={
+                                [
+                                    {
+                                        id:inputIds.signupId,
+                                        placeholder:placeholders.id,
+                                        evt:(evt) => {action_changeInput(evt.target.id,evt.target.value)}
+                                    },
+                                    {
+                                        id:inputIds.signupPassword,
+                                        placeholder:placeholders.password,
+                                        evt:(evt) => {action_changeInput(evt.target.id,evt.target.value)},
+                                        type:"password"
+                                    },
+                                    {
+                                        id:inputIds.signupConfirm,
+                                        placeholder:placeholders.confirm,
+                                        evt:(evt) => {action_changeInput(evt.target.id,evt.target.value)},
+                                        type:"password"
+                                    },
+                                    {
+                                        id:inputIds.signupEmail,
+                                        placeholder:placeholders.email,
+                                        evt:(evt) => {action_changeInput(evt.target.id,evt.target.value)}
+                                    }
+                                ]
+                            }
+                            button={{
+                                content:"SIGN-UP",
+                                evt:(evt) => {
+                                    evt.preventDefault();
+                                    action_clickSignupBtn(formDatas.signupId, formDatas.signupPassword, formDatas.signupConfirm, formDatas.signupEmail);
+                                }
+                            }}
                         />
                     </div>
                 </Slides>
                 <div className="error-msg">
-                    {this.props.message}
+                    {message}
                 </div>
             </div>
         )
