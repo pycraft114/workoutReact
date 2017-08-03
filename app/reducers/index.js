@@ -8,18 +8,17 @@ import reducer_kg from "./reducer_kg";
 import reducer_rep from "./reducer_rep";
 import reducer_kgRepList from "./reducer_kgRepList";
 import reducer_selectedDate from "./reducer_selectedDate";
-import reducer_selectedWorkouts from "./reducer_selectedWorkouts";
 import reducer_workoutOptions from "./reducer_workoutOptions";
 import reducer_dataForCanvas from "./reducer_dataForCanvas";
 import reducer_dataForDoughnut from "./reducer_dataForDoughnut";
 import reducer_isAuthed from './reducer_isAuthed';
 import reducer_formDatas from './reducer_formDatas';
 import reducer_clickedWorkout from './reducer_clickedWorkout';
+import reducer_doneWorkouts from './reducer_doneWorkouts';
 
 
 //combineReducer tells the redux how to create application state
 const rootReducer = combineReducers({
-    selectedWorkouts:reducer_selectedWorkouts,
 
     selectedDate:reducer_selectedDate,
 
@@ -41,7 +40,9 @@ const rootReducer = combineReducers({
 
     formDatas:reducer_formDatas,
 
-    clickedWorkout : reducer_clickedWorkout
+    clickedWorkout : reducer_clickedWorkout,
+
+    doneWorkouts : reducer_doneWorkouts
 });
 //==> state{books:blah,
 //          activeBook:blah}

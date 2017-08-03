@@ -9,11 +9,22 @@ export default function(date){
 
     const token = localStorage.getItem('token');
 
-    const getReq = axios.get(`/selected_workouts/${date}`,{headers:{token}});
+    const getReq = axios.get(`/workouts/${date}`,{headers:{token}});
 
     return(dispatch) => {
         getReq.then((res) => {
-            dispatch({type:DATE_SELECTED, date: date, response:res.data})
+            if(res.data !== "NOT_FOUND"){
+                const doneWorkouts = [];
+                res.data.forEach(function(element){
+                    const workout = element["user_date_workout"].split("_")[2];
+                    doneWorkouts.push(workout);
+                });
+
+                dispatch({ type:DATE_SELECTED, date: date, response:doneWorkouts });
+            }else{
+                dispatch({ type:DATE_SELECTED, date: date, response:[] })
+            }
+
         })
     };
 

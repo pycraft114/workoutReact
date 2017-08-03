@@ -21780,39 +21780,38 @@
 
 	var _reducer_selectedDate2 = _interopRequireDefault(_reducer_selectedDate);
 
-	var _reducer_selectedWorkouts = __webpack_require__(205);
-
-	var _reducer_selectedWorkouts2 = _interopRequireDefault(_reducer_selectedWorkouts);
-
-	var _reducer_workoutOptions = __webpack_require__(206);
+	var _reducer_workoutOptions = __webpack_require__(205);
 
 	var _reducer_workoutOptions2 = _interopRequireDefault(_reducer_workoutOptions);
 
-	var _reducer_dataForCanvas = __webpack_require__(207);
+	var _reducer_dataForCanvas = __webpack_require__(206);
 
 	var _reducer_dataForCanvas2 = _interopRequireDefault(_reducer_dataForCanvas);
 
-	var _reducer_dataForDoughnut = __webpack_require__(208);
+	var _reducer_dataForDoughnut = __webpack_require__(207);
 
 	var _reducer_dataForDoughnut2 = _interopRequireDefault(_reducer_dataForDoughnut);
 
-	var _reducer_isAuthed = __webpack_require__(209);
+	var _reducer_isAuthed = __webpack_require__(208);
 
 	var _reducer_isAuthed2 = _interopRequireDefault(_reducer_isAuthed);
 
-	var _reducer_formDatas = __webpack_require__(210);
+	var _reducer_formDatas = __webpack_require__(209);
 
 	var _reducer_formDatas2 = _interopRequireDefault(_reducer_formDatas);
 
-	var _reducer_clickedWorkout = __webpack_require__(211);
+	var _reducer_clickedWorkout = __webpack_require__(210);
 
 	var _reducer_clickedWorkout2 = _interopRequireDefault(_reducer_clickedWorkout);
+
+	var _reducer_doneWorkouts = __webpack_require__(211);
+
+	var _reducer_doneWorkouts2 = _interopRequireDefault(_reducer_doneWorkouts);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	//combineReducer tells the redux how to create application state
 	var rootReducer = (0, _redux.combineReducers)({
-	    selectedWorkouts: _reducer_selectedWorkouts2.default,
 
 	    selectedDate: _reducer_selectedDate2.default,
 
@@ -21834,7 +21833,9 @@
 
 	    formDatas: _reducer_formDatas2.default,
 
-	    clickedWorkout: _reducer_clickedWorkout2.default
+	    clickedWorkout: _reducer_clickedWorkout2.default,
+
+	    doneWorkouts: _reducer_doneWorkouts2.default
 	});
 	//==> state{books:blah,
 	//          activeBook:blah}
@@ -22029,32 +22030,6 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	exports.default = function () {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-	    var action = arguments[1];
-
-	    switch (action.type) {
-	        case "DATE_SELECTED":
-	            return action.response;
-	        case "WORKOUT_SELECTED":
-	            return action.selectedWorkouts;
-	        case "WORKOUTDELBTN_CLICKED":
-	            return action.selectedWorkouts;
-	    }
-
-	    return state;
-	};
-
-/***/ }),
-/* 206 */
-/***/ (function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
@@ -22063,7 +22038,7 @@
 	};
 
 /***/ }),
-/* 207 */
+/* 206 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -22085,7 +22060,7 @@
 	};
 
 /***/ }),
-/* 208 */
+/* 207 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -22107,7 +22082,7 @@
 	};
 
 /***/ }),
-/* 209 */
+/* 208 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -22131,7 +22106,7 @@
 	};
 
 /***/ }),
-/* 210 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22168,7 +22143,7 @@
 	});
 
 /***/ }),
-/* 211 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22190,6 +22165,28 @@
 	};
 
 	var _actionTypes = __webpack_require__(200);
+
+/***/ }),
+/* 211 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	exports.default = function () {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	    var action = arguments[1];
+
+	    switch (action.type) {
+	        case "DATE_SELECTED":
+	            console.log('reducer_doneWorkouts', action.response);
+	            return action.response;
+	    }
+	    return state;
+	};
 
 /***/ }),
 /* 212 */
@@ -32059,10 +32056,6 @@
 	                formDatas = _props.formDatas,
 	                action_clickSignupBtn = _props.action_clickSignupBtn;
 
-	            debugger;
-	            var a = formDatas;
-	            var b = this.props.formDatas;
-	            console.log(a === b);
 
 	            return _react2.default.createElement(
 	                'div',
@@ -32115,13 +32108,12 @@
 	                            button: {
 	                                content: btnContent.login,
 	                                evt: function evt(_evt3) {
-	                                    debugger;
 	                                    var a = formDatas;
 	                                    var b = _this2.props.formDatas;
 	                                    console.log(formDatas === _this2.props.formDatas);
 	                                    console.log(_this2.props.formDatas);
 	                                    _evt3.preventDefault();
-	                                    action_clickLoginBtn(_this2.props.formDatas.loginId, formDatas.loginPassword);
+	                                    action_clickLoginBtn(_this2.props.formDatas.loginId, _this2.props.formDatas.loginPassword);
 	                                }
 	                            }
 	                        })
@@ -32161,7 +32153,7 @@
 	                                content: "SIGN-UP",
 	                                evt: function evt(_evt8) {
 	                                    _evt8.preventDefault();
-	                                    action_clickSignupBtn(formDatas.signupId, formDatas.signupPassword, formDatas.signupConfirm, formDatas.signupEmail);
+	                                    action_clickSignupBtn(_this2.props.formDatas.signupId, _this2.props.formDatas.signupPassword, _this2.props.formDatas.signupConfirm, _this2.props.formDatas.signupEmail);
 	                                }
 	                            }
 	                        })
@@ -54531,6 +54523,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRedux = __webpack_require__(159);
+
 	var _WorkoutCard = __webpack_require__(615);
 
 	var _WorkoutCard2 = _interopRequireDefault(_WorkoutCard);
@@ -54570,6 +54564,20 @@
 	        key: 'render',
 	        value: function render() {
 	            var category = this.props.match.params.category;
+	            var doneWorkouts = this.props.doneWorkouts;
+
+	            function checkIfDone(doneWorkouts, comparison) {
+	                var done = false;
+	                doneWorkouts.map(function (currElement) {
+	                    if (currElement === comparison) {
+	                        done = true;
+	                    }
+	                });
+
+	                return done;
+	            }
+
+	            console.log("cards container rendering");
 
 	            return _react2.default.createElement(
 	                'div',
@@ -54580,7 +54588,8 @@
 	                        description: currEle.description,
 	                        workoutType: currEle.type,
 	                        key: idx,
-	                        category: category
+	                        category: category,
+	                        done: checkIfDone(doneWorkouts, currEle.type)
 	                    });
 	                })
 	            );
@@ -54590,7 +54599,11 @@
 	    return CardsContainer;
 	}(_react.Component);
 
-	exports.default = CardsContainer;
+	function mapStateToProps(state) {
+	    return { doneWorkouts: state.doneWorkouts };
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(CardsContainer);
 
 /***/ }),
 /* 615 */
@@ -54658,7 +54671,13 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'thumbnail' },
-	                        _react2.default.createElement('img', { src: 'https://previews.123rf.com/images/nikdoorg/nikdoorg1401/nikdoorg140100014/25118481-Bench-Press-Icon-Stock-Vector.jpg', width: '200', height: '300', alt: '...' }),
+	                        _react2.default.createElement('div', { className: 'thumbnail-overlay' }),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'smth' },
+	                            _react2.default.createElement('p', { className: 'glyphicon glyphicon-ok' })
+	                        ),
+	                        _react2.default.createElement('img', { src: 'https://previews.123rf.com/images/nikdoorg/nikdoorg1401/nikdoorg140100014/25118481-Bench-Press-Icon-Stock-Vector.jpg', width: '200', height: '200', alt: '...' }),
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'caption' },
@@ -54861,11 +54880,21 @@
 
 	    var token = localStorage.getItem('token');
 
-	    var getReq = _axios2.default.get('/selected_workouts/' + date, { headers: { token: token } });
+	    var getReq = _axios2.default.get('/workouts/' + date, { headers: { token: token } });
 
 	    return function (dispatch) {
 	        getReq.then(function (res) {
-	            dispatch({ type: _actionTypes.DATE_SELECTED, date: date, response: res.data });
+	            if (res.data !== "NOT_FOUND") {
+	                var doneWorkouts = [];
+	                res.data.forEach(function (element) {
+	                    var workout = element["user_date_workout"].split("_")[2];
+	                    doneWorkouts.push(workout);
+	                });
+
+	                dispatch({ type: _actionTypes.DATE_SELECTED, date: date, response: doneWorkouts });
+	            } else {
+	                dispatch({ type: _actionTypes.DATE_SELECTED, date: date, response: [] });
+	            }
 	        });
 	    };
 	};
@@ -55938,7 +55967,7 @@
 
 
 	// module
-	exports.push([module.id, "/*\n\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n!*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*!\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}\n\n\n\n\n.line-graph-container{\n    display:inline-block;\n    float:left;\n}*/\n", ""]);
+	exports.push([module.id, "/*\n\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n!*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*!\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}\n\n\n\n\n.line-graph-container{\n    display:inline-block;\n    float:left;\n}*/\n\n.thumbnail{\n    position:relative;\n}\n\n.thumbnail-overlay{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    padding: 0;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(0,0,0,0.5);\n    border-radius: 4px;\n}", ""]);
 
 	// exports
 

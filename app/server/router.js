@@ -156,6 +156,23 @@ module.exports = function(app){
 
     });
 
+    app.get("/workouts/:date", authentication, function(req,res){
+        const user = req.user,
+              date = req.params.date,
+              user_date = user+"_"+date;
+
+        let getDoneWorkoutQuery = connection.query('SELECT user_date_workout FROM volume WHERE user_date_workout LIKE ?', `%${user_date}%`, function(err,results){
+            if(err){
+                throw err;
+            }if(results.length){
+                console.log(results);
+                res.send(results);
+            }else{
+                res.send("NOT_FOUND");
+            }
+        })
+    });
+
     /*app.get("/volume/workout",function(req,res){
      var workoutOptions = req.query.workoutOptions;
 

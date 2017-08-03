@@ -21,19 +21,24 @@ class WorkoutCard extends Component{
             <div key={key}>
                 <div>
                     <div className="thumbnail">
-                        <img src="https://previews.123rf.com/images/nikdoorg/nikdoorg1401/nikdoorg140100014/25118481-Bench-Press-Icon-Stock-Vector.jpg" width="200" height="300" alt="..."/>
-                            <div className="caption">
-                                <p>{description}</p>
-                                <p><a
-                                    href="#"
-                                    className="btn btn-primary"
-                                    data-toggle="modal"
-                                    data-target="#myModal"
-                                    onClick={() => {action_clickWorkout(selectedDate, workoutType)}}
-                                >
-                                    {workoutType}
-                                </a></p>
-                            </div>
+                        <div className="thumbnail-overlay"></div>
+                        <div className="smth"><p className="glyphicon glyphicon-ok"></p></div>
+
+                        <img src="https://previews.123rf.com/images/nikdoorg/nikdoorg1401/nikdoorg140100014/25118481-Bench-Press-Icon-Stock-Vector.jpg" width="200" height="200" alt="..."/>
+
+                        <div className="caption">
+                            <p>{description}</p>
+
+                            <p><a
+                                href="#"
+                                className="btn btn-primary"
+                                data-toggle="modal"
+                                data-target="#myModal"
+                                onClick={() => {action_clickWorkout(selectedDate, workoutType)}}
+                            >
+                                {workoutType}
+                            </a></p>
+                        </div>
                     </div>
                 </div>
             </div>

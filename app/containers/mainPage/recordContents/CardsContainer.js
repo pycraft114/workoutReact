@@ -2,12 +2,14 @@
  * Created by chanwoopark on 2017. 7. 28..
  */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import WorkoutCard from 'components/WorkoutCard';
 import InlineCalendar from 'components/InlineCalendar';
 
 
 
-export default class CardsContainer extends Component{
+class CardsContainer extends Component{
     constructor(props){
         super(props);
 
@@ -30,8 +32,23 @@ export default class CardsContainer extends Component{
         };
     }
 
+
     render(){
         const category = this.props.match.params.category;
+        const doneWorkouts = this.props.doneWorkouts;
+
+        function checkIfDone(doneWorkouts, comparison){
+            let done = false;
+            doneWorkouts.map(function(currElement){
+                if(currElement === comparison){
+                    done = true;
+                }
+            });
+
+            return done;
+        }
+
+        console.log("cards container rendering");
 
         return(
             <div className="card-container">
@@ -43,6 +60,7 @@ export default class CardsContainer extends Component{
                             workoutType={currEle.type}
                             key={idx}
                             category={category}
+                            done={checkIfDone(doneWorkouts,currEle.type)}
                         />
                     )
                 })}
@@ -51,3 +69,10 @@ export default class CardsContainer extends Component{
         )
     }
 }
+
+function mapStateToProps(state){
+    return { doneWorkouts : state.doneWorkouts }
+}
+
+export default connect(mapStateToProps,null)(CardsContainer)
+

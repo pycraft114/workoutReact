@@ -55,14 +55,9 @@ class LoginSignUpPage extends React.Component{
     render(){
         const { inputIds, placeholders, btnContent } = this.state;
         const { message, action_clickLoginBtn, action_changeInput, formDatas, action_clickSignupBtn } = this.props;
-        debugger;
-        var a = formDatas;
-        var b = this.props.formDatas;
-        console.log(a === b);
 
         return(
             <div className="login-signup-page">
-
 
                 <div className="logo-container">
                     <img
@@ -107,13 +102,12 @@ class LoginSignUpPage extends React.Component{
                                 {
                                     content:btnContent.login,
                                     evt:(evt) => {
-                                        debugger;
                                         var a = formDatas;
                                         var b = this.props.formDatas;
                                         console.log(formDatas === this.props.formDatas);
                                         console.log(this.props.formDatas);
                                         evt.preventDefault();
-                                        action_clickLoginBtn(this.props.formDatas.loginId, formDatas.loginPassword)
+                                        action_clickLoginBtn(this.props.formDatas.loginId, this.props.formDatas.loginPassword)
                                     }
                                 }
                             }
@@ -151,7 +145,7 @@ class LoginSignUpPage extends React.Component{
                                 content:"SIGN-UP",
                                 evt:(evt) => {
                                     evt.preventDefault();
-                                    action_clickSignupBtn(formDatas.signupId, formDatas.signupPassword, formDatas.signupConfirm, formDatas.signupEmail);
+                                    action_clickSignupBtn(this.props.formDatas.signupId, this.props.formDatas.signupPassword, this.props.formDatas.signupConfirm, this.props.formDatas.signupEmail);
                                 }
                             }}
                         />
