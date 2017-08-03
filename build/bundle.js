@@ -54971,6 +54971,19 @@
 	    }
 
 	    _createClass(VolumeModal, [{
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            console.log("volume modal updated");
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            $('#myModal').on('hide.bs.modal', function (e) {
+	                // do something...
+	                console.log("modal closed");
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _props = this.props,
@@ -55968,7 +55981,7 @@
 
 
 	// module
-	exports.push([module.id, "/*\n\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n!*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*!\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}\n\n\n\n\n.line-graph-container{\n    display:inline-block;\n    float:left;\n}*/\n\n.thumbnail{\n    position:relative;\n}\n\n.thumbnail-overlay{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    padding: 0;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(0,0,0,0.5);\n    border-radius: 4px;\n    display:none\n}\n.thumbnail-overlay.done{\n    display: block;\n}\n\n.thumbnail-footer{\n    position:relative;\n}\n\n.check-icon{\n    display: block;\n    margin: auto;\n    margin-top: 45px;\n}", ""]);
+	exports.push([module.id, "/*\n\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n!*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*!\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}\n\n\n\n\n.line-graph-container{\n    display:inline-block;\n    float:left;\n}*/\n\n.thumbnail{\n    position:relative;\n}\n\n.thumbnail-overlay{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    padding: 0;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(0,0,0,0.5);\n    border-radius: 4px;\n    display:none;\n}\n.thumbnail-overlay.done{\n    display: block;\n}\n\n.thumbnail-footer{\n    position:relative;\n}\n\n.check-icon{\n    display: block;\n    margin: auto;\n    margin-top: 45px;\n}", ""]);
 
 	// exports
 

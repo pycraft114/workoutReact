@@ -20,6 +20,17 @@ class VolumeModal extends Component {
         super(props)
     }
 
+    componentDidUpdate(){
+        console.log("volume modal updated");
+    }
+
+    componentDidMount(){
+        $('#myModal').on('hide.bs.modal', function (e) {
+            // do something...
+            console.log("modal closed");
+        })
+    }
+
     render(){
         const { kg, rep, kgRepList, selectedDate, clickedWorkout, action_typeKgRep, action_sendKgRep } = this.props;
 
