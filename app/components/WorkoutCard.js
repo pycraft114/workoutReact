@@ -15,13 +15,16 @@ class WorkoutCard extends Component{
     }
 
     render(){
-        const {action_clickWorkout, selectedDate, workoutType, key, description} = this.props;
+        const {action_clickWorkout, selectedDate, workoutType, key, description, done} = this.props;
+        const overlayClassName = done ? "thumbnail-overlay done" : "thumbnail-overlay";
 
         return(
             <div key={key}>
                 <div>
                     <div className="thumbnail">
-                        <div className="thumbnail-overlay"><img className="check-icon" src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/512/Tick_Mark-128.png"/></div>
+                        <div className={overlayClassName} display="none">
+                            <img className="check-icon" src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/512/Tick_Mark-128.png"/>
+                        </div>
 
                         <img src="https://previews.123rf.com/images/nikdoorg/nikdoorg1401/nikdoorg140100014/25118481-Bench-Press-Icon-Stock-Vector.jpg" width="200" height="200" alt="..."/>
 

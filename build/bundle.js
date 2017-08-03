@@ -54659,8 +54659,10 @@
 	                selectedDate = _props.selectedDate,
 	                workoutType = _props.workoutType,
 	                key = _props.key,
-	                description = _props.description;
+	                description = _props.description,
+	                done = _props.done;
 
+	            var overlayClassName = done ? "thumbnail-overlay done" : "thumbnail-overlay";
 
 	            return _react2.default.createElement(
 	                'div',
@@ -54673,7 +54675,7 @@
 	                        { className: 'thumbnail' },
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'thumbnail-overlay' },
+	                            { className: overlayClassName, display: 'none' },
 	                            _react2.default.createElement('img', { className: 'check-icon', src: 'https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/512/Tick_Mark-128.png' })
 	                        ),
 	                        _react2.default.createElement('img', { src: 'https://previews.123rf.com/images/nikdoorg/nikdoorg1401/nikdoorg140100014/25118481-Bench-Press-Icon-Stock-Vector.jpg', width: '200', height: '200', alt: '...' }),
@@ -55966,7 +55968,7 @@
 
 
 	// module
-	exports.push([module.id, "/*\n\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n!*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*!\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}\n\n\n\n\n.line-graph-container{\n    display:inline-block;\n    float:left;\n}*/\n\n.thumbnail{\n    position:relative;\n}\n\n.thumbnail-overlay{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    padding: 0;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(0,0,0,0.5);\n    border-radius: 4px;\n}\n\n.thumbnail-footer{\n    position:relative;\n}\n\n.check-icon{\n    display: block;\n    margin: auto;\n    margin-top: 45px;\n}", ""]);
+	exports.push([module.id, "/*\n\n\n.workout-list-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.workout-list{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.selected-workout-button{\n    margin-top:10px;\n    margin-bottom:10px;\n\n\n}\n!*\n\n.date-picker-container{\n\n    margin-top:10px;\n    margin-bottom:10px;\n\n}\n\n.date-picker-header{\n    display:inline;\n}\n*!\n\n.selected-workout-button{\n    margin:3px;\n}\n\n.kg-rep div{\n    display:inline;\n}\n\na{\n    text-decoration:none !important;\n}\n\n\n\n\n.line-graph-container{\n    display:inline-block;\n    float:left;\n}*/\n\n.thumbnail{\n    position:relative;\n}\n\n.thumbnail-overlay{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    padding: 0;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(0,0,0,0.5);\n    border-radius: 4px;\n    display:none\n}\n.thumbnail-overlay.done{\n    display: block;\n}\n\n.thumbnail-footer{\n    position:relative;\n}\n\n.check-icon{\n    display: block;\n    margin: auto;\n    margin-top: 45px;\n}", ""]);
 
 	// exports
 
