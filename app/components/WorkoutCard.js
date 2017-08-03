@@ -21,15 +21,14 @@ class WorkoutCard extends Component{
             <div key={key}>
                 <div>
                     <div className="thumbnail">
-                        <div className="thumbnail-overlay"></div>
-                        <div className="smth"><p className="glyphicon glyphicon-ok"></p></div>
+                        <div className="thumbnail-overlay"><img className="check-icon" src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/512/Tick_Mark-128.png"/></div>
 
                         <img src="https://previews.123rf.com/images/nikdoorg/nikdoorg1401/nikdoorg140100014/25118481-Bench-Press-Icon-Stock-Vector.jpg" width="200" height="200" alt="..."/>
 
                         <div className="caption">
                             <p>{description}</p>
 
-                            <p><a
+                            <p className="thumbnail-footer"><a
                                 href="#"
                                 className="btn btn-primary"
                                 data-toggle="modal"

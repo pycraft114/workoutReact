@@ -72,3 +72,13 @@ a{
     background: rgba(0,0,0,0.5);
     border-radius: 4px;
 }
+
+.thumbnail-footer{
+    position:relative;
+}
+
+.check-icon{
+    display: block;
+    margin: auto;
+    margin-top: 45px;
+}
