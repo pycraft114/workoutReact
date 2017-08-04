@@ -6,7 +6,7 @@
 //한번바뀌고 난이후로 state의 값이 undefined으로 설정해주지 않는경우 절대로 이후에 default값을 가질 일은 없을것.
 
 //정확하게 reducer함수가 invoke될때 인자로 무엇이 전달되는가?
-import { KGREP_SENT, KGREP_FETCHED, VOL_DELETE_CLICKED, WORKOUT_CLICKED } from 'actions/actionTypes';
+import { KGREP_SENT, VOL_DELETE_CLICKED, WORKOUT_CLICKED } from 'actions/actionTypes';
 
 
 export default function(state = [],action){

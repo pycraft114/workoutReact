@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import WorkoutCard from 'components/WorkoutCard';
 import InlineCalendar from 'components/InlineCalendar';
 
+import action_fetchDoneWorkouts from 'actions/action_fetchDoneWorkouts';
+
 
 
 class CardsContainer extends Component{
@@ -32,6 +34,9 @@ class CardsContainer extends Component{
         };
     }
 
+    componentDidMount(){
+        this.props
+    }
 
     render(){
         const category = this.props.match.params.category;
@@ -72,6 +77,10 @@ class CardsContainer extends Component{
 
 function mapStateToProps(state){
     return { doneWorkouts : state.doneWorkouts }
+}
+
+function mapDispatchToProps(dispatch){
+    return
 }
 
 export default connect(mapStateToProps,null)(CardsContainer)

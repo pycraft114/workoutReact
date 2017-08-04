@@ -11,6 +11,7 @@ import { browserHistory } from 'react-router';
 //import actions
 import action_typeKgRep from 'actions/actionsForVolume/action_typeKgRep';
 import action_sendKgRep from 'actions/actionsForVolume/action_sendKgRep';
+import action_fetchDoneWorkouts from 'actions/action_fetchDoneWorkouts';
 
 //import component
 import KgRep from './KgRep';
@@ -20,15 +21,10 @@ class VolumeModal extends Component {
         super(props)
     }
 
-    componentDidUpdate(){
-        console.log("volume modal updated");
-    }
-
     componentDidMount(){
-        $('#myModal').on('hide.bs.modal', function (e) {
-            // do something...
-            console.log("modal closed");
-        })
+        $('#myModal').on('hide.bs.modal', function(){
+            this.props.action_fetchDoneWorkouts(this.props.selectedDate)
+        }.bind(this));
     }
 
     render(){
@@ -101,6 +97,7 @@ function mapDispatchToProps(dispatch){
     return bindActionCreators({
         action_typeKgRep,
         action_sendKgRep,
+        action_fetchDoneWorkouts
     },dispatch)
 }
 

@@ -77,12 +77,12 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/////
-	__webpack_require__(626);
+	__webpack_require__(627);
 
 	/////
 
-	__webpack_require__(631);
-	__webpack_require__(633);
+	__webpack_require__(632);
+	__webpack_require__(634);
 
 	/*
 	const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
@@ -21919,7 +21919,8 @@
 	    REP_TYPED = exports.REP_TYPED = "REP_TYPED",
 	    INPUT_MODIFIED = exports.INPUT_MODIFIED = "INPUT_MODIFIED",
 	    USER_AUTHED = exports.USER_AUTHED = "USER_AUTHED",
-	    USER_DEAUTHED = exports.USER_DEAUTHED = "USER_DEAUTHED";
+	    USER_DEAUTHED = exports.USER_DEAUTHED = "USER_DEAUTHED",
+	    DONEWORKOUTS_FETCHED = exports.DONEWORKOUTS_FETCHED = "DONEWORKOUT_FETCHED";
 
 /***/ }),
 /* 201 */
@@ -21994,7 +21995,7 @@
 
 /***/ }),
 /* 204 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
@@ -22007,21 +22008,21 @@
 	  var action = arguments[1];
 
 	  switch (action.type) {
-	    case "DATE_SELECTED":
+	    case _actionTypes.DATE_SELECTED:
 	      return action.date;
 	  }
 
 	  return state;
 	};
 
-	/**
-	 * Created by chanwoopark on 2017. 6. 30..
-	 */
-	/**
-	 * Created by chanwoopark on 2017. 6. 30..
-	 */
+	var _actionTypes = __webpack_require__(200);
 
-	var initialDate = moment().format("YYYY-MM-DD");
+	var initialDate = moment().format("YYYY-MM-DD"); /**
+	                                                  * Created by chanwoopark on 2017. 6. 30..
+	                                                  */
+	/**
+	 * Created by chanwoopark on 2017. 6. 30..
+	 */
 
 /***/ }),
 /* 205 */
@@ -22168,9 +22169,9 @@
 
 /***/ }),
 /* 211 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -22181,12 +22182,14 @@
 	    var action = arguments[1];
 
 	    switch (action.type) {
-	        case "DATE_SELECTED":
-	            console.log('reducer_doneWorkouts', action.response);
-	            return action.response;
+	        case _actionTypes.DONEWORKOUTS_FETCHED:
+	            console.log('reducer_doneWorkouts', action.doneWorkouts);
+	            return action.doneWorkouts;
 	    }
 	    return state;
 	};
+
+	var _actionTypes = __webpack_require__(200);
 
 /***/ }),
 /* 212 */
@@ -31877,7 +31880,7 @@
 
 	var _MainPage2 = _interopRequireDefault(_MainPage);
 
-	var _Gate = __webpack_require__(625);
+	var _Gate = __webpack_require__(626);
 
 	var _Gate2 = _interopRequireDefault(_Gate);
 
@@ -34035,7 +34038,7 @@
 
 	var _Record2 = _interopRequireDefault(_Record);
 
-	var _action_clickLogout = __webpack_require__(624);
+	var _action_clickLogout = __webpack_require__(625);
 
 	var _action_clickLogout2 = _interopRequireDefault(_action_clickLogout);
 
@@ -54377,7 +54380,7 @@
 
 	var _CardsContainer2 = _interopRequireDefault(_CardsContainer);
 
-	var _VolumeModal = __webpack_require__(619);
+	var _VolumeModal = __webpack_require__(620);
 
 	var _VolumeModal2 = _interopRequireDefault(_VolumeModal);
 
@@ -54799,6 +54802,10 @@
 
 	var _action_selectDate2 = _interopRequireDefault(_action_selectDate);
 
+	var _action_fetchDoneWorkouts = __webpack_require__(619);
+
+	var _action_fetchDoneWorkouts2 = _interopRequireDefault(_action_fetchDoneWorkouts);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -54830,6 +54837,7 @@
 	            $('#datetimepicker12').on('dp.change', function () {
 	                var pickedDate = $('#datetimepicker12').data('date');
 	                this.props.action_selectDate(pickedDate);
+	                this.props.action_fetchDoneWorkouts(pickedDate);
 	            }.bind(this));
 	        }
 	    }, {
@@ -54860,7 +54868,8 @@
 
 	function mapDispatchToProps(dispatch) {
 	    return (0, _redux.bindActionCreators)({
-	        action_selectDate: _action_selectDate2.default
+	        action_selectDate: _action_selectDate2.default,
+	        action_fetchDoneWorkouts: _action_fetchDoneWorkouts2.default
 	    }, dispatch);
 	}
 
@@ -54870,6 +54879,23 @@
 /* 618 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function (date) {
+	  console.log("date", date);
+	  return { type: _actionTypes.DATE_SELECTED, date: date };
+	};
+
+	var _actionTypes = __webpack_require__(200);
+
+/***/ }),
+/* 619 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -54877,10 +54903,7 @@
 	});
 
 	exports.default = function (date) {
-	    console.log("date", date);
-
 	    var token = localStorage.getItem('token');
-
 	    var getReq = _axios2.default.get('/workouts/' + date, { headers: { token: token } });
 
 	    return function (dispatch) {
@@ -54888,13 +54911,13 @@
 	            if (res.data !== "NOT_FOUND") {
 	                var doneWorkouts = [];
 	                res.data.forEach(function (element) {
-	                    var workout = element["user_date_workout"].split("_")[2];
+	                    var workout = element.user_date_workout.split("_")[2];
 	                    doneWorkouts.push(workout);
 	                });
 
-	                dispatch({ type: _actionTypes.DATE_SELECTED, date: date, response: doneWorkouts });
+	                dispatch({ type: _actionTypes.DONEWORKOUTS_FETCHED, doneWorkouts: doneWorkouts });
 	            } else {
-	                dispatch({ type: _actionTypes.DATE_SELECTED, date: date, response: [] });
+	                dispatch({ type: _actionTypes.DONEWORKOUTS_FETCHED, doneWorkouts: [] });
 	            }
 	        });
 	    };
@@ -54909,7 +54932,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 619 */
+/* 620 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54932,15 +54955,19 @@
 
 	var _reactRouter = __webpack_require__(257);
 
-	var _action_typeKgRep = __webpack_require__(620);
+	var _action_typeKgRep = __webpack_require__(621);
 
 	var _action_typeKgRep2 = _interopRequireDefault(_action_typeKgRep);
 
-	var _action_sendKgRep = __webpack_require__(621);
+	var _action_sendKgRep = __webpack_require__(622);
 
 	var _action_sendKgRep2 = _interopRequireDefault(_action_sendKgRep);
 
-	var _KgRep = __webpack_require__(622);
+	var _action_fetchDoneWorkouts = __webpack_require__(619);
+
+	var _action_fetchDoneWorkouts2 = _interopRequireDefault(_action_fetchDoneWorkouts);
+
+	var _KgRep = __webpack_require__(623);
 
 	var _KgRep2 = _interopRequireDefault(_KgRep);
 
@@ -54971,17 +54998,11 @@
 	    }
 
 	    _createClass(VolumeModal, [{
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate() {
-	            console.log("volume modal updated");
-	        }
-	    }, {
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
-	            $('#myModal').on('hide.bs.modal', function (e) {
-	                // do something...
-	                console.log("modal closed");
-	            });
+	            $('#myModal').on('hide.bs.modal', function () {
+	                this.props.action_fetchDoneWorkouts(this.props.selectedDate);
+	            }.bind(this));
 	        }
 	    }, {
 	        key: 'render',
@@ -55089,14 +55110,15 @@
 	function mapDispatchToProps(dispatch) {
 	    return (0, _redux.bindActionCreators)({
 	        action_typeKgRep: _action_typeKgRep2.default,
-	        action_sendKgRep: _action_sendKgRep2.default
+	        action_sendKgRep: _action_sendKgRep2.default,
+	        action_fetchDoneWorkouts: _action_fetchDoneWorkouts2.default
 	    }, dispatch);
 	}
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(VolumeModal);
 
 /***/ }),
-/* 620 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55122,7 +55144,7 @@
 	var _actionTypes = __webpack_require__(200);
 
 /***/ }),
-/* 621 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55164,7 +55186,7 @@
 	                                                                                                                                                                                                     */
 
 /***/ }),
-/* 622 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55183,7 +55205,7 @@
 
 	var _redux = __webpack_require__(165);
 
-	var _action_deleteKgRep = __webpack_require__(623);
+	var _action_deleteKgRep = __webpack_require__(624);
 
 	var _action_deleteKgRep2 = _interopRequireDefault(_action_deleteKgRep);
 
@@ -55269,7 +55291,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(KgRep);
 
 /***/ }),
-/* 623 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55308,7 +55330,7 @@
 	                                                                                                                                                                                                     */
 
 /***/ }),
-/* 624 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55326,7 +55348,7 @@
 	var _actionTypes = __webpack_require__(200);
 
 /***/ }),
-/* 625 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55361,13 +55383,13 @@
 	}
 
 /***/ }),
-/* 626 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(627);
+	var content = __webpack_require__(628);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -55375,7 +55397,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(629)(content, options);
+	var update = __webpack_require__(630)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -55392,10 +55414,10 @@
 	}
 
 /***/ }),
-/* 627 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(628)(undefined);
+	exports = module.exports = __webpack_require__(629)(undefined);
 	// imports
 
 
@@ -55406,7 +55428,7 @@
 
 
 /***/ }),
-/* 628 */
+/* 629 */
 /***/ (function(module, exports) {
 
 	/*
@@ -55488,7 +55510,7 @@
 
 
 /***/ }),
-/* 629 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -55534,7 +55556,7 @@
 	var	singletonCounter = 0;
 	var	stylesInsertedAtTop = [];
 
-	var	fixUrls = __webpack_require__(630);
+	var	fixUrls = __webpack_require__(631);
 
 	module.exports = function(list, options) {
 		if (false) {
@@ -55847,7 +55869,7 @@
 
 
 /***/ }),
-/* 630 */
+/* 631 */
 /***/ (function(module, exports) {
 
 	
@@ -55942,13 +55964,13 @@
 
 
 /***/ }),
-/* 631 */
+/* 632 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(632);
+	var content = __webpack_require__(633);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -55956,7 +55978,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(629)(content, options);
+	var update = __webpack_require__(630)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -55973,10 +55995,10 @@
 	}
 
 /***/ }),
-/* 632 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(628)(undefined);
+	exports = module.exports = __webpack_require__(629)(undefined);
 	// imports
 
 
@@ -55987,13 +56009,13 @@
 
 
 /***/ }),
-/* 633 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(634);
+	var content = __webpack_require__(635);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// Prepare cssTransformation
 	var transform;
@@ -56001,7 +56023,7 @@
 	var options = {}
 	options.transform = transform
 	// add the styles to the DOM
-	var update = __webpack_require__(629)(content, options);
+	var update = __webpack_require__(630)(content, options);
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -56018,10 +56040,10 @@
 	}
 
 /***/ }),
-/* 634 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(628)(undefined);
+	exports = module.exports = __webpack_require__(629)(undefined);
 	// imports
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);", ""]);
 
