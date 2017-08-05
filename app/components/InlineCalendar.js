@@ -34,7 +34,7 @@ class InlineCalendar extends Component{
             <div id="calendar">
                 <div className="form-group">
                     <div className="row">
-                        <div className="col-md-8">
+                        <div className="col-md-12">
                             <div id="datetimepicker12"></div>
                         </div>
                     </div>

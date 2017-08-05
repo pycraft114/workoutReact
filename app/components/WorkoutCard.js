@@ -29,9 +29,9 @@ class WorkoutCard extends Component{
                         <img src="https://previews.123rf.com/images/nikdoorg/nikdoorg1401/nikdoorg140100014/25118481-Bench-Press-Icon-Stock-Vector.jpg" width="200" height="200" alt="..."/>
 
                         <div className="caption">
-                            <p>{description}</p>
+                            <p className="thumbnail-description">{description}</p>
 
-                            <p className="thumbnail-footer"><a
+                            <p className="thumbnail-button"><a
                                 href="#"
                                 className="btn btn-primary"
                                 data-toggle="modal"

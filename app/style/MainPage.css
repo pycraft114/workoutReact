@@ -77,8 +77,13 @@ a{
     display: block;
 }
 
-.thumbnail-footer{
+.thumbnail-button{
     position:relative;
+}
+.thumbnail-description{
+    height:72px;
+    word-wrap:break-word;
+    overflow:scroll;
 }
 
 .check-icon{

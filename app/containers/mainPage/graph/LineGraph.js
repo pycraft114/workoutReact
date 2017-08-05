@@ -15,7 +15,7 @@ import { bindActionCreators } from 'redux';
     }
 
     initiateChart(){
-        const chart = new CanvasJS.Chart("chartContainer", {
+        var chart = new CanvasJS.Chart("chartContainer", {
             animationEnabled: true,
             title:{
                 text:"Your Volume Growth"

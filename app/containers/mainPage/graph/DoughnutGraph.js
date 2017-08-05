@@ -50,8 +50,10 @@ class DoughnutGraph extends Component{
 
 
     render(){
+        console.log("doughnut graph component rendering");
+        console.log(this.props.dataForDoughnut);
         return(
-            <div id="doughnut-container" style={{height:100+"%", width: 100+"%"}}></div>
+            <div id="doughnut-container" style={{height:90+"vh", width: 100+"%"}}></div>
         )
     }
 
