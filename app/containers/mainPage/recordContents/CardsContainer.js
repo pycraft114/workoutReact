@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import WorkoutCard from 'components/WorkoutCard';
 import InlineCalendar from 'components/InlineCalendar';
@@ -35,25 +36,21 @@ class CardsContainer extends Component{
     }
 
     componentDidMount(){
-        this.props
+        this.props.action_fetchDoneWorkouts(this.props.selectedDate);
+    }
+
+    checkIfDone(doneWorkouts, comparison){
+        for(let i = 0; i < doneWorkouts.length; i++){
+            if(doneWorkouts[i] === comparison){
+                return true;
+            }
+        }
+        return false;
     }
 
     render(){
         const category = this.props.match.params.category;
         const doneWorkouts = this.props.doneWorkouts;
-
-        function checkIfDone(doneWorkouts, comparison){
-            let done = false;
-            doneWorkouts.map(function(currElement){
-                if(currElement === comparison){
-                    done = true;
-                }
-            });
-
-            return done;
-        }
-
-        console.log("cards container rendering");
 
         return(
             <div className="card-container">
@@ -65,23 +62,25 @@ class CardsContainer extends Component{
                             workoutType={currEle.type}
                             key={idx}
                             category={category}
-                            done={checkIfDone(doneWorkouts,currEle.type)}
+                            done={this.checkIfDone(doneWorkouts,currEle.type)}
                         />
                     )
-                })}
-                {/*to test action select date works fine*/}
+                }.bind(this))}
             </div>
         )
     }
 }
 
 function mapStateToProps(state){
-    return { doneWorkouts : state.doneWorkouts }
+    return {
+        doneWorkouts : state.doneWorkouts,
+        selectedDate : state.selectedDate
+    }
 }
 
 function mapDispatchToProps(dispatch){
-    return
+    return bindActionCreators({action_fetchDoneWorkouts},dispatch)
 }
 
-export default connect(mapStateToProps,null)(CardsContainer)
+export default connect(mapStateToProps,mapDispatchToProps)(CardsContainer)
 

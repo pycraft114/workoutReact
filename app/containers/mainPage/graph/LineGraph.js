@@ -3,7 +3,7 @@
  */
 import React,{ Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Selector from 'components/Selector';
+import LineGraphOptions from 'containers/LineGraphOptions';
 import action_selectOption from 'actions/actionsForGraph/action_selectOption';
 import { bindActionCreators } from 'redux';
 
@@ -15,7 +15,7 @@ import { bindActionCreators } from 'redux';
     }
 
     initiateChart(){
-        var chart = new CanvasJS.Chart("chartContainer", {
+        const chart = new CanvasJS.Chart("chartContainer", {
             animationEnabled: true,
             title:{
                 text:"Your Volume Growth"
@@ -59,12 +59,7 @@ import { bindActionCreators } from 'redux';
                 />*/}
                 <div id="chartContainer" style={{height:80+"vh", width: 65+"%"}}></div>
                 <div className="selector">
-                    <p>fortest</p>
-                    <p>fortest</p>
-                    <p>fortest</p>
-                    <p>fortest</p>
-                    <p>fortest</p>
-                    <p>fortest</p>
+                    <LineGraphOptions/>
                 </div>
             </div>
         )
