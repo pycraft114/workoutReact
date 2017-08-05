@@ -200,11 +200,13 @@ ul ul a {
 
 .thumbnail-button{
     position:relative;
+    font-family: monospace;
 }
 .thumbnail-description{
     height:72px;
     word-wrap:break-word;
     overflow:scroll;
+    font-family: monospace;
 }
 
 .check-icon{

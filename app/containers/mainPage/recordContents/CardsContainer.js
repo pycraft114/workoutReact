@@ -17,8 +17,8 @@ class CardsContainer extends Component{
         super(props);
 
         this.state={
-            chest:[{description:"blahblahblahbl", type:"Bench Press"},
-                {description:"blahblahblahbl", type:"Cable"},
+            chest:[{description:"The bench press is an upper body strength training exercise that consists of pressing a weight upwards from a supine position.", type:"Bench Press"},
+                {description:"The Dumbbell Bench Press is a Bench Press performed with a dumbbell .", type:"Dumbbell Bench Press"},
                 {description:"blahblahblahbl", type:"Something"},
                 {description:"blahblahblahbl", type:"Squat"},
                 {description:"blahblahblahbl", type:"Dead lift"},
