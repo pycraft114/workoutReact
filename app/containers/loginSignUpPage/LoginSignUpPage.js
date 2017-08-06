@@ -102,10 +102,6 @@ class LoginSignUpPage extends React.Component{
                                 {
                                     content:btnContent.login,
                                     evt:(evt) => {
-                                        var a = formDatas;
-                                        var b = this.props.formDatas;
-                                        console.log(formDatas === this.props.formDatas);
-                                        console.log(this.props.formDatas);
                                         evt.preventDefault();
                                         action_clickLoginBtn(this.props.formDatas.loginId, this.props.formDatas.loginPassword)
                                     }
