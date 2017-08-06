@@ -16,10 +16,10 @@ export default class SideBar extends Component{
                 </div>
 
                 <div className="sidebar-header">
-                    <h3>CONSISTENCY</h3>
+                    <img src="https://user-images.githubusercontent.com/24728657/29000613-25ab50b6-7aab-11e7-8720-14dce411a5d7.png"/>
                 </div>
 
-                <ul className="list-unstyled components">
+                {/*<ul className="list-unstyled components">
                     <li className="active"><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li>
@@ -32,7 +32,7 @@ export default class SideBar extends Component{
                     </li>
                     <li><a href="#">Portfolio</a></li>
                     <li><a href="#">Contact</a></li>
-                </ul>
+                </ul>*/}
             </nav>
         )
     }

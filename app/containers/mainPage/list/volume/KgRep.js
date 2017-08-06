@@ -17,8 +17,8 @@ class KgRep extends Component{
                     kgRepList.map((obj,idx) => {
                         return(
 
-                            <div className="kg-rep" key={idx}>
-                                <div>
+                            <div className="kg-rep-sub-container" key={idx}>
+                                <div className="kg-rep">
                                     {obj.kg} Kg x {obj.rep} Rep
                                 </div>
 
