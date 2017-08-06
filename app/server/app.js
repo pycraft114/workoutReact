@@ -30,6 +30,14 @@ app.listen(3000,function(){
 
 router(app);
 
+// router 쪽에서 던지는 err에 대한 handler가 이 밑에 필요함. router에서 에러가 아닐 경우는 바로 거기서 res.send나 res.json으로 응답을 주고, 에러나 예상하지 못한 결과인 에러를 next로 넘겨서 아래 최종 에러핸들러에서 어떻게 할지 판단해서 res를 보내주는게 좋아보임
+// http://expressjs.com/en/guide/error-handling.html
+// https://github.com/TryGhost/Ghost/blob/master/core/server/api/app.js#L267
+// https://github.com/TryGhost/Ghost/blob/master/core/server/middleware/error-handler.js#L106
+// https://github.com/TryGhost/Ghost/blob/master/core/server/errors.js
+// app.use..
+
+
 app.get('/*',function(req,res){
     res.sendfile(path.resolve("../../build/index.html"));
 });

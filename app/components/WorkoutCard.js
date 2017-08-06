@@ -36,6 +36,8 @@ class WorkoutCard extends Component{
                                 className="btn btn-primary"
                                 data-toggle="modal"
                                 data-target="#myModal"
+                                // https://github.com/reactjs/redux/blob/master/examples/todomvc/src/actions/index.js
+                                // 여기 참고해서 액션에 click이라는 이름으로 하는게 아니라 클릭해서 일어나는 효과(예를 들면 addWorkout)를 이름으로 하는게 더 좋아보임
                                 onClick={() => {action_clickWorkout(selectedDate, workoutType)}}
                             >
                                 {workoutType}

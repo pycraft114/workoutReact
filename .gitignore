@@ -1,4 +1,5 @@
 node_modules
+build/
 graph.mov
 skateboard.mp4
 track.mov
@@ -16,6 +17,7 @@ jwtConfig.js
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff:
+.idea
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/dictionaries

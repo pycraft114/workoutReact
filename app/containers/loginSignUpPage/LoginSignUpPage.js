@@ -81,12 +81,14 @@ class LoginSignUpPage extends React.Component{
                         width="100%"
                         height="100%">
                     <div>
+                        // form 부분이 추가될때마다 store에 추가하기도 귀찮고, validation 부분도 신경쓸게 좀 많아서 http://redux-form.com/7.0.3/docs/GettingStarted.md/ 이거 추천
                         <SubmitForm
                             inputTags={
                                 [
                                     {
                                         id:inputIds.loginId,
                                         placeholder:placeholders.id,
+                                        // 여기서 이름은 evt가 아니라 onChange가 좋을듯
                                         evt:(evt) => {action_changeInput(evt.target.id, evt.target.value)}
                                     },
                                     {
@@ -101,6 +103,7 @@ class LoginSignUpPage extends React.Component{
                             button={
                                 {
                                     content:btnContent.login,
+                                    // 여기 이름은 evt보단 onSubmit이 좋을듯
                                     evt:(evt) => {
                                         evt.preventDefault();
                                         action_clickLoginBtn(this.props.formDatas.loginId, this.props.formDatas.loginPassword)
@@ -158,6 +161,7 @@ class LoginSignUpPage extends React.Component{
 //setting prop types
 const propTypes = {
     message : PropTypes.string,
+    // Data is already plural. datum is singular.
     formDatas : PropTypes.object
 };
 LoginSignUpPage.propTypes = propTypes;

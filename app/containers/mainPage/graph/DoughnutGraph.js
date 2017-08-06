@@ -13,6 +13,7 @@ class DoughnutGraph extends Component{
     }
 
     componentWillMount(){
+        // 도넛을 이제 로딩하는 액션이기 때문에 loadDoughnutAction이 좋지 않을까?
         this.props.action_doughnutLoaded();
     }
 

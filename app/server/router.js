@@ -9,6 +9,14 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const passport = require('passport');
 
+// https://stackoverflow.com/questions/3804108/use-email-address-as-primary-key
+// https://stackoverflow.com/questions/12354947/how-to-structure-the-tables-of-a-very-simple-blog-in-mysql
+// 현재 table 구조를 위의 두 글을 참고해서 바꿀 필요 있음
+
+// https://stackoverflow.com/questions/31332502/mysql-schema-in-node-js
+// 위 글 답변을 참고해서 table create, drop 등 하는 코드 만들 필요 있음. 처음 세팅할 때나, 테스트 할 때마다 쓰일 수 있음.
+// 아니면 ORM(https://en.wikipedia.org/wiki/Object-relational_mapping)을 다음 중에서 골라서 사용하는 방법도 있음.
+// http://www.codediesel.com/javascript/nodejs-mysql-orms/
 
 //----------------Mysql settings-------------
 const connection = mysql.createConnection({
@@ -86,6 +94,7 @@ module.exports = function(app){
                 }
             })
         }else{
+            // 이건 따로 app.delete로 분
             const deleteQuery = connection.query("DELETE FROM volume WHERE user_date_workout = ?",user_date_workout,function(err){
                 if(err){
                     throw err;
@@ -226,6 +235,7 @@ module.exports = function(app){
         const user = req.user;
         let getQuery = connection.query("SELECT user_date_workout FROM volume WHERE user_date_workout LIKE ?",`%${user}%`,function(err,results){
             if (err){
+                // 이 에러는 누가 캐치하는가? (router 쪽 err 모두 마찬가지)
                 throw err;
             }
             if(results.length !== 0){
@@ -241,8 +251,10 @@ module.exports = function(app){
                     daysWorkedOut:Object.keys(hashMap).length
                 };
 
+                // https://stackoverflow.com/questions/19041837/difference-between-res-send-and-res-json-in-express-js
                 res.send(responseData);
             }else{
+                // NO_DATA보단 '404': 'Not Found'가 좋아보임
                 res.send("NO_DATA")
             }
 
@@ -273,6 +285,7 @@ module.exports = function(app){
                         if(err){
                             throw err;
                         }else{
+                            // 성공적인데 굳이 추가적인 데이터를 보낼 필요 없을 때는  res.sendStatus(200)가 좋아보임
                             res.send("SIGNUP_SUCCESS");
                         }
                     })
@@ -296,10 +309,12 @@ module.exports = function(app){
                     }else if(compareResult === true){
                         res.send({token : tokenForUser(dbUser)});
                     }else{
+                        // '403': 'Forbidden'
                         res.send("WRONG_PASSWORD");
                     }
                 })
             }else{
+                // '404': 'Not Found',
                 res.send("USER_NOT_FOUND");
             }
         })

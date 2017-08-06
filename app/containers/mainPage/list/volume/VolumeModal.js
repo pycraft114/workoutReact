@@ -22,6 +22,8 @@ class VolumeModal extends Component {
     }
 
     componentDidMount(){
+        // https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/
+        // arrow function 쓰면 이런 경우 bind할 필요 없음
         $('#myModal').on('hide.bs.modal', function(){
             this.props.action_fetchDoneWorkouts(this.props.selectedDate)
         }.bind(this));
