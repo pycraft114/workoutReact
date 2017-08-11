@@ -22096,10 +22096,13 @@
 	    value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
+	                                                                                                                                                                                                                                                                   * Created by chanwoopark on 2017. 7. 20..
+	                                                                                                                                                                                                                                                                   */
+
 
 	exports.default = function () {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialDatas;
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialData;
 	    var action = arguments[1];
 
 	    switch (action.type) {
@@ -22113,14 +22116,11 @@
 
 	var _actionTypes = __webpack_require__(200);
 
-	/**
-	 * Created by chanwoopark on 2017. 7. 20..
-	 */
 	var inputIDs = ["loginId", "loginPassword", "signupId", "signupPassword", "signupConfirm", "signupEmail"];
 
-	var initialDatas = {};
+	var initialData = {};
 	inputIDs.map(function (currType) {
-	    initialDatas[currType] = null;
+	    initialData[currType] = null;
 	});
 
 /***/ }),

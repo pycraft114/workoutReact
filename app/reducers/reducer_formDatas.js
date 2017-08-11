@@ -1,17 +1,16 @@
 /**
  * Created by chanwoopark on 2017. 7. 20..
  */
-const inputIDs=["loginId","loginPassword","signupId","signupPassword","signupConfirm","signupEmail"];
-
-const initialDatas = {};
-inputIDs.map(function(currType){
-    initialDatas[currType] = null
-});
-
 import {INPUT_MODIFIED} from '../actions/actionTypes'
 
+const inputIDs=["loginId","loginPassword","signupId","signupPassword","signupConfirm","signupEmail"];
 
-export default function(state = initialDatas,action){
+const initialData = {};
+inputIDs.map(function(currType){
+    initialData[currType] = null
+});
+
+export default function(state = initialData,action){
     switch(action.type){
         case INPUT_MODIFIED:
             const newState = {...state};
@@ -20,3 +19,5 @@ export default function(state = initialDatas,action){
     }
     return state;
 }
+
+
