@@ -10,18 +10,15 @@ export default class LineGraphOptions extends Component{
 
     render(){
         return(
-            <ul className="nav nav-pills nav-stacked">
-                <li className="active"><a href="#">Home</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">Messages</a></li>
+            <ul className="nav nav-pills nav-stacked" onClick={this.props.onClick}>
+                {this.props.options.map(function(currentElement,idx){
+                    return(
+                        <li key={idx}><a>{currentElement}</a></li>
+                    )
+                })}
             </ul>
         )
     }
 }
+
+{/*<li className="active"><a href="#">Messages</a></li>*/}

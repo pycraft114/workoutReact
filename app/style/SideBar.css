@@ -234,3 +234,16 @@ ul ul a {
 .kg-rep-sub-container{
     margin:12px;
 }
+
+/*line graph css*/
+.line-graph-container{
+    display:flex;
+    justify-content: space-between;
+}
+
+.line-graph-selector{
+    border: 1px solid #ddd;
+    width: 246px;
+    margin: 45px;
+    border-radius: 6px;
+}

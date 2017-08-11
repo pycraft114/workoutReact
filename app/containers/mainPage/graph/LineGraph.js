@@ -58,8 +58,11 @@ import { bindActionCreators } from 'redux';
                     }
                 />*/}
                 <div id="chartContainer" style={{height:80+"vh", width: 65+"%"}}></div>
-                <div className="selector">
-                    <LineGraphOptions/>
+                <div className="line-graph-selector">
+                    <LineGraphOptions
+                        options={this.props.doneWorkouts}
+                        onClick={function(){console.log("onclick")}}
+                    />
                 </div>
             </div>
         )
@@ -77,8 +80,9 @@ LineGraph.propTypes = propTypes;
 
 function mapStateToProps(state){
     return{
-        workoutOptions:state.workoutOptions,
-        dataForCanvas:state.dataForCanvas
+        workoutOptions : state.workoutOptions,
+        dataForCanvas : state.dataForCanvas,
+        doneWorkouts : state.doneWorkouts
     };
 }
 

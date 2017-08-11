@@ -8,7 +8,7 @@ import reducer_kg from "./reducer_kg";
 import reducer_rep from "./reducer_rep";
 import reducer_kgRepList from "./reducer_kgRepList";
 import reducer_selectedDate from "./reducer_selectedDate";
-import reducer_workoutOptions from "./reducer_workoutOptions";
+import reducer_workoutTypes from "./reducer_workoutTypes";
 import reducer_dataForCanvas from "./reducer_dataForCanvas";
 import reducer_dataForDoughnut from "./reducer_dataForDoughnut";
 import reducer_isAuthed from './reducer_isAuthed';
@@ -30,7 +30,7 @@ const rootReducer = combineReducers({
 
     kgRepList:reducer_kgRepList,
 
-    workoutOptions:reducer_workoutOptions,
+    workoutTypes:reducer_workoutTypes,
 
     dataForCanvas:reducer_dataForCanvas,
 

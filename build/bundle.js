@@ -21780,9 +21780,9 @@
 
 	var _reducer_selectedDate2 = _interopRequireDefault(_reducer_selectedDate);
 
-	var _reducer_workoutOptions = __webpack_require__(205);
+	var _reducer_workoutTypes = __webpack_require__(205);
 
-	var _reducer_workoutOptions2 = _interopRequireDefault(_reducer_workoutOptions);
+	var _reducer_workoutTypes2 = _interopRequireDefault(_reducer_workoutTypes);
 
 	var _reducer_dataForCanvas = __webpack_require__(206);
 
@@ -21823,7 +21823,7 @@
 
 	    kgRepList: _reducer_kgRepList2.default,
 
-	    workoutOptions: _reducer_workoutOptions2.default,
+	    workoutTypes: _reducer_workoutTypes2.default,
 
 	    dataForCanvas: _reducer_dataForCanvas2.default,
 
@@ -22031,11 +22031,15 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	exports.default = function () {
-	  return ["Bench Press", "Squat", "Dead Lift", "Example", "Hello", "hahaha"];
+	    return {
+	        chest: [{ description: "The bench press is an upper body strength training exercise that consists of pressing a weight upwards from a supine position.", type: "Bench Press" }, { description: "The Dumbbell Bench Press is a Bench Press performed with a dumbbell .", type: "Dumbbell Bench Press" }, { description: "blahblahblahbl", type: "Something" }, { description: "blahblahblahbl", type: "Squat" }, { description: "blahblahblahbl", type: "Dead lift" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }],
+	        leg: [{ description: "blahblahblahbl", type: "leg" }, { description: "blahblahblahbl", type: "leg" }],
+	        back: [{ description: "blahblahblahbl", type: "back" }]
+	    };
 	};
 
 /***/ }),
@@ -32111,10 +32115,6 @@
 	                            button: {
 	                                content: btnContent.login,
 	                                evt: function evt(_evt3) {
-	                                    var a = formDatas;
-	                                    var b = _this2.props.formDatas;
-	                                    console.log(formDatas === _this2.props.formDatas);
-	                                    console.log(_this2.props.formDatas);
 	                                    _evt3.preventDefault();
 	                                    action_clickLoginBtn(_this2.props.formDatas.loginId, _this2.props.formDatas.loginPassword);
 	                                }
@@ -34245,8 +34245,13 @@
 	                _react2.default.createElement('div', { id: 'chartContainer', style: { height: 80 + "vh", width: 65 + "%" } }),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'selector' },
-	                    _react2.default.createElement(_LineGraphOptions2.default, null)
+	                    { className: 'line-graph-selector' },
+	                    _react2.default.createElement(_LineGraphOptions2.default, {
+	                        options: this.props.doneWorkouts,
+	                        onClick: function onClick() {
+	                            console.log("onclick");
+	                        }
+	                    })
 	                )
 	            );
 	        }
@@ -34265,7 +34270,8 @@
 	function mapStateToProps(state) {
 	    return {
 	        workoutOptions: state.workoutOptions,
-	        dataForCanvas: state.dataForCanvas
+	        dataForCanvas: state.dataForCanvas,
+	        doneWorkouts: state.doneWorkouts
 	    };
 	}
 
@@ -34318,97 +34324,18 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                "ul",
-	                { className: "nav nav-pills nav-stacked" },
-	                _react2.default.createElement(
-	                    "li",
-	                    { className: "active" },
-	                    _react2.default.createElement(
-	                        "a",
-	                        { href: "#" },
-	                        "Home"
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    "li",
-	                    null,
-	                    _react2.default.createElement(
-	                        "a",
-	                        { href: "#" },
-	                        "Profile"
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    "li",
-	                    null,
-	                    _react2.default.createElement(
-	                        "a",
-	                        { href: "#" },
-	                        "Messages"
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    "li",
-	                    null,
-	                    _react2.default.createElement(
-	                        "a",
-	                        { href: "#" },
-	                        "Messages"
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    "li",
-	                    null,
-	                    _react2.default.createElement(
-	                        "a",
-	                        { href: "#" },
-	                        "Messages"
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    "li",
-	                    null,
-	                    _react2.default.createElement(
-	                        "a",
-	                        { href: "#" },
-	                        "Messages"
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    "li",
-	                    null,
-	                    _react2.default.createElement(
-	                        "a",
-	                        { href: "#" },
-	                        "Messages"
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    "li",
-	                    null,
-	                    _react2.default.createElement(
-	                        "a",
-	                        { href: "#" },
-	                        "Messages"
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    "li",
-	                    null,
-	                    _react2.default.createElement(
-	                        "a",
-	                        { href: "#" },
-	                        "Messages"
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    "li",
-	                    null,
-	                    _react2.default.createElement(
-	                        "a",
-	                        { href: "#" },
-	                        "Messages"
-	                    )
-	                )
+	                { className: "nav nav-pills nav-stacked", onClick: this.props.onClick },
+	                this.props.options.map(function (currentElement, idx) {
+	                    return _react2.default.createElement(
+	                        "li",
+	                        { key: idx },
+	                        _react2.default.createElement(
+	                            "a",
+	                            null,
+	                            currentElement
+	                        )
+	                    );
+	                })
 	            );
 	        }
 	    }]);
@@ -34417,6 +34344,9 @@
 	}(_react.Component);
 
 	exports.default = LineGraphOptions;
+
+
+	{/*<li className="active"><a href="#">Messages</a></li>*/}
 
 /***/ }),
 /* 355 */
@@ -35095,14 +35025,7 @@
 	    function CardsContainer(props) {
 	        _classCallCheck(this, CardsContainer);
 
-	        var _this = _possibleConstructorReturn(this, (CardsContainer.__proto__ || Object.getPrototypeOf(CardsContainer)).call(this, props));
-
-	        _this.state = {
-	            chest: [{ description: "The bench press is an upper body strength training exercise that consists of pressing a weight upwards from a supine position.", type: "Bench Press" }, { description: "The Dumbbell Bench Press is a Bench Press performed with a dumbbell .", type: "Dumbbell Bench Press" }, { description: "blahblahblahbl", type: "Something" }, { description: "blahblahblahbl", type: "Squat" }, { description: "blahblahblahbl", type: "Dead lift" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }, { description: "blahblahblahbl", type: "Cable" }],
-	            leg: [{ description: "blahblahblahbl", type: "leg" }, { description: "blahblahblahbl", type: "leg" }],
-	            back: [{ description: "blahblahblahbl", type: "back" }]
-	        };
-	        return _this;
+	        return _possibleConstructorReturn(this, (CardsContainer.__proto__ || Object.getPrototypeOf(CardsContainer)).call(this, props));
 	    }
 
 	    _createClass(CardsContainer, [{
@@ -35130,7 +35053,7 @@
 	                'div',
 	                { className: 'card-container' },
 	                _react2.default.createElement(_InlineCalendar2.default, null),
-	                this.state[category].map(function (currEle, idx) {
+	                this.props.workoutTypes[category].map(function (currEle, idx) {
 	                    return _react2.default.createElement(_WorkoutCard2.default, {
 	                        description: currEle.description,
 	                        workoutType: currEle.type,
@@ -35149,7 +35072,8 @@
 	function mapStateToProps(state) {
 	    return {
 	        doneWorkouts: state.doneWorkouts,
-	        selectedDate: state.selectedDate
+	        selectedDate: state.selectedDate,
+	        workoutTypes: state.workoutTypes
 	    };
 	}
 
@@ -36599,7 +36523,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);", ""]);
 
 	// module
-	exports.push([module.id, "#content {\n    width: 100%;\n}\n\n.bottom{\n    display:flex;\n    justify-content: space-around;\n    flex-wrap: wrap-reverse;\n}\n.bottom div{\n    flex-grow:1;\n}\n\n/*#logout-button {\n    display:none;\n}*/\n\nbody{\n    overflow:scroll;\n}\n\n.wrapper {\n    display: block;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    height: 100vh;\n    position: fixed;\n    margin-left:-250px;\n    top: 0;\n    left: 0;\n    /* top layer */\n    z-index: 9999;\n}\n\n.overlay {\n    /* full screen */\n    width: 100vw;\n    height: 100vh;\n    /* transparent black */\n    background: rgba(0, 0, 0, 0.8);\n    position: fixed;\n    top: 0;\n    left: 0;\n    display: none;\n    /* middle layer, i.e. appears below the sidebar */\n    z-index: 9998;\n}\n\n#dismiss {\n    width: 35px;\n    height: 35px;\n    position: absolute;\n    /* top right corner of the sidebar */\n    top: 10px;\n    right: 10px;\n}\n\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    /*background: #7386D5;*/\n    background:rgba(0,0,0,0.5);\n    color: #fff;\n    transition: all 0.3s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    /*background: #6d7fcc;*/\n    background:rgba(0,0,0,0.5);\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n/*#content,.line-graph-container,.list-container,#doughnut-container{\n    width:100%;\n    !*border:1px solid red;*!\n}*/\n\n.record{\n    padding:7vh;\n    padding-top:0;\n}\n\n.card-container{\n    display:grid;\n    grid-gap:11px;\n    grid-template-columns:repeat(auto-fill, minmax(250px, 1fr))\n}\n\n.thumbnail a{\n    width:100%;\n}\n\n.navbar-header a:hover{\n    cursor:pointer;\n}\n\n.thumbnail{\n    position:relative;\n}\n\n.thumbnail-overlay{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    padding: 0;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(0,0,0,0.5);\n    border-radius: 4px;\n    display:none;\n}\n.thumbnail-overlay.done{\n    display: block;\n}\n\n.thumbnail-button{\n    position:relative;\n    font-family: monospace;\n}\n.thumbnail-description{\n    height:72px;\n    word-wrap:break-word;\n    overflow:scroll;\n    font-family: monospace;\n    border-bottom:1px solid #ddd;\n}\n\n.check-icon{\n    display: block;\n    margin: auto;\n    margin-top: 45px;\n}\n\n.row{\n    margin:0;\n}\n\n#check{\n    display:inline-block;\n    margin:8px;\n}\n\n.kg-rep{\n    display:inline-block;\n}\n\n.kg-rep-sub-container{\n    margin:12px;\n}", ""]);
+	exports.push([module.id, "#content {\n    width: 100%;\n}\n\n.bottom{\n    display:flex;\n    justify-content: space-around;\n    flex-wrap: wrap-reverse;\n}\n.bottom div{\n    flex-grow:1;\n}\n\n/*#logout-button {\n    display:none;\n}*/\n\nbody{\n    overflow:scroll;\n}\n\n.wrapper {\n    display: block;\n}\n\n#sidebar {\n    min-width: 250px;\n    max-width: 250px;\n    height: 100vh;\n    position: fixed;\n    margin-left:-250px;\n    top: 0;\n    left: 0;\n    /* top layer */\n    z-index: 9999;\n}\n\n.overlay {\n    /* full screen */\n    width: 100vw;\n    height: 100vh;\n    /* transparent black */\n    background: rgba(0, 0, 0, 0.8);\n    position: fixed;\n    top: 0;\n    left: 0;\n    display: none;\n    /* middle layer, i.e. appears below the sidebar */\n    z-index: 9998;\n}\n\n#dismiss {\n    width: 35px;\n    height: 35px;\n    position: absolute;\n    /* top right corner of the sidebar */\n    top: 10px;\n    right: 10px;\n}\n\n\n#sidebar.active {\n    margin-left:0;\n}\n\na[data-toggle=\"collapse\"] {\n    position: relative;\n}\n\na[aria-expanded=\"false\"]::before, a[aria-expanded=\"true\"]::before {\n    content: '\\E259';\n    display: block;\n    position: absolute;\n    right: 20px;\n    font-family: 'Glyphicons Halflings';\n    font-size: 0.6em;\n}\n\na[aria-expanded=\"true\"]::before {\n    content: '\\E260';\n}\n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -250px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}\n\n/*body {\n    font-family: 'Poppins', sans-serif;\n    background: #fafafa;\n}\n\np {\n    font-family: 'Poppins', sans-serif;\n    font-size: 1.1em;\n    font-weight: 300;\n    line-height: 1.7em;\n    color: #999;\n}*/\n\na, a:hover, a:focus {\n    color: inherit;\n    text-decoration: none;\n    transition: all 0.3s;\n}\n\n#sidebar {\n    /* don't forget to add all the previously mentioned styles here too */\n    /*background: #7386D5;*/\n    background:rgba(0,0,0,0.5);\n    color: #fff;\n    transition: all 0.3s;\n}\n\n#sidebar .sidebar-header {\n    padding: 20px;\n    /*background: #6d7fcc;*/\n    background:rgba(0,0,0,0.5);\n}\n\n#sidebar ul.components {\n    padding: 20px 0;\n    border-bottom: 1px solid #47748b;\n}\n\n#sidebar ul p {\n    color: #fff;\n    padding: 10px;\n}\n\n#sidebar ul li a {\n    padding: 10px;\n    font-size: 1.1em;\n    display: block;\n}\n#sidebar ul li a:hover {\n    color: #7386D5;\n    background: #fff;\n}\n\n#sidebar ul li.active > a, a[aria-expanded=\"true\"] {\n    color: #fff;\n    background: #6d7fcc;\n}\nul ul a {\n    font-size: 0.9em !important;\n    padding-left: 30px !important;\n    background: #6d7fcc;\n}\n\n/*#content,.line-graph-container,.list-container,#doughnut-container{\n    width:100%;\n    !*border:1px solid red;*!\n}*/\n\n.record{\n    padding:7vh;\n    padding-top:0;\n}\n\n.card-container{\n    display:grid;\n    grid-gap:11px;\n    grid-template-columns:repeat(auto-fill, minmax(250px, 1fr))\n}\n\n.thumbnail a{\n    width:100%;\n}\n\n.navbar-header a:hover{\n    cursor:pointer;\n}\n\n.thumbnail{\n    position:relative;\n}\n\n.thumbnail-overlay{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    padding: 0;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background: rgba(0,0,0,0.5);\n    border-radius: 4px;\n    display:none;\n}\n.thumbnail-overlay.done{\n    display: block;\n}\n\n.thumbnail-button{\n    position:relative;\n    font-family: monospace;\n}\n.thumbnail-description{\n    height:72px;\n    word-wrap:break-word;\n    overflow:scroll;\n    font-family: monospace;\n    border-bottom:1px solid #ddd;\n}\n\n.check-icon{\n    display: block;\n    margin: auto;\n    margin-top: 45px;\n}\n\n.row{\n    margin:0;\n}\n\n#check{\n    display:inline-block;\n    margin:8px;\n}\n\n.kg-rep{\n    display:inline-block;\n}\n\n.kg-rep-sub-container{\n    margin:12px;\n}\n\n/*line graph css*/\n.line-graph-container{\n    display:flex;\n    justify-content: space-between;\n}\n\n.line-graph-selector{\n    border: 1px solid #ddd;\n    width: 246px;\n    margin: 45px;\n    border-radius: 6px;\n}", ""]);
 
 	// exports
 
