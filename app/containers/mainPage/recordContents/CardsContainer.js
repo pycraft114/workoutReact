@@ -15,6 +15,24 @@ import action_fetchDoneWorkouts from 'actions/action_fetchDoneWorkouts';
 class CardsContainer extends Component{
     constructor(props){
         super(props);
+
+        this.state={
+            chest:[{description:"The bench press is an upper body strength training exercise that consists of pressing a weight upwards from a supine position.", type:"Bench Press"},
+                {description:"The Dumbbell Bench Press is a Bench Press performed with a dumbbell .", type:"Dumbbell Bench Press"},
+                {description:"blahblahblahbl", type:"Something"},
+                {description:"blahblahblahbl", type:"Squat"},
+                {description:"blahblahblahbl", type:"Dead lift"},
+                {description:"blahblahblahbl", type:"Cable"},
+                {description:"blahblahblahbl", type:"Cable"},
+                {description:"blahblahblahbl", type:"Cable"},
+                {description:"blahblahblahbl", type:"Cable"},
+                {description:"blahblahblahbl", type:"Cable"},
+                {description:"blahblahblahbl", type:"Cable"},
+            ],
+            leg:[{description:"blahblahblahbl", type:"leg"},
+                {description:"blahblahblahbl", type:"leg"}],
+            back:[{description:"blahblahblahbl", type:"back"}]
+        };
     }
 
     componentDidMount(){
@@ -37,7 +55,7 @@ class CardsContainer extends Component{
         return(
             <div className="card-container">
                 <InlineCalendar/>
-                {this.props.workoutTypes[category].map(function(currEle,idx){
+                {this.state[category].map(function(currEle,idx){
                     return(
                         <WorkoutCard
                             description={currEle.description}
@@ -57,7 +75,6 @@ function mapStateToProps(state){
     return {
         doneWorkouts : state.doneWorkouts,
         selectedDate : state.selectedDate,
-        workoutTypes : state.workoutTypes
     }
 }
 

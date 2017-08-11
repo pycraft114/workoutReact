@@ -47,22 +47,10 @@ import { bindActionCreators } from 'redux';
     render(){
         return(
             <div className="line-graph-container">
-                {/*<Selector
-                    id="option-selector"
-                    title="Option"
-                    options={this.props.workoutOptions}
-                    onSelect={
-                        (evtKey) => {
-                            this.props.action_selectOption(evtKey)
-                        }
-                    }
-                />*/}
                 <div id="chartContainer" style={{height:80+"vh", width: 65+"%"}}></div>
+
                 <div className="line-graph-selector">
-                    <LineGraphOptions
-                        options={this.props.doneWorkouts}
-                        onClick={function(){console.log("onclick")}}
-                    />
+                    <LineGraphOptions/>
                 </div>
             </div>
         )
@@ -82,7 +70,6 @@ function mapStateToProps(state){
     return{
         workoutOptions : state.workoutOptions,
         dataForCanvas : state.dataForCanvas,
-        doneWorkouts : state.doneWorkouts
     };
 }
 
